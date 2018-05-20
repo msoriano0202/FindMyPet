@@ -1,0 +1,426 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Widgets | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        <!-- Main Navbar -->
+        {% include '../_partials/headers/_main-header.html' %}
+        <!-- END Main Navbar -->
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Widgets</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Components</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Widgets</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Widgets -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container">
+            
+                <div class="grid gutter">
+                    <div class="grid-sizer grid-item-w-33"></div>
+                    
+                    <!-- Search Widget -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget search-widget">
+                                <h6 class="widget-title g-mb-20 text-uppercase font-weight-bold">Search</h6>
+                                <form>
+                                    <div class="input-group input-group-focus-v2">
+                                        <input type="text" class="form-control g-bg-gray-100" id="input3-1" placeholder="Search">
+                                        <button class="input-group-append g-w50 justify-content-center g-p-0 g-bg-white g-bg-primary-h cursor-pointer">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                      
+                    </div>
+                    <!-- END Search Widget -->
+    
+                    <!-- Tags Widget -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget tags-widget">
+                                <h6 class="widget-title g-mb-20 text-uppercase font-weight-bold">Tags</h6>
+                                <div class="tags">
+                                    <a href="#">#creative</a>
+                                    <a href="#">#web design</a>
+                                    <a href="#">#photography</a>
+                                    <a href="#">#corporate</a>
+                                    <a href="#">#bootstrap</a>
+                                    <a href="#">#sass</a>
+                                    <a href="#">#html</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Tags Widget -->
+    
+                    <!-- Categories 1 -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget categories-widget">
+                                <h6 class="widget-title g-mb-20">Categories 1</h6>
+                                <ul class="widget-list">
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> Creative</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> Web Design</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> Photography</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> Corporate</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> Creative</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Categories 1 -->
+                    
+                    <!-- Categories 2 -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget categories-widget">
+                                <h6 class="widget-title g-mb-20">Categories 2</h6>
+                                <ul class="widget-list">
+                                    <li>
+                                        <a href="#" class="d-flex align-items-center justify-content-between">
+                                            <i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> Shoes
+                                            <span class="badge ml-auto g-text-gray-600">49</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex align-items-center justify-content-between">
+                                            <i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> T-Shirts
+                                            <span class="badge ml-auto g-text-gray-600">192</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex align-items-center justify-content-between">
+                                            <i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> Jackets
+                                            <span class="badge ml-auto g-text-gray-600">57</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex align-items-center justify-content-between">
+                                            <i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> Jeans
+                                            <span class="badge ml-auto g-text-gray-600">82</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex align-items-center justify-content-between">
+                                            <i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> Clothes
+                                            <span class="badge ml-auto g-text-gray-600">105</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex align-items-center justify-content-between">
+                                            <i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> Accessories
+                                            <span class="badge ml-auto g-text-gray-600">52</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-flex align-items-center justify-content-between">
+                                            <i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> Trending
+                                            <span class="badge ml-auto g-text-gray-600">63</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Catergories 2 -->
+    
+                    <!-- Archives Widget -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget archives-widget">
+                                <h6 class="widget-title g-mb-20">Archives</h6>
+                                <ul class="widget-list">
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> Januray <span>( 12 )</span></a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> February </a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> March <span>( 5 )</span></a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> Aprill</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> May <span>( 2 )</span></a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> June <span>( 8 )</span></a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> July <span>( 16 )</span></a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> August</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> September ( 10 )</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> October</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> November ( 1 )</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right g-mr-5" aria-hidden="true"></i> December ( 4 )</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Archives Widget -->
+    
+                    <!-- Ad Widget -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget adv-widget">
+                                <h6 class="widget-title g-mb-20">Ad Widget</h6>
+                                <a href="#">
+                                    <img src="http://via.placeholder.com/900x600/eee/777" alt="Image Desciption" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Ad Widget -->
+    
+                    <!-- Related Post Widget -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget related-post-widget">
+                                <h6 class="widget-title g-mb-20 text-uppercase font-weight-bold">Related Posts</h6>
+                                <div class="d-flex align-items-center">
+        
+                                </div>
+                                <div class="row g-mb-20 align-items-center">
+                                    <div class="col-auto text-center">
+                                        <img class="g-w60 img-fluid rounded-circle g-border g-border-gray-300 g-border-3x" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div class="col g-pl-10">
+                                        <h6 class="g-text-dark font-weight-bold g-mb-5">Web Design</h6>
+                                        <a href="#">
+                                            <p class="text-muted g-font-size-14">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, cupiditate? [...]</p>
+                                        </a>
+                                    </div>
+                                </div>
+        
+                                <div class="row g-mb-20 align-items-center">
+                                    <div class="col-auto text-center">
+                                        <img class="g-w60 img-fluid rounded-circle g-border g-border-gray-300 g-border-3x" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div class="col g-pl-10">
+                                        <h6 class="g-text-dark font-weight-bold g-mb-5">Web Design</h6>
+                                        <a href="#">
+                                            <p class="text-muted g-font-size-14">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, cupiditate? [...]</p>
+                                        </a>
+                                    </div>
+                                </div>
+        
+                                <div class="row g-mb-20 align-items-center">
+                                    <div class="col-auto text-center">
+                                        <img class="g-w60 img-fluid rounded-circle g-border g-border-gray-300 g-border-3x" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div class="col g-pl-10">
+                                        <h6 class="g-text-dark font-weight-bold g-mb-5">Web Design</h6>
+                                        <a href="#">
+                                            <p class="text-muted g-font-size-14">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, cupiditate? [...]</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Related Post Widget -->
+                    
+                    <!-- Feeds -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget feeds-widget">
+                                <h6 class="widget-title g-mb-20">Facebook Feeds</h6>
+                                <div class="row">
+                                    <div class="col-6 g-p-3">
+                                        <a href="#">
+                                            <img src="http://via.placeholder.com/900x600/eee/777" alt="Image Description" class="img-fluid g-rounded-5">
+                                        </a>
+                                    </div>
+                                    <div class="col-6 g-p-3">
+                                        <a href="#">
+                                            <img src="http://via.placeholder.com/900x600/eee/777" alt="Image Description" class="img-fluid g-rounded-5">
+                                        </a>
+                                    </div>
+                                    <div class="col-6 g-p-3">
+                                        <a href="#">
+                                            <img src="http://via.placeholder.com/900x600/eee/777" alt="Image Description" class="img-fluid g-rounded-5">
+                                        </a>
+                                    </div>
+                                    <div class="col-6 g-p-3">
+                                        <a href="#">
+                                            <img src="http://via.placeholder.com/900x600/eee/777" alt="Image Description" class="img-fluid g-rounded-5">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Feeds -->
+    
+                    <!-- Footer Contact Widget -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget contact-widget">
+                                <h6 class="widget-title g-mb-20">Footer Contact</h6>
+                                <p class="g-mb-10">Assimilant mechanice ducunt ad clemens musa. </p>
+                                <div>
+                                    <ul>
+                                        <li class="g-mb-10 d-flex align-items-center">
+                                            <div>
+                                                <span class="cn-icon cn-icon-sm rounded cn-icon-gray-200"><i class="fa fa-map-marker"></i></span>
+                                            </div>
+                                            <p class="g-ml-10"> 54 Duncan Street, London N1 8BW</p>
+                                        </li>
+                                        <li class="g-mb-10 d-flex align-items-center">
+                                            <div>
+                                                <span class="cn-icon cn-icon-sm rounded cn-icon-gray-200"><i class="fa fa-phone"></i></span>
+                                            </div>
+                                            <p class="g-ml-10"><a href="#">Phone: (+20) 1234 6789 </a></p>
+                                        </li>
+                                        <li class="g-mb-10 d-flex align-items-center">
+                                            <div>
+                                                <span class="cn-icon cn-icon-sm rounded cn-icon-gray-200"><i class="fa fa-envelope-open"></i></span>
+                                            </div>
+                                            <span class="g-ml-10"><a href="#"> Email: support@theme-aspect.com</a></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Footer Contact Widget  -->
+                    
+                    <!-- Footer Links-->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget footer-links-widget">
+                                <h6 class="widget-title g-mb-20">Footer Links</h6>
+                                <ul class="widget-list">
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Home</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> About</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Our Work</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Our Team</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Prices</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Footer Links- -->
+    
+                    <!-- Footer Categories Widget -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget categories-widget">
+                                <h6 class="widget-title g-mb-20">Footer Categories</h6>
+                                <ul class="widget-list">
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Jackets</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Shoes</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Bags</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> T-shirts</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Phones</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Macbooks</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Footer Categories Widget -->
+    
+                    <!-- Account and Shipping Widget -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget footer-links-widget">
+                                <h6 class="widget-title g-mb-20">Account and Shipping</h6>
+                                <ul class="widget-list">
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Account</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Payment Method</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Shipping Taxes</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Refunds</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Delivery Info</a></li>
+                                    <li><a href="#"><i class="fa fa-long-arrow-right"></i> Privacy Policies</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Account and Shipping Widget -->
+                    
+                    <!-- Footer Categories Widget -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget footer-links-widget">
+                                <h6 class="widget-title g-mb-20">Partner</h6>
+                                <ul class="widget-list">
+                                    <li><a href="#">Affiliate Program</a></li>
+                                    <li><a href="#">Reseller Program</a></li>
+                                    <li><a href="#">Developer Portal</a></li>
+                                    <li><a href="#">Support Center</a></li>
+                                    <li><a href="#">Became a client</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Footer Categories Widget -->
+                    
+                    <!-- About Widget -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget about-widget">
+                                <h6 class="widget-title g-mb-20">About Me</h6>
+                                <img src="http://via.placeholder.com/900x600/eee/777" alt="Image Description" class="img-fluid g-mb-20">
+                                <p>Superbus nuptias ducunt ad mons. Cum exsul ire, omnes gemnaes imperium bi-color, rusticus assimilatioes!</p>
+                                <p>Abnobas sunt adgiums de albus clinias.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END About Widget -->
+                    
+                    <!-- Latest Posts Widget -->
+                    <div class="grid-item grid-item-w-33">
+                        <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                            <div class="widget latest-posts-widget">
+                                <h6 class="widget-title g-mb-25">Footer Latest Posts</h6>
+                                <div class="d-flex justify-content-center">
+                                    <div>
+                                        <a href="#">
+                                            <div class="row align-items-center g-mb-20">
+                                                <div class="col-auto"><img src="http://via.placeholder.com/100x100/eee/777" class="rounded-circle" alt="Image Description"></div>
+                                                <div class="col g-pl-10 text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, cupiditate? [...]</div>
+                                            </div>
+                                        </a>
+                                        <a href="#">
+                                            <div class="row">
+                                                <div class="col-auto"><img src="http://via.placeholder.com/100x100/eee/777" class="rounded-circle" alt="Image Description"></div>
+                                                <div class="col g-pl-10 text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, cupiditate? [...]</div>
+                                            </div>
+                                        </a>
+            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Latest Posts Widget  -->
+                    
+                </div>
+
+            </div>
+        </section>
+        <!-- END Widgets -->
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+    
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

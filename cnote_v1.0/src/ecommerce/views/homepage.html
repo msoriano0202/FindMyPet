@@ -1,0 +1,533 @@
+{% extends '_partials/_cnote-shop-layout.html' %}
+{% block page-title %}<title>E-Commerce Homepage | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '_partials/_headers/_topbar-1.html' %}
+        {% include '_partials/_headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Banner -->
+        <section class="banner bg-cover pos-center g-md-h600 g-py-100" style="background-image: url('http://via.placeholder.com/1920x1080/eee/ddd');">
+            <div class="overlay g-bg-black-opacity-2"></div>
+        
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="container banner-text text-center text-white g-px-15">
+                    <h1 class="text-uppercase font-weight-bold font-montserrat g-font-size-md-45 g-font-size-25">A new collection has arrived</h1>
+                    <h1 class="text-uppercase font-weight-bold font-montserrat g-font-size-md-55 g-font-size-25">33% Off this week !</h1>
+                    <div class="g-mt-40">
+                        <a href="#" class="btn btn-lg cn-btn-primary cn-btn-hover-v2-left-2"><i class="icon-basket"></i> Shop Now</a>
+                    </div>
+                </div>
+            </div>
+    
+        </section>
+        <!-- END Banner -->
+    
+        <!-- Countdown -->
+        <section class="g-pb-70 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="countdown-box g-mb-50">
+                    <div class="countdown" data-date="2018/12/10"></div>
+                </div>
+                <div class="text-center">
+                    <p>Don't forget to change this dummy text</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, impedit, perferendis!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <div class="g-mt-40"><a href="#" class="btn cn-btn-dark text-uppercase"><i class="icon-basket-loaded g-mr-5"></i>View Collection</a></div>
+                </div>
+            </div>
+    
+        </section>
+        <!-- END Countdown -->
+    
+        <!-- Categories -->
+        <section class="g-py-70 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="row justify-content-center">
+                
+                    <div class="col-sm-6 col-md-5 g-mb-15">
+                        <div class="box g-mx-10 g-bg-white g-border g-border-b-3x g-border-gray-300 g-border-primary-h position-relative">
+                            <a href="#"><img class="img-fluid" src="http://via.placeholder.com/800x1000/eee/777" alt="Image Description"></a>
+                            <div class="position-absolute g-p-20 g-bg-gray-100 g-rounded-3 g-bottom-20 g-left-20">
+                                <h5 class="font-weight-bold"><span class="g-text-primary">Women</span> Collections</h5>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="col-sm-6 col-md-5 g-mb-15">
+                        <div class="box g-mx-10 g-bg-white g-border g-border-b-3x g-border-gray-300 g-border-primary-h position-relative">
+                            <a href="#"><img class="img-fluid" src="http://via.placeholder.com/800x1000/eee/777" alt="Image Description"></a>
+                            <div class="position-absolute g-p-20 g-bg-gray-100 g-rounded-3 g-bottom-20 g-right-20">
+                                <h5 class="font-weight-bold"><span class="g-text-primary">Man</span> Collections</h5>
+                            </div>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+        </section>
+        <!-- END Categories -->
+    
+        <!-- New Arrivals ( products ) -->
+        <section class="g-py-70">
+            <div class="container">
+                <div class="head-section text-center g-mb-60">
+                    <h3 class="text-uppercase">New Arrivals</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                </div>
+            
+                <!-- Products -->
+                <div class="row">
+                
+                    <div class="col-sm-6 col-md-3 g-p-10">
+                        <!-- Product -->
+                        <div class="product g-border g-border-gray-300 text-center">
+                            <div class="product-image">
+                                <a href="#"><img class="img-fluid" src="http://via.placeholder.com/650x650/eee/777" alt="Image Description"></a>
+                            </div>
+                            <div class="product-body g-border-t g-border-t-gray-300 g-p-15">
+                                <h5 class="title g-mb-10">High Heels</h5>
+                                <div class="price g-mb-10 g-font-size-18 font-weight-bold">
+                                    <span class="old-price text-cutted">$54</span>
+                                    <span class="new-price text-primary"> $36</span>
+                                </div>
+                                <div class="d-inline-flex">
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20 g-mr-3" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                        <i class="icon-basket"></i>
+                                    </a>
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Product -->
+                    </div>
+                    <div class="col-sm-6 col-md-3 g-p-10">
+                        <!-- Product -->
+                        <div class="product g-border g-border-gray-300 text-center">
+                            <div class="product-image">
+                                <a href="#"><img class="img-fluid" src="http://via.placeholder.com/650x650/eee/777" alt="Image Description"></a>
+                            </div>
+                            <div class="product-body g-border-t g-border-t-gray-300 g-p-15">
+                                <h5 class="title g-mb-10">Sneakers</h5>
+                                <div class="price g-mb-10 g-font-size-18 font-weight-bold">
+                                    <span class="old-price text-cutted">$44.99</span>
+                                    <span class="new-price text-primary"> $30</span>
+                                </div>
+                                <div class="d-inline-flex">
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20 g-mr-3" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                        <i class="icon-basket"></i>
+                                    </a>
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Product -->
+                    </div>
+                    <div class="col-sm-6 col-md-3 g-p-10">
+                        <!-- Product -->
+                        <div class="product g-border g-border-gray-300 text-center">
+                            <div class="product-image">
+                                <a href="#"><img class="img-fluid" src="http://via.placeholder.com/650x650/eee/777" alt="Image Description"></a>
+                            </div>
+                            <div class="product-body g-border-t g-border-t-gray-300 g-p-15">
+                                <h5 class="title g-mb-10">T-Shirt</h5>
+                                <div class="price g-mb-10 g-font-size-18 font-weight-bold">
+                                    <span class="old-price text-cutted">$14</span>
+                                    <span class="new-price text-primary"> $9.38</span>
+                                </div>
+                                <div class="d-inline-flex">
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20 g-mr-3" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                        <i class="icon-basket"></i>
+                                    </a>
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Product -->
+                    </div>
+                    <div class="col-sm-6 col-md-3 g-p-10">
+                        <!-- Product -->
+                        <div class="product g-border g-border-gray-300 text-center">
+                            <div class="product-image">
+                                <a href="#"><img class="img-fluid" src="http://via.placeholder.com/650x650/eee/777" alt="Image Description"></a>
+                            </div>
+                            <div class="product-body g-border-t g-border-t-gray-300 g-p-15">
+                                <h5 class="title g-mb-10">Shoes</h5>
+                                <div class="price g-mb-10 g-font-size-18 font-weight-bold">
+                                    <span class="old-price text-cutted">$34.99</span>
+                                    <span class="new-price text-primary"> $10.50</span>
+                                </div>
+                                <div class="d-inline-flex">
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20 g-mr-3" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                        <i class="icon-basket"></i>
+                                    </a>
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Product -->
+                    </div>
+                    <div class="col-sm-6 col-md-3 g-p-10">
+                        <!-- Product -->
+                        <div class="product g-border g-border-gray-300 text-center">
+                            <div class="product-image">
+                                <a href="#"><img class="img-fluid" src="http://via.placeholder.com/650x650/eee/777" alt="Image Description"></a>
+                            </div>
+                            <div class="product-body g-border-t g-border-t-gray-300 g-p-15">
+                                <h5 class="title g-mb-10">Cloth</h5>
+                                <div class="price g-mb-10 g-font-size-18 font-weight-bold">
+                                    <span class="old-price text-cutted">$10.99</span>
+                                    <span class="new-price text-primary"> $7.36</span>
+                                </div>
+                                <div class="d-inline-flex">
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20 g-mr-3" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                        <i class="icon-basket"></i>
+                                    </a>
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Product -->
+                    </div>
+                    <div class="col-sm-6 col-md-3 g-p-10">
+                        <!-- Product -->
+                        <div class="product g-border g-border-gray-300 text-center">
+                            <div class="product-image">
+                                <a href="#"><img class="img-fluid" src="http://via.placeholder.com/650x650/eee/777" alt="Image Description"></a>
+                            </div>
+                            <div class="product-body g-border-t g-border-t-gray-300 g-p-15">
+                                <h5 class="title g-mb-10">Tie</h5>
+                                <div class="price g-mb-10 g-font-size-18 font-weight-bold">
+                                    <span class="old-price text-cutted">$120</span>
+                                    <span class="new-price text-primary"> $80</span>
+                                </div>
+                                <div class="d-inline-flex">
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20 g-mr-3" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                        <i class="icon-basket"></i>
+                                    </a>
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Product -->
+                    </div>
+                    <div class="col-sm-6 col-md-3 g-p-10">
+                        <!-- Product -->
+                        <div class="product g-border g-border-gray-300 text-center">
+                            <div class="product-image">
+                                <a href="#"><img class="img-fluid" src="http://via.placeholder.com/650x650/eee/777" alt="Image Description"></a>
+                            </div>
+                            <div class="product-body g-border-t g-border-t-gray-300 g-p-15">
+                                <h5 class="title g-mb-10">Sneakers</h5>
+                                <div class="price g-mb-10 g-font-size-18 font-weight-bold">
+                                    <span class="old-price text-cutted">$44.99</span>
+                                    <span class="new-price text-primary"> $30</span>
+                                </div>
+                                <div class="d-inline-flex">
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20 g-mr-3" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                        <i class="icon-basket"></i>
+                                    </a>
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Product -->
+                    </div>
+                    <div class="col-sm-6 col-md-3 g-p-10">
+                        <!-- Product -->
+                        <div class="product g-border g-border-gray-300 text-center">
+                            <div class="product-image">
+                                <a href="#"><img class="img-fluid" src="http://via.placeholder.com/650x650/eee/777" alt="Image Description"></a>
+                            </div>
+                            <div class="product-body g-border-t g-border-t-gray-300 g-p-15">
+                                <h5 class="title g-mb-10">High Heels</h5>
+                                <div class="price g-mb-10 g-font-size-18 font-weight-bold">
+                                    <span class="old-price text-cutted">$54.99</span>
+                                    <span class="new-price text-primary"> $36</span>
+                                </div>
+                                <div class="d-inline-flex">
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20 g-mr-3" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                        <i class="icon-basket"></i>
+                                    </a>
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Product -->
+                    </div>
+            
+                </div>
+                <!-- END Products -->
+            
+                <div class="text-center g-mt-40">
+                    <a href="#" class="btn cn-btn-dark text-uppercase"><i class="icon-basket-loaded g-mr-5"></i>More Products</a>
+                </div>
+        
+            </div> <!-- / .container -->
+        </section>
+        <!-- END New Arrivals -->
+    
+        <!-- Promotion -->
+        <section class="promotions">
+            <div class="container-fluid">
+            
+                <div class="row no-gutters">
+                    <div class="col-lg-4">
+                        <div class="promo-product-img d-flex justify-content-center align-items-center g-h500 bg-cover" style="background-image: url('http://via.placeholder.com/900x650/e8e8e8/777');">
+                            <div class="g-px-50 g-py-20 g-mx-30 w-100 text-center text-lg-right g-bg-white-opacity-8 g-rounded-3">
+                                <p class="g-font-size-25 font-weight-bold">Sunglasses</p>
+                                <p>Devatio primus luna est</p>
+                                <p class="g-font-size-25 g-my-15">$79,99</p>
+                                <div>
+                                    <a href="#" class="btn cn-btn-dark"><i class="fa icon-basket"></i> Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <a href="#">
+                            <div class="promo-product-img d-flex justify-content-center align-items-center g-h500 bg-cover" style="background-image: url('http://via.placeholder.com/1920x650/eee/ddd');">
+                                <div class=" g-py-20 g-px-50 text-center g-bg-white-opacity-6 g-rounded-3">
+                                    <p class="g-font-size-35 text-dark font-weight-bold">New Sunglasses Collection</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+        
+            </div>
+        </section>
+        <!-- END Promotion -->
+    
+        <!-- Featured Products -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container">
+            
+                <div class="head-section text-center g-mb-50">
+                    <h4 class="text-uppercase">Featured Products</h4>
+                    <p>Demissio de gratis torus, imperium galatae.</p>
+                </div>
+            
+                <div class="owl-carousel-custom-nav d-flex g-py-10 g-px-5"></div>
+                <div class="owl-carousel popular-products-carousel">
+                    <div class="item g-p-5">
+                        <!-- product -->
+                        <div class="product g-border g-border-gray-300 text-center">
+                            <div class="product-image">
+                                <a href="#"><img class="img-fluid" src="http://via.placeholder.com/650x650/eee/777" alt="Image Description"></a>
+                            </div>
+                            <div class="product-body g-border-t g-border-t-gray-300 g-p-15">
+                                <div class="title g-mb-10">
+                                    <h5>Shoes</h5>
+                                </div>
+                                <div class="price g-mb-10 g-font-size-18 font-weight-bold">
+                                    <span class="text-primary"> $18.50</span>
+                                </div>
+                                <div class="d-inline-flex">
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20 g-mr-3" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                        <i class="icon-basket"></i>
+                                    </a>
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end product -->
+                    </div>
+                    <div class="item g-p-5">
+                        <!-- product -->
+                        <div class="product g-border g-border-gray-300 text-center">
+                            <div class="product-image">
+                                <a href="#"><img class="img-fluid" src="http://via.placeholder.com/650x650/eee/777" alt="Image Description"></a>
+                            </div>
+                            <div class="product-body g-border-t g-border-t-gray-300 g-p-15">
+                                <div class="title g-mb-10">
+                                    <h5>T-Shirt</h5>
+                                </div>
+                                <div class="price g-mb-10 g-font-size-18 font-weight-bold">
+                                    <span class="text-primary"> $18.50</span>
+                                </div>
+                                <div class="d-inline-flex">
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20 g-mr-3" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                        <i class="icon-basket"></i>
+                                    </a>
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end product -->
+                    </div>
+                    <div class="item g-p-5">
+                        <!-- product -->
+                        <div class="product g-border g-border-gray-300 text-center">
+                            <div class="product-image">
+                                <a href="#"><img class="img-fluid" src="http://via.placeholder.com/650x650/eee/777" alt="Image Description"></a>
+                            </div>
+                            <div class="product-body g-border-t g-border-t-gray-300 g-p-15">
+                                <div class="title g-mb-10">
+                                    <h5>High Heels</h5>
+                                </div>
+                                <div class="price g-mb-10 g-font-size-18 font-weight-bold">
+                                    <span class="text-primary"> $36</span>
+                                </div>
+                                <div class="d-inline-flex">
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20 g-mr-3" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                        <i class="icon-basket"></i>
+                                    </a>
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end product -->
+                    </div>
+                    <div class="item g-p-5">
+                        <!-- product -->
+                        <div class="product g-border g-border-gray-300 text-center">
+                            <div class="product-image">
+                                <a href="#"><img class="img-fluid" src="http://via.placeholder.com/650x650/eee/777" alt="Image Description"></a>
+                            </div>
+                            <div class="product-body g-border-t g-border-t-gray-300 g-p-15">
+                                <div class="title g-mb-10">
+                                    <h5>High Top</h5>
+                                </div>
+                                <div class="price g-mb-10 g-font-size-18 font-weight-bold">
+                                    <span class="text-primary"> $30</span>
+                                </div>
+                                <div class="d-inline-flex">
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20 g-mr-3" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                        <i class="icon-basket"></i>
+                                    </a>
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end product -->
+                    </div>
+                    <div class="item g-p-5">
+                        <!-- product -->
+                        <div class="product g-border g-border-gray-300 text-center">
+                            <div class="product-image">
+                                <a href="#"><img class="img-fluid" src="http://via.placeholder.com/650x650/eee/777" alt="Image Description"></a>
+                            </div>
+                            <div class="product-body g-border-t g-border-t-gray-300 g-p-15">
+                                <div class="title g-mb-10">
+                                    <h5>Shirt</h5>
+                                </div>
+                                <div class="price g-mb-10 g-font-size-18 font-weight-bold">
+                                    <span class="text-primary"> $36</span>
+                                </div>
+                                <div class="d-inline-flex">
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20 g-mr-3" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                        <i class="icon-basket"></i>
+                                    </a>
+                                    <a href="#" class="g-font-size-15 g-bg-gray-200 g-py-10 g-px-20" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end product -->
+                    </div>
+                </div>
+        
+            </div>
+        </section>
+        <!-- END Featured Products -->
+    
+        <!-- Newsletter -->
+        <section class="newsletter-section g-py-70 g-bg-gray-100">
+            <div class="container">
+            
+                <div class="head-section text-center g-mb-60">
+                    <h4 class="title text-uppercase">Subscribe now</h4>
+                    <p>Stay tuned with our newest products</p>
+                </div>
+            
+            
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+    
+                        <form>
+                            <div class="form-group">
+                                <div class="input-group input-group-focus-v2">
+                                    <div class="input-group-prepend bg-white g-px-20"><i class="fa fa-send"></i></div>
+                                    <input type="email" class="form-control g-px-15" name="subscribe_email" id="subscribe_email" placeholder="example@domain.com">
+                                    <a href="#" class="input-group-append g-bg-white g-bg-primary-h">
+                                        <span class="g-font-size-14 g-px-15 g-px-md-25">Subscribe</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                
+                    </div>
+                </div>
+        
+            </div>
+        </section>
+        <!-- END Newsletter -->
+    
+        <!-- Services -->
+        <section class="g-py-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 text-center g-py-40">
+                        <p><i class="icon-wallet g-font-size-20"></i></p>
+                        <h6 class="font-weight-bold g-mt-10">Money Back</h6>
+                        <p class="g-font-size-14">30 Days Money Back Guarantee</p>
+                    </div>
+                    <div class="col-md-4 text-center g-py-40">
+                        <p><i class="icon-paper-plane g-font-size-20"></i></p>
+                        <h6 class="font-weight-bold g-mt-10">Free Shipping</h6>
+                        <p class="g-font-size-14">Shipping on orders over $60</p>
+                    </div>
+                    <div class="col-md-4 text-center g-py-40">
+                        <p><i class="icon-settings g-font-size-20"></i></p>
+                        <h6 class="font-weight-bold g-mt-10">Support 24/7</h6>
+                        <p class="g-font-size-14">Friendly 24/7 customer support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END Services -->
+
+    </div>
+    <!-- END Main Content -->
+   
+    <!-- Footer -->
+    {% include '_partials/_footer.html' %}
+    <!-- END Footer -->
+    
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

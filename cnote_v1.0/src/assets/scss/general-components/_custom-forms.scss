@@ -1,0 +1,379 @@
+/*
+    @
+    @   24. CUSTOM FORMS
+    @       24.1 CUSTOM FILE INPUT
+    @       24.2 CUSTOM CHECKBOX
+    @       24.3 CUSTOM CHECKBOX V2
+    @       24.4 CUSTOM CHECKBOX V3
+    @       24.5 CUSTOM RADIO V1
+    @       24.6 CUSTOM RADIO V2
+    @       24.7 CUSTOM RADIO V3
+    @       24.8 QUANTITIES
+    @       24.9 TOGGLE / SWITCH
+    @
+*/
+
+
+
+/*
+    24.1
+    CUSTOM FILE INPUT
+    -------------------------------------------------------------------------------------------------
+*/
+
+.custom-file {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    height: $custom-file-height;
+    margin-bottom: 0;
+}
+.custom-file-control {
+    &:before {
+        font-size: $font-size-sm;
+    }
+    &:after {
+        margin-left: -$input-btn-padding-y / 2;
+        font-size: $font-size-sm;
+    }
+}
+.custom-file-input {
+    width: $custom-file-width;
+    height: $custom-file-height;
+    margin: 0;
+    cursor: pointer;
+}
+.custom-file-input {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: $custom-file-height;
+    margin: 0;
+    opacity: 0;
+    &:focus ~ .custom-file-control {
+        border-color: $custom-file-focus-border-color;
+        box-shadow: $custom-file-focus-box-shadow;
+        
+        &::before {
+            border-color: $custom-file-focus-border-color;
+        }
+    }
+}
+.custom-file-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: $custom-file-padding-y $custom-file-padding-x;
+    z-index: 1;
+    height: $custom-file-height;
+    line-height: $custom-file-line-height;
+    color: $custom-file-color;
+    background-color: $custom-file-bg;
+    border: $custom-file-border-width solid $custom-file-border-color;
+    @include border-radius($custom-file-border-radius);
+    @include box-shadow($custom-file-box-shadow);
+}
+
+
+.cn-custom-file-input {
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    + label {
+        font-size:  $font-size-sm;
+        background-color: $gray-200;
+        color: #222222;
+        display: inline-block;
+        padding: .6rem 1.1rem;
+    }
+
+    &:focus + label,
+    + label:hover {
+        background-color: $gray-300;
+    }
+    + label {
+        cursor: pointer;
+    }
+}
+
+
+// Form Control
+
+.form-control-xs {
+    padding: $input-btn-padding-y-xs $input-btn-padding-x-xs;
+    font-size: $font-size-sm;
+    line-height: $input-line-height-sm;
+    @include border-radius($input-border-radius-sm);
+}
+
+.custom-control-inline {
+    align-items: center;
+    @include media-breakpoint-down(sm) {
+        display: block;
+    }
+}
+
+/*
+    24.2
+    CUSTOM CHECKBOX
+    -------------------------------------------------------------------------------------------------
+*/
+
+[class*="cn-custom-checkbox"] {
+    padding-left: $custom-control-indicator-size + 0.4rem;
+    display: flex;
+    align-items: center;
+    .custom-control-label::before {
+        @include border-radius($custom-checkbox-indicator-border-radius);
+        &::after,
+        &::before {
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    }
+    .custom-control-label {
+        display: flex;
+        align-items: center;
+        span {
+            margin-right: 0.5rem;
+        }
+    }
+}
+
+.cn-custom-checkbox {
+    .custom-control-input {
+        &:checked ~ .custom-control-label::before {
+            color: $custom-checkbox-indicator-icon-checked;
+            
+        }
+    }
+    .custom-control-input:checked ~ .custom-control-label {
+        &::before {
+            @include gradient-bg($custom-control-indicator-checked-bg);
+            border:1px solid theme-color("primary");
+            
+        }
+        &::after {
+            background-image: $custom-checkbox-indicator-icon-checked;
+            background-size: $custom-control-indicator-bg-size;
+            
+        }
+    }
+}
+
+/*
+    24.3
+    CUSTOM CHECKBOX V2
+    -------------------------------------------------------------------------------------------------
+*/
+
+.cn-custom-checkbox-v2 {
+    .custom-control-input {
+        &:checked ~ .custom-control-label::before {
+            color: $custom-checkbox-indicator-icon-checked-v2;
+        }
+    }
+    .custom-control-input:checked ~ .custom-control-label {
+        &::before {
+            background-color:#ffffff;
+            border:1px solid theme-color("primary");
+        }
+        &::after {
+            background-image: $custom-checkbox-indicator-icon-checked-v2;
+            background-size: $custom-control-indicator-bg-size;
+        }
+    }
+}
+
+
+/*
+    24.4
+    CUSTOM CHECKBOX V3
+    -------------------------------------------------------------------------------------------------
+*/
+
+.cn-custom-checkbox-v3 {
+    .custom-control-input {
+        &:checked ~ .custom-control-label::before {
+            color: $custom-checkbox-indicator-icon-checked-v2;
+        }
+    }
+    .custom-control-input:checked ~ .custom-control-label {
+        &::before {
+            background-color: theme-color("primary");
+            border:1px solid theme-color("primary");
+        }
+        &::after {
+            background-image: $custom-checkbox-indicator-icon-checked-v2;
+            background-size: $custom-control-indicator-bg-size;
+        }
+    }
+}
+
+
+/*
+    24.5
+    CUSTOM RADIO V1
+    -------------------------------------------------------------------------------------------------
+*/
+
+[class*="cn-custom-radio"] {
+    .custom-control-label::before {
+        border-radius: $custom-radio-indicator-border-radius;
+    }
+}
+
+.cn-custom-radio {
+    .custom-control-input:checked ~ .custom-control-label {
+        &::before {
+            @include gradient-bg($custom-control-indicator-checked-bg);
+        }
+        &::after {
+            background-image: $custom-radio-indicator-icon-checked;
+            background-size: 80%;
+        }
+    }
+}
+
+/*
+    24.6
+    CUSTOM RADIO V2
+    -------------------------------------------------------------------------------------------------
+*/
+
+.cn-custom-radio-v2 {
+    .custom-control-input:checked ~ .custom-control-label {
+        &::before {
+            @include gradient-bg($custom-control-indicator-checked-bg);
+            border:1px solid theme-color("primary");
+            background-color:#ffffff;
+        }
+        &::after {
+            background-image: $custom-radio-indicator-icon-checked-v2;
+            background-size: 60%;
+        }
+    }
+}
+
+/*
+    24.7
+    CUSTOM RADIO V3
+    -------------------------------------------------------------------------------------------------
+*/
+
+.cn-custom-radio-v3 {
+    .custom-control-input:checked ~ .custom-control-label {
+        &::before {
+            @include gradient-bg($custom-control-indicator-checked-bg);
+        }
+        &::after {
+            background-image: none;
+            background-size: 0%;
+        }
+    }
+}
+
+
+/*
+    24.8
+    QUANTITIES
+    -------------------------------------------------------------------------------------------------
+*/
+
+.quantities {
+    min-width:100px;
+    .quantity-minus,
+    .quantity-plus {
+        //font-size: $font-size-sm;
+        color: $gray-600;
+        padding:5px 8px;
+    }
+    .input-group-prepend,
+    .input-group-append {
+        font-size: $font-size-xs !important;
+    }
+    .quantity {
+        text-align: center;
+        padding-left:5px;
+        padding-right:5px;
+    }
+}
+
+/*
+    24.9
+    TOGGLE / SWITCH
+    -------------------------------------------------------------------------------------------------
+*/
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    min-width: 40px;
+    height: 20px;
+    margin-bottom:0;
+    input {
+        display: none;
+        &:checked + .toggle-handle {
+            background-color: theme-color("primary");
+            &:before {
+                -webkit-transform: translateX(20px);
+                -ms-transform: translateX(20px);
+                transform: translateX(20px);
+            }
+        }
+        &:focus + .toggle-handle {
+            box-shadow: 0 0 1px theme-color("primary");
+        }
+    }
+    .toggle-handle {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #dddddd;
+        -webkit-transition: .1s;
+        transition: .1s;
+        &:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: #ffffff;
+            -webkit-transition: .1s;
+            transition: .1s;
+            z-index: 10;
+        }
+        &.round {
+            border-radius: 35px;
+            &:before {
+                border-radius: 50%;
+            }
+            
+        }
+    }
+    &.toggle-v2 {
+        i {
+            position: absolute;
+            font-size:12px;
+            line-height: 21px;
+        }
+        .toggle-checked {
+            margin-left:5px;
+            color:#ffffff;
+        }
+        .toggle-unchecked {
+            right:0;
+            margin-right:8px;
+            color: #a0a0a0;
+        }
+    }
+}

@@ -1,0 +1,100 @@
+
+
+/*
+    @
+    @   --------------------------------------------------------------------------------------------
+    @   GENERAL BORDERS ( top, right, bottom, left )
+    @   --------------------------------------------------------------------------------------------
+    @   Grid Breakpoints
+    @   Colors
+    @   Radius
+    @   Width
+    @   --------------------------------------------------------------------------------------------
+    @
+*/
+
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+        
+        .g-border#{$infix} { border: $border-width solid transparent !important; }
+        .g-border#{$infix}-t   { border-top: $border-width solid transparent !important; }
+        .g-border#{$infix}-r  { border-right: $border-width solid transparent !important; }
+        .g-border#{$infix}-b  { border-bottom: $border-width solid transparent !important; }
+        .g-border#{$infix}-l { border-left: $border-width solid transparent !important;  }
+        
+        .g-border#{$infix}-0 { border: 0 !important; }
+        .g-border#{$infix}-t-0   { border-top: 0 !important; }
+        .g-border#{$infix}-r-0  { border-right: 0 !important; }
+        .g-border#{$infix}-b-0  { border-bottom: 0 !important; }
+        .g-border#{$infix}-l-0 { border-left: 0 !important;  }
+        .g-border#{$infix}-x-0 { border-left: 0 !important; border-right:0 !important; }
+        .g-border#{$infix}-y-0 { border-top: 0 !important; border-bottom:0 !important; }
+        
+        .g-border#{$infix}-x {
+            border-left: $border-width solid transparent !important;
+            border-right: $border-width solid transparent !important;
+        }
+        .g-border#{$infix}-y {
+            border-top: $border-width solid transparent !important;
+            border-bottom: $border-width solid transparent !important;
+        }
+    }
+}
+
+// General border colors
+// -------------------------------------------------------------------------------------------------
+
+@each $key, $value in map-colors($cnote-colors, $theme-colors, $custom-grays, $custom-bluegrays) {
+    @include custom-border-color($key, $value);
+}
+
+.g-border-white {  border-color: #ffffff !important;  }
+.g-border-black {  border-color: #000000 !important;  }
+
+
+// Border radius ( 1-9px )
+// -------------------------------------------------------------------------------------------------
+
+@for $i from 0 through 9 {
+    @include custom-border-radius($i);
+}
+
+// Border radius ( 10-50px )
+// -------------------------------------------------------------------------------------------------
+
+@for $i from 0 through 5 {
+    $rad: 10 * $i;
+    @include custom-border-radius($rad);
+}
+
+// Border width ( 1-5px )
+// -------------------------------------------------------------------------------------------------
+
+@for $i from 1 through 5 {
+    .g-border-#{$i}x {  border-width: #{$i}px !important;  }
+    .g-border-t-#{$i}x {  border-top-width: #{$i}px !important;  }
+    .g-border-r-#{$i}x {  border-right-width: #{$i}px !important;  }
+    .g-border-b-#{$i}x {  border-bottom-width: #{$i}px !important;  }
+    .g-border-l-#{$i}x {  border-left-width: #{$i}px !important; }
+}
+
+// "Border" Arrow
+
+.bottom-arrow {
+    position: relative;
+    &:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        top:100%;
+        left: 50%;
+        z-index: 1;
+        transform: translateX( -50%);
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-top: 25px solid #ffffff;
+    }
+}

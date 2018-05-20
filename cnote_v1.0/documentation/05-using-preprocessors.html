@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="cNote, a beautiful theme with awesome layouts">
+    <meta name="keywords" content="Theme, Template, Ecommerce, Bootstrap, SASS, Multipage, Onepage, Multipurpose, jQuery">
+    <meta name="distribution" content="global">
+    <title>cNote Documentation</title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+<section class="main-content">
+
+    <!-- Header Container -->
+    <div class="cn-header">
+        <div class="d-flex align-items-center h-100">
+
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="text-uppercase font-weight-bold">cNote v1.0</h1>
+                    <h5 class="text-uppercase font-weight-bold">Multi / Onepage / Ecommerce Template</h5>
+                    <div>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Author: <a href="http://theme-aspect.com/cnote-v1.0/">Aspect Themes</a></li>
+                            <li class="list-inline-item">Contact: <a href="mailto:support@theme-aspect.com">support@theme-aspect.com</a></li>
+                            <li class="list-inline-item">Created at: 26/04/2018</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- END Header Container -->
+
+    <div class="docs my-5">
+        <div class="container">
+            <div class="row">
+                <!-- Docs Sidebar -->
+                <div class="col-md-3">
+                    <nav class="navbar list-group">
+                        <a href="01-introduction.html" class="list-group-item list-group-item-action">Introduction</a>
+                        <a href="02-environment-setup.html" class="list-group-item list-group-item-action">Dev Environment Setup</a>
+                        <a href="03-workgulpfile.html" class="list-group-item list-group-item-action">Working with Gulp</a>
+                        <a href="04-project-structure.html" class="list-group-item list-group-item-action">Project Structure</a>
+                        <a href="05-using-preprocessors.html" class="list-group-item list-group-item-action active">Using Preprocessors</a>
+                        <a href="06-general-classes.html" class="list-group-item list-group-item-action">General Classes</a>
+                        <a href="07-colors.html" class="list-group-item list-group-item-action">Colors</a>
+                        <a href="08-font-icons.html" class="list-group-item list-group-item-action">Font Icons</a>
+                        <a href="09-plugins-list.html" class="list-group-item list-group-item-action">Plugins List</a>
+                        <a href="10-credits.html" class="list-group-item list-group-item-action">Source Assets</a>
+                        <a href="11-support.html" class="list-group-item list-group-item-action">Support</a>
+                    </nav>
+                    </aside>
+                </div>
+                <!-- END Docs Sidebar -->
+
+                <!-- Docs Content -->
+                <div class="col-md-9">
+                    <div class="docs-content">
+
+                        <!-- Using Preprocessors -->
+                        <div>
+                            <h4 class="text-uppercase font-weight-bold">Using Preprocessors</h4>
+                            <h6 class="font-weight-bold">Sass (Syntactically Awesome Style Sheets)</h6>
+                            <p>SASS is a scripting language that is interpreted or compiled into Cascading Style Sheets (CSS). It is the most mature, stable, and powerful professional grade CSS extension language in the world. Sass gives you the power of variables, mixins, functions, etc.</p>
+                            <hr>
+                            <h6 class="text-uppercase font-weight-bold">SWIG</h6>
+                            <p>SWIG is a high performance Node.js Templating Engine. Just like SASS, SWIG is a prepocessor and, as such it helps you accomplishing tasks like wrapping away repetitive work by providing features not available in plain HTML.</p>
+
+                            <h5 class="font-weight-bold mb-3">Sass File Structure</h5>
+                            <div class="mb-4 border p-3">
+                                <img src="images/sass_structure.png" alt="SASS structure">
+                            </div>
+                            <ul>
+                                <li><span class="font-weight-bold">cnote-main/</span>
+                                    <p class="mb-0"><code>variables.scss</code></p>
+                                    <p class="mb-0"><code>main.scss</code> - contain general components / utilities used in onepages and homegages</p>
+                                    <p><code>custom.scss</code> - is an empty file where you can write your own code</p>
+                                </li>
+                                <li><span class="font-weight-bold">ecommerce/</span> - is similar to <span class="font-weight-bold">cnote-main/</span> but the vabiables can be different.</li>
+                            </ul>
+                            <div class="mb-4 border p-3">
+                                <img src="images/sass_generals.png" alt="SASS generals">
+                            </div>
+                            <ul>
+                                <li><span class="font-weight-bold">general-components/</span> and <span class="font-weight-bold">general-utilities/</span> - all general components used accross the template.</li>
+                                <li><span class="font-weight-bold">mixins/</span> - a mixin is a block of code that lets us group CSS declarations we may reuse through our CSS files.</li>
+                                <li><span class="font-weight-bold">vendor/</span> - refers to a directory that contains third party plugins like <code>jQuery library</code>, <code>Font Awesome</code>, <code>Owl Carousel</code> imported from <span class="font-weight-bold">node_modules/</span> folder</li>
+                            </ul>
+
+                        </div>
+                        <!-- END Using Preprocessors -->
+
+                    </div>
+                </div>
+                <!-- END Docs Content -->
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/prism.js"></script>
+</body>
+</html>

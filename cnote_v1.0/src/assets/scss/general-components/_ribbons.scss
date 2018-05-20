@@ -1,0 +1,58 @@
+
+/*
+    @
+    @   31. RIBBONS
+    @
+*/
+
+.recommended-plan {
+    position: relative;
+    .ribbon {
+        position: absolute;
+        right: -5px;
+        top: -5px;
+        overflow: hidden;
+        z-index: 1;
+        width: 125px;
+        height: 125px;
+        text-align: right;
+        span {
+            font-size: 12px;
+            color: #FFF;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 20px;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            width: 150px;
+            display: block;
+            position: absolute;
+            top: 36px;
+            right: -28px;
+            background: $ribbon-color;
+            box-shadow: 0 3px 10px -5px $gray-800;
+            z-index: 1;
+            &:before, &:after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                z-index: -1;
+            }
+            &:before {
+                left: 0px;
+                border-left: 3px solid $gray-600;
+                border-right: 3px solid transparent;
+                border-bottom: 3px solid transparent;
+                border-top: 3px solid $gray-600;
+            }
+            &:after {
+                right: 0px;
+                border-left: 3px solid transparent;
+                border-right: 3px solid $gray-600;
+                border-bottom: 3px solid transparent;
+                border-top: 3px solid $gray-600;
+            }
+
+        }
+    }
+}

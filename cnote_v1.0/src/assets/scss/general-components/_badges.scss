@@ -1,0 +1,76 @@
+
+/*
+    @
+    @   10. BADGES
+    @
+*/
+
+.badge {
+    background-color: $gray-200;
+    color: #111111;
+    padding: .4rem .5rem;
+}
+[class*="cn-badge"] {
+    text-align: center;
+    font-size: .875rem;
+    position: relative;
+    background-color: #e6e6e6;
+    color:#111111;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    padding-left: 3px;
+    padding-right: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cn-icon {
+    [class*="cn-badge"] {
+        position: absolute !important;
+        z-index: 10;
+    }
+    .cn-badge-sm {
+        min-width: 1.2rem;
+        min-height: 1.2rem;
+        font-size: .75rem;
+    }
+    .cn-badge-lg {
+        min-width: 1.6rem;
+        min-height: 1.6rem;
+    }
+    .cn-badge-xl {
+        min-width: 1.7rem;
+        min-height: 1.7rem;
+
+    }
+}
+
+
+.cn-badge-top-right {
+     top:0;
+     right:0;
+    -webkit-transform: translate(50%, -50%);
+    -ms-transform: translate(50%, -50%);
+    transform: translate(50%, -50%);
+ }
+.cn-badge-top-left {
+    top:0;
+    left:0;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.cn-badge-bottom-right {
+    bottom:0;
+    right:0;
+    -webkit-transform: translate(50%, 50%);
+    -ms-transform: translate(50%, 50%);
+    transform: translate(50%, 50%);
+}
+.cn-badge-bottom-left {
+    bottom:0;
+    left:0;
+    -webkit-transform: translate(-50%, 50%);
+    -ms-transform: translate(-50%, 50%);
+    transform: translate(-50%, 50%);
+}

@@ -1,0 +1,768 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Forms | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        <!-- Main Navbar -->
+        {% include '../_partials/headers/_main-header.html' %}
+        <!-- END Main Navbar -->
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Forms</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Components</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Forms</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Forms -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container">
+        
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="g-mb-30 text-center text-lg-left">
+                            <h3 class="text-uppercase font-weight-bold">cNote's Forms</h3>
+                            <p>cNote's forms controls are extention of default Bootstrap Forms.</p>
+                        </div>
+                        
+                        <!-- Default Inputs -->
+                        <h5 class="text-uppercase font-weight-bold g-mb-20 text-center text-lg-left">Default Inputs</h5>
+                        <div class="g-bg-white g-border g-border-gray-300 g-mb-50 g-p-20 g-shadow-v1">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input1-1">Text:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="input1-1" placeholder="John Doe">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input1-2">Email:</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="input1-2" placeholder="johndoe@gmail.com">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input1-3">Password:</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="input1-3" placeholder="Your Password">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input1-4">Phone:</label>
+                                <div class="col-sm-10">
+                                    <input type="tel" class="form-control" id="input1-4" placeholder="0-(771)-123-4567">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input1-5">Search:</label>
+                                <div class="col-sm-10">
+                                    <input type="search" class="form-control" id="input1-5" placeholder="Search for something">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input1-6">Number:</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="input1-6" placeholder="44">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input1-7">Select:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" id="input1-7">
+                                        <option>Choose option...</option>
+                                        <option>Option item 1</option>
+                                        <option>Option item 2</option>
+                                        <option>Option item 3</option>
+                                        <option>Option item 4</option>
+                                        <option>Option item 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Default Inputs -->
+    
+                        <!-- Pill Rounded Inputs -->
+                        <h5 class="text-uppercase font-weight-bold g-mb-20 text-center text-lg-left">Pill Rounded Inputs</h5>
+                        <div class="g-bg-white g-border g-border-gray-300 g-mb-50 g-p-20 g-shadow-v1">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input2-1">Text:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control g-rounded-30" id="input2-1" placeholder="John Doe">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input2-2">Email:</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control g-rounded-30" id="input2-2" placeholder="johndoe@gmail.com">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input2-3">Password:</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control g-rounded-30" id="input2-3" placeholder="Your Password">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input2-4">Phone:</label>
+                                <div class="col-sm-10">
+                                    <input type="tel" class="form-control g-rounded-30" id="input2-4" placeholder="0-(771)-123-4567">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input2-5">Search:</label>
+                                <div class="col-sm-10">
+                                    <input type="search" class="form-control g-rounded-30" id="input2-5" placeholder="Search for something">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input2-6">Number:</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control g-rounded-30" id="input2-6" placeholder="44">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input2-7">Select:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control g-rounded-30" id="input2-7">
+                                        <option>Choose option...</option>
+                                        <option>Option item 1</option>
+                                        <option>Option item 2</option>
+                                        <option>Option item 3</option>
+                                        <option>Option item 4</option>
+                                        <option>Option item 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Pill Rounded Inputs -->
+    
+                        <!-- Inputs with icon -->
+                        <h5 class="text-uppercase font-weight-bold g-mb-20 text-center text-lg-left">Inputs with icon</h5>
+                        <div class="g-bg-white g-border g-border-gray-300 g-mb-50 g-p-20 g-shadow-v1">
+                            <!-- Right Addon -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input3-1">Text:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <input type="text" class="form-control" id="input3-1" placeholder="John Doe">
+                                        <div class="input-group-append g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input3-2">Email:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <input type="email" class="form-control" id="input3-2" placeholder="johndoe@gmail.com">
+                                        <div class="input-group-append g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-envelope"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input3-3">Password:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <input type="password" class="form-control" id="input3-3" placeholder="Your Password">
+                                        <div class="input-group-append g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-lock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Left Addon -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input4-1">Text:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <div class="input-group-prepend g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                        <input type="text" class="form-control" id="input4-1" placeholder="John Doe">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input4-2">Email:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <div class="input-group-prepend g-w50 justify-content-center g-p-0 g-bg-white">
+                                            <i class="fa fa-envelope"></i>
+                                        </div>
+                                        <input type="email" class="form-control" id="input4-2" placeholder="johndoe@gmail.com">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input4-3">Password:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <div class="input-group-prepend g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-lock"></i>
+                                        </div>
+                                        <input type="password" class="form-control" id="input4-3" placeholder="Your Password">
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <!-- Right Addon no border -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input5-1">Text:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <input type="text" class="form-control g-border-r-0" id="input5-1" placeholder="John Doe">
+                                        <div class="input-group-append g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input5-2">Email:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <input type="email" class="form-control g-border-r-0" id="input5-2" placeholder="johndoe@gmail.com">
+                                        <div class="input-group-append g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-envelope"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input5-3">Password:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <input type="password" class="form-control g-border-r-0" id="input5-3" placeholder="Your Password">
+                                        <div class="input-group-append g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-lock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- Left Addon no border -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input5-11">Text:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <div class="input-group-prepend g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                        <input type="text" class="form-control g-border-l-0" id="input5-11" placeholder="John Doe">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input5-22">Email:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <div class="input-group-prepend g-w50 justify-content-center g-p-0 g-bg-white">
+                                            <i class="fa fa-envelope"></i>
+                                        </div>
+                                        <input type="email" class="form-control g-border-l-0" id="input5-22" placeholder="johndoe@gmail.com">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input5-33">Password:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <div class="input-group-prepend g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-lock"></i>
+                                        </div>
+                                        <input type="password" class="form-control g-border-l-0" id="input5-33" placeholder="Your Password">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Inputs with icon -->
+                        
+                        <!-- Textareas -->
+                        <h5 class="text-uppercase font-weight-bold g-mb-20 text-center text-lg-left">Textareas</h5>
+                        <div class="g-bg-white g-border g-border-gray-300 g-mb-50 g-p-20 g-shadow-v1">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input6-1">Textarea:</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="5" id="input6-1" placeholder="Your message goes here..."></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input6-2">Textarea:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <textarea class="form-control" rows="5" id="input6-2" placeholder="Your message goes here..."></textarea>
+                                        <div class="input-group-append g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-comment"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input6-3">Textarea:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <textarea class="form-control g-border-r-0 textarea-resize-0" rows="5" id="input6-3" placeholder="Your message goes here..."></textarea>
+                                        <div class="input-group-append g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-comment"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input6-5">Textarea:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <div class="input-group-prepend g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-comment"></i>
+                                        </div>
+                                        <textarea class="form-control" rows="5" id="input6-5" placeholder="Your message goes here..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="input6-6">Textarea:</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-focus">
+                                        <div class="input-group-prepend g-w50 g-p-0 g-bg-white">
+                                            <i class="fa fa-comment"></i>
+                                        </div>
+                                        <textarea class="form-control g-border-l-0 textarea-resize-0" rows="5" id="input6-6" placeholder="Your message goes here..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Textareas -->
+    
+                        <!-- Input File -->
+                        <h5 class="text-uppercase font-weight-bold g-mb-20 text-center text-lg-left">Input File</h5>
+                        <div class="g-bg-white g-border g-border-gray-300 g-mb-50 g-p-20 g-shadow-v1">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="customFile1">File 1:</label>
+                                <div class="col-sm-10">
+                                    <div class="custom-file">
+                                        <input type="file" id="customFile1"  class="custom-file-input" required>
+                                        <label class="custom-file-label" for="customFile1">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="customFile2">File 2:</label>
+                                <div class="col-sm-10">
+                                    <input type="file" id="customFile2" class="cn-custom-file-input" name="file">
+                                    <label for="customFile2"><i class="fa fa-upload"></i> <span> Choose a file</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Input File -->
+    
+                        <!-- Quantities -->
+                        <h5 class="text-uppercase font-weight-bold g-mb-20 text-center text-lg-left">Quantities</h5>
+                        <div class="g-bg-white g-border g-border-gray-300 g-mb-50 g-p-20 g-shadow-v1">
+                            <div class="row g-mb-30">
+                                <div class="col-6">
+                                    <div class="input-group quantities input-group-focus">
+                                    <span class="input-group-prepend">
+                                        <button type="button" class="quantity-minus btn btn-sm cn-btn-gray-200" data-type="minus" data-field="update_product_01">
+                                            <i class="fa fa-minus align-middle"></i>
+                                        </button>
+                                    </span>
+                                        <input type="text" name="updates[]" id="update_product_01" class="form-control form-control-sm quantity" value="1" min="1" max="100" >
+                                        <span class="input-group-append">
+                                        <button type="button" class="quantity-plus btn btn-sm cn-btn-gray-200" data-type="plus" data-field="update_product_01">
+                                            <i class="fa fa-plus align-middle"></i>
+                                        </button>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-group quantities">
+                                        <span class="input-group-prepend">
+                                            <button type="button" class="quantity-minus btn btn-sm cn-btn-gray-200" data-type="minus" data-field="update_product_02">
+                                              <i class="icon-minus align-middle"></i>
+                                            </button>
+                                        </span>
+                                        <input type="text" name="updates[]" id="update_product_02" class="form-control form-control-sm quantity" value="1" min="1" max="100" >
+                                        <span class="input-group-append">
+                                            <button type="button" class="quantity-plus btn btn-sm cn-btn-gray-200" data-type="plus" data-field="update_product_02">
+                                                <i class="icon-plus align-middle"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="row">
+                                <div class="col-lg-6 g-mb-20">
+                                    <!-- Quantities Full Width -->
+                                    <div class="input-group quantities">
+                                        <span class="input-group-prepend">
+                                            <button type="button" class="quantity-minus btn btn-sm cn-btn-gray-200" data-type="minus" data-field="update_product_03">
+                                              <i class="fa fa-minus align-middle"></i>
+                                            </button>
+                                        </span>
+                                        <input type="text" name="updates[]" id="update_product_03" class="form-control form-control-sm quantity" value="1" min="1" max="100" >
+                                        <span class="input-group-append">
+                                            <button type="button" class="quantity-plus btn btn-sm cn-btn-gray-200" data-type="plus" data-field="update_product_03">
+                                                <i class="fa fa-plus align-middle"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <!-- END Quantities Full Width -->
+                                </div>
+                                <div class="col-lg-6">
+                                    <!-- Quantities Full Width -->
+                                    <div class="input-group quantities">
+                                    <span class="input-group-prepend">
+                                        <button type="button" class="quantity-minus btn btn-sm cn-btn-gray-200" data-type="minus" data-field="update_product_04">
+                                            <i class="icon-minus align-middle"></i>
+                                        </button>
+                                    </span>
+                                        <input type="text" name="updates[]" id="update_product_04" class="form-control form-control-sm quantity" value="1" min="1" max="100" >
+                                        <span class="input-group-append">
+                                        <button type="button" class="quantity-plus btn btn-sm cn-btn-gray-200" data-type="plus" data-field="update_product_04">
+                                            <i class="icon-plus align-middle"></i>
+                                        </button>
+                                    </span>
+                                    </div>
+                                    <!-- END Quantities Full Width -->
+                                </div>
+                            </div>
+    
+                        </div>
+                        <!-- END Quantities -->
+    
+                        <!-- Checkboxes -->
+                        <h5 class="text-uppercase font-weight-bold g-mb-20 text-center text-lg-left">Checkboxes</h5>
+                        <div class="g-bg-white g-border g-border-gray-300 g-mb-50 g-p-20 g-shadow-v1">
+                            <div class="row g-mb-30">
+                                <div class="col-lg-4 col-sm-4 text-center text-sm-left">
+                                    <h6 class="font-weight-bold g-py-8 g-my-15">Style 1</h6>
+                                    <div class="d-inline-block">
+                                        <div class="custom-control cn-custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck1" checked>
+                                            <label class="custom-control-label" for="customCheck1">
+                                                <span>Checkbox 1</span>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control cn-custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck2" checked>
+                                            <label class="custom-control-label" for="customCheck2">
+                                                <span>Checkbox 2</span>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control cn-custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck3">
+                                            <label class="custom-control-label" for="customCheck3">
+                                                <span>Checkbox 3</span>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control cn-custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck4" checked>
+                                            <label class="custom-control-label" for="customCheck4">
+                                                <span>Checkbox 4</span>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control cn-custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck5">
+                                            <label class="custom-control-label" for="customCheck5">
+                                                <span>Checkbox 5</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 text-center text-sm-left">
+                                    <h6 class="font-weight-bold g-py-8 g-my-15">Style 2</h6>
+                                    <div class="d-inline-block">
+                                        <div class="custom-control cn-custom-checkbox-v2">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck6" checked>
+                                            <label class="custom-control-label" for="customCheck6">
+                                                <span>Checkbox 1</span>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control cn-custom-checkbox-v2">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck7" checked>
+                                            <label class="custom-control-label" for="customCheck7">
+                                                <span>Checkbox 2</span>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control cn-custom-checkbox-v2">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck8">
+                                            <label class="custom-control-label" for="customCheck8">
+                                                <span>Checkbox 3</span>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control cn-custom-checkbox-v2">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck9" checked>
+                                            <label class="custom-control-label" for="customCheck9">
+                                                <span>Checkbox 4</span>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control cn-custom-checkbox-v2">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck10">
+                                            <label class="custom-control-label" for="customCheck10">
+                                                <span>Checkbox 5</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                          
+                                </div>
+                                <div class="col-lg-4 col-sm-4 text-center text-sm-left">
+                                    <h6 class="font-weight-bold g-py-8 g-my-15">Style 2</h6>
+                                    <div class="d-inline-block">
+                                        <div class="custom-control cn-custom-checkbox-v3">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck11" checked>
+                                            <label class="custom-control-label" for="customCheck11">
+                                                <span>Checkbox 1</span>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control cn-custom-checkbox-v3">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck12" checked>
+                                            <label class="custom-control-label" for="customCheck12">
+                                                <span>Checkbox 2</span>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control cn-custom-checkbox-v3">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck13">
+                                            <label class="custom-control-label" for="customCheck13">
+                                                <span>Checkbox 3</span>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control cn-custom-checkbox-v3">
+                                            <input class="custom-control-input" type="checkbox" id="customCheck14" checked>
+                                            <label class="custom-control-label" for="customCheck14">
+                                                <span>Checkbox 4</span>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control cn-custom-checkbox-v3">
+                                        <input class="custom-control-input" type="checkbox" id="customCheck15">
+                                        <label class="custom-control-label" for="customCheck15">
+                                            <span>Checkbox 5</span>
+                                        </label>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Inline Checkboxes -->
+                            <div class="g-mb-30 text-center text-sm-left">
+                                <h6 class="font-weight-bold g-py-8 g-mb-15">Inline Checkboxes</h6>
+                                <div class="d-inline-block">
+                                    <div class="custom-control-inline">
+                                    <div class="custom-control cn-custom-checkbox-v2">
+                                        <input class="custom-control-input" type="checkbox" id="customCheck16" checked>
+                                        <label class="custom-control-label" for="customCheck16">
+                                            <span>Checkbox 1</span>
+                                        </label>
+                                    </div>
+                                    <div class="custom-control cn-custom-checkbox-v2">
+                                        <input class="custom-control-input" type="checkbox" id="customCheck17" checked>
+                                        <label class="custom-control-label" for="customCheck17">
+                                            <span>Checkbox 2</span>
+                                        </label>
+                                    </div>
+                                    <div class="custom-control cn-custom-checkbox-v2">
+                                        <input class="custom-control-input" type="checkbox" id="customCheck18">
+                                        <label class="custom-control-label" for="customCheck18">
+                                            <span>Checkbox 3</span>
+                                        </label>
+                                    </div>
+                                    <div class="custom-control cn-custom-checkbox-v2">
+                                        <input class="custom-control-input" type="checkbox" id="customCheck19" checked>
+                                        <label class="custom-control-label" for="customCheck19">
+                                            <span>Checkbox 4</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- END Inline Checkboxes -->
+    
+                        </div>
+                        <!-- END Checkboxes -->
+    
+                        <!-- Radios -->
+                        <h5 class="text-uppercase font-weight-bold g-mb-20 text-center text-lg-left">Radios</h5>
+                        <div class="g-bg-white g-border g-border-gray-300 g-mb-50 g-p-20 g-shadow-v1">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <h6 class="font-weight-bold g-border-b g-border-b-gray-300 g-py-8 g-mb-15">Default</h6>
+                                    <div class="custom-control cn-custom-radio">
+                                        <input type="radio" id="customRadio1" name="customRadio1" class="custom-control-input" checked>
+                                        <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+                                    </div>
+                                    <div class="custom-control cn-custom-radio">
+                                        <input type="radio" id="customRadio2" name="customRadio1" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio2">Toggle this custom radio</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <h6 class="font-weight-bold g-border-b g-border-b-gray-300 g-py-8 g-mb-15">Style 2</h6>
+                                    <div class="custom-control cn-custom-radio-v2">
+                                        <input type="radio" id="customRadio3" name="customRadio2" class="custom-control-input" checked>
+                                        <label class="custom-control-label" for="customRadio3">Toggle this custom radio</label>
+                                    </div>
+                                    <div class="custom-control cn-custom-radio-v2">
+                                        <input type="radio" id="customRadio4" name="customRadio2" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio4">Toggle this custom radio</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <h6 class="font-weight-bold g-border-b g-border-b-gray-300 g-py-8 g-mb-15">Style 3</h6>
+                                    <div class="custom-control cn-custom-radio-v3">
+                                        <input type="radio" id="customRadio5" name="customRadio3" class="custom-control-input" checked>
+                                        <label class="custom-control-label" for="customRadio5">Toggle this custom radio</label>
+                                    </div>
+                                    <div class="custom-control cn-custom-radio-v3">
+                                        <input type="radio" id="customRadio6" name="customRadio3" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio6">Toggle this custom radio</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Radios -->
+    
+                        <!-- Range Sliders -->
+                        <h5 class="text-uppercase font-weight-bold g-mb-20 text-center text-lg-left">Range Sliders</h5>
+                        <div class="g-bg-white g-border g-border-gray-300 g-mb-50 g-p-20 g-shadow-v1">
+                            <div class="widget price-widget g-mt-30">
+                                <p class="g-mb-10">Range Slider 1</p>
+                                <div class="slider-amount"></div>
+                                <div class="slider-range"></div>
+                            </div>
+                            <div class="widget price-widget g-mt-30">
+                                <p class="g-mb-10">Range Slider 2</p>
+                                <div class="slider-amount-2"></div>
+                                <div class="slider-range-2"></div>
+                            </div>
+                            <div class="widget price-widget g-mt-30">
+                                <p class="g-mb-10">Range Slider 3</p>
+                                <div class="slider-amount-3"></div>
+                                <div class="slider-range-3"></div>
+                            </div>
+                        </div>
+                        <!-- END Range Sliders -->
+    
+                        <!-- Switch Buttons -->
+                        <h5 class="text-uppercase font-weight-bold g-mb-20 text-center text-lg-left">Toggle / Switch</h5>
+                        <div class="g-bg-white g-border g-border-gray-300 g-mb-50 g-p-20 g-shadow-v1">
+                            <div class="g-mb-30">
+                                <label class="toggle form-check-inline">
+                                    <input type="checkbox">
+                                    <span class="toggle-handle round"></span>
+                                </label>
+                                <label class="toggle toggle-v2 form-check-inline">
+                                    <input type="checkbox">
+                                    <span class="toggle-handle round">
+                                    <i class="toggle-checked fa fa-check"></i>
+                                    <i class="toggle-unchecked fa fa-close"></i>
+                                </span>
+                                </label>
+                                <label class="toggle toggle-v2 form-check-inline">
+                                    <input type="checkbox">
+                                    <span class="toggle-handle round">
+                                    <i class="toggle-checked fa fa-check"></i>
+                                </span>
+                                </label>
+            
+                                <label class="toggle form-check-inline">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-handle round"></span>
+                                </label>
+                                <label class="toggle toggle-v2 form-check-inline">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-handle round">
+                                    <i class="toggle-checked fa fa-check"></i>
+                                    <i class="toggle-unchecked fa fa-close"></i>
+                                </span>
+                                </label>
+                                <label class="toggle toggle-v2 form-check-inline">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-handle round">
+                                    <i class="toggle-checked fa fa-check"></i>
+                                </span>
+                                </label>
+                            </div>
+                            <div>
+                                <ul class="list-unstyled">
+                                    <li class="g-flex-middle g-mb-10">
+                                        <span>Orexis studeres, tanquam raptus visus.</span>
+                                        <label class="toggle toggle-v2 ml-auto">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-handle round">
+                                            <i class="toggle-checked fa fa-check"></i>
+                                            <i class="toggle-unchecked fa fa-close"></i>
+                                        </span>
+                                        </label>
+                                    </li>
+                                    <li class="g-flex-middle g-mb-10">
+                                        <span>Finis resisteres, tanquam neuter fides.</span>
+                                        <label class="toggle toggle-v2 ml-auto">
+                                            <input type="checkbox">
+                                            <span class="toggle-handle round">
+                                            <i class="toggle-checked fa fa-check"></i>
+                                            <i class="toggle-unchecked fa fa-close"></i>
+                                        </span>
+                                        </label>
+                                    </li>
+                                    <li class="g-flex-middle g-mb-10">
+                                        <span>Bromiums observare, tanquam magnum usus.</span>
+                                        <label class="toggle toggle-v2 ml-auto">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-handle round">
+                                            <i class="toggle-checked fa fa-check"></i>
+                                            <i class="toggle-unchecked fa fa-close"></i>
+                                        </span>
+                                        </label>
+                                    </li>
+                                    <li class="g-flex-middle g-mb-10">
+                                        <span>Messis recte ducunt ad peritus historia.</span>
+                                        <label class="toggle toggle-v2 ml-auto">
+                                            <input type="checkbox">
+                                            <span class="toggle-handle round">
+                                            <i class="toggle-checked fa fa-check"></i>
+                                            <i class="toggle-unchecked fa fa-close"></i>
+                                        </span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- END Switch Buttons -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END Forms -->
+
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

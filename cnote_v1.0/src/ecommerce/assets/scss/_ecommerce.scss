@@ -1,0 +1,165 @@
+
+/*
+    @
+    @   32. ECOMMERCE / SHOP
+    @       32.1 SHOP PRODUCTS TOOLBAR
+    @       32.2 CHECKOUT PAGE
+    @       32.3 SHOP CART
+    @
+*/
+
+
+
+.product {
+    box-shadow: 0 0 10px 0px #f3f3f3;
+}
+
+// Single Product
+//
+// Product Colors
+
+.product-colors {
+    a {
+        width:20px;
+        height:20px;
+        display:inline-block;
+    }
+}
+
+/*
+    32.1
+    SHOP PRODUCTS TOOLBAR
+    -------------------------------------------------------------------------------------------------
+*/
+
+.products-toolbar {
+    .products-showing {
+        li {
+            a {
+                color: #bfbfbf;
+                display:block;
+                &:hover {
+                    color: #7a7a7a !important;
+                }
+                &.active {
+                    color: theme-color("primary") !important;
+                }
+            }
+    
+        }
+    }
+}
+
+/*
+    32.2
+    CHECKOUT PAGE
+    -------------------------------------------------------------------------------------------------
+*/
+
+// Checkout Steps
+
+.checkout-steps {
+    .nav-link {
+        color:#111111;
+        padding:1rem 2rem;
+        background-color: #ffffff;
+        border:1px solid #f0f0f0;
+        position: relative;
+        box-shadow: 1px 6px 10px 0px #eeeeee;
+        @include media-breakpoint-down(sm) {
+            margin-right:0 !important;
+        }
+        span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .step-dot {
+            width:20px;
+            height:20px;
+            border-radius:50%;
+            border:2px solid #ececec;
+            position: relative;
+            .check-icon {
+                display: none;
+            }
+        }
+        &.active {
+            background-color: #ffffff;
+            color:#111111;
+            .step-dot {
+                border-color:  theme-color("dark");
+            }
+        }
+        &.completed {
+            color: theme-color("primary");
+            .check-icon {  display: block;  }
+            .step-dot { border-color: theme-color("primary"); }
+            .fa {
+                color: theme-color("primary");
+                font-size: 12px;
+            }
+        }
+    }
+    li:not(:last-of-type) {
+        .nav-link {
+            margin-right:5px;
+        }
+    }
+}
+
+/*
+    32.3
+    SHOP CART
+    -------------------------------------------------------------------------------------------------
+*/
+
+.shop-cart-table,
+.wishlist-cart-table {
+    .product-item {
+        display: table;
+        min-width: 200px;
+        @include media-breakpoint-up(md) {
+            min-width:250px;
+        }
+        .product-thumbnail {
+            //display: table-cell;
+            vertical-align: middle;
+            display: inline-block;
+            img {
+                width:80px;
+                border:1px solid #eeeeee;
+            }
+        }
+        .product-description {
+            //display: table-cell;
+            vertical-align: middle;
+            display: inline-block;
+            margin-left:10px;
+            .product-title {
+                color:#111111;
+                margin-bottom:4px;
+                &:hover {
+                    color: theme-color("primary");
+                }
+            }
+            span {
+                font-size: .875rem;
+            }
+        }
+    }
+}
+.coupon-form {
+    input[type="text"] {
+        width:250px;
+    }
+}
+
+// Datepicker Table
+
+.datepicker {
+    box-shadow: 0px 0px 10px 1px #dddddd;
+    .table-condensed {
+        width:100%;
+    }
+    
+}

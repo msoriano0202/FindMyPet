@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="cNote, a beautiful theme with awesome layouts">
+    <meta name="keywords" content="Theme, Template, Ecommerce, Bootstrap, SASS, Multipage, Onepage, Multipurpose, jQuery">
+    <meta name="distribution" content="global">
+    <title>cNote Documentation</title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+<section class="main-content">
+
+    <!-- Header Container -->
+    <div class="cn-header">
+        <div class="d-flex align-items-center h-100">
+
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="text-uppercase font-weight-bold">cNote v1.0</h1>
+                    <h5 class="text-uppercase font-weight-bold">Multi / Onepage / Ecommerce Template</h5>
+                    <div>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Author: <a href="http://theme-aspect.com/cnote-v1.0/">Aspect Themes</a></li>
+                            <li class="list-inline-item">Contact: <a href="mailto:support@theme-aspect.com">support@theme-aspect.com</a></li>
+                            <li class="list-inline-item">Created at: 26/04/2018</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- END Header Container -->
+
+    <div class="docs my-5">
+        <div class="container">
+            <div class="row">
+                <!-- Docs Sidebar -->
+                <div class="col-md-3">
+                    <aside class="docs-sidebar">
+                        <nav class="navbar list-group">
+                            <a href="01-introduction.html" class="list-group-item list-group-item-action">Introduction</a>
+                            <a href="02-environment-setup.html" class="list-group-item list-group-item-action active">Dev Environment Setup</a>
+                            <a href="03-workgulpfile.html" class="list-group-item list-group-item-action">Working with Gulp</a>
+                            <a href="04-project-structure.html" class="list-group-item list-group-item-action">Project Structure</a>
+                            <a href="05-using-preprocessors.html" class="list-group-item list-group-item-action">Using Preprocessors</a>
+                            <a href="06-general-classes.html" class="list-group-item list-group-item-action">General Classes</a>
+                            <a href="07-colors.html" class="list-group-item list-group-item-action">Colors</a>
+                            <a href="08-font-icons.html" class="list-group-item list-group-item-action">Font Icons</a>
+                            <a href="09-plugins-list.html" class="list-group-item list-group-item-action">Plugins List</a>
+                            <a href="10-credits.html" class="list-group-item list-group-item-action">Source Assets</a>
+                            <a href="11-support.html" class="list-group-item list-group-item-action">Support</a>
+                        </nav>
+                    </aside>
+                </div>
+                <!-- END Docs Sidebar -->
+
+                <!-- Docs Content -->
+                <div class="col-md-9">
+                    <div class="docs-content">
+
+                        <!-- Getting Started -->
+                        <div>
+                            <h4 class="text-uppercase font-weight-bold">Dev Environment Setup</h4>
+                            <div class="alert alert-secondary p-3">
+                                <p class="mb-0">Please note: this step is absolutely optional. It aims for advanced user who want to speed up development process with professional grade Front-End toolset shiped with Cnote.
+                                If you are not familiar with these tools and have no time to dive in you can still use plain HTML / CSS / JS to customize Cnote.
+                                Files you need are located inside cnote/dist folder. In this case you can skip this and next sections.</p>
+                            </div>
+                            <p>Here you will find all informations to quickly start your project. You will have a global idea about files organization.</p>
+                            <p>CNote is built using modern development toolset.</p>
+                            <img src="images/technologies.png" width="400" alt="Image Description" class="mb-5">
+                            <h6><span class="font-weight-bold">Node.js</span> <a href="https://nodejs.org/en/">Official Website</a></h6>
+                            <p>Is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.</p>
+
+                            <h6><span class="font-weight-bold">Gulp</span> <a href="https://gulpjs.com/">Official Website</a></h6>
+                            <p>Tools like Gulp are often referred to as "build tools" because they are tools for running the tasks for building a website. Gulp is a tool that helps you out with several tasks when it comes to web development. It's often used to do front end tasks like:
+                            <ul>
+                                <li>Spinnig up a web server</li>
+                                <li>Compiling Sass to CSS</li>
+                                <li>Refreshing the browser automatically whenever you save a file</li>
+                                <li>Optimizig all assets (CSS, JS, fonts, and images) for production</li>
+                            </ul>
+                            </p>
+                            <hr>
+                            <h6><span class="font-weight-bold">Sass</span> (Syntactically Awesome Style Sheets) <a href="http://sass-lang.com/">Official Website</a></h6>
+                            <p>Sass is a scripting language that is interpreted or compiled into Cascading Style Sheets (CSS). It is the most mature, stable, and powerful professional grade CSS extension language in the world. Sass gives you the power of variables, mixins, functions, etc.</p>
+                            <hr>
+                            <h6><span class="font-weight-bold">SWIG</span> <a href="http://node-swig.github.io/swig-templates/docs/">Official Website</a></h6>
+                            <p>Swig reads template files and translates them into cached javascript functions. When we later render a template we call the evaluated function, passing a context object as an argument.</p>
+                            <hr>
+                            <h6><span class="font-weight-bold">Bootstrap</span> <a href="https://getbootstrap.com/">Official Website</a></h6>
+                            <p>Components and options for laying out your project, including wrapping containers, a powerful grid system, a flexible media object, and responsive utility classes.</p>
+                            <hr>
+                            <h6><span class="font-weight-bold">Text Editor and Terminal (Command Line)</span></h6>
+                            <p>You can use any text editor at your disposal and available Command line tool (Command Prompt for Windows or Terminal on MacOS).</p>
+                            <hr>
+
+                            <p>The <code>npm install</code> command we've used here is a command that uses Node Package Manager (npm) <b> to install all dependencies from package.json </b>
+                                If you check the project folder when the command has finished executing, you should see a folder called node_modules.
+                            </p>
+                            
+                            
+                            
+                        </div>
+                        <!-- END Getting Started -->
+
+                    </div>
+                </div>
+                <!-- END Docs Content -->
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/prism.js"></script>
+</body>
+</html>

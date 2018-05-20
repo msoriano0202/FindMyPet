@@ -1,0 +1,403 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Alerts | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Alerts</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Components</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Alerts</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Alerts -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container g-px-10">
+            
+                <!-- Background Colored -->
+                <div class="g-mb-50">
+                    
+                    <div class="text-center text-md-left">
+                        <h5 class="text-uppercase font-weight-bold">Background Colored</h5>
+                        <p class="g-mb-20">You can use any color from the predefined classes.</p>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-bg-green g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-check g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="message-alert">
+                                        <p class="g-font-size-14"><strong>Success!</strong> Your message has been sent successfully.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-bg-cyan g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-info-circle g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="alert-message">
+                                        <p class="g-font-size-14"><strong>Note!</strong> Please read the comments carefully...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-bg-danger g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-ban g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="alert-message">
+                                        <p class="g-font-size-14">A problem has been occurred while submitting your data.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-bg-warning g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-exclamation-triangle g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="alert-message">
+                                        <p class="g-font-size-14"><strong>Warning!</strong> There was a problem with your network connection.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Background Colored -->
+                <hr>
+                
+                <!-- Outline Colored -->
+                <div class="g-my-50">
+                    
+                    <div class="text-center text-md-left">
+                        <h5 class="text-uppercase font-weight-bold">Outline Colored</h5>
+                        <p class="g-mb-20">You can use any color from the predefined classes.</p>
+                    </div>
+ 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-border-success text-success g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-check g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="message-alert">
+                                        <p class="g-font-size-14"><strong>Success!</strong> Your message has been sent successfully.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-border-cyan g-text-cyan g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-info-circle g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="message-alert">
+                                        <p class="g-font-size-14"><strong>Note!</strong> Please read the comments carefully...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-border-danger g-py-20" role="alert">
+                                <button type="button" class="close text-danger" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center text-danger">
+                                    <span class="g-mr-20"><i class="fa fa-ban g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="message-alert">
+                                        <p class="g-font-size-14">A problem has been occurred while submitting your data.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-border-warning g-py-20" role="alert">
+                                <button type="button" class="close text-warning" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center text-warning">
+                                    <span class="g-mr-20"><i class="fa fa-exclamation-triangle g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="message-alert">
+                                        <p class="g-font-size-14"><strong>Warning!</strong> There was a problem with your network connection</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Outline Colored Alerts -->
+                <hr>
+                
+                <!-- Outline Colored v2 -->
+                <div class="g-my-50">
+    
+                    <div class="text-center text-md-left">
+                        <h5 class="text-uppercase font-weight-bold">Outlined Colored v2</h5>
+                        <p class="g-mb-20">You can use any color from the predefined classes.</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- ALERT PRIMARY -->
+                            <div class="alert alert-dismissible fade show g-border-success text-success g-p-0" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <div class="d-flex align-self-md-stretch align-items-center g-bg-success">
+                                     <span class="cn-icon">
+                                        <i class="fa fa-check g-font-size-20" aria-hidden="true"></i>
+                                    </span>
+                                    </div>
+                                    <div class="alert-message g-mx-10">
+                                        <p class="g-font-size-14"><strong>Success!</strong> Your message has been sent successfully.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END ALERT DANGER -->
+                        </div>
+                        <div class="col-md-6">
+                            <!-- ALERT INFO -->
+                            <div class="alert alert-dismissible fade show g-border-info text-info g-p-0" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <div class="d-flex align-self-md-stretch align-items-center g-bg-info">
+                                       <span class="cn-icon">
+                                        <i class="fa fa-info-circle g-font-size-20" aria-hidden="true"></i>
+                                    </span>
+                                    </div>
+                                    <div class="alert-message g-mx-10">
+                                        <p class="g-font-size-14"><strong>Note!</strong> Please read the comments carefully...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END ALERT INFO -->
+                        </div>
+                        <div class="col-md-6">
+                            <!-- ALERT DANGER -->
+                            <div class="alert alert-dismissible fade show g-border-danger g-p-0" role="alert">
+                                <button type="button" class="close text-danger" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            
+                                <div class="alert-body d-flex align-items-center text-danger">
+                                    <div class="d-flex align-self-md-stretch align-items-center g-bg-danger">
+                                     <span class="cn-icon">
+                                        <i class="fa fa-ban g-font-size-20" aria-hidden="true"></i>
+                                    </span>
+                                    </div>
+                                    <div class="alert-message g-mx-10">
+                                        <p class="g-font-size-14">A problem has been occurred while submitting your data.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END ALERT DANGER -->
+                        </div>
+                        <div class="col-md-6">
+                            <!-- ALERT WARNING -->
+                            <div class="alert alert-dismissible fade show g-border-warning g-p-0" role="alert">
+                                <button type="button" class="close text-warning" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center text-warning">
+                                    <div class="d-flex align-self-md-stretch align-items-center g-bg-warning">
+                                    <span class="cn-icon">
+                                        <i class="fa fa-exclamation-triangle g-font-size-20" aria-hidden="true"></i>
+                                    </span>
+                                    </div>
+                                    <div class="alert-message g-mx-10">
+                                        <p class="g-font-size-14"><strong>Warning!</strong> There was a problem with your network connection</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END ALERT WARNING -->
+                        </div>
+                    </div>
+                </div>
+                <!-- END Outline Colored v2 -->
+                <hr>
+                
+                <!-- Background Rounded -->
+                <div class="g-my-50">
+                    
+                    <div class="text-center text-md-left">
+                        <h5 class="text-uppercase font-weight-bold">Background Rounded</h5>
+                        <p class="g-mb-20">You can use any color from the predefined classes.</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-bg-success g-rounded-50 g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-check g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="alert-message">
+                                        <p class="g-font-size-14"><strong>Success!</strong> Your message has been sent successfully.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-bg-info g-rounded-50 g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-info-circle g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="alert-message">
+                                        <p class="g-font-size-14"><strong>Note!</strong> Please read the comments carefully...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-bg-danger g-rounded-50 g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-ban g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="alert-message">
+                                        <p class="g-font-size-14">A problem has been occurred while submitting your data.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-bg-warning g-rounded-50 g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-exclamation-triangle g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="alert-message">
+                                        <p class="g-font-size-14"><strong>Warning!</strong> There was a problem with your network connection</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Background Rounded -->
+                <hr>
+                
+                <!-- Outline Rounded -->
+                <div class="g-my-50">
+    
+                    <div class="text-center text-md-left">
+                        <h5 class="text-uppercase font-weight-bold">Outline Rounded</h5>
+                        <p class="g-mb-20">You can use any color from the predefined classes.</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-border-success text-success g-rounded-50 g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-check g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="alert-message">
+                                        <p class="g-font-size-14"><strong>Success!</strong> Your message has been sent successfully.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-border-info text-info g-rounded-50 g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-info-circle g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="alert-message">
+                                        <p class="g-font-size-14"><strong>Note!</strong> Please read the comments carefully...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-border-danger text-danger g-rounded-50 g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-ban g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="alert-message">
+                                        <p class="g-font-size-14">A problem has been occurred while submitting your data.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-dismissible fade show g-border-warning text-warning g-rounded-50 g-py-20" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="alert-body d-flex align-items-center">
+                                    <span class="g-mr-20"><i class="fa fa-exclamation-triangle g-font-size-20" aria-hidden="true"></i></span>
+                                    <div class="alert-message">
+                                        <p class="g-font-size-14"><strong>Warning!</strong> There was a problem with your network connection</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Outline Rounded -->
+                
+            </div>
+        </section>
+        <!-- END Alerts -->
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+    
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

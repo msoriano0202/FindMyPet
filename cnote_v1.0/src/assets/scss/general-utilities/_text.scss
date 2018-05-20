@@ -1,0 +1,90 @@
+
+/*
+    @
+    @   THEME TEXT VARIANTS
+    @
+*/
+
+// General font sizes with base of ( 16px )
+/////////////////////////////////////////////////
+
+$default-size: 1rem;
+$font-sizes: (
+    12: $default-size * 0.75,
+    13: $default-size * 0.8125,
+    14: $default-size * 0.875,
+    15: $default-size * 0.9375,
+    16: $default-size,
+    17: $default-size * 1.0625,
+    18: $default-size * 1.125,
+    19: $default-size * 1.1875,
+    20: $default-size * 1.25,
+    21: $default-size * 1.3125,
+    22: $default-size * 1.375,
+    23: $default-size * 1.4375,
+    24: $default-size * 1.5,
+    25: $default-size * 1.5625,
+    30: $default-size * 1.875,
+    35: $default-size * 2.1875,
+    40: $default-size * 2.5,
+    45: $default-size * 2.8125,
+    50: $default-size * 3.125,
+    55: $default-size * 3.4375,
+    60: $default-size * 3.75
+);
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+        
+        @each $font-sizes, $size in $font-sizes {
+            .g-font-size#{$infix}-#{$font-sizes} {
+                font-size: $size !important;
+            }
+        }
+    
+    }
+}
+// Text Colors
+// -------------------------------------------------------------------------------------------------
+
+.g-text-white {
+    color: #ffffff !important;
+}
+.g-text-black {
+    color: #000000 !important;
+}
+
+.g-parent-text-h:hover {
+    .g-text-white-parent-h {
+        color: #ffffff !important;
+    }
+    .g-text-black-parent-h {
+        color: #000000 !important;
+    }
+}
+
+@each $key, $value in map-colors(colorPalette($cnote-colors, 10), $theme-colors, $custom-grays, $custom-bluegrays) {
+    @include text-emphasis-variant($key, $value);
+}
+
+// Font class
+
+.font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+.font-prompt {
+    font-family: "Prompt",  sans-serif !important;
+}
+// Additional Font Weight
+
+.font-weight-medium { font-weight: 500 !important }
+.font-weight-semibold { font-weight: 600 !important; }
+.font-weight-extrabold { font-weight: 800 !important; }
+
+.text-cutted {
+    text-decoration: line-through;
+}
+.text-lead {
+    font-size: 20px;
+}
+

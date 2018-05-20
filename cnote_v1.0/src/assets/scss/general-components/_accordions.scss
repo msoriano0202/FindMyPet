@@ -1,0 +1,25 @@
+
+/*
+    @
+    @   27. ACCORDIONS
+    @
+*/
+
+.accordion-active-border .accordion-header [aria-expanded="true"] {
+    border-color: theme-color("primary") !important;
+    .fa-chevron-right {
+        color: theme-color("primary") !important;
+    }
+}
+.accordion-text-primary-a .accordion-header [aria-expanded="true"] {
+    color: theme-color("primary") !important;
+}
+.accordion-text-primary-a .accordion-header [aria-expanded="true"] {
+    color: theme-color("primary") !important;
+}
+
+.accordion-header [aria-expanded="true"] {
+    .fa-chevron-right {
+        transform: rotate(90deg);
+    }
+}

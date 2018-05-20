@@ -1,0 +1,41 @@
+
+//  4.1
+//  Backgrounds
+
+@mixin bg-color($parent, $color) {
+    .g-bg-#{$parent},
+    .g-bg-#{$parent}-h:hover,
+    a.g-bg-#{$parent} {
+        background-color: $color !important;
+        color: color-yiq($color) !important;
+    }
+    a.g-bg-#{$parent}-active:active,
+    a.g-bg-#{$parent}-collapse-active[aria-expanded="true"] {
+        background-color: $color !important;
+        color: color-yiq($color) !important;
+    }
+}
+@mixin bg-grays-color($parent, $color) {
+    .g-bg-#{$parent},
+    .g-bg-#{$parent}-h:hover {
+        background-color: $color !important;
+        color: color-yiq($color) !important;
+    }
+}
+@mixin opacity-bg($parent, $background) {
+    @for $i from 0 through 9 {
+        $opacity-value: $i * 0.1;
+        .g-bg-#{$parent}-opacity-#{$i} {
+            background-color: rgba($background, $opacity-value ) !important;
+        }
+    }
+}
+
+
+// Grayscale Filter
+
+@mixin grayscale_img($value) {
+    -webkit-filter: #{"grayscale(#{$value})"};
+    -moz-filter: #{"grayscale(#{$value})"};
+    filter:#{"grayscale(#{$value})"};
+}

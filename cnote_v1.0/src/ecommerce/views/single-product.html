@@ -1,0 +1,446 @@
+{% extends '_partials/_cnote-shop-layout.html' %}
+{% block page-title %}<title>Single Product | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '_partials/_headers/_topbar-1.html' %}
+        {% include '_partials/_headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Single product</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Single product</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+    
+        <!-- Single Product Content -->
+        <section class="g-py-70">
+            <div class="container">
+            
+                <div class="row g-mb-50">
+                    <div class="col-md-6">
+                        <div class="single-product-gallery g-border g-border-gray-300">
+                        
+                            <!-- Single Product Gallery -->
+                            <div class="owl-carousel product-gallery-carousel g-p-5" data-slider-id="1">
+                                <div class="item">
+                                    <div class="product-img">
+                                        <img src="http://via.placeholder.com/650x650/eee/777" alt="Image Description">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="product-img">
+                                        <img src="http://via.placeholder.com/650x650/eee/777" alt="Image Description">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="product-img">
+                                        <img src="http://via.placeholder.com/650x650/eee/777" alt="Image Description">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="product-img">
+                                        <img src="http://via.placeholder.com/650x650/eee/777" alt="Image Description">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END Single Product Gallery -->
+                    
+                        </div>
+                    </div>
+                    <div class="col-md-6 g-px-md-20">
+                    
+                        <!-- Single Product Heading -->
+                        <div class="single-product-head g-py-50 g-py-md-0">
+                            <h3 class="single-product-title font-weight-bold text-center text-md-left">Pepe Jeans - Dark Red</h3>
+                            <div class="row no-gutters align-items-center g-my-10 text-center text-md-left">
+                                <div class="col-lg-4 align-items-center">
+                                    <div class="single-product-price g-font-size-25 font-weight-bold">
+                                        <span class="old-price text-cutted g-text-gray-700">$110</span>
+                                        <span class="price text-primary">$78</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="d-sm-flex align-items-center justify-content-center justify-content-md-start">
+                                        <div class="rating-stars g-mr-sm-10">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-empty"></i>
+                                        </div>
+                                        <span class="text-muted">4.8 | 12 customer reviews</span>
+                                    </div>
+                            
+                                </div>
+                            </div>
+                    
+                    
+                        </div>
+                        <!-- END Single Product Heading -->
+                    
+                        <!-- Single Product Description -->
+                        <div class="single-product-description g-mb-20 text-center text-md-left">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus beatae commodi consequatur corporis culpa dicta distinctio doloremque ea eius enim esse fugit harum id incidunt laboriosam modi nesciunt, possimus, provident repellat similique vel vero.</p>
+                        </div>
+                        <!-- END Single Product Description -->
+    
+                        <!-- Product Size / Color -->
+                        <div class="row no-gutters align-items-center g-mb-20 text-center text-md-left">
+                            <div class="col-md-4">
+                                <div class="form-group g-mb-0">
+                                    <label for="product-size">Product size</label>
+                                    <select class="form-control form-control-sm g-mb-10" id="product-size">
+                                        <option>Product size</option>
+                                        <option>10.5</option>
+                                        <option>10</option>
+                                        <option>9.5</option>
+                                        <option>9</option>
+                                        <option>8.5</option>
+                                        <option>8</option>
+                                        <option>7.5</option>
+                                        <option>7</option>
+                                        <option>6.5</option>
+                                        <option>6</option>
+                                        <option>5.5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="g-ml-20 g-mb-5">Product colors:</p>
+                                <div class="product-colors g-ml-sm-20">
+                                    <a href="#" data-product-color="blue" class="g-bg-white g-border g-border-gray-500"></a>
+                                    <a href="#" data-product-color="black" class="g-bg-black"></a>
+                                    <a href="#" data-product-color="red" class="g-bg-red"></a>
+                                    <a href="#" data-product-color="purple" class="g-bg-purple"></a>
+                                    <a href="#" data-product-color="orange" class="g-bg-green"></a>
+                                    <a href="#" data-product-color="blue" class="g-bg-blue"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Product Size / Color -->
+                        
+                        <!-- Single Product Categories -->
+                        <div class="single-product-categories text-center text-md-left">
+                            <span class="text-medium">Categories: </span>
+                            <a href="#">Shoes, </a>
+                            <a href="#">Sport, </a>
+                            <a href="#">Snickers, </a>
+                            <a href="#">Men</a>
+                        </div>
+                        <!-- END Single Product Categories -->
+                        
+                        <hr class="g-mb-20 g-border-gray-300">
+                    
+                        <!-- Single Product Footer -->
+                        <div class="single-product-footer d-lg-flex align-items-center justify-content-lg-between">
+                            <div class="single-product-share g-mb-15 text-center text-md-left">
+                                <span class="text-muted">Share: </span>
+                                <div class="share-links">
+                                    <a class="cn-icon cn-icon-sm g-bg-gray-300" href="#" data-toggle="tooltip" data-placement="top" title="Facebook">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a class="cn-icon cn-icon-sm g-bg-gray-300" href="#" data-toggle="tooltip" data-placement="top" title="Twitter">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a class="cn-icon cn-icon-sm g-bg-gray-300" href="#" data-toggle="tooltip" data-placement="top" title="Instagram">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                    <a class="cn-icon cn-icon-sm g-bg-gray-300" href="#" data-toggle="tooltip" data-placement="top" title="Instagram">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="single-product-buttons text-center text-md-left">
+                                <button class="btn cn-btn-dark btn-wishlist" data-toggle="tooltip" title="Whishlist">
+                                    <span class="align-middle"><i class="icon-heart"></i></span>
+                                </button>
+                                <button class="btn cn-btn-primary"><i class="icon-basket"></i> Add to Cart</button>
+                            </div>
+                        </div>
+                        <!-- END Single Product Footer -->
+                    </div>
+                </div>
+            
+                <div class="preview-details g-border-sm g-border-gray-300 g-mx-8 g-p-sm-10">
+                
+                    <ul class="nav nav-tabs cn-nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">
+                                <span class="align-middle g-mr-sm-3"><i class="icon-home"></i></span>
+                                <span class="align-middle tab-name">Overview</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" id="review-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">
+                                <span class="align-middle g-mr-sm-3"><i class="icon-user"></i></span>
+                                <span class="align-middle tab-name">Reviews <span class="count-reviews">( 3 )</span></span>
+                           
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="returns-tab" data-toggle="tab" href="#returns" role="tab" aria-controls="returns" aria-selected="false">
+                                <span class="align-middle g-mr-sm-3"><i class="icon-wallet"></i></span>
+                                <span class="align-middle tab-name">Returns</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content g-py-20" id="myTabContent">
+                        <div class="tab-pane fade" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                            <p>Don't forget to change this dummy text !</p>
+                            <p class="g-mb-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias non, odit perferendis quos recusandae voluptates. Ab aperiam deleniti deserunt doloribus est exercitationem in ipsam iste, minus mollitia nulla officiis quidem rerum, sit, ullam vitae voluptatibus. Nihil nisi rerum sed!</p>
+                            <h5>Benefits </h5>
+                            <ul class="g-my-10">
+                                <li>Ibex synthetic leather wipes clean easily</li>
+                                <li>Internal lining is waterproof to keep out moisture</li>
+                                <li>Lunarlon sole with Nike Air cushioning for comfort</li>
+                                <li>Tread pattern provides traction in the elements</li>
+                                <li>Solid rubber outsole for durability</li>
+                            </ul>
+                            <h5>Product details</h5>
+                            <ul class="g-my-10">
+                                <li>Ibex synthetic leather wipes clean easily</li>
+                                <li>Internal lining is waterproof to keep out moisture</li>
+                                <li>Lunarlon sole with Nike Air cushioning for comfort</li>
+                                <li>Solid rubber outsole for durability</li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade show active" id="reviews" role="tabpanel" aria-labelledby="review-tab">
+    
+                            <!-- Comment -->
+                            <div class="comment g-mb-15 g-p-15 g-border g-border-gray-300 g-border-primary-h">
+                                <div class="comment-header g-mb-10">
+                                    <div class="comment-author d-sm-flex align-items-center text-center text-sm-left">
+                                        <div class="author-thumb">
+                                            <img src="http://via.placeholder.com/100x100/eee/777" class="rounded-circle g-w40" alt="Author Thumbnail">
+                                        </div>
+                                        <div class="author-name g-ml-10">
+                                            <h6 class="font-weight-bold g-text-gray-600">John Doe</h6>
+                                        </div>
+                                        <div class="rating-stars ml-auto">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment-body">
+                                    <p>Finis moris, tanquam raptus parma. Cum visus peregrinationes, omnes fiscinaes manifestum talis, nobilis fermiumes!</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum eaque expedita laboriosam maxime non provident? Aut beatae dolor, doloremque in minima mollitia natus, nulla odio pariatur totam ut veniam.</p>
+                                </div>
+                                <div class="comment-footer g-py-10">
+                                    <div class="g-mr-15">
+                                        <span class="text-muted">Posted on: </span><span class="review-date g-mr-10"> 18 Nov 2017</span>
+                                        <a class="reply-btn btn-link" data-toggle="collapse" href="#replyCommentCollapse" aria-expanded="false" aria-controls="replyCommentCollapse">Reply</a>
+                                    </div>
+                                    <div class="collapse" id="replyCommentCollapse">
+                                        <div class="reply-form g-mt-20">
+                                            <div class="row no-gutters">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group g-pr-sm-5">
+                                                        <input class="form-control" type="text" id="reply-name" required placeholder="Bill Will">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group g-pl-sm-5">
+                                                        <input class="form-control" type="email" id="reply-email" required placeholder="billwill@gmail.com">
+                                                    </div>
+                                                </div>
+                        
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" id="reply-text" rows="4" required placeholder="Reply your message"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button class="btn btn-sm cn-btn-primary" type="submit">Reply to John Doe</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <!-- Reply Comment -->
+                                <div class="reply-comment g-mt-20 g-ml-20 g-p-15 g-border g-border-gray-300">
+                                    <!-- Comment Header -->
+                                    <div class="comment-header g-mb-20">
+                                        <div class="comment-author d-flex align-items-center">
+                                            <div class="author-thumb">
+                                                <div class="icon icon-sm g-bg-gray-200 rounded-circle">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                            <div class="author-name g-ml-10">
+                                                <h6 class="font-weight-bold g-text-gray-600">Bill Will</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END Comment Header -->
+            
+                                    <!-- Comment Body -->
+                                    <div class="comment-body">
+                                        <p>Albus apolloniatess ducunt ad rumor. Magnum, mirabilis frondators solite visum de secundus, primus guttus!</p>
+                                        <p>Ubi est magnum brodium? Cum imber nocere, omnes galluses dignus bi-color, barbatus valebates.</p>
+                                    </div>
+                                    <!-- END Comment Body -->
+                                    <!-- Comment Footer -->
+                                    <div class="comment-footer g-py-10">
+                                        <p><span class="text-muted">Posted on: </span><span class="review-date"> 24 Nov 2017</span></p>
+                                    </div>
+                                    <!-- END Comment Footer -->
+                                </div>
+                                <!-- END Reply Comment -->
+                            </div>
+                            <!-- END Comment -->
+    
+                            <!-- Comment -->
+                            <div class="comment g-mb-15 g-p-15 g-border g-border-gray-300 g-border-primary-h">
+                                <div class="comment-header g-py-10 g-mb-10">
+                                    <div class="comment-author d-sm-flex align-items-center text-center text-sm-left">
+                                        <div class="author-thumb">
+                                            <img src="http://via.placeholder.com/100x100/eee/777" class="rounded-circle g-w40" alt="Author Thumbnail">
+                                        </div>
+                                        <div class="author-name g-ml-10">
+                                            <h6 class="font-weight-bold g-text-gray-600">Jenny Doe</h6>
+                                        </div>
+                                        <div class="rating-stars ml-auto">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment-body">
+                                    <p>Est teres uria, cesaris. Galluss resistere! Cur bursa unda? Ridetis sapienter ducunt ad neuter mortem. Xiphias ires, tanquam emeritis orexis. Domesticus lixa vix perderes species est. Nunquam manifestum saga. Cobaltums resistere! Altus, gratis visuss sapienter visum de grandis, mirabilis mons.</p>
+                                    <p>Vae. Nunquam demitto lapsus. Cum omnia cadunt, omnes toruses pugna festus, magnum fluctuies. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque facilis molestiae saepe voluptatum. Eaque explicabo illo ipsa suscipit voluptas. Quod.</p>
+                                </div>
+                                <div class="comment-footer d-flex g-py-10">
+                                    <div class="g-mr-15">
+                                        <p><span class="text-muted">Posted on: </span><span class="review-date"> 15 Nov 2017</span></p>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="reply-btn btn-link">Reply</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END Comment -->
+    
+                            <!-- Comment -->
+                            <div class="comment g-mb-15 g-p-15 g-border g-border-gray-300 g-border-primary-h">
+                                <div class="comment-header g-py-10 g-mb-10">
+                                    <div class="comment-author d-sm-flex align-items-center text-center text-sm-left">
+                                        <div class="author-thumb">
+                                            <img src="http://via.placeholder.com/100x100/eee/777" class="rounded-circle g-w40" alt="Author Thumbnail">
+                                        </div>
+                                        <div class="author-name g-ml-10">
+                                            <h6 class="font-weight-bold g-text-gray-600">John Doe</h6>
+                                        </div>
+                                        <div class="rating-stars ml-auto">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment-body">
+                                    <p>Lixa crederes, tanquam velox magister.</p>
+                                    <p>Cur mortem unda? Ecce, cobaltum! Barbatus, mirabilis tatas callide resuscitabo de salvus, azureus secula. Cum liberi messis, omnes capioes imperium mirabilis, emeritis gemnaes.</p>
+                                </div>
+                                <div class="comment-footer d-flex g-py-10">
+                                    <div class="g-mr-15">
+                                        <p><span class="text-muted">Posted on: </span><span class="review-date"> 9 Nov 2017</span></p>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="reply-btn btn-link">Reply</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END Comment -->
+                        
+                        
+                            <!-- Comment Form -->
+                            <form class="row g-mt-70">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="review_name">Your Name</label>
+                                        <input class="form-control" type="text" id="review_name" required placeholder="John Doe">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="review_email">Your Email</label>
+                                        <input class="form-control" type="email" id="review_email" required placeholder="johndoe@gmail.com">
+                                    </div>
+                                </div>
+                            
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="review_rating">Your Rating</label>
+                                        <select class="form-control" id="review_rating">
+                                            <option>5 Stars</option>
+                                            <option>4 Stars</option>
+                                            <option>3 Stars</option>
+                                            <option>2 Stars</option>
+                                            <option>1 Star</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="review_text" class="g-mb-0">Your Review </label>
+                                        <p class="g-mb-5"><small>Maxium 500 characters</small></p>
+                                        <textarea class="form-control" id="review_text" rows="10" required placeholder="Your comment goes here..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-right">
+                                    <button class="btn cn-btn-primary" type="submit">Post your review</button>
+                                </div>
+                            </form>
+                            <!-- END Comment Form -->
+                    
+                        </div>
+                        <div class="tab-pane fade" id="returns" role="tabpanel" aria-labelledby="returns-tab">
+                            <p>If you need to return any item to us, please send it back to us within 14 days of receipt of the order (unless faulty).</p>
+                            <p>It's important that any items returned to us, unless faulty, are returned in a re-saleable condition. We would like this to mean that you've kept all original packaging and labels, and that it's unused.</p>
+                            <p>Form more information, contact our <a href="#">support</a></p>
+                        </div>
+                    </div>
+            
+                </div>
+        
+            </div>
+        </section>
+        <!-- END Single Product Content -->
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '_partials/_footer.html' %}
+    <!-- END Footer -->
+    
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

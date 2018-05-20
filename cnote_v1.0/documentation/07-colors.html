@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="cNote, a beautiful theme with awesome layouts">
+    <meta name="keywords" content="Theme, Template, Ecommerce, Bootstrap, SASS, Multipage, Onepage, Multipurpose, jQuery">
+    <meta name="distribution" content="global">
+    <title>cNote Documentation</title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+<section class="main-content">
+
+    <!-- Header Container -->
+    <div class="cn-header">
+        <div class="d-flex align-items-center h-100">
+
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="text-uppercase font-weight-bold">cNote v1.0</h1>
+                    <h5 class="text-uppercase font-weight-bold">Multi / Onepage / Ecommerce Template</h5>
+                    <div>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Author: <a href="http://theme-aspect.com/cnote-v1.0/">Aspect Themes</a></li>
+                            <li class="list-inline-item">Contact: <a href="mailto:support@theme-aspect.com">support@theme-aspect.com</a></li>
+                            <li class="list-inline-item">Created at: 26/04/2018</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- END Header Container -->
+
+    <div class="docs my-5">
+        <div class="container">
+            <div class="row">
+                <!-- Docs Sidebar -->
+                <div class="col-md-3">
+                    <nav class="navbar list-group">
+                        <a href="01-introduction.html" class="list-group-item list-group-item-action">Introduction</a>
+                        <a href="02-environment-setup.html" class="list-group-item list-group-item-action">Dev Environment Setup</a>
+                        <a href="03-workgulpfile.html" class="list-group-item list-group-item-action">Working with Gulp</a>
+                        <a href="04-project-structure.html" class="list-group-item list-group-item-action">Project Structure</a>
+                        <a href="05-using-preprocessors.html" class="list-group-item list-group-item-action">Using Preprocessors</a>
+                        <a href="06-general-classes.html" class="list-group-item list-group-item-action">General Classes</a>
+                        <a href="07-colors.html" class="list-group-item list-group-item-action active">Colors</a>
+                        <a href="08-font-icons.html" class="list-group-item list-group-item-action">Font Icons</a>
+                        <a href="09-plugins-list.html" class="list-group-item list-group-item-action">Plugins List</a>
+                        <a href="10-credits.html" class="list-group-item list-group-item-action">Source Assets</a>
+                        <a href="11-support.html" class="list-group-item list-group-item-action">Support</a>
+                    </nav>
+                    </aside>
+                </div>
+                <!-- END Docs Sidebar -->
+
+                <!-- Docs Content -->
+                <div class="col-md-9">
+                    <div class="docs-content">
+
+                        <!-- Global Colors -->
+                        <div>
+                            <h4 class="text-uppercase font-weight-bold">Colors</h4>
+                            <p>There are 3 possible ways to chage the main colors of the template:</p>
+                            <ul>
+                                <li>Customize colors via SCSS variables</li>
+                                <li>Replaces classes in HMTL</li>
+                                <li>Replace them in CSS</li>
+                            </ul>
+
+                            <h5 class="text-uppercase font-weight-bold">1. Customize colors via SCSS variables</h5>
+
+                            <p>In case you want to create your own color scheme - the fastest and painless way to do that is via SASS variables.</p>
+                            <p>You need to edit <code>/src/cnote-main/assets/scss/_variables.scss</code>.</p>
+                            <p>If you want to change main colors from the ecommerce, you need to change the <code>_variables.scss</code> from <code>ecommerce/</code> folder.</p>
+                            <div class="alert alert-secondary">
+                                <p class=""><span class="font-weight-bold">Note:</span> if you want to add new variables, you need to add them both in <code>src/cnote-main/</code> and <code>src/ecommerce/</code> folders only if they use a common component because if a component exists only in <code>cnote-main/</code> (for example) it does not know what value it is attributed for <code>ecommerce/</code> and then errors may occur.</p>
+                            </div>
+
+                            <p>Blelow is the part of SASS variables file responsible for colors:</p>
+
+                            <pre class="line-numbers">
+                                <code class="language-css">
+
+// cNote Variables
+// -----------------------------------------------------------------------------------
+
+// Grays
+
+$white:     #ffffff;
+$gray-100: #f9f9f9;
+$gray-200: #f4f5f6;
+$gray-300: #eeeff0;
+$gray-400: #e3e4e6;
+$gray-500: #b9b9b9;
+$gray-600: #7d7d7d;
+$gray-700: #4b4b4b;
+$gray-800: #2d2d2d;
+$gray-900: #212121;
+$gray-1000: #121212;
+$black:     #000;
+
+// Bluegrays
+
+$bluegray-100: #f1f8fa;
+$bluegray-200: #e6eff4;
+$bluegray-300: #ced7dc;
+$bluegray-400: #b0b9be;
+$bluegray-500: #838c91;
+$bluegray-600: #5b6469;
+$bluegray-700: #3d464b;
+$bluegray-800: #2a3237;
+$bluegray-900: #1e2428;
+$bluegray-1000: #151a1e;
+
+
+// cNote Theme Colors
+
+$blue:          #2680e4;
+$indigo:        #6610f2;
+$purple:        #9053b7;
+$pink:          #eb408d;
+$red:           #eb2a2f;
+$orange:        #eb602c;
+$brown:         #9b6730;
+$yellow:        #ffd716;
+$green:         #10c76e;
+$teal:          #34c3ab;
+$cyan:          #13c3c0;
+
+
+$primary:       $cyan;
+$secondary:     $gray-400;
+$success:       $green;
+$info:          $cyan;
+$warning:       $yellow;
+$danger:        $red;
+$light:         $gray-100;
+$dark:          $bluegray-900;
+                                 </code>
+                            </pre>
+
+                            <p class="mb-5">If you want to change primary color you can change the value of the variable called <code>$primary</code>.</p>
+
+
+                            <h5 class="text-uppercase font-weight-bold">2. Replace classes in HTML</h5>
+                            <p>You can change backgrounds or text color by changing or adding classes in HTML (<code>.g-bg-*</code> for backgrounds or <code>.g-text-*</code> for text color). </p>
+
+                            <h6 class="font-weight-bold">All colors are presented at the link below:</h6>
+                            <p><a href="../dist/cnote-v1.0/cnote-main/components/colors.html">Components / Colors</a></p>
+    
+                            <h5 class="text-uppercase font-weight-bold">3. Replace global colors in CSS</h5>
+    
+                            <p>This is the hardest way to do things done. I don't recommend it but if you prefer vanilla CSS you can replace all color hex values inside <code>/dist/cnote-v1.0/*/assets/css/main.css</code> with your own using "find and replace" panel of you code editor.</p>
+                            <p class="mb-5">(*) - <code>cnote-main/</code> or <code>ecommerce/</code>.</p>
+                        </div>
+                        <!-- END Global Colors -->
+
+                    </div>
+                </div>
+                <!-- END Docs Content -->
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/prism.js"></script>
+</body>
+</html>

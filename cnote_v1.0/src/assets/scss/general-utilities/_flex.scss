@@ -1,0 +1,68 @@
+/*
+    @
+    @   THEME FLEX VARIATIONS
+    @
+*/
+
+
+/*
+    ----------------------------------
+    [[ ----- FLEX CENTER ----- ]]
+    ----------------------------------
+*/
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    
+        .g-flex#{$infix}-center {
+            display: -webkit-box !important;
+            display: -ms-flexbox !important;
+            display: flex !important;
+            -webkit-box-align: center !important;
+            -ms-flex-align: center !important;
+            align-items: center !important;
+            -webkit-box-pack: center !important;
+            -ms-flex-pack: center !important;
+            justify-content: center !important;
+        }
+        .g-flex#{$infix}-middle {
+            display: -webkit-box !important;
+            display: -ms-flexbox !important;
+            display: flex !important;
+            -webkit-box-align: center !important;
+            -ms-flex-align: center !important;
+            align-items: center !important;
+        }
+    
+    }
+}
+
+/*
+    --------------------------------------------
+    [[ ----- FLEX ALIGN SELF TOP ----- ]]
+    --------------------------------------------
+*/
+.g-flex-self-center-top {
+    -webkit-align-self: flex-start !important;
+    -ms-flex-item-align: start !important;
+    align-self: flex-start !important;
+}
+
+/*
+    --------------------------------------------------
+    [[ ----- FLEX ALIGN SELF BOTTOM ----- ]]
+    --------------------------------------------------
+*/
+.g-flex-self-center-bottom {
+    -webkit-align-self: flex-end !important;
+    -ms-flex-item-align: end !important;
+    align-self: flex-end !important;
+}
+
+.g-flex-fixed-middle {
+    -webkit-box-flex: 0 !important;
+    -webkit-flex: none !important;
+    -ms-flex: none !important;
+    flex: none !important;
+    max-width: 50%;
+}

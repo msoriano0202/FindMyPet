@@ -1,0 +1,365 @@
+/*
+    @
+    @   30. ANIMATIONS
+    @       30.1 LEFT / TOP ( OVERLAY + PUSH )
+    @       30.2 TOP REVEAL
+    @       30.3 BOTTOM REVEAL
+    @       30.4 BOTTOM SLIDE
+    @       30.5 ZOOM
+    @       30.5 FADE IN
+    @       30.6 SCROLL DOWN ( BUTTON )
+    @       30.7 SCROLL UP ( BUTTON )
+    @       30.8 TYPED ( CURSOR ) BLINK
+    @
+*/
+
+.caption {
+    overflow: hidden;
+    position: relative;
+    .caption-default, .caption-active {
+        transition: 0.3s;
+        -webkit-font-smoothing: antialiased;
+    }
+    .caption-active {
+        width:100%;
+        height:100%;
+        position: absolute;
+        z-index: 20;
+    }
+}
+
+/*
+    30.1
+    LEFT / TOP ( OVERLAY + PUSH )
+    -------------------------------------------------------------------------------------------------
+*/
+
+$hover-effects: (
+    (left-overlay,        translate(0),             translateX(-102%) ),
+    (top-overlay,        translate(0),             translateY(-102%) ),
+    (left-push,           translateX(100%),    translateX(-100%)),
+    (top-push,           translateY(100%),    translateY(-100%) )
+);
+
+@each $effect, $caption-default-hover, $caption-active in $hover-effects {
+    .#{$effect} {
+        .caption {
+            .caption-default {
+                transform: translate(0);
+                position: relative;
+            }
+            .caption-active {
+                top:0;
+                transform:$caption-active;
+            }
+            &:hover {
+                .caption-default {
+                    transform: $caption-default-hover;
+                }
+                .caption-active {
+                    transform:translate(0);
+                }
+            }
+        }
+    }
+}
+
+/*
+    30.1
+    TOP REVEAL
+    -------------------------------------------------------------------------------------------------
+*/
+
+.top-reveal {
+    .caption {
+        .caption-default {
+            transform: translate(0);
+            z-index: 2;
+            position: relative;
+        }
+        .caption-active {
+            top:0;
+            height: 50%;
+            transform:translate(0%);
+            z-index:1;
+        }
+        &:hover {
+            .caption-default {
+                transform: translateY(50%);
+            }
+            .caption-active {
+                transform:translate(0);
+            }
+        }
+    }
+}
+
+/*
+    30.2
+    BOTTOM REVEAL
+    -------------------------------------------------------------------------------------------------
+*/
+.bottom-reveal {
+    .caption {
+        .caption-default {
+            transform: translate(0);
+            z-index: 2;
+            position: relative;
+        }
+        .caption-active {
+            //background-color: theme-color("primary");
+            top: auto!important;
+            bottom:0;
+            height: 50%;
+            transform:translate(0%);
+            z-index:1;
+        }
+        &:hover {
+            .caption-default {
+                transform: translateY(-50%);
+            }
+            .caption-active {
+                transform:translate(0);
+            }
+        }
+    }
+}
+
+/*
+    30.3
+    BOTTOM SLIDE
+    -------------------------------------------------------------------------------------------------
+*/
+
+.bottom-slide {
+    .caption{
+        transition-duration: .3s;
+        .caption-default {
+            transform: translate(0);
+        }
+        .caption-active {
+            width: auto;
+            height: auto;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: auto;
+            transform:translateY(102%);
+        }
+        &:hover {
+            .caption-active {
+                transform:translateY(0%);
+            }
+        }
+    }
+}
+
+/*
+    30.4
+    ZOOM
+    -------------------------------------------------------------------------------------------------
+*/
+
+.zoom {
+    .caption {
+        .caption-default {
+            position:relative;
+        }
+        .caption-active {
+            background-color: rgba(theme-color("primary"), .8);
+            opacity:0;
+            transition: .2s ease-in-out;
+            width: auto;
+            height: auto;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+        }
+        &:hover {
+            .caption-default {
+                transform: scale(1.2);
+                &:after {
+                    opacity:1;
+                }
+            }
+            .caption-active {
+                opacity:1;
+            }
+        }
+    }
+}
+
+/*
+    30.5
+    FADE IN
+    -------------------------------------------------------------------------------------------------
+*/
+
+.fadein {
+    .caption {
+        .caption-active {
+            background-color: rgba(theme-color("primary"), .8);
+            opacity:0;
+            transition: .3s ease-in-out;
+            width: auto;
+            height:auto;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+        }
+        &:hover {
+            .caption-active {
+                opacity:1;
+            }
+        }
+    }
+}
+
+
+/*
+    30.6
+    SCROLL DOWN ( BUTTON )
+    -------------------------------------------------------------------------------------------------
+*/
+
+
+.scroll-btn {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom:0px;
+    text-align: center;
+    z-index: 99;
+    .mouse-icon {
+        position: relative;
+        display: block;
+        width: 25px;
+        height: 40px;
+        margin: 0 auto 20px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border: 2px solid rgba(0,0,0, 0.5);
+        border-radius: 23px;
+        &:hover,
+        &:focus,
+        &.active {
+            color: #ffffff;
+        }
+        & > .scroll-dot {
+            position: absolute;
+            display: block;
+            top: 10%;
+            left: 49%;
+            width: 1px;
+            height: 10px;
+            margin: -1px 0 0 -1px;
+            border: 1px solid rgba(0,0,0, 0.5);
+            -webkit-animation: mouse-animation 1.5s linear infinite;
+            -moz-animation: mouse-animation 1.5s linear infinite;
+            animation: mouse-animation 1.5s linear infinite;
+        }
+        &:after {
+            position: absolute;
+            top:-20px;
+            bottom: 100%;
+            left: 50%;
+            width: 18px;
+            height: 18px;
+            content: '';
+            margin-left: -3px;
+            border-top: 2px solid rgba(0,0,0, 0.5);
+            border-left:  2px solid rgba(0,0,0, 0.5);
+            box-sizing: border-box;
+            border-top-left-radius: 30px;
+        }
+    }
+}
+
+@-webkit-keyframes mouse-animation {
+    0% {
+        opacity: 1;
+        top: 10%;
+    }
+    50% {
+        opacity: 0;
+        top: 60%;
+    }
+    100% {
+        opacity: 0;
+        top: 10%;
+    }
+}
+@keyframes mouse-animation {
+    0% {
+        opacity: 1;
+        top: 20%;
+    }
+    50% {
+        opacity: 0;
+        top: 60%;
+    }
+    100% {
+        opacity: 0;
+        top: 20%;
+    }
+}
+
+/*
+    30.7
+    SCROLL UP ( BUTTON )
+    -------------------------------------------------------------------------------------------------
+*/
+
+
+#scrollUp {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9999;
+    display: none;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    span {
+        padding: 10px;
+        color: #000000;
+        font-size: 0.875rem;
+        border:1px solid #ebebeb;
+        border-radius:2px;
+        background-color: rgb(235, 235, 235);
+        &:hover {
+            background-color: theme-color("primary");
+            color:#ffffff;
+            border:1px solid darken(theme-color("primary"), 3%);
+        }
+    }
+}
+
+/*
+    30.8
+    TYPED ( CURSOR ) BLINK
+    -------------------------------------------------------------------------------------------------
+*/
+
+
+.typed-cursor {
+    top:-2px;
+    position: relative;
+    font-weight: 100;
+    opacity:1;
+    animation: blink .7s infinite;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-direction: normal;
+}
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}

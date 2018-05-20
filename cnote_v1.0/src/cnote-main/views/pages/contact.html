@@ -1,0 +1,154 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Contact | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Contact</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../homepages/homepage-1.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="../components/accordions.html">Pages</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+
+        
+        <!-- Google Map -->
+        
+        <section class="g-bg-white g-py-70">
+            <div class="container">
+        
+                <div class="section-title text-center g-mb-70">
+                    <h4 class="title text-uppercase cn-heading-v1-center">Contact Us</h4>
+                    <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus eius non perspiciatis!</p>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="row">
+                        <div class="col-md-4 text-center g-mb-25 g-mb-md-0">
+                            <div class="icon-contact-info g-mb-20">
+                                <i class="icon-envelope-letter g-font-size-40 g-text-primary g-mb-20"></i>
+                            </div>
+                            <p class="font-weight-bold g-font-size-22">Email</p>
+                            <p>johndoe@gmail.com</p>
+                            <p>support@your-domain.com</p>
+                        </div>
+                        <div class="col-md-4 text-center g-mb-25 g-mb-md-0">
+                            <div class="icon-contact-info g-mb-20">
+                                <i class="icon-map g-font-size-40 g-text-primary g-mb-20"></i>
+                            </div>
+                            <p class="font-weight-bold g-font-size-22">Address</p>
+                            <p>54 Duncan Street, London N1 8BW</p>
+                            <p>United Kingdom</p>
+                        </div>
+                        <div class="col-md-4 text-center g-mb-25 g-mb-md-0">
+                            <div class="icon-contact-info g-mb-20">
+                                <i class="icon-phone g-font-size-40 g-text-primary"></i>
+                            </div>
+                            <p class="font-weight-bold g-font-size-22">Phone</p>
+                            <p>+21 12345 6789</p>
+                            <p>+21 98765 4321</p>
+                        </div>
+         
+                    </div>
+                </div>
+          
+                
+            </div>
+        </section>
+        
+        <section id="map" class="g-h500"></section>
+        <!-- END Google Map -->
+    
+        <!-- Contact -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+            
+                <div class="contact-wrapper g-bg-white g-py-30 g-px-15 g-p-lg-100 g-border g-border-gray-300 g-mt-minus-100 g-indexup position-relative g-mb-100 g-shadow-v2">
+                    <div class="section-title text-center g-mb-70">
+                        <h4 class="title text-uppercase cn-heading-v1-center">Let's Talk</h4>
+                        <p class="subtitle">A falsis, liberi magnum hippotoxota. Sunt sectames pugna festus, barbatus pulchritudinees..</p>
+                        <p class="subtitle">Talis, emeritis orexiss absolute visum de peritus, regius stella.</p>
+                    </div>
+                
+                    <form id="contactform" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group col-md">
+                                <div class="input-group input-group-focus">
+                                    <div class="input-group-append g-w50 justify-content-center g-border-r-0 g-p-0 g-bg-white">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <input type="text" class="form-control" id="input3-1" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="form-group col-md">
+                                <div class="input-group input-group-focus">
+                                    <div class="input-group-append g-w50 justify-content-center g-border-r-0 g-p-0 g-bg-white">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <input type="email" class="form-control" id="input3-2" placeholder="Email Address">
+                                </div>
+                            </div>
+                            <div class="form-group col-md">
+                                <div class="input-group input-group-focus">
+                                    <div class="input-group-append g-w50 justify-content-center g-border-r-0 g-p-0 g-bg-white">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <input type="email" class="form-control" id="input3-3" placeholder="Phone Number">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group input-group-focus">
+                                <div class="input-group-prepend g-w50 justify-content-center g-border-r-0 g-p-0 g-bg-white">
+                                    <i class="fa fa-comment"></i>
+                                </div>
+                                <textarea class="form-control" rows="5" id="input6-5" placeholder="Your message goes here..."></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group g-mb-0 text-center">
+                            <button type="submit" class="btn cn-btn-primary g-rounded-50">SEND A MESSAGE</button>
+                        </div>
+                
+                    </form>
+            
+                </div>
+        
+            </div>
+        </section>
+        <!-- END Contact -->
+    
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}
+{% block additional-footer-scripts %}
+<script src="../assets/js/googleMap.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClg_upfe2WXD7SBTQu6EHe0LwT-YCfZnI&callback=initMap"></script>
+{% endblock %}
+

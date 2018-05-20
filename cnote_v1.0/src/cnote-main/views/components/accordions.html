@@ -1,0 +1,373 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Accordions | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Accordions</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Components</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Accordions</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+    
+        <!-- Accordions -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container">
+            
+                <div class="row g-py-50">
+                    <div class="col-lg-6 g-p-15 g-mb-30 g-mb-lg-0">
+                        <h5 class="text-center g-mb-20 font-weight-semibold">Accordion <span class="text-primary">#</span>1 Light</h5>
+                        <!-- Acoordion 1 Light -->
+                        <div id="accordion-1" class="cn-accordion" role="tablist">
+                            <div class="card g-border g-border-gray-300 g-mb-5">
+                                <div id="accordion-1-header1" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-bg-light g-py-15 g-px-10" href="#accordion-1-body-1" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1-body-1">
+                                            <span><i class="fa fa-comments fa-fw"></i> Header 1</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-1-body-1" class="collapse show" role="tabpanel" aria-labelledby="accordion-1-header1" data-parent="#accordion-1">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card g-border g-border-gray-300 g-mb-5">
+                                <div id="accordion-1-header2" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-bg-light g-py-15 g-px-10 rounded" href="#accordion-1-body-2" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1-body-2">
+                                            <span><i class="fa fa-cogs fa-fw"></i> Header 2</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-1-body-2" class="collapse" role="tabpanel" aria-labelledby="accordion-1-header2" data-parent="#accordion-1">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card g-border g-border-gray-300 g-mb-5">
+                                <div id="accordion-1-header3" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-bg-light g-py-15 g-px-10 rounded" href="#accordion-1-body-3" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1-body-3">
+                                            <span><i class="fa fa-laptop fa-fw"></i> Header 3</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-1-body-3" class="collapse" role="tabpanel" aria-labelledby="accordion-1-header3" data-parent="#accordion-1">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Accordion 1 Light -->
+                    </div>
+                    <div class="col-lg-6 g-p-15 g-mb-30 g-mb-lg-0">
+                        <h5 class="text-center g-mb-20 font-weight-semibold">Accordion <span class="text-primary">#</span>2 Primary Active</h5>
+                        <!-- Accordion 2  Primary Active -->
+                        <div id="accordion-2" class="cn-accordion" role="tablist">
+                            <div class="card g-border g-border-gray-300 g-mb-5">
+                                <div id="accordion-2-header1" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-bg-gray-100 g-bg-primary-collapse-active g-py-15 g-px-10" href="#accordion-2-body-1" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-2-body-1">
+                                            <span><i class="fa fa-comments fa-fw"></i> Header 1</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-2-body-1" class="collapse show" role="tabpanel" aria-labelledby="accordion-2-header1" data-parent="#accordion-2">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card g-border g-border-gray-300 g-mb-5">
+                                <div id="accordion-2-header2" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-bg-gray-100 g-bg-primary-collapse-active g-py-15 g-px-10" href="#accordion-2-body-2" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-2-body-2">
+                                            <span><i class="fa fa-cogs fa-fw"></i> Header 2</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-2-body-2" class="collapse" role="tabpanel" aria-labelledby="accordion-2-header2" data-parent="#accordion-2">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card g-border g-border-gray-300 g-mb-5">
+                                <div id="accordion-2-header3" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-bg-gray-100 g-bg-primary-collapse-active g-py-15 g-px-10" href="#accordion-2-body-3" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-2-body-3">
+                                            <span><i class="fa fa-laptop fa-fw"></i> Header 3</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-2-body-3" class="collapse" role="tabpanel" aria-labelledby="accordion-2-header3" data-parent="#accordion-2">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Accordion 2  Primary Active -->
+                    </div>
+                </div>
+            
+                <div class="row g-py-50">
+                    <div class="col-lg-6 g-p-15 g-mb-30 g-mb-lg-0">
+                        <h5 class="text-center g-mb-20 font-weight-semibold">Accordion <span class="text-primary">#</span>3 Primary / No Border</h5>
+                        <!-- Accordion 3 Primary / No Border -->
+                        <div id="accordion-3" class="cn-accordion" role="tablist">
+                            <div class="card g-border-0 g-mb-5">
+                                <div id="accordion-3-header1" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-bg-primary g-py-15 g-px-10 rounded" href="#accordion-3-body-1" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-3-body-1">
+                                            <span><i class="fa fa-comments fa-fw"></i> Header 1</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-3-body-1" class="collapse show" role="tabpanel" aria-labelledby="accordion-3-header1" data-parent="#accordion-3">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card g-border-0 g-mb-5">
+                                <div id="accordion-3-header2" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-bg-primary g-py-15 g-px-10 rounded" href="#accordion-3-body-2" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-3-body-2">
+                                            <span><i class="fa fa-cogs fa-fw"></i> Header 2</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-3-body-2" class="collapse" role="tabpanel" aria-labelledby="accordion-3-header2" data-parent="#accordion-3">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card g-border-0 g-mb-5">
+                                <div id="accordion-3-header3" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-bg-primary g-py-15 g-px-10 rounded" href="#accordion-3-body-3" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-3-body-3">
+                                            <span><i class="fa fa-laptop fa-fw"></i> Header 3</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-3-body-3" class="collapse" role="tabpanel" aria-labelledby="accordion-3-header3" data-parent="#accordion-3">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Accordion 3 Primary / No Border -->
+                    </div>
+                    <div class="col-lg-6 g-p-15 g-mb-30 g-mb-lg-0">
+                        <h5 class="text-center g-mb-20 font-weight-semibold">Accordion <span class="text-primary">#</span>4 Dark / Dark Border </h5>
+                    
+                        <!-- Accordion 4  Dark / Dark Border -->
+                        <div id="accordion-4" class="cn-accordion" role="tablist">
+                            <div class="card g-border g-border-gray-700 g-mb-5">
+                                <div id="accordion-4-header1" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-bg-dark g-py-15 g-px-10" href="#accordion-4-body-1" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-4-body-1">
+                                            <span><i class="fa fa-comments fa-fw"></i> Header 1</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-4-body-1" class="collapse show" role="tabpanel" aria-labelledby="accordion-4-header1" data-parent="#accordion-4">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card g-border g-border-gray-700 g-mb-5">
+                                <div id="accordion-4-header2" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-bg-dark g-py-15 g-px-10" href="#accordion-4-body-2" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-4-body-2">
+                                            <span><i class="fa fa-cogs fa-fw"></i> Header 2</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-4-body-2" class="collapse" role="tabpanel" aria-labelledby="accordion-4-header2" data-parent="#accordion-4">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card g-border g-border-gray-700 g-mb-5">
+                                <div id="accordion-4-header3" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-bg-dark g-py-15 g-px-10" href="#accordion-4-body-3" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-4-body-3">
+                                            <span><i class="fa fa-laptop fa-fw"></i> Header 3</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-4-body-3" class="collapse" role="tabpanel" aria-labelledby="accordion-4-header3" data-parent="#accordion-4">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Accordion 4  Dark / Dark Border -->
+                
+                    </div>
+                </div>
+            
+                <div class="row g-py-50">
+                    <div class="col-lg-6 g-p-15 g-mb-30 g-mb-lg-0">
+                        <h5 class="text-center g-mb-20 font-weight-semibold">Accordion <span class="text-primary">#</span>5 Border Active</h5>
+                        <!-- Accordion 5 Border Active -->
+                        <div id="accordion-5" class="cn-accordion accordion-active-border" role="tablist">
+                            <div class="card g-border-0 g-mb-5">
+                                <div id="accordion-5-header1" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-border-b g-border-b-2x g-border-b-gray-200 g-text-gray-800 g-py-15 g-px-10" href="#accordion-5-body-1" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-5-body-1">
+                                            <span><i class="fa fa-comments fa-fw"></i> Header 1</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-5-body-1" class="collapse show" role="tabpanel" aria-labelledby="accordion-5-header1" data-parent="#accordion-5">
+                                    <div class="card-body g-px-10">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card g-border-0 g-mb-5">
+                                <div id="accordion-5-header2" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-border-b g-border-b-2x g-border-b-gray-200 g-text-gray-800 g-py-15 g-px-10" href="#accordion-5-body-2" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-5-body-2">
+                                            <span><i class="fa fa-cogs fa-fw"></i> Header 2</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-5-body-2" class="collapse" role="tabpanel" aria-labelledby="accordion-5-header2" data-parent="#accordion-5">
+                                    <div class="card-body g-px-10">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card g-border-0 g-mb-5">
+                                <div id="accordion-5-header3" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-border-b g-border-b-2x g-border-b-gray-200 g-text-gray-800 g-py-15 g-px-10" href="#accordion-5-body-3" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-5-body-3">
+                                            <span><i class="fa fa-laptop fa-fw"></i> Header 3</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-5-body-3" class="collapse" role="tabpanel" aria-labelledby="accordion-5-header3" data-parent="#accordion-5">
+                                    <div class="card-body g-px-10">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Accordion 5 Border Active -->
+                    </div>
+                    <div class="col-lg-6 g-p-15 g-mb-30 g-mb-lg-0">
+                        <h5 class="text-center g-mb-20 font-weight-semibold">Accordion <span class="text-primary">#</span>6 Light Bordered</h5>
+                        <!-- Accordion 6 Light Bordered -->
+                        <div id="accordion-6" class="cn-accordion" role="tablist">
+                            <div class="card g-border g-border-gray-300 g-mb-5">
+                                <div id="accordion-6-header1" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-py-15 g-px-10 g-text-gray-800" href="#accordion-6-body-1" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-6-body-1">
+                                            <span><i class="fa fa-comments fa-fw"></i> Header 1</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-6-body-1" class="collapse show" role="tabpanel" aria-labelledby="accordion-6-header1" data-parent="#accordion-6">
+                                    <div class="card-body g-px-10 g-border g-border-t-gray-light-300">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card g-border g-border-gray-300 g-mb-5">
+                                <div id="accordion-6-header2" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-py-15 g-px-10 g-text-gray-800" href="#accordion-6-body-2" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-6-body-2">
+                                            <span><i class="fa fa-cogs fa-fw"></i> Header 2</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-6-body-2" class="collapse" role="tabpanel" aria-labelledby="accordion-6-header2" data-parent="#accordion-6">
+                                    <div class="card-body g-px-10 g-border g-border-t-gray-light-300">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card g-border g-border-gray-300 g-mb-5">
+                                <div id="accordion-6-header3" class="accordion-header" role="tab">
+                                    <h6 class="mb-0">
+                                        <a class="d-flex g-py-15 g-px-10 g-text-gray-800" href="#accordion-6-body-3" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-6-body-3">
+                                            <span><i class="fa fa-laptop fa-fw"></i> Header 3</span>
+                                            <span class="align-self-center ml-auto g-mr-10"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="accordion-6-body-3" class="collapse" role="tabpanel" aria-labelledby="accordion-6-header3" data-parent="#accordion-6">
+                                    <div class="card-body g-px-10 g-border g-border-t-gray-light-300">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eligendi laborum magni numquam voluptatibus? Aut consectetur modi praesentium ratione temporibus!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Accordion 6 Light Bordered -->
+                    </div>
+                </div>
+        
+            </div>
+        </section>
+        <!-- END Accordions -->
+
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+    
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

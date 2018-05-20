@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <meta name="description" content="cNote, a beautiful theme with awesome layouts">
+    <meta name="keywords" content="Theme, Template, Ecommerce, Bootstrap, SASS, Multipage, Onepage, Multipurpose, jQuery">
+    <meta name="distribution" content="global">
+    <title>cNote Documentation</title>
+    
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+<section class="main-content">
+    
+    <!-- Header Container -->
+    <div class="cn-header">
+        <div class="d-flex align-items-center h-100">
+            
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="text-uppercase font-weight-bold">cNote v1.0</h1>
+                    <h5 class="text-uppercase font-weight-bold">Multi / Onepage / Ecommerce Template</h5>
+                    <div>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Author: <a href="http://theme-aspect.com/cnote-v1.0/">Aspect Themes</a></li>
+                            <li class="list-inline-item">Contact: <a href="mailto:support@theme-aspect.com">support@theme-aspect.com</a></li>
+                            <li class="list-inline-item">Created at: 26/04/2018</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+    <!-- END Header Container -->
+    
+    <div class="docs my-5">
+        <div class="container">
+            <div class="row">
+                <!-- Docs Sidebar -->
+                <div class="col-md-3">
+                    <aside class="docs-sidebar">
+                        <nav class="navbar list-group">
+                            <a href="01-introduction.html" class="list-group-item list-group-item-action">Introduction</a>
+                            <a href="02-environment-setup.html" class="list-group-item list-group-item-action">Dev Environment Setup</a>
+                            <a href="03-workgulpfile.html" class="list-group-item list-group-item-action">Working with Gulp</a>
+                            <a href="04-project-structure.html" class="list-group-item list-group-item-action active">Project Structure</a>
+                            <a href="05-using-preprocessors.html" class="list-group-item list-group-item-action">Using Preprocessors</a>
+                            <a href="06-general-classes.html" class="list-group-item list-group-item-action">General Classes</a>
+                            <a href="07-colors.html" class="list-group-item list-group-item-action">Colors</a>
+                            <a href="08-font-icons.html" class="list-group-item list-group-item-action">Font Icons</a>
+                            <a href="09-plugins-list.html" class="list-group-item list-group-item-action">Plugins List</a>
+                            <a href="10-credits.html" class="list-group-item list-group-item-action">Source Assets</a>
+                            <a href="11-support.html" class="list-group-item list-group-item-action">Support</a>
+                        </nav>
+                    </aside>
+                </div>
+                <!-- END Docs Sidebar -->
+                
+                <!-- Docs Content -->
+                <div class="col-md-9">
+                    <div class="docs-content">
+                        
+                        <div>
+                            <h4 class="text-uppercase font-weight-bold"> Project Structure</h4>
+                            
+                            <p>Once you have downloaded the main file and unzipped it, you will find the following folders structure:</p>
+                            <ul>
+                                <li><span class="font-weight-bold text-danger">dist</span>
+                                    <ul>
+                                        <li><span class="font-weight-bold">assets</span>
+                                            <ul>
+                                                <li>fonts</li>
+                                                <li>images</li>
+                                                <li><span class="text-primary">vendor</span>
+                                                    <ul>
+                                                        <li>css</li>
+                                                        <li>js</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><span class="font-weight-bold">cnote-main</span></li>
+                                        <li><span class="font-weight-bold">ecommerce</span></li>
+                                    </ul>
+                                </li>
+                                <li><span class="font-weight-bold text-danger">documentation</span></li>
+                                <li><span class="font-weight-bold text-danger">src</span>
+                                    <ul>
+                                        <li><span class="font-weight-bold text-primary">assets</span>
+                                            <ul>
+                                                <li>images</li>
+                                                <li>scss</li>
+                                                <li>vendor</li>
+                                            </ul>
+                                        </li>
+                                        <li><span class="font-weight-bold text-primary">cnote-main</span>
+                                            <ul>
+                                                <li>assets
+                                                    <ul>
+                                                        <li>js</li>
+                                                        <li>scss</li>
+                                                    </ul>
+                                                </li>
+                                                <li>views</li>
+                                            </ul>
+                                        </li>
+                                        <li><span class="font-weight-bold text-primary">ecommerce</span>
+                                            <ul>
+                                                <li>assets
+                                                    <ul>
+                                                        <li>js</li>
+                                                        <li>scss</li>
+                                                    </ul>
+                                                </li>
+                                                <li>views</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><span class="font-weight-bold text-danger">gulpfile.js</span></li>
+                                <li><span class="font-weight-bold text-danger">package.json</span></li>
+                            </ul>
+                            
+                            <p><span class="font-weight-bold">dist</span>
+                                - Folder contains all template distribution files like .html, .css, .js that have been processed (compiled / minified) from src folder using Node.js and Gulp.
+                            </p>
+                            <p><span class="font-weight-bold">src</span>
+                                - This folder holds all template source files like html, .scss, .js that are then processed (compiled / minified) to dist folder.
+                            </p>
+                            <p><span class="font-weight-bold">package.json</span>
+                                - File includes the list of dependencies to install from npm when running <code>npm install </code>.
+                            </p>
+                            <p><span class="font-weight-bold">gulpfile.js</span>
+                                - 	Configuration file for Gulp library. It contains all tasks you want to perform with Gulp.
+                                Learn more about it from Working with Gulp section or official Gulp documentation..
+                            </p>
+                            <p><span class="font-weight-bold">cnote-main</span> - files for the main template</p>
+                            <p><span class="font-weight-bold">ecommerce</span> - files for the ecommerce demo</p>
+                            <br>
+                            <hr>
+                            
+                            <h5 class="font-weight-bold">Vendor / Plugins</h5>
+                            <ul>
+                                <li>css
+                                    <ul>
+                                        <li>1. font-awesome</li>
+                                        <li>2. jquery-ui-slider</li>
+                                        <li>3. magnific-popup</li>
+                                        <li>4. owl.carousel</li>
+                                        <li>5. simple-line-icons</li>
+                                    </ul>
+                                </li>
+                                <li>js
+                                    <ul>
+                                        <li>1. bootstrap</li>
+                                        <li>2. bootstrap-datepicker</li>
+                                        <li>3. jquery</li>
+                                        <li>4. jquery.appear</li>
+                                        <li>5. jquery.countdown</li>
+                                        <li>6. jquery.magnific-popup</li>
+                                        <li>7. popper</li>
+                                        <li>8. countUp</li>
+                                        <li>9. imagesloaded</li>
+                                        <li>10. masonry</li>
+                                        <li>11. mouse</li>
+                                        <li>12. owl.carousel</li>
+                                        <li>13. owl.carousel.thumbs</li>
+                                        <li>14. popper</li>
+                                        <li>15. masonry</li>
+                                        <li>16. circle-progress</li>
+                                        <li>17. scrollreveal</li>
+                                        <li>18. slider</li>
+                                        <li>19. typed</li>
+                                        <li>20. widget</li>
+                                    </ul>
+                                </li>
+                            </ul>
+    
+    
+                            <h5 class="text-uppercase font-weight-bold mb-3">HTML File Structure</h5>
+                            <p>HTML files can be found in <span class="font-weight-bold">views/</span> folder. SWIG allows us to insert the content from partials into other files and compile them into <span class="font-weight-bold">dist/</span> folder. </p>
+                            <p>You can directly copy the code from <code>_partials</code> and you can paste it wherever you want to add or change a component</p>
+                            <p>All HTML files / partials are included in <span class="font-weight-bold">src/cnote-main/views/</span> or <span class="font-weight-bold"> src/ecommerce/views/</span> folder .</p>
+                            <p>There you will find the following structure:</p>
+                            <ul>
+                                <li><code>cnote-main</code>
+                                    <ul>
+                                        <li><span class="font-weight-bold">_partials/</span> - contains main footers and headers</li>
+                                        <li><span class="font-weight-bold">components/</span> - all pre-made HTML components (eg.: accordions, buttons, icons, forms, colors etc.)</li>
+                                        <li><span class="font-weight-bold">headers/</span> -  all headers / navigation bars variants</li>
+                                        <li><span class="font-weight-bold">homepages/</span> - all homepages variants</li>
+                                        <li><span class="font-weight-bold">onepages/</span> - all onepages variant</li>
+                                        <li><span class="font-weight-bold">pages/</span> - 404 pages, about pages, login-register, blogs etc.</li>
+                                    </ul>
+                                </li>
+                                <li><code>ecommerce</code>
+                                    <ul>
+                                        <li><span class="font-weight-bold">_partials/</span> - contains the header and the footer belonging to shop</li>
+                                        <li>And other HTML files (the homepage, pages for checkout order, profile, single product etc. )</li>
+                                    </ul>
+                                </li>
+                            </ul>
+    
+                            <hr>
+                            <h5 class="text-uppercase font-weight-bold mb-3">Headers</h5>
+                            <p>Basic HTML code for navbar</p>
+                            <div class="mb-4 border p-3">
+                                <img src="images/basic_navbar.png" class="img-fluid" alt="Header Basic">
+                            </div>
+                            <p>If you need to add a specific background color to your navbar you can simply add a class like:
+                                <br>
+                                <code>g-bg-dark</code>,
+                                <code>g-bg-primary</code>,
+                                <code>g-bg-orange</code>
+                                to
+                                <code>cn-navbar-wrapper</code>
+                                <br>
+                                <span> More colors
+                                    <a class="font-weight-bold" href="http://theme-aspect.com/cnote-v1.0/cnote-main/components/colors.html">here</a>
+                                </span>
+                            </p>
+                            <div class="alert alert-secondary">
+                                <code class="font-weight-bold">cn-</code> stands from <span class="font-weight-bold">cnote</span> !
+                            </div>
+                            <p>Of course you can change the color of text by adding
+                                <code>cn-navbar-dark-color</code> or
+                                <code>cn-navbar-white-color</code>
+                                depends on what background color you choose.
+                            </p>
+                            <p>Need a sticky navbar ? no problem, just add <code>navbar-scrollspy</code> to <code>cn-navbar-wrapper</code>
+                                but don't forget to check the <code>body</code> and make sure you have: <br>
+                                <code>data-spy="scroll" data-target=".navbar-scrollspy" data-offset="50"</code>
+                            </p>
+                            <p>Need to change the font type or size? please check _variables.scss at "navbar section"</p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <!-- END Docs Content -->
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/prism.js"></script>
+</body>
+</html>

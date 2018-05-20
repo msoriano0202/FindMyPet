@@ -1,0 +1,217 @@
+{% extends '_partials/_cnote-shop-layout.html' %}
+{% block page-title %}<title>Shop Cart | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '_partials/_headers/_topbar-1.html' %}
+        {% include '_partials/_headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Shop Cart</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Shop Cart</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Shop Cart -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container">
+                <!-- Shop Cart -->
+                <div class="g-p-20 g-border g-border-gray-300 g-bg-white g-shadow-v2">
+                
+                    <h5 class="font-weight-bold g-text-gray-700">Shopping cart</h5>
+                    <hr class="g-border-gray-200 g-pb-10">
+                    
+                    <!-- Shop Cart Table -->
+                    <div class="table-responsive-lg">
+                        <table class="table table-bordered wishlist-cart-table table-hover g-m-0">
+                            <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th style="width:18%;">Quantity</th>
+                                <th>Total</th>
+                                <th class="text-center"><a href="#" class="btn-link">Remove</a></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="align-middle">
+                                    <div class="product-item">
+                                        <div class="product-thumbnail">
+                                            <img src="http://via.placeholder.com/100x100/eee/777" class="img-fluid" alt="Image Description">
+                                        </div>
+                                        <div class="product-description">
+                                            <h6 class="product-title font-weight-bold"><a href="#">Shoes</a></h6>
+                                            <span>Black</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle">$10</td>
+                                <td class="align-middle">
+                                    <div class="input-group quantities">
+                                            <span class="input-group-prepend">
+                                                <a href="#" class="quantity-minus" data-type="minus" data-field="update_product_01">
+                                                  <i class="fa fa-minus"></i>
+                                                </a>
+                                            </span>
+                                        <input type="text" name="updates[]" id="update_product_01" class="form-control form-control-xs quantity" value="1" min="1" max="100" >
+                                        <span class="input-group-append">
+                                                <a href="#" class="quantity-plus" data-type="plus" data-field="update_product_01">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </span>
+                                    </div>
+                                </td>
+                                <td class="align-middle">
+                                    $10
+                                </td>
+                                <td class="align-middle text-center">
+                                    <span><i class="fa fa-close"></i></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">
+                                    <div class="product-item">
+                                        <div class="product-thumbnail">
+                                            <img src="http://via.placeholder.com/100x100/eee/777" class="img-fluid" alt="Image Description">
+                                        </div>
+                                        <div class="product-description">
+                                            <h6 class="product-title font-weight-bold"><a href="#">Sneakers</a></h6>
+                                            <span>Black</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle">$34</td>
+                                <td class="align-middle">
+                                    <div class="input-group quantities">
+                                            <span class="input-group-prepend">
+                                                <a href="#" class="quantity-minus"  data-type="minus" data-field="update_product_02">
+                                                  <i class="fa fa-minus"></i>
+                                                </a>
+                                            </span>
+                                        <input type="text" name="updates[]" id="update_product_02" class="form-control form-control-xs quantity" value="1" min="1" max="100" >
+                                        <span class="input-group-append">
+                                                <a href="#" class="quantity-plus" data-type="plus" data-field="update_product_02">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </span>
+                                    </div>
+                                </td>
+                                <td class="align-middle">
+                                    $34
+                                </td>
+                                <td class="align-middle text-center">
+                                    <span><i class="fa fa-close"></i></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">
+                                    <div class="product-item">
+                                        <div class="product-thumbnail">
+                                            <img src="http://via.placeholder.com/100x100/eee/777" class="img-fluid" alt="Image Description">
+                                        </div>
+                                        <div class="product-description">
+                                            <h6 class="product-title font-weight-bold"><a href="#">High Heels</a></h6>
+                                            <span>Red</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle">$75</td>
+                                <td class="align-middle">
+                                    <div class="input-group quantities">
+                                            <span class="input-group-prepend">
+                                                <a href="#" class="quantity-minus" data-type="minus" data-field="update_product_03">
+                                                  <i class="fa fa-minus"></i>
+                                                </a>
+                                            </span>
+                                        <input type="text" name="updates[]" id="update_product_03" class="form-control form-control-xs quantity" value="1" min="1" max="100" >
+                                        <span class="input-group-append">
+                                                <a href="#" class="quantity-plus" data-type="plus" data-field="update_product_03">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </span>
+                                    </div>
+                                </td>
+                                <td class="align-middle">
+                                    $75
+                                </td>
+                                <td class="align-middle text-center">
+                                    <span><i class="fa fa-close"></i></span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END Shop Cart Table -->
+     
+                
+                    <!-- Cart Footer -->
+                    <div class="shop-cart-footer">
+                        <div class="d-md-flex justify-content-center g-mt-30">
+                            <div class="g-mb-10 g-mb-md-0">
+                                <form class="" method="post">
+                                    <div class="input-group g-m-0">
+                                        <input class="form-control form-control-sm g-mr-10" type="text" placeholder="Coupon code" required>
+                                        <div class="input-group-append g-p-0">
+                                            <button type="submit" class="btn btn-sm btn-outline-primary">Apply Coupon</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="ml-auto">Subtotal: <span class="g-font-size-18 font-weight-bold">$119</span></div>
+                        </div>
+                        <div class="d-sm-flex g-mt-30">
+                            <div class="g-mb-10 g-mb-sm-0">
+                                <a class="btn cn-btn-primary" href="shop-grid-left-sidebar.html">
+                                    <i class="fa fa-long-arrow-left"></i>
+                                    <span>Return to Shop</span>
+                                </a>
+                            </div>
+                            <div class="ml-auto">
+                                <a class="btn cn-btn-dark g-mr-5" href="checkout-shipping.html">
+                                    <span>Update cart </span>
+                                </a>
+                                <a class="btn cn-btn-primary" href="checkout-address.html">
+                                    <span>Checkout </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Cart Footer -->
+            
+                </div>
+                <!-- END Shop Cart -->
+            </div>
+    
+        </section>
+        <!-- END Shop Cart -->
+        
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '_partials/_footer.html' %}
+    <!-- END Footer -->
+    
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

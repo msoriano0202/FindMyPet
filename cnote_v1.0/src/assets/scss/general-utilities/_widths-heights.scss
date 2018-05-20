@@ -1,0 +1,84 @@
+/*
+    @
+    @   GENERAL UTILITIES
+    @   THEME WIDTH & HEIGHT
+    @
+*/
+
+$widths: (
+    w10: 10px,
+    w20: 20px,
+    w30: 30px,
+    w40: 40px,
+    w50: 50px,
+    w60: 60px,
+    w70: 70px,
+    w80: 80px,
+    w90: 90px,
+    w100: 100px,
+    w110: 110px,
+    w120: 120px,
+    w130: 130px,
+    w140: 140px,
+    w150: 150px
+);
+
+//@each $widths, $width-value in $widths {
+//    .g-#{$widths} {
+//        width: $width-value !important;
+//    }
+//}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+        
+        @each $widths, $width-value in $widths {
+            .g#{$infix}-#{$widths} {
+                width: $width-value !important;
+            }
+        }
+        
+    }
+}
+
+$heights : (
+    h10:10px,
+    h20: 20px,
+    h30: 30px,
+    h40: 40px,
+    h50: 50px,
+    h60: 60px,
+    h70: 70px,
+    h80: 80px,
+    h90: 90px,
+    h100: 100px,
+    h150: 150px,
+    h200: 200px,
+    h250: 250px,
+    h300: 300px,
+    h350: 350px,
+    h400: 400px,
+    h450: 450px,
+    h500: 500px,
+    h550: 550px,
+    h600: 600px,
+    h650: 650px,
+    h700: 700px,
+    h750: 750px,
+    h800: 800px
+);
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    
+        @each $heights, $height-value in $heights {
+            .g#{$infix}-#{$heights} {
+                height: $height-value !important;
+            }
+        }
+        
+    }
+}
+

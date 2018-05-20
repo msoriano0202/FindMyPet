@@ -1,0 +1,52 @@
+/*
+    @
+    @   29. PAGINATION
+    @
+*/
+
+.cn-pagination {
+    display: block;
+    .page-item {
+        display: inline-block;
+        margin-left: $pagination-space-between;
+        margin-right: $pagination-space-between;
+        &.active,
+        &:active {
+            .page-link {
+                background-color: $pagination-active-bg;
+                border-color: darken($pagination-active-bg, 3%);
+            }
+        }
+
+    }
+    .previous-item,
+    .next-item {
+        @include media-breakpoint-down(sm) {
+            display: block;
+            margin-top:8px;
+            margin-bottom:8px;
+            text-align: center;
+        }
+        .page-link {
+            padding-left:30px;
+            padding-right:30px;
+        }
+    }
+    .page-link {
+        border-radius: .2rem;
+        font-size: $font-size-sm !important;
+        display: block;
+        &:active {
+            color:#ffffff;
+        }
+    }
+    &.circle {
+        .page-link {
+            border-radius:30px !important;
+        }
+    }
+
+}
+
+
+

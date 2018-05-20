@@ -1,0 +1,102 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Footers | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Footers</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Components</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Footers</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <div class="row justify-content-center g-py-70 g-bg-white">
+            <div class="col-lg-10">
+                
+                <!-- Footer 1 Dark -->
+                <div class="g-mb-50">
+                    <h4 class="g-mb-20 text-center">Footer <span class="text-primary">#1</span> - Dark</h4>
+                    {% include '../_partials/footers/footer-1.html' %}
+                </div>
+                <!-- END Footer 1 Dark -->
+    
+                <!-- Footer 1 Light-->
+                <div class="g-mb-50">
+                    <h4 class="g-mb-20 text-center">Footer <span class="text-primary">#1</span> - Light</h4>
+                    {% include '../_partials/footers/footer-1-light.html' %}
+                </div>
+                <!-- END Footer 1 Light-->
+    
+                <!-- Footer 2 Dark -->
+                <div class="g-mb-50">
+                    <h4 class="g-mb-20 text-center">Footer <span class="text-primary">#2</span> - Dark</h4>
+                    {% include '../_partials/footers/footer-2.html' %}
+                </div>
+                <!-- END Footer 2 Dark -->
+    
+                <!-- Footer 2 Light -->
+                <div class="g-mb-50">
+                    <h4 class="g-mb-20 text-center">Footer <span class="text-primary">#2</span> - Light</h4>
+                    {% include '../_partials/footers/footer-2-light.html' %}
+                </div>
+                <!-- END Footer 2 Light  -->
+    
+                <!-- Footer 3 Dark-->
+                <div class="g-mb-50">
+                    <h3 class="g-mb-20 text-center">Footer style <span class="text-primary">#3</span> - Dark</h3>
+                    {% include '../_partials/footers/footer-3.html' %}
+                </div>
+                <!-- END Footer 3 Dark-->
+    
+                <!-- Footer 3 Light-->
+                <div class="g-mb-50">
+                    <h3 class="g-mb-20 text-center">Footer style <span class="text-primary">#3</span>  - Light</h3>
+                    {% include '../_partials/footers/footer-3-light.html' %}
+                </div>
+                <!-- END Footer 3 Light -->
+                
+                <!-- Footer 4 Dark -->
+                <div class="g-mb-50">
+                    <h3 class="g-mb-20 text-center">Footer style <span class="text-primary">#4</span> - Dark</h3>
+                    {% include '../_partials/footers/footer-4.html' %}
+                </div>
+                <!-- END Footer 4 Dark -->
+    
+                <!-- Footer 4 Light -->
+                <div class="g-mb-50">
+                    <h3 class="g-mb-20 text-center">Footer style <span class="text-primary">#4</span> - Light</h3>
+                    {% include '../_partials/footers/footer-4-light.html' %}
+                </div>
+                <!-- END Footer 4 Light -->
+            </div>
+        </div>
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+
+</div>
+{% endblock %}

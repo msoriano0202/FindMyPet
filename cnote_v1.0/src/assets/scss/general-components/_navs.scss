@@ -1,0 +1,147 @@
+
+/*
+    @
+    @   8. NAVS
+    @       8.1 NAV GALLERY
+    @       8.2 CNOTE NAV TABS
+    @
+*/
+
+
+/*
+    8.1
+    NAV GALLERY
+    -------------------------------------------------------------------------------------------------
+*/
+
+.nav-gallery {
+    .nav-link {
+        background-color: #ffffff;
+        border:1px solid $gray-300;
+        color: #111111;
+        &.active {
+            background-color: theme-color("primary");
+            color: #ffffff;
+        }
+    }
+}
+
+/*
+    8.2
+    CNOTE NAV TABS
+    -------------------------------------------------------------------------------------------------
+*/
+
+.nav-tabs {
+    .nav-link:after {
+        display: none;
+    }
+}
+
+.cn-nav-tabs {
+    &.nav-tabs {
+        border-bottom: none;
+        .nav-item {
+            margin-bottom: -$nav-tabs-border-width;
+        }
+        .nav-link {
+            color: $nav-tabs-link-color;
+            padding: $nav-tabs-link-padding-y $nav-tabs-link-padding-x;
+            border: $nav-tabs-border-width solid transparent;
+    
+            @include border-top-radius($nav-tabs-border-radius);
+            @include hover-focus {
+                border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
+            }
+            &.disabled {
+                color: $nav-link-disabled-color;
+                background-color: transparent;
+                border-color: transparent;
+            }
+        }
+        .nav-link.active,
+        .nav-item.show .nav-link {
+            color: $nav-tabs-link-active-color;
+            background-color: $nav-tabs-link-active-bg;
+            border-color: $nav-tabs-link-active-border-color $nav-tabs-link-active-border-color transparent;
+        }
+        .dropdown-menu {
+            // Make dropdown border overlap tab border
+            margin-top: -$nav-tabs-border-width;
+            // Remove the top rounded corners here since there is a hard edge above the menu
+            @include border-top-radius(0);
+        }
+        
+        // Primary Active
+        &.primary-active {
+            .nav-link {
+                @include hover-focus {
+                    border-color: $nav-tabs-primary-border-color $nav-tabs-primary-border-color transparent;
+                }
+            }
+            .nav-link.active,
+            .nav-item.show .nav-link {
+                border-color: $nav-tabs-primary-border-color $nav-tabs-primary-border-color transparent;
+            }
+            ~ .tab-content {
+                border-color: $nav-tabs-primary-border-color;
+            }
+        }
+    }
+    &.nav-pills {
+        .nav-link {
+            color: $nav-tabs-link-color;
+            padding: $nav-tabs-link-padding-y $nav-tabs-link-padding-x;
+            background-color:#ffffff;
+            border: none;
+            border-bottom-left-radius:0;
+            border-bottom-right-radius:0;
+            &.active {
+                color: #ffffff;
+                background-color: theme-color("primary");
+            }
+            
+        }
+        ~ .tab-content {
+            border-color: $nav-tabs-border-color;
+            background-color: #ffffff;
+        }
+        &.primary-active {
+            .nav-link {
+                padding: $nav-tabs-link-padding-y $nav-tabs-link-padding-x;
+                border: none;
+                border-bottom-left-radius:0;
+                border-bottom-right-radius:0;
+            }
+            ~ .tab-content {
+                border-color: $nav-tabs-primary-border-color;
+            }
+        }
+    }
+    &.nav-justified {
+        .nav-link {
+            padding-left: 0;
+            padding-right:0;
+        }
+    }
+    
+    @include media-breakpoint-down(sm) {
+        .nav-item {
+            flex-basis: 0;
+            flex-grow: 1;
+            text-align: center;
+            .nav-link {
+                padding-left:0 !important;
+                padding-right:0 !important;
+            }
+        }
+        .tab-name {
+            display: none;
+        }
+    }
+}
+
+.tab-content {
+    padding: 1rem;
+    border:1px solid $nav-tabs-border-color;
+}

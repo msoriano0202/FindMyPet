@@ -1,0 +1,84 @@
+
+// Background Colors
+// -------------------------------------------------------------------------------------------------
+
+.g-bg-white,
+.g-bg-white-h:hover {
+    background-color: #fdfdfd !important;
+    color: $body-color;
+}
+.g-bg-white-opacity-0 {  background-color: rgba(255,255,255, 0) !important; }
+.g-bg-white-opacity-1 {  background-color: rgba(255,255,255, 0.1) !important; }
+.g-bg-white-opacity-2 {  background-color: rgba(255,255,255, 0.2) !important; }
+.g-bg-white-opacity-3 {  background-color: rgba(255,255,255, 0.3)  !important; }
+.g-bg-white-opacity-4 {  background-color: rgba(255,255,255, 0.4)  !important; }
+.g-bg-white-opacity-5 {  background-color: rgba(255,255,255, 0.5) !important; }
+.g-bg-white-opacity-6 {  background-color: rgba(255,255,255, 0.6) !important; }
+.g-bg-white-opacity-7 {  background-color: rgba(255,255,255, 0.7)  !important; }
+.g-bg-white-opacity-8 {  background-color: rgba(255,255,255, 0.8)  !important; }
+.g-bg-white-opacity-9 {  background-color: rgba(255,255,255, 0.9)  !important; }
+
+.g-bg-black,
+.g-bg-black-h:hover {
+    background-color: #000000 !important;
+    color:#ffffff;
+}
+.g-bg-black-opacity-0 {  background-color: rgba(0,0,0, 0)  !important; }
+.g-bg-black-opacity-1 {  background-color: rgba(0,0,0, 0.1)  !important; }
+.g-bg-black-opacity-2 {  background-color: rgba(0,0,0, 0.2)  !important; }
+.g-bg-black-opacity-3 {  background-color: rgba(0,0,0, 0.3) !important; }
+.g-bg-black-opacity-4 {  background-color: rgba(0,0,0, 0.4)  !important; }
+.g-bg-black-opacity-5 {  background-color: rgba(0,0,0, 0.5)  !important; }
+.g-bg-black-opacity-6 {  background-color: rgba(0,0,0, 0.6)  !important; }
+.g-bg-black-opacity-7 {  background-color: rgba(0,0,0, 0.7)  !important; }
+.g-bg-black-opacity-8 {  background-color: rgba(0,0,0, 0.8)  !important; }
+.g-bg-black-opacity-9 {  background-color: rgba(0,0,0, 0.9)  !important; }
+
+@each $key, $value in map-colors(colorPalette($cnote-colors, 10), $theme-colors) {
+    @include bg-color($key, $value);
+}
+@each $key, $value in map-colors($custom-grays, $custom-bluegrays) {
+    @include bg-grays-color($key, $value);
+}
+
+// Background Opacity
+
+@each $key, $value in map-colors($cnote-colors, $theme-colors) {
+    @include opacity-bg($key, $value);
+}
+
+// Background Cover
+// -------------------------------------------------------------------------------------------------
+
+.bg-cover {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.bg-cover-top {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+.bg-cover-bottom {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

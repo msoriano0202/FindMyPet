@@ -1,0 +1,406 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>List Group | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">List Group</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Components</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">List Group</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Colors -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container">
+                
+                <!-- Basic + Links -->
+                <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-10 g-shadow-v1">
+                    <div class="row justify-content-between">
+                        <div class="col-lg-6 g-mb-15">
+                            <h6 class="text-uppercase font-weight-bold g-mb-15 text-center text-md-left">Basic List Group</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item active">Cras justo odio</li>
+                                <li class="list-group-item">Dapibus ac facilisis in</li>
+                                <li class="list-group-item">Morbi leo risus</li>
+                                <li class="list-group-item">Porta ac consectetur ac</li>
+                                <li class="list-group-item">Vestibulum at eros</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 g-mb-15">
+                            <h6 class="text-uppercase font-weight-bold g-mb-15 text-center text-md-left">Links List Group</h6>
+                            <nav class="list-group">
+                                <a href="#" class="list-group-item active">Cras justo odio</a>
+                                <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                                <a href="#" class="list-group-item">Morbi leo risus</a>
+                                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                                <a href="#" class="list-group-item">Vestibulum at eros</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Basic + Links -->
+                
+                <!-- Badge + Icons -->
+                <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-10  g-shadow-v1">
+                    <div class="row justify-content-between">
+                        <div class="col-lg-6 g-mb-15">
+                            <h6 class="text-uppercase font-weight-bold g-mb-15 text-center text-md-left">With Badges</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item active d-flex justify-content-between align-items-center">
+                                    Cras justo odio
+                                    <span class="badge badge-pill">15</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Dapibus ac facilisis in
+                                    <span class="badge badge-pill">2</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Morbi leo risus
+                                    <span class="badge badge-pill">5</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Porta ac consectetur ac
+                                    <span class="badge badge-pill">21</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Vestibulum at eros
+                                    <span class="badge badge-pill">9</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 g-mb-15">
+                            <h6 class="text-uppercase font-weight-bold g-mb-15 text-center text-md-left">With Icons</h6>
+                            <nav class="list-group">
+                                <a href="#" class="list-group-item active">
+                                    <i class="fa fa-home g-mr-10"></i>Cras justo odio
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-cogs g-mr-10"></i>Dapibus ac facilisis in
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-comment g-mr-10"></i>Morbi leo risus
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-cloud g-mr-10"></i>Porta ac consectetur ac
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-support g-mr-10"></i>Vestibulum at eros
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Badge + Icons -->
+                
+                <!-- Custom Content -->
+                <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-10 g-shadow-v1">
+                    <div class="row">
+                        <div class="col-lg-6 g-mb-15">
+                            <h6 class="text-uppercase font-weight-bold g-mb-15 text-center text-md-left">Default Custom List Group</h6>
+                            <div class="list-group text-center text-sm-left">
+                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="d-sm-flex justify-content-between">
+                                        <h6 class="g-mb-sm-10 font-weight-bold">List group item heading</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 d-block"><small>1 day ago</small></span>
+                                    </div>
+                                    <p class="g-mb-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                    <small>Donec id elit non mi porta.</small>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="d-sm-flex justify-content-between">
+                                        <h6 class="g-mb-sm-10 font-weight-bold">List group item heading</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 d-block"><small>4 days ago</small></span>
+                                    </div>
+                                    <p class="g-mb-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                    <small>Donec id elit non mi porta.</small>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="d-sm-flex justify-content-between">
+                                        <h6 class="g-mb-sm-10 font-weight-bold">List group item heading</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 d-block"><small>6 days ago</small></span>
+                                    </div>
+                                    <p class="g-mb-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                    <small>Donec id elit non mi porta.</small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 g-mb-15">
+                            <h6 class="text-uppercase font-weight-bold g-mb-15 text-center text-md-left">Custom List Group #1</h6>
+                            <div class="list-group text-center text-sm-left">
+                                <a href="#" class="list-group-item d-sm-flex">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <div class="d-sm-flex justify-content-between">
+                                            <h6 class="g-mb-sm-10 font-weight-bold">John Doe</h6>
+                                            <span class="g-mb-10 g-mb-sm-0 d-block"><small>1 day ago</small></span>
+                                        </div>
+                                        <p class="g-mb-5">Peregrinatione sed mire ducunt ad festus armarium. Cum epos credere, omnes vortexes anhelare salvus, albus orexises.</p>
+                                        <small>Donec id elit non mi porta.</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item d-sm-flex">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <div class="d-sm-flex justify-content-between">
+                                            <h6 class="g-mb-sm-10 font-weight-bold">Jinny Doe</h6>
+                                            <span class="g-mb-10 g-mb-sm-0 d-block"><small>3 day ago</small></span>
+                                        </div>
+                                        <p class="g-mb-5">Peregrinatione sed mire ducunt ad festus armarium. Cum epos credere, omnes vortexes anhelare salvus, albus orexises.</p>
+                                        <small>Donec id elit non mi porta.</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item d-sm-flex">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <div class="d-sm-flex justify-content-between">
+                                            <h6 class="g-mb-sm-10 font-weight-bold">William Phrall</h6>
+                                            <span class="g-mb-10 g-mb-sm-0 d-block"><small>6 day ago</small></span>
+                                        </div>
+                                        <p class="g-mb-5">Peregrinatione sed mire ducunt ad festus armarium. Cum epos credere, omnes vortexes anhelare salvus, albus orexises.</p>
+                                        <small>Donec id elit non mi porta.</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Custom Content -->
+    
+                <!-- Custom Content 2 -->
+                <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-10 g-shadow-v1">
+                    <h6 class="text-uppercase font-weight-bold g-mb-15 text-center text-md-left">Custom List Group #2</h6>
+                    <div class="row">
+                        
+                        <div class="col-lg-6 g-mb-15">
+                            <ul class="list-group text-center text-sm-left">
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">John Doe</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-primary font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">Full Stack Developer</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, reiciendis.</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">William Prall</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-blue font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">IT Recruiter</span>
+                                        <p>Cum decor ridetis, omnes uriaes imperium domesticus, germanus tumultumquees.</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">Andreea Watson</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-green font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">Front-End Developer</span>
+                                        <p>Cum devatio velum, omnes advenaes perdere raptus, peritus parmaes.</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">Alex Holsten</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-purple font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">Founder & CEO</span>
+                                        <p>Fatalis, azureus poetas tandem tractare de fortis, brevis calceus.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 g-mb-15">
+                            <ul class="list-group text-center text-sm-left">
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-border-l-3x g-border-l-primary">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">John Doe</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-primary font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">Full Stack Developer</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, reiciendis.</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-border-l-3x g-border-l-blue">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">Jenny Prall</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-blue font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">IT Recruiter</span>
+                                        <p>Cum decor ridetis, omnes uriaes imperium domesticus, germanus tumultumquees.</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-border-l-3x g-border-l-green">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">Andreea Watson</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-green font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">Front-End Developer</span>
+                                        <p>Cum devatio velum, omnes advenaes perdere raptus, peritus parmaes.</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-border-l-3x g-border-l-purple">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">Alex Holsten</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-purple font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">Founder & CEO</span>
+                                        <p>Fatalis, azureus poetas tandem tractare de fortis, brevis calceus.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- END Custom Content 2 -->
+    
+                <!-- Custom Content 3 -->
+                <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-10 g-shadow-v1">
+                    <h6 class="text-uppercase font-weight-bold g-mb-15 text-center text-md-left">Custom List Group #3 ( Margin Bottom )</h6>
+                    <div class="row">
+                        
+                        <div class="col-lg-6 g-mb-15">
+                            <ul class="list-group text-center text-sm-left">
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-mb-5">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">John Doe</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-primary font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">Full Stack Developer</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, reiciendis.</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-mb-5">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">William Prall</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-blue font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">IT Recruiter</span>
+                                        <p>Cum decor ridetis, omnes uriaes imperium domesticus, germanus tumultumquees.</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-mb-5">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">Andreea Watson</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-green font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">Front-End Developer</span>
+                                        <p>Cum devatio velum, omnes advenaes perdere raptus, peritus parmaes.</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-mb-5">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">Alex Holsten</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-purple font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">Founder & CEO</span>
+                                        <p>Fatalis, azureus poetas tandem tractare de fortis, brevis calceus.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="col-lg-6 g-mb-15">
+                            <ul class="list-group text-center text-sm-left">
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-border-l-3x g-border-l-primary g-mb-5">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">John Doe</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-primary font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">Full Stack Developer</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, reiciendis.</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-border-l-3x g-border-l-blue g-mb-5">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">Jenny Prall</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-blue font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">IT Recruiter</span>
+                                        <p>Cum decor ridetis, omnes uriaes imperium domesticus, germanus tumultumquees.</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-border-l-3x g-border-l-green g-mb-5">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">Andreea Watson</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-green font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">Front-End Developer</span>
+                                        <p>Cum devatio velum, omnes advenaes perdere raptus, peritus parmaes.</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-border-l-3x g-border-l-purple g-mb-5">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Image Description">
+                                    </div>
+                                    <div>
+                                        <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">Alex Holsten</h6>
+                                        <span class="g-mb-10 g-mb-sm-0 g-bg-purple font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">Founder & CEO</span>
+                                        <p>Fatalis, azureus poetas tandem tractare de fortis, brevis calceus.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- END Custom Content 3 -->
+                
+            </div>
+        </section>
+        <!-- END Colors -->
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

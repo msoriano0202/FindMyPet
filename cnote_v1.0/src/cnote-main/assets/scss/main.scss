@@ -1,0 +1,155 @@
+/*
+    @
+    @   ----------------------------------- CNOTE MAIN ----------------------------------------
+    @   --------------------------------------------------------------------------------------------
+    @   CNOTE RESPONSIVE TEMPLATE - Version 1.0.0
+    @   URL  ( http://theme-aspect.com/cnote-v1.0 )
+    @   --------------------------------------------------------------------------------------------
+    @   MAIN SCSS - imported SCSS partials
+    @   general components + general utilities
+    @   --------------------------------------------------------------------------------------------
+    @
+    @   1. Functions
+    @   2. Variables
+    @   3. Bootstrap ( node_modules )
+    @   4. Mixins
+    @       4.1 - Backgrounds
+    @       4.2 - Text
+    @       4.3 - Borders
+    @       4.4 - Buttons
+    @       4.5 - Icons
+    @   5. Reboot
+    @   6. Preloader
+    @   7. Navbar
+    @       7.1 Topbar
+    @       7.2 Cnote Header ( Navbar )
+    @       7.3 Dropdown ( Menu - Submenu )
+    @   8. Navs
+    @       8.1 Nav Gallery
+    @       8.2 Cnote Nav Tabs
+    @   9. Alerts
+    @   10. Badges
+    @   11. Footers
+    @   12. Carousels
+    @       12.1 Testimonials Carousel
+    @   13. Counters
+    @       13.1 Countdown
+    @       13.2 Count Up
+    @   14. Gallery-Images
+    @       14.1 Magnific Popup
+    @       14.2 Magnific Popup - Horizontal effect
+    @       14.3 Magnific Popup - Vertical effect
+    @   15. Masonry-Grid
+    @   16. Titles
+    @   17. Timelines
+    @   18. Icons
+    @   19. Profile
+    @   20. Buttons
+    @       20.1 Colors
+    @       20.2 Hover effect
+    @       20.3 Hover effect v1
+    @       20.4 Hover effect v2
+    @       20.5 Sizes
+    @   21. Tooltips + Popovers
+    @   22. List / List-Groups
+    @   23. Forms
+    @   24. Custom-Forms
+    @       24.1 Custom File Input
+    @       24.2 Custom Checkbox
+    @       24.3 Custom Checkbox v2
+    @       24.4 Custom Checkbox v3
+    @       24.5 Custom Radio v1
+    @       24.6 Custom Radio v2
+    @       24.7 Custom Radio v3
+    @       24.8 Quantities
+    @       24.9 Toggle / Switch
+    @   25. Breadcrumb
+    @   26. Widgets
+    @       26.1 Tags
+    @       26.2 Slider Range
+    @   27. Accordions
+    @   28. Progress-Bars
+    @       28.1 Style 1
+    @       28.2 Style 2
+    @       28.3 Sizes
+    @       28.4 Circles
+    @       28.5 Progress Steps
+    @   29. Paginations
+    @   30. Animations
+    @       30.1 Left / Top ( Overlay + Push )
+    @       30.2 Top Reveal
+    @       30.3 Bottom Reveal
+    @       30.4 Bottom Slide
+    @       30.5 Zoom
+    @       30.5 Fade In
+    @       30.6 Scroll Down ( Button )
+    @       30.7 Scroll Up ( Button )
+    @       30.8 Typed ( cursor ) Blink
+    @   31. Ribbons
+    @   32. Generals ( general utilities )
+*/
+
+//  1.
+@import "../../../assets/scss/general-components/_functions";
+//  2.
+@import "variables";
+//  3.
+@import "../../../../node_modules/bootstrap/scss/bootstrap";
+//  4.
+@import "../../../assets/scss/general-mixins/_mixins";
+//  5.
+@import "../../../assets/scss/general-components/_reboot";
+//  6.
+@import "../../../assets/scss/general-components/_preloader";
+//  7.
+@import "../../../assets/scss/general-components/_navbar";
+//  8.
+@import "../../../assets/scss/general-components/_navs";
+//  9.
+@import "../../../assets/scss/general-components/_alerts";
+//  10.
+@import "../../../assets/scss/general-components/_badges";
+//  11.
+@import "../../../assets/scss/general-components/_footers";
+//  12.
+@import "../../../assets/scss/general-components/_carousels";
+//  13.
+@import "../../../assets/scss/general-components/_counters";
+//  14.
+@import "../../../assets/scss/general-components/_gallery-images";
+//  15.
+@import "../../../assets/scss/general-components/_masonry-grid";
+//  16.
+@import "../../../assets/scss/general-components/_titles";
+//  17.
+@import "../../../assets/scss/general-components/_timelines";
+//  18.
+@import "../../../assets/scss/general-components/_icons";
+//  19.
+@import "../../../assets/scss/general-components/_profile";
+//  20.
+@import "../../../assets/scss/general-components/_buttons";
+//  21.
+@import "../../../assets/scss/general-components/_tooltips";
+//  22.
+@import "../../../assets/scss/general-components/_list-group";
+//  23.
+@import "../../../assets/scss/general-components/_forms";
+//  24.
+@import "../../../assets/scss/general-components/_custom-forms";
+//  25.
+@import "../../../assets/scss/general-components/_breadcrumb";
+//  26.
+@import "../../../assets/scss/general-components/_widgets";
+//  27.
+@import "../../../assets/scss/general-components/_accordions";
+//  28.
+@import "../../../assets/scss/general-components/_progress-bars";
+//  29.
+@import "../../../assets/scss/general-components/_paginations";
+//  30.
+@import "../../../assets/scss/general-components/_animations";
+//  31.
+@import "../../../assets/scss/general-components/_ribbons";
+//  32.
+@import "../../../assets/scss/general-utilities/_generals";

@@ -1,0 +1,238 @@
+
+/*
+    @
+    @   28. PROGRESS BAR
+    @       27.1 STYLE 1
+    @       27.2 STYLE 2
+    @       27.3 SIZES
+    @       27.4 CIRCLES
+    @       27.5 PROGRESS STEPS
+    @
+*/
+
+.progress {
+	height: $progressbar-height-4;
+	margin-bottom:30px;
+	overflow: visible;
+    .progress-bar {
+        width: 0;
+    }
+    &.progress-rounded {
+        border-radius:15px;
+        .progress-bar {
+            border-radius:15px;
+        }
+    }
+    /*
+        27.1
+        STYLE 1
+        ---------------------------------------------------------------------------------------------
+    */
+	&.style1 {
+		.progress-bar {
+			position: relative;
+			.tooltiptext {
+				min-width:60px;
+				background-color:$gray-800;
+				color: #ffffff;
+				text-align: center;
+				padding: 5px 10px;
+				font-size:.875rem;
+				position: absolute;
+				z-index:100;
+				right:-30px !important;
+				bottom:100%;
+				margin-bottom:10px;
+				border-radius:5px;
+                opacity:0;
+				&:after {
+					content: "";
+					position: absolute;
+					top: 100%;
+					left: 50%;
+					margin-left: -5px;
+					border-width: 5px;
+					border-style: solid;
+					border-color: $gray-800 transparent transparent transparent;
+				}
+			}
+		}
+	}
+    /*
+         27.2
+         STYLE 2
+         ---------------------------------------------------------------------------------------------
+    */
+	&.style2 {
+		position: relative;
+		.progress-bar {
+			.tooltiptext {
+				color: #333333;
+				text-align: center;
+				padding: 0;
+				font-size:.875rem;
+				position: absolute;
+				z-index:100;
+				right:0px !important;
+				bottom:100%;
+				margin-bottom:0px;
+				border-radius:5px;
+
+			}
+		}
+
+	}
+}
+
+/*
+    27.3
+    SIZES
+    -------------------------------------------------------------------------------------------------
+ */
+.progress {
+    &.progress-size-1 {
+        height: $progressbar-height-1;
+    }
+    &.progress-size-2 {
+        height: $progressbar-height-2;
+    }
+    &.progress-size-3 {
+        height: $progressbar-height-3;
+    }
+    &.progress-size-4 {
+        height: $progressbar-height-4;
+    }
+    &.progress-size-5 {
+        height: $progressbar-height-5;
+    }
+}
+
+/*
+    27.4
+    CIRCLES
+    -------------------------------------------------------------------------------------------------
+*/
+.progress-circle {
+    .circle {
+        position: relative;
+        .circle-percentage {
+            top: 50%;
+            left: 50%;
+            position:absolute;
+            margin-right: -50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            font-size: 1.7rem;
+            .perc {
+                font-size:1.3rem;
+            }
+        }
+    }
+
+}
+
+/*
+    27.5
+    PROGRESS STEPS
+    -------------------------------------------------------------------------------------------------
+*/
+.step {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.step-icon-wrap {
+    text-align: center;
+    position: relative;
+    margin-bottom:15px;
+    .cn-icon,
+    .step-icon {
+        z-index: 5;
+        background-color: #ffffff;
+    }
+    &:before,
+    &:after {
+        display: block;
+        position: absolute;
+        top: 50%;
+        width: 50%;
+        height: 3px;
+        margin-top: -1px;
+        background-color: #eeeeee;
+        content: '';
+        z-index: 1;
+    }
+    &:before {
+        left:0;
+    }
+    &:after {
+        right: 0;
+    }
+
+}
+.step:first-child .step-icon-wrap:before,
+.step:last-child .step-icon-wrap:after {
+    display: none;
+}
+.step {
+    &.completed {
+        .step-icon-wrap:before,
+        .step-icon-wrap:after {
+            background-color: theme-color("primary");
+        }
+    }
+}
+.step {
+    .step-icon-wrap {
+        @include media-breakpoint-down(sm) {
+            &:before,
+            &:after {
+                display: none;
+            }
+        }
+    }
+}
+
+.progress-steps-v1 {
+    .step-item {
+        transition-duration: .3s;
+        width:200px;
+        height: 200px;
+        background-color: $white;
+        z-index: 999;
+        position: relative;
+        border-radius: 20px;
+        border: 1px solid $gray-300;
+        left: 50%;
+        transform: translateX(-50%);
+        &:after,
+        &:before{
+        }
+    }
+    .step-icon-wrap {
+        transition-duration: .3s;
+        @include media-breakpoint-down(md) {
+            &:before,
+            &:after {
+                display: block;
+                position: absolute;
+                top: 100%;
+                width: 3px;
+                height: 50%;
+                margin-left: -3px;
+                background-color: #eeeeee;
+                content: '';
+                z-index: 1;
+            }
+            &:before {
+                display: none;
+            }
+            &:after {
+                left: 50%;
+            }
+        }
+    }
+}
+
+

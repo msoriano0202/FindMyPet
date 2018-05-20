@@ -1,0 +1,62 @@
+
+//  4.3
+//  Borders
+
+@mixin custom-border-color($parent, $color) {
+    
+    .g-border-#{$parent} {  border-color: $color !important;  }
+    .g-border-t-#{$parent} {  border-top-color: $color !important;  }
+    .g-border-r-#{$parent} {  border-right-color: $color !important;  }
+    .g-border-b-#{$parent} {  border-bottom-color: $color !important;  }
+    .g-border-l-#{$parent} {  border-left-color: $color !important;  }
+
+    .g-border-#{$parent}-h:hover {  border-color: $color !important;  }
+    .g-border-t-#{$parent}-h:hover {  border-color: $color !important;  }
+    .g-border-r-#{$parent}-h:hover {  border-color: $color !important;  }
+    .g-border-b-#{$parent}-h:hover {  border-color: $color !important;  }
+    .g-border-l-#{$parent}-h:hover {  border-color: $color !important;  }
+
+    .g-border-x-#{$parent} { border-left-color: $color !important; border-right-color: $color !important; }
+    .g-border-y-#{$parent} { border-top-color: $color !important; border-bottom-color: $color !important; }
+    
+    .g-border-x-#{$parent}-h:hover { border-left-color: $color !important; border-right-color: $color !important; }
+    .g-border-y-#{$parent}-h:hover { border-top-color: $color !important; border-bottom-color: $color !important; }
+    
+}
+
+@mixin custom-border-radius($value) {
+    
+    .g-rounded-#{$value} {
+        border-radius:#{$value}px;
+    }
+    .g-rounded-top-#{$value} {
+        border-top-left-radius: #{$value}px !important;
+        border-top-right-radius: #{$value}px !important;
+    }
+    .g-rounded-right-#{$value} {
+        border-top-right-radius: #{$value}px !important;
+        border-bottom-right-radius: #{$value}px !important;
+    }
+    .g-rounded-bottom-#{$value} {
+        border-bottom-left-radius: #{$value}px !important;
+        border-bottom-right-radius: #{$value}px !important;
+    }
+    .g-rounded-left-#{$value} {
+        border-top-left-radius: #{$value}px !important;
+        border-bottom-left-radius: #{$value}px !important;
+    }
+    
+    .g-rounded-top-left-#{$value} {
+        border-top-left-radius: #{$value}px !important;
+    }
+    .g-rounded-top-right-#{$value} {
+        border-top-right-radius: #{$value}px !important;
+    }
+    .g-rounded-bottom-left-#{$value} {
+        border-bottom-left-radius: #{$value}px !important;
+    }
+    .g-rounded-bottom-right-#{$value} {
+        border-bottom-left-radius: #{$value}px !important;
+    }
+    
+}

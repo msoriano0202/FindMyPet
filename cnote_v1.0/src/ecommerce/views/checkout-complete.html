@@ -1,0 +1,68 @@
+{% extends '_partials/_cnote-shop-layout.html' %}
+{% block page-title %}<title>Checkout Complete | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '_partials/_headers/_topbar-1.html' %}
+        {% include '_partials/_headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Checkout Complete</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Checkout Complete</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Checkout Complete -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    
+                    <div class="col-lg-11 g-px-15">
+                        <div class="card text-center g-bg-white g-border-gray-300 g-px-20 g-py-50 g-shadow-v2">
+                            <div class="card-block">
+                                <h3 class="font-weight-bold text-uppercase g-text-primary g-mb-15 font-montserrat">Order completed !</h3>
+                                <p class="g-py-5">Thank you for your order! Your order is being processed and will be completed soon as possible</p>
+                                <p class="g-py-5">You will receive an email confirmation in few minutes</p>
+                                <p class="g-py-5">Your order number is <span class="text-muted font-weight-bold">D5A499E4532X</span></p>
+                                <div class="g-mt-30">
+                                    <a class="btn cn-btn-dark g-mb-15 g-mb-sm-0" href="shop-grid-left-sidebar.html">Return to Shop</a>
+                                    <a class="btn cn-btn-primary g-mb-15 g-mb-sm-0" href="track-order.html"><i class="icon-location"></i>&nbsp;Track your order</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!-- END Checkout Complete -->
+        
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '_partials/_footer.html' %}
+    <!-- END Footer -->
+    
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

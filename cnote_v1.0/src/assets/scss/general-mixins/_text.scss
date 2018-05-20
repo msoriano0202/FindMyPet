@@ -1,0 +1,24 @@
+
+//  4.2
+//  Text
+
+@mixin text-emphasis-variant($parent, $color) {
+    .g-text-#{$parent} {
+        color: $color;
+
+        &-h:hover {
+            color: $color !important;
+        }
+    }
+    .g-parent-text-h:hover {
+        .g-text-#{$parent}-parent-h {
+            color: $color !important;
+  
+        }
+    }
+    a.g-text-#{$parent} {
+        @include hover-focus {
+            color: darken($color, 2%);
+        }
+    }
+}

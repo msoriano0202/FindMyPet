@@ -1,0 +1,94 @@
+{% extends '_partials/_cnote-shop-layout.html' %}
+{% block page-title %}<title>Contact | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '_partials/_headers/_topbar-1.html' %}
+        {% include '_partials/_headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Contact</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+    
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section g-bg-white g-py-100">
+            <div class="container">
+                <div class="row justify-content-center justify-content-md-between">
+                    <div class="col-sm-8 col-md-4 g-mb-30 g-mb-md-0">
+                        <div class="g-py-20 g-mb-20 g-shadow-v1 text-center g-bg-primary-h g-parent-text-h">
+                            <p class="g-mb-10 g-text-primary g-text-white-parent-h"><i class="icon-location-pin g-font-size-25"></i></p>
+                            <h6 class="g-text-primary g-text-white-parent-h g-mb-10 text-uppercase">Location</h6>
+                            <p>806 Pratt Avenue, Seattle <br> Washington</p>
+                        </div>
+                        <div class="g-py-20 g-mb-20 g-shadow-v1 text-center g-bg-primary-h g-parent-text-h">
+                            <p class="g-mb-10 g-text-primary g-text-white-parent-h"><i class="fa fa-clock-o g-font-size-25"></i></p>
+                            <h6 class="g-text-primary g-text-white-parent-h g-mb-10 text-uppercase">Schedule</h6>
+                            <p>Open from Monday to Friday</p>
+                            <p>From 9h to 17h</p>
+                        </div>
+                        <div class="g-py-20 g-mb-20 g-shadow-v1 text-center g-bg-primary-h g-parent-text-h">
+                            <p class="g-mb-10 g-text-primary g-text-white-parent-h"><i class="fa fa-phone g-font-size-25"></i></p>
+                            <h6 class="g-text-primary g-text-white-parent-h g-mb-10 text-uppercase">Contact</h6>
+                            <p>360-961-4371</p>
+                            <p>e-mail@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-md-7">
+                        <div class="section-title g-mb-50 text-center text-md-left">
+                            <h3 class="font-weight-bold g-mb-5 text-uppercase">Contact Us</h3>
+                            <p class="subtitle text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, sint.</p>
+                        </div>
+                        <form>
+                            <div class="form-group g-mb-15">
+                                <input type="text" class="form-control g-px-15" placeholder="First Name">
+                            </div>
+                            <div class="form-group g-mb-15">
+                                <input type="text" class="form-control g-px-15" placeholder="Last Name">
+                            </div>
+                            <div class="form-group g-mb-15">
+                                <input type="email" class="form-control g-px-15" placeholder="E-mail">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control form-control-lg" rows="5" placeholder="Type here your message"></textarea>
+                            </div>
+                            <div class="form-group g-mb-0">
+                                <button type="submit" class="btn cn-btn-primary btn-block g-rounded-50 text-uppercase">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END Contact Section -->
+    
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '_partials/_footer.html' %}
+    <!-- END Footer -->
+
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

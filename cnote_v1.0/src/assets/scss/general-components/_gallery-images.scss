@@ -1,0 +1,161 @@
+/*
+    @
+    @   14. GALLERY IMAGES
+    @       14.1 MAGNIFIC POPUP
+    @       14.2 MAGNIFIC POPUP - HORIZONTAL EFFECT
+    @       14.3 MAGNIFIC POPUP - VERTICAL EFFECT
+    @
+*/
+
+.gallery {
+    img {
+        width:100%;
+    }
+}
+
+// Clients images
+
+.partner {
+    img{
+        width: 120px !important;
+    }
+}
+// Grayscale effect for clients images
+
+.img-grayscale {
+    @include grayscale_img(100%);
+    transition-duration: .2s;
+    &:hover {
+        @include grayscale_img(0);
+    }
+}
+
+/*
+    14.1
+    MAGNIFIC POPUP
+    -------------------------------------------------------------------------------------------------
+*/
+
+.mfp-bg,
+.mfp-wrap {
+    z-index: 2000;
+}
+
+// Arrows
+
+.mfp-arrow {
+    background-color: #f1c800;
+    opacity:1;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    &:active {
+        margin-top:-50px;
+    }
+}
+.mfp-arrow {
+    &:before {
+        border-top-width: 15px;
+        border-bottom-width: 15px;
+    }
+}
+.mfp-arrow-right,
+.mfp-arrow-left {
+    &:after {
+        border: none;
+    }
+}
+.mfp-arrow-left {
+    &:before {
+        border-right: 15px solid #ffffff;
+    }
+}
+.mfp-arrow-right {
+    &:before {
+        border-left: 15px solid #ffffff;
+    }
+}
+
+/*
+    14.2
+    MAGNIFIC POPUP - HORIZONTAL EFFECT
+    -------------------------------------------------------------------------------------------------
+*/
+
+.mfp-move-horizontal {
+    
+    /* start state */
+    .mfp-with-anim {
+        opacity: 0;
+        transition: all 0.3s;
+        transform: translateX(-50px);
+    }
+    &.mfp-bg {
+        opacity: 0;
+        transition: all 0.3s;
+    }
+    /* animate in */
+    &.mfp-ready {
+        .mfp-with-anim {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        &.mfp-bg {
+            opacity: 0.8;
+        }
+    }
+    
+    /* animate out */
+    &.mfp-removing {
+        .mfp-with-anim {
+            transform: translateX(50px);
+            opacity: 0;
+        }
+        &.mfp-bg {
+            opacity: 0;
+        }
+    }
+}
+
+/*
+    14.3s
+    MAGNIFIC POPUP - VERTICAL EFFECT
+    -------------------------------------------------------------------------------------------------
+*/
+.mfp-move-from-top {
+    .mfp-content {
+        vertical-align:middle;
+    }
+    /* start state */
+    .mfp-with-anim {
+        opacity: 0;
+        transition: all 0.3s;
+        transform: translateY(-50px);
+    }
+    &.mfp-bg {
+        opacity: 0;
+        transition: all 0.3s;
+    }
+    /* animate in */
+    &.mfp-ready {
+        .mfp-with-anim {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        &.mfp-bg {
+            opacity: 0.8;
+        }
+    }
+    /* animate out */
+    &.mfp-removing {
+        .mfp-with-anim {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        &.mfp-bg {
+            opacity: 0;
+        }
+    }
+}

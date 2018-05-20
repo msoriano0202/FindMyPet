@@ -1,0 +1,28 @@
+
+//  4.5
+//  Icons
+
+@mixin icon-variant($background, $border) {
+    color: color-yiq($background) !important;
+    background-color: $background !important;
+    border-color: $border !important;
+}
+
+@mixin icon-outline-variant($color) {
+    color: $color !important;
+    background-color: transparent !important;
+    background-image: none;
+    border-color: $color;
+}
+
+
+// ICON SIZE
+
+@mixin icon-size($width, $height, $font-size) {
+    width: $width;
+    height: $height;
+    & > i {
+        line-height: $height - 1px;
+        font-size: $font-size;
+    }
+}

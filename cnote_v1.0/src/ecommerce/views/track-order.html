@@ -1,0 +1,99 @@
+{% extends '_partials/_cnote-shop-layout.html' %}
+{% block page-title %}<title>Track Order | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '_partials/_headers/_topbar-1.html' %}
+        {% include '_partials/_headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Track Order</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Track Order</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Checkout Complete -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container">
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-11 g-px-15">
+                        <div class="card g-shadow-v2">
+                            <div class="card-header text-center g-bg-white">
+                                <h5>Tracking Order - Nr. 499KL23OE12A</h5>
+                            </div>
+                            <div class="card-body bg-white ">
+                                <div class="g-p-10">
+                                    <div class="progress-steps d-flex justify-content-between flex-wrap flex-md-nowrap">
+                                        <div class="step completed g-mb-10">
+                                            <div class="step-icon-wrap">
+                                                <div class="cn-icon cn-icon-lg cn-icon-primary rounded-circle">
+                                                    <i class="fa fa-sticky-note"></i>
+                                                </div>
+                                            </div>
+                                            <h6 class="step-title font-weight-bold">Order placed</h6>
+                                        </div>
+                                        <div class="step completed g-mb-10">
+                                            <div class="step-icon-wrap">
+                                                <div class="cn-icon cn-icon-lg cn-icon-primary rounded-circle">
+                                                    <i class="fa fa-credit-card-alt"></i>
+                                                </div>
+                                            </div>
+                                            <h6 class="step-title font-weight-bold">Processing order</h6>
+                                        </div>
+                                        <div class="step g-mb-10">
+                                            <div class="step-icon-wrap">
+                                                <div class="cn-icon cn-icon-lg cn-icon-outline-primary g-bg-white rounded-circle">
+                                                    <i class="fa fa-truck"></i>
+                                                </div>
+                                            </div>
+                                            <h6 class="step-title font-weight-bold">Product under delivery</h6>
+                                        </div>
+                                        <div class="step g-mb-10">
+                                            <div class="step-icon-wrap">
+                                                <div class="cn-icon cn-icon-lg cn-icon-outline-primary g-bg-white rounded-circle">
+                                                    <i class="fa fa-handshake-o"></i>
+                                                </div>
+                                            </div>
+                                            <h6 class="step-title font-weight-bold">Delivered</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        <!-- END Checkout Complete -->
+    
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '_partials/_footer.html' %}
+    <!-- END Footer -->
+
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

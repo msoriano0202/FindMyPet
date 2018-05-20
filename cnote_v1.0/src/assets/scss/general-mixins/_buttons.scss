@@ -1,0 +1,72 @@
+
+//  4.4
+//  Buttons
+
+@mixin btn-variant($parent, $background, $border) {
+    .cn-btn-#{$parent} {
+        background-color: $background;
+        color: color-yiq($background);
+        @include box-shadow($btn-box-shadow);
+        &:hover {
+            color: color-yiq($background);
+            background-color: lighten($background, 5%);
+            border-color: lighten($border, 3%);
+        }
+        &-h:hover {
+            background-color: $background !important;
+            color: color-yiq($background) !important;
+            border-color: darken($border, 3%) !important;
+        }
+        &.cn-btn-hover-v1-left,
+        &.cn-btn-hover-v1-right,
+        &.cn-btn-hover-v1-top,
+        &.cn-btn-hover-v1-bottom {
+            background-color: $background;
+            &:before {
+                background-color: lighten($background, 3%);
+                z-index: 1;
+            }
+        }
+        &[class*="cn-btn-hover-v2"] {
+            background-color: $background;
+        }
+    }
+
+    .cn-btn-outline-#{$parent} {
+        color: $background;
+        background-color: transparent;
+        background-image: none;
+        border-color: $background !important;
+        &:hover {
+            color: color-yiq($background);
+            background-color: $background;
+            border-color: $background;
+        }
+        &:focus,
+        &.focus {
+            @if $enable-shadows {
+                box-shadow: $btn-box-shadow, 0 0 5px 0px rgba($border, .5);
+            } @else {
+                box-shadow: none;
+            }
+        }
+        &.cn-btn-hover-v1-left,
+        &.cn-btn-hover-v1-right,
+        &.cn-btn-hover-v1-top,
+        &.cn-btn-hover-v1-bottom {
+            &:before {
+                background-color: $background;
+            }
+        }
+    }
+    
+}
+@mixin btn-grays-hover($parent, $background, $border) {
+    .cn-btn-#{$parent} {
+        &:hover {
+            color: color-yiq($background);
+            background-color: darken($background, 2%);
+            border-color: darken($border, 2%);
+        }
+    }
+}

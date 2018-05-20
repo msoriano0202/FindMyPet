@@ -1,0 +1,140 @@
+
+/*
+    @
+    @   26. WIDGETS
+    @       26. 1 TAGS
+    @       26. 2 SLIDER RANGE
+    @
+*/
+
+.widget {
+    .widget-title {
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 10px 0px;
+        border-bottom:2px solid $gray-300;
+        color: $gray-700;
+    }
+    a {
+        color:#111111;
+        .badge {
+            margin-top:4px;
+        }
+        &:hover {
+            color: theme-color("primary");
+        }
+    }
+    ul,ol {
+        margin:0;
+        padding:0;
+        list-style: none !important;
+    }
+    &.latest-posts-widget {
+        img {
+            width:65px;
+        }
+    }
+    // Widget List
+    .widget-list {
+        li {
+            a {
+                display: block;
+                padding:0px;
+                transition-duration:.2s;
+                &:hover {
+                    color: theme-color("primary");
+                    background: none;
+                }
+            }
+        }
+        &.style2 {
+            li {
+                &:hover a {
+                    color: theme-color("primary");
+                    margin-left: 10px;
+                }
+            }
+        }
+        i {
+            color: #d8d8d8;
+        }
+    }
+    
+}
+
+/*
+    26.1
+    TAGS
+    -------------------------------------------------------------------------------------------------
+*/
+
+.tags-widget {
+    a {
+        padding: 3px 8px;
+        margin-bottom: 4px;
+        display: inline-block;
+        background-color: theme-color("primary");
+        border: 1px solid theme-color("primary");
+        color: #ffffff;
+        transition-duration: .3s;
+        font-size: .75rem;
+        border-radius: 3px;
+        line-height:1.5;
+        &:hover {
+            background-color:#ffffff;
+            color: theme-color("primary");
+        }
+    }
+}
+
+/*
+    26.2
+    SLIDER RANGE
+    -------------------------------------------------------------------------------------------------
+*/
+
+.slider-range,
+.slider-range-2,
+.slider-range-3 {
+    margin-top:20px;
+    &.ui-slider-horizontal {
+        height:5px !important;
+        border:1px solid #eeeeee !important;
+    }
+    .ui-widget.ui-widget-content {
+        background-color: #ffffff;
+    }
+    .ui-slider-range {
+        background-color:  theme-color("primary");
+    }
+    .ui-slider-handle {
+        border:1px solid theme-color("primary");
+        border-radius:50%;
+        background-color:#ffffff;
+        outline:0;
+        margin-top:-3px;
+        &.ui-state-active {
+            background-color: theme-color("primary");
+        }
+    }
+}
+.slider-range-2 {
+    .ui-slider-handle {
+        border:1px solid theme-color("primary");
+        border-radius:0;
+        background-color:#ffffff;
+        outline:0;
+        margin-top:-3px;
+        &.ui-state-active {
+            background-color: theme-color("primary");
+        }
+    }
+}
+
+
+.rating-stars {
+    i {
+        color: theme-color("primary");
+        font-size:1.1rem;
+    }
+}

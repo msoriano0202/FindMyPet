@@ -1,0 +1,83 @@
+
+/*
+    @
+    @   23. FORMS
+    @
+*/
+
+.input-group-prepend,
+.input-group-append {
+    @include transition($input-transition);
+    border:1px solid $input-group-addon-border-color;
+    align-items: center;
+    justify-content: center;
+
+    a, .btn {
+        border-radius:0;
+    }
+}
+
+.form-control {
+    font-size: $font-size-sm;
+}
+.input-group-focus {
+    &.focused {
+        .input-group-prepend,
+        .input-group-append {
+            border-color: $input-focus-border-color;
+        }
+    }
+}
+.input-group-focus-v2 {
+    &.focused {
+        .input-group-prepend,
+        .input-group-append {
+            border-color: $input-focus-border-color !important;
+            background-color: $input-focus-bg-color !important;
+            color: color-yiq($input-focus-bg-color) !important;
+            a, .btn {
+                background-color: $input-focus-bg-color !important;
+                color: color-yiq($input-focus-bg-color) !important;
+            }
+        }
+    }
+}
+
+.input-group-btn:not(:first-child) > .btn,
+.input-group-btn:not(:first-child) > .btn-group {
+    margin-left: 0px !important;
+}
+
+// Form Controls Sizes
+
+.form-control {
+    padding: $input-btn-padding-y $input-btn-padding-x / 2;
+}
+.form-control-sm {
+    padding: $input-btn-padding-y-sm $input-btn-padding-x-sm / 2;
+}
+.form-control-lg {
+    padding: $input-btn-padding-y-lg $input-btn-padding-x-lg / 2;
+}
+
+
+.contact-section {
+    .form-control-lg {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: $font-size-sm;
+    }
+}
+
+// Textarea
+textarea {
+    overflow-x: hidden;
+ }
+.textarea-resize-0 {
+    resize: none;
+}
+select.form-control:not([size]):not([multiple]) {
+    height: auto !important;
+}
+
+

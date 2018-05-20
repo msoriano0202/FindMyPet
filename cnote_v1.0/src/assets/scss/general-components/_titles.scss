@@ -1,0 +1,72 @@
+
+/*
+    @
+    @   16. TITLES
+    @
+*/
+
+[class*="cn-heading-v1"] {
+    &:after {
+        content: "";
+        display: block;
+        color: theme-color("primary");
+        width:50px;
+        height:2px;
+        background-color:  theme-color("primary");
+        margin:10px 0;
+    }
+}
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    
+        .cn-heading#{$infix}-v1 {
+            &:after {
+                margin:10px 0;
+            }
+        }
+        .cn-heading#{$infix}-v1-center {
+            &:after {
+                margin:10px auto;
+            }
+        }
+        .cn-heading#{$infix}-v1-right {
+            &:after {
+                margin:10px 0;
+                display: flex;
+                margin-left:auto;
+            }
+        }
+        .cn-heading#{$infix}-v2 {
+            display:inline-block;
+            position: relative;
+            &:before,
+            &:after {
+                content: "";
+                position: absolute;
+                width:50px;
+                height:2px;
+                background-color:  theme-color("primary");
+                top:48%;
+            }
+            &:before {
+                margin-left: -60px;
+            }
+            &:after {
+                margin-left:10px;
+            }
+            @include media-breakpoint-down(xs) {
+                &:before {
+                    display:none;
+                }
+                &:after {
+                    margin:10px auto;
+                    display: block;
+                    position: relative;
+                }
+            }
+        }
+        
+    }
+}
+

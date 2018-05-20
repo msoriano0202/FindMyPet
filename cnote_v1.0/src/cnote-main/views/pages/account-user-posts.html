@@ -1,0 +1,193 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Profile Posts | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Profile Projects</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile Posts</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Profile Section -->
+        <section class="profile-section g-py-70 g-bg-white">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <aside class="user-sidebar g-p-10 g-border g-border-gray-300 g-mb-15">
+                            <div class="text-center g-mb-20">
+                                <div class="user-img position-relative g-mb-30">
+                                    <img src="http://via.placeholder.com/200x200/eee/777" class="img-fluid rounded-circle" alt="Profile Picture">
+                                    <a href="#" class="change-user-img" data-toggle="modal" data-target="#userImgUploadModal"><i class="icon-reload"></i></a>
+                                </div>
+                                <h5 class="font-weight-bold g-text-gray-700">John Doe</h5>
+                                <p>Visual, UI, UX Designer</p>
+                            </div>
+                            <div class="modal fade" id="userImgUploadModal" tabindex="-1" role="dialog" aria-labelledby="userImgUploadLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h6 class="modal-title text-center" id="userImgUploadLabel">Change your profile picture</h6>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form>
+                                            <div class="modal-body">
+                                                <input type="file" name="user-img-upload" id="user-img-upload" class="cn-custom-file-input cn-custom-file-input-v2" multiple />
+                                                <label class="user-upload-label text-center g-py-40" for="user-img-upload">
+                                                    <span class="d-block">
+                                                        <i class="icon-cloud-upload g-font-size-25"></i>
+                                                    </span>
+                                                    <span class="g-font-size-16">Choose an image&hellip;</span>
+                                                </label>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-sm cn-btn-primary">Save changes</button>
+                                                <button type="button" class="btn btn-sm cn-btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-info">
+                                <nav class="list-group">
+                                    <a href="account-user-profile.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-user g-mr-5"></i>Profile
+                                    </a>
+                                    <a href="/account-user-posts.html" class="list-group-item list-group-item-action active">
+                                        <i class="icon-bubbles g-mr-5"></i>Posts
+                                    </a>
+                                    <a href="account-user-projects.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-docs g-mr-5"></i>Projects
+                                    </a>
+                                    <a href="account-user-settings.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-settings g-mr-5"></i>Settings
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <i class="icon-logout g-mr-5"></i>Logout
+                                    </a>
+                                </nav>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="profile-content g-border g-border-gray-300 g-p-10">
+                            <h5 class="g-px-5">Latest Posts</h5>
+            
+                            <div class="user-latest-post g-p-10 g-my-15 g-border g-border-gray-300">
+                                <h6 class="post-title text-uppercase font-weight-bold g-mb-10"><a href="#">Planets go with turbulence.</a></h6>
+                                <p class="g-mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet deleniti dolor et. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, voluptatibus.</p>
+                                <div class="rating-stars g-mb-5">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p>Author: <a href="#" class="text-muted">John Doe</a></p>
+                                    <span class="text-muted g-font-size-12">25 Feb 2018</span>
+                                </div>
+                            </div>
+                            <div class="user-latest-post g-p-10 g-my-15 g-border g-border-gray-300">
+                                <h6 class="post-title text-uppercase font-weight-bold g-mb-10"><a href="#">Finally consume a phenomenan.</a></h6>
+                                <p class="g-mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut consequatur cum eveniet impedit natus optio quaerat quod sunt unde. Exercitationem iure maiores sed vitae. Consequatur cum cumque ea illum iste, laboriosam laudantium magni minima modi officiis quidem, recusandae sit voluptates. Aspernatur ea neque vitae.</p>
+                                <div class="d-flex justify-content-between">
+                                    <p>Author: <a href="#" class="text-muted">Mike Forth</a></p>
+                                    <span class="text-muted g-font-size-12">24 Feb 2018</span>
+                                </div>
+                            </div>
+                            <div class="user-latest-post g-p-10 g-my-15 g-border g-border-gray-300">
+                                <h6 class="post-title text-uppercase font-weight-bold g-mb-10"><a href="#">Nosily dissolve a crew.</a></h6>
+                                <p class="g-mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aut consectetur corporis dicta doloribus incidunt inventore iusto minima obcaecati, porro quas quasi, quo temporibus. Accusamus at perspiciatis sit.</p>
+                                <div class="d-flex justify-content-between">
+                                    <p>Author: <a href="#" class="text-muted">Jinny Doe</a></p>
+                                    <span class="text-muted g-font-size-12">22 Feb 2018</span>
+                                </div>
+                            </div>
+           
+            
+                            <div class="user-latest-post g-p-10 g-my-15 g-border g-border-gray-300">
+                                <h6 class="post-title text-uppercase font-weight-bold g-mb-10"><a href="#">Mind, devastation, and honor.</a></h6>
+                                <p class="g-mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aut consectetur corporis dicta doloribus incidunt inventore iusto minima obcaecati, porro quas quasi, quo temporibus. Accusamus at perspiciatis sit.</p>
+                                <div class="rating-stars g-mb-5">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p>Author: <a href="#" class="text-muted">Jinny Doe</a></p>
+                                    <span class="text-muted g-font-size-12">15 Feb 2018</span>
+                                </div>
+                            </div>
+            
+                            <div class="user-latest-post g-p-10 g-my-15 g-border g-border-gray-300">
+                                <h6 class="post-title text-uppercase font-weight-bold g-mb-10"><a href="#">Accelerative deserve a teleporter.</a></h6>
+                                <p class="g-mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid architecto, atque debitis distinctio, dolore dolorem doloribus explicabo hic ipsa ipsam labore laborum magnam neque quaerat quasi, quod repellat sapiente sed sit totam? Aliquid asperiores assumenda cumque doloremque iusto officia quisquam reiciendis repellendus saepe totam!</p>
+                                <div class="d-flex justify-content-between">
+                                    <p>Author: <a href="#" class="text-muted">Michael Kon</a></p>
+                                    <span class="text-muted g-font-size-12">7 Feb 2018</span>
+                                </div>
+                            </div>
+         
+                            <div class="user-latest-post g-p-10 g-my-15 g-border g-border-gray-300">
+                                <h6 class="post-title text-uppercase font-weight-bold g-mb-10"><a href="#">The proud star tightly travels the phenomenan.</a></h6>
+                                <p class="g-mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci corporis dolor eius est facilis ipsam laboriosam libero nam odio, placeat possimus, repellendus rerum ut vero. Accusantium autem consequatur consequuntur cumque eligendi esse excepturi expedita facilis, ipsum iste magnam maxime minus nam natus necessitatibus nostrum quia repellat voluptate. Ad consequuntur cumque dignissimos error fuga iste necessitatibus praesentium repudiandae similique sint tempore, velit, veniam, vitae voluptatem?</p>
+                                <div class="rating-stars g-mb-5">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-empty"></i>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p>Author: <a href="#" class="text-muted">Bill Will</a></p>
+                                    <span class="text-muted g-font-size-12">15 Jan 2018</span>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            
+            </div>
+        </section>
+        <!-- END Profile Section -->
+    
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}
+

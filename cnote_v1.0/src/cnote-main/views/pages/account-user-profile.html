@@ -1,0 +1,223 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Profile | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+    
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Profile Page</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile Page</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Profile Section -->
+        <section class="profile-section g-py-70 g-bg-white">
+            <div class="container">
+            
+                <div class="row">
+                    <div class="col-md-3">
+                        <aside class="user-sidebar g-p-10 g-border g-border-gray-300 g-mb-15">
+                            <div class="position-relative text-center g-mb-20">
+                                <div class="user-img position-relative g-mb-30">
+                                    <img src="http://via.placeholder.com/200x200/eee/777" class="img-fluid rounded-circle" alt="Profile Picture">
+                                    <a href="#" class="change-user-img" data-toggle="modal" data-target="#userImgUploadModal"><i class="icon-reload"></i></a>
+                                </div>
+                                <h5 class="font-weight-bold g-text-gray-700">John Doe</h5>
+                                <p>Visual, UI, UX Designer</p>
+                            </div>
+                            <div class="modal fade" id="userImgUploadModal" tabindex="-1" role="dialog" aria-labelledby="userImgUploadLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h6 class="modal-title text-center" id="userImgUploadLabel">Change your profile picture</h6>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form>
+                                            <div class="modal-body">
+                                                <input type="file" name="user-img-upload" id="user-img-upload" class="cn-custom-file-input cn-custom-file-input-v2" multiple />
+                                                <label class="user-upload-label text-center g-py-40" for="user-img-upload">
+                                                    <span class="d-block">
+                                                        <i class="icon-cloud-upload g-font-size-25"></i>
+                                                    </span>
+                                                    <span class="g-font-size-16">Choose an image&hellip;</span>
+                                                </label>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-sm cn-btn-primary">Save changes</button>
+                                                <button type="button" class="btn btn-sm cn-btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-info">
+                                <nav class="list-group">
+                                    <a href="/account-user-profile.html" class="list-group-item list-group-item-action active">
+                                        <i class="icon-user g-mr-5"></i>Profile
+                                    </a>
+                                    <a href="account-user-posts.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-bubbles g-mr-5"></i>Posts
+                                    </a>
+                                    <a href="account-user-projects.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-docs g-mr-5"></i>Projects
+                                    </a>
+                                    <a href="account-user-settings.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-settings g-mr-5"></i>Settings
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <i class="icon-logout g-mr-5"></i>Logout
+                                    </a>
+                                </nav>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="profile-content g-border g-border-gray-300 g-p-10">
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <div>
+                                    <h4>John Doe</h4>
+                                    <p class="g-mb-10">Visual, UI, UX Designer</p>
+                                </div>
+                                <div class="g-mb-5 g-mb-sm-0 g-ml-sm-20">
+                                    <span class="text-muted g-mr-10">Follow:</span>
+                                    <a href="#" class="cn-icon cn-icon-xs cn-icon-gray-200 rounded">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a href="#" class="cn-icon cn-icon-xs cn-icon-gray-200 rounded">
+                                        <i class="fa fa-google"></i>
+                                    </a>
+                                    <a href="#" class="cn-icon cn-icon-xs cn-icon-gray-200 rounded">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </div>
+                            </div>
+                         
+                            <ul class="list-unstyled list-inline g-mb-30">
+                                <li class="list-inline-item text-muted"><i class="fa fa-map-marker g-mr-5"></i> United Kingdom, London</li>
+                                <li class="list-inline-item text-muted"><i class="fa fa-envelope g-mr-5"></i> johndoe@gmail.com</li>
+                                <li class="list-inline-item text-muted"><i class="fa fa-phone g-mr-5"></i> +12 01234 5789 </li>
+                            </ul>
+                            <div class="g-mb-30">
+                                <a href="#" class="btn btn-xs cn-btn-primary">Follow</a>
+                                <a href="#" class="btn btn-xs cn-btn-dark">Send a message</a>
+                            </div>
+                            <div class="g-mb-40">
+                                <h6 class="font-weight-bold">About</h6>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cum dolor, eum excepturi iure mollitia neque nobis officia porro provident saepe ullam. Autem, debitis dicta dolore incidunt pariatur quam ut?</p>
+                                <p>Cum mensa peregrinatione, omnes medicinaes magicae emeritis, raptus abnobaes. Tolerare acceleratrix ducunt ad talis fermium!</p>
+                            </div>
+                            <div class="g-mb-20">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="font-weight-bold g-mb-10">Skills</h6>
+                                        <ul class="list-unstyled">
+                                            <li class="d-flex align-items-center g-mb-10">
+                                                <div class="g-mr-10 g-w100">HTML/5</div>
+                                                <div class="w-100">
+                                                    <div class="progress g-m-0 style1 progress-size-1 progress-rounded">
+                                                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex align-items-center g-mb-10">
+                                                <div class="g-mr-10 g-w100">SASS</div>
+                                                <div class="w-100">
+                                                    <div class="progress g-m-0 style1 progress-size-1 progress-rounded">
+                                                        <div class="progress-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex align-items-center g-mb-10">
+                                                <div class="g-mr-10 g-w100">Javascript</div>
+                                                <div class="w-100">
+                                                    <div class="progress g-m-0 style1 progress-size-1 progress-rounded">
+                                                        <div class="progress-bar" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+    
+                                            <li class="d-flex align-items-center g-mb-10">
+                                                <div class="g-mr-10 g-w100">PHP</div>
+                                                <div class="w-100">
+                                                    <div class="progress g-m-0 style1 progress-size-1 progress-rounded">
+                                                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex align-items-center g-mb-10">
+                                                <div class="g-mr-10 g-w100">Wordpress</div>
+                                                <div class="w-100">
+                                                    <div class="progress g-m-0 style1 progress-size-1 progress-rounded">
+                                                        <div class="progress-bar" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex align-items-center g-mb-10">
+                                                <div class="g-mr-10 g-w100">JQuery</div>
+                                                <div class="w-100">
+                                                    <div class="progress g-m-0 style1 progress-size-1 progress-rounded">
+                                                        <div class="progress-bar" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                         
+                            </div>
+                            <div class="g-mb-20">
+                                <h6 class="font-weight-bold g-mb-5">Stats</h6>
+                           
+                                <span class="align-middle g-mr-10">
+                                    <i class="icon-like"></i>
+                                    179 likes
+                                </span>
+                                <span class="align-middle g-mr-10">
+                                    <i class="icon-eye"></i> 842 views
+                                </span>
+                                <span>
+                                    <a href="#" class="btn btn-xs cn-btn-primary">Like</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        <!-- END Profile Section -->
+    
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}
+

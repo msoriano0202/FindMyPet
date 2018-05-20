@@ -1,0 +1,143 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Tooltips & Popovers | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Tooltips & Popovers</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Components</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Tooltips & Popovers</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Tooltips & Popovers -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container text-center">
+                
+                <!-- Static Tooltips -->
+                <div class="static-tooltip-example g-mb-50">
+                    <h6 class="text-uppercase font-weight-bold g-mb-10">Static Tooltips</h6>
+                    <div class="tooltip bs-tooltip-top bs-tooltip-top-demo" role="tooltip">
+                        <div class="arrow"></div>
+                        <div class="tooltip-inner">
+                            Tooltip on the top
+                        </div>
+                    </div>
+                    <div class="tooltip bs-tooltip-bottom bs-tooltip-bottom-demo" role="tooltip">
+                        <div class="arrow"></div>
+                        <div class="tooltip-inner">
+                            Tooltip on the bottom
+                        </div>
+                    </div>
+                    <div class="tooltip bs-tooltip-right bs-tooltip-right-demo" role="tooltip">
+                        <div class="arrow"></div>
+                        <div class="tooltip-inner">Tooltip on the right</div>
+                    </div>
+                    <div class="tooltip bs-tooltip-left bs-tooltip-left-demo" role="tooltip">
+                        <div class="arrow"></div>
+                        <div class="tooltip-inner">Tooltip on the left</div>
+                    </div>
+                </div>
+                <hr>
+                <!-- END Static Tooltips -->
+                
+                <!-- Live Tooltips -->
+                <div class="g-my-50">
+                    <h6 class="text-uppercase font-weight-bold g-mb-10">Live Tooltips</h6>
+                    <button type="button" class="btn cn-btn-primary g-mb-10" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
+                    <button type="button" class="btn cn-btn-primary g-mb-10" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+                    <button type="button" class="btn cn-btn-primary g-mb-10" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
+                    <button type="button" class="btn cn-btn-primary g-mb-10" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
+                </div>
+                <hr>
+                <!-- END Demo Tooltips -->
+                
+                <!-- Static Popovers -->
+                <div class="g-my-50">
+                    <h6 class="text-uppercase font-weight-bold g-mb-10">Static Popovers</h6>
+                    <div class="static-popover-example">
+                        <div class="popover bs-popover-top bs-popover-top-demo">
+                            <div class="arrow"></div>
+                            <h3 class="popover-header">Popover top</h3>
+                            <div class="popover-body">
+                                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                            </div>
+                        </div>
+                        <div class="popover bs-popover-right bs-popover-right-demo">
+                            <div class="arrow"></div>
+                            <h3 class="popover-header">Popover right</h3>
+                            <div class="popover-body">
+                                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                            </div>
+                        </div>
+                        <div class="popover bs-popover-bottom bs-popover-bottom-demo">
+                            <div class="arrow"></div>
+                            <h3 class="popover-header">Popover bottom</h3>
+                            <div class="popover-body">
+                                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                            </div>
+                        </div>
+                        <div class="popover bs-popover-left bs-popover-left-demo">
+                            <div class="arrow"></div>
+                            <h3 class="popover-header">Popover left</h3>
+                            <div class="popover-body">
+                                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <hr>
+                <!-- END Static Popovers -->
+                
+                <!-- Live Popovers -->
+                <div class="g-my-50">
+                    <h6 class="text-uppercase font-weight-bold g-mb-10">Live Popovers</h6>
+                    <button type="button" class="btn btn-dark g-mb-10" data-container="body" data-toggle="popover" data-placement="top" title="Title Popover" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                        Popover on top
+                    </button>
+                    <button type="button" class="btn btn-dark g-mb-10" data-container="body" data-toggle="popover" data-placement="right" title="Title Popover"  data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                        Popover on right
+                    </button>
+                    <button type="button" class="btn btn-dark g-mb-10" data-container="body" data-toggle="popover" data-placement="bottom" title="Title Popover"  data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                        Popover on bottom
+                    </button>
+                    <button type="button" class="btn btn-dark g-mb-10" data-container="body" data-toggle="popover" data-placement="left" title="Title Popover"  data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                        Popover on left
+                    </button>
+                </div>
+                <!-- END Live Popovers -->
+                
+            </div>
+        </section>
+        <!-- END Tooltips & Popover -->
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-3.html' %}
+    <!-- END Footer -->
+
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

@@ -1,0 +1,173 @@
+/*
+    @
+    @   11. FOOTER
+    @
+*/
+
+footer {
+    background-color: $bluegray-800;
+    font-size: $font-size-sm;
+    .footer-logo {
+        width:120px;
+    }
+    a {
+        &:hover {
+            text-decoration: underline !important;
+            color: $footer-links-hover;
+        }
+    }
+    ul,ol {
+        margin:0;
+        padding:0;
+        list-style: none;
+    }
+
+    li,a,p {
+        color: $footer-text-color;
+    }
+    hr {
+        border-color: $footer-border-color;
+    }
+    
+    form {
+        input {
+            background-color: transparent;
+        }
+        button {
+            background-color: $footer-icon-bg;
+            color: $footer-text-color;
+        }
+    }
+    .widget {
+        a {
+            color: $footer-text-color;
+        }
+        .widget-title {
+            color: $footer-title-color;
+            border-bottom:2px solid $footer-border-color;
+        }
+        .widget-list {
+            li a {
+                display: block;
+                padding: .5rem 0;
+            }
+            li:not(:last-of-type) a {
+                border-bottom: 1px solid $footer-border-color;
+            }
+        }
+
+        &.newsletter-widget {
+            .form-control {
+                background-color: $bluegray-900;
+                border-color: $footer-border-color;
+                color: $footer-text-color;
+                &:focus {
+                    background-color: $bluegray-900;
+                    border-color:  theme-color("primary");
+                    color: $footer-text-color;
+                }
+            }
+            .input-group-prepend,
+            .input-group-append {
+                border-color: $footer-border-color;
+            }
+            .btn {
+                background-color: $footer-icon-bg;
+                color:#ffffff;
+                border-radius: 0;
+                &:hover {
+                    background-color: theme-color("primary");
+                }
+            }
+        }
+    }
+    .cn-icon {
+        background-color: $footer-icon-bg;
+        color:#ffffff !important;
+        &:hover {
+            background-color: theme-color("primary");
+            color:#ffffff;
+        }
+    }
+    .copyright-container {
+        background-color: $footer-copyright-bg;
+    }
+    
+    // Footer Light
+
+    &.footer-light {
+        background-color: $footer-light-bg;
+        li,a,p {
+            color: $footer-light-text-color;
+        }
+        hr {
+            border-color: $gray-400;
+        }
+        
+        form {
+            input {
+                background-color: #ffffff;
+            }
+            button {
+                background-color: $footer-light-icon-bg;
+                color: $footer-light-text-color;
+            }
+        }
+      
+        .widget {
+            .widget-title {
+                color: $footer-light-title-color;
+                border-bottom:2px solid $footer-light-title-border-color;
+            }
+            .widget-list {
+                li,a {
+                    color: $footer-light-links;
+                }
+            }
+            &.footer-links-widget {
+                li:not(:last-of-type) a {
+                    border-bottom: 1px solid $footer-light-border-color;
+                }
+            }
+            &.newsletter-widget {
+                .form-control {
+                    background-color: #ffffff;
+                    border-color: $footer-light-border-color;
+                    color: $footer-light-text-color;
+                    &:focus {
+                        border-color: theme-color("primary");
+                    }
+                }
+                .input-group-prepend,
+                .input-group-append {
+                    border-color: $footer-light-border-color;
+                }
+                .btn {
+                    background-color: $footer-light-border-color;
+                    color:#111111;
+                    border-radius:0;
+                    &:hover {
+                        background-color: theme-color("primary");
+                        color:#ffffff;
+                    }
+                }
+            }
+        }
+        .cn-icon {
+            background-color: $footer-light-icon-bg;
+            color:#111111 !important;
+            &:hover {
+                background-color: theme-color("primary");
+                color:#ffffff !important;
+            }
+        }
+        .copyright-container {
+            background-color: $footer-light-copyright-bg;
+        }
+    }
+    
+    @include media-breakpoint-down(md) {
+        text-align: center;
+    }
+}
+

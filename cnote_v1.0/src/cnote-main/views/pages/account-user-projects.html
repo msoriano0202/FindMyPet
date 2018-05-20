@@ -1,0 +1,182 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Profile Projects | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Profile Projects</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile Projects</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Profile Section -->
+        <section class="profile-section g-py-70 g-bg-white">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <aside class="user-sidebar g-p-10 g-border g-border-gray-300 g-mb-15">
+                            <div class="text-center g-mb-20">
+                                <div class="user-img position-relative g-mb-30">
+                                    <img src="http://via.placeholder.com/200x200/eee/777" class="img-fluid rounded-circle" alt="Profile Picture">
+                                    <a href="#" class="change-user-img" data-toggle="modal" data-target="#userImgUploadModal"><i class="icon-reload"></i></a>
+                                </div>
+                                <h5 class="font-weight-bold g-text-gray-700">John Doe</h5>
+                                <p>Visual, UI, UX Designer</p>
+                            </div>
+                            <div class="modal fade" id="userImgUploadModal" tabindex="-1" role="dialog" aria-labelledby="userImgUploadLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h6 class="modal-title text-center" id="userImgUploadLabel">Change your profile picture</h6>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form>
+                                            <div class="modal-body">
+                                                <input type="file" name="user-img-upload" id="user-img-upload" class="cn-custom-file-input cn-custom-file-input-v2" multiple />
+                                                <label class="user-upload-label text-center g-py-40" for="user-img-upload">
+                                                    <span class="d-block">
+                                                        <i class="icon-cloud-upload g-font-size-25"></i>
+                                                    </span>
+                                                    <span class="g-font-size-16">Choose an image&hellip;</span>
+                                                </label>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-sm cn-btn-primary">Save changes</button>
+                                                <button type="button" class="btn btn-sm cn-btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-info">
+                                <nav class="list-group">
+                                    <a href="account-user-profile.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-user g-mr-5"></i>Profile
+                                    </a>
+                                    <a href="account-user-posts.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-bubbles g-mr-5"></i>Posts
+                                    </a>
+                                    <a href="/account-user-projects.html" class="list-group-item list-group-item-action active">
+                                        <i class="icon-docs g-mr-5"></i>Projects
+                                    </a>
+                                    <a href="account-user-settings.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-settings g-mr-5"></i>Settings
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <i class="icon-logout g-mr-5"></i>Logout
+                                    </a>
+                                </nav>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="profile-content g-border g-border-gray-300 g-p-10">
+                            
+                            <ul class="list-group list-group-flush">
+                                
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-py-30">
+                                    <div class="g-mb-10 g-mb-md-0">
+                                        <img class="g-sm-w50 rounded g-mr-sm-5" src="http://via.placeholder.com/640x400/eee/777" alt="Image Description">
+                                    </div>
+                                    <div class="g-px-10">
+                                        <h6 class="font-weight-semibold">The ferengi is never solid.</h6>
+                                        <span class="g-bg-primary d-inline-block g-rounded-20 g-font-size-12 g-px-10 g-mb-10">Angular JS</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad necessitatibus nobis ullam.</p>
+                                        <ul class="list-unstyled list-inline g-mt-15">
+                                            <li class="list-inline-item"><a href="#" class="g-text-dark g-text-primary-h g-mr-10"><i class="icon-pencil"></i>  Edit</a></li>
+                                            <li class="list-inline-item"><a href="#" class="g-text-dark g-text-primary-h"><i class="icon-picture"></i> View Project</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-py-30">
+                                    <div class="g-mb-10 g-mb-md-0">
+                                        <img class="g-sm-w50 rounded g-mr-sm-5" src="http://via.placeholder.com/640x400/eee/777" alt="Image Description">
+                                    </div>
+                                    <div class="g-px-10">
+                                        <h6 class="font-weight-bold">Machines warp with advice.</h6>
+                                        <span class="g-bg-primary d-inline-block g-rounded-20 g-font-size-12 g-px-10 g-mb-10">Creative</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aspernatur dolorum magni quisquam unde! A aspernatur, corporis distinctio itaque, laudantium magnam maxime necessitatibus nostrum quasi repudiandae sit sunt tempora, voluptatibus? Eius iusto non provident repellat.</p>
+                                        <ul class="list-unstyled list-inline g-mt-15">
+                                            <li class="list-inline-item"><a href="#" class="g-text-dark g-text-primary-h g-mr-10"><i class="icon-pencil"></i>  Edit</a></li>
+                                            <li class="list-inline-item"><a href="#" class="g-text-dark g-text-primary-h"><i class="icon-picture"></i> View Project</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-py-30">
+                                    <div class="g-mb-10 g-mb-md-0">
+                                        <img class="g-sm-w50 rounded g-mr-sm-5" src="http://via.placeholder.com/640x400/eee/777" alt="Image Description">
+                                    </div>
+                                    <div class="g-px-10">
+                                        <h6 class="font-weight-bold">Machines warp with advice.</h6>
+                                        <span class="g-bg-primary d-inline-block g-rounded-20 g-font-size-12 g-px-10 g-mb-10">Design</span>
+                                        <p>Demolitione, calceus, et species. Secundus, magnum lixas interdum carpseris de gratis, fatalis orgia. ! A aspernatur, corporis distinctio itaque, laudantium magnam maxime necessitatibus nostrum quasi repudiandae sit sunt tempora, voluptatibus? Eius iusto non provident repellat.</p>
+                                        <ul class="list-unstyled list-inline g-mt-15">
+                                            <li class="list-inline-item"><a href="#" class="g-text-dark g-text-primary-h g-mr-10"><i class="icon-pencil"></i>  Edit</a></li>
+                                            <li class="list-inline-item"><a href="#" class="g-text-dark g-text-primary-h"><i class="icon-picture"></i> View Project</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                
+                                <li class="list-group-item d-sm-flex justify-content-start align-items-center g-py-30">
+                                    <div class="g-mb-10 g-mb-md-0">
+                                        <img class="g-sm-w50 rounded g-mr-sm-5" src="http://via.placeholder.com/640x400/eee/777" alt="Image Description">
+                                    </div>
+                                    <div class="g-px-10">
+                                        <h6 class="font-weight-bold">Machines warp with advice.</h6>
+                                        <span class="g-bg-primary d-inline-block g-rounded-20 g-font-size-12 g-px-10 g-mb-10">SASS</span>
+                                        <p>Nunquam amor solem. Bursa de gratis era, visum quadra! Competitions sunt coordinataes de camerarius stella.</p>
+                                        <ul class="list-unstyled list-inline g-mt-15">
+                                            <li class="list-inline-item"><a href="#" class="g-text-dark g-text-primary-h g-mr-10"><i class="icon-pencil"></i>  Edit</a></li>
+                                            <li class="list-inline-item"><a href="#" class="g-text-dark g-text-primary-h"><i class="icon-picture"></i> View Project</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </section>
+        <!-- END Profile Section -->
+    
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}
+

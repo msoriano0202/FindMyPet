@@ -1,0 +1,14 @@
+/*
+    @
+    @   25. BREADCRUMB
+    @
+*/
+
+.breadcrumb {
+    background-color: $breadcrumb-bg;
+    .breadcrumb-item {
+        a {
+            color: #333333;
+        }
+    }
+}

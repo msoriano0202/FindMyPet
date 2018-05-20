@@ -1,0 +1,248 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Tabs | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Tabs</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Components</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Tabs</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Colors -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container">
+            
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        
+                        <!-- Default Tabs -->
+                        <h6 class="text-uppercase font-weight-bold g-mb-15 text-center text-md-left">Version 1</h6>
+                        <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
+                            <div class="cn-nav-tabs-container">
+                                <ul class="nav nav-tabs cn-nav-tabs" id="tab-01" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-home"></i></span>
+                                            <span class="align-middle tab-name">Home</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-user"></i></span>
+                                            <span class="align-middle tab-name">Profile</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-envelope-open"></i></span>
+                                            <span class="align-middle tab-name">Contact</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-settings"></i></span>
+                                            <span class="align-middle tab-name">Settings</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="TabContent-01">
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet, assumenda atque consectetur dicta dolor dolores eaque in, incidunt iure maiores natus optio placeat reprehenderit, saepe veritatis voluptate voluptatum. Autem commodi consequuntur itaque iure iusto laudantium magni natus quibusdam sequi totam? Error impedit, tenetur? Distinctio est facilis rerum temporibus tenetur.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi at corporis distinctio dolor dolore eos est et, ipsum labore laboriosam magnam nulla placeat porro praesentium quam qui repellendus sapiente tempora tempore temporibus totam unde ut voluptas voluptate voluptates voluptatum.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium animi asperiores beatae blanditiis consequuntur dicta dolorum eveniet hic illum, inventore iure libero minus nisi odit officia perferendis placeat quis quod repellat rerum totam veritatis voluptatem. Ad ipsa laudantium porro quis ratione repudiandae temporibus totam.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae ducimus earum est facere libero magni sunt vel veritatis voluptatibus! A commodi consequatur dolorem eveniet facere inventore molestiae nihil nobis odit optio, qui quod reiciendis repudiandae? Accusantium aliquid asperiores cumque cupiditate debitis ea eius, eveniet excepturi quibusdam quis repellendus veritatis.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Default Tabs -->
+    
+                        <!-- Primary Active -->
+                        <h6 class="text-uppercase font-weight-bold g-mb-15 text-center text-md-left">Version 2</h6>
+                        <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
+                            <div class="cn-nav-tabs-wrapper">
+                                <ul class="nav cn-nav-tabs nav-tabs primary-active" id="tab-02" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="home-tab-02" data-toggle="tab" href="#home-02" role="tab" aria-controls="home-02" aria-selected="true">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-home"></i></span>
+                                            <span class="align-middle tab-name">Home</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="profile-tab-02" data-toggle="tab" href="#profile-02" role="tab" aria-controls="profile-02" aria-selected="false">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-user"></i></span>
+                                            <span class="align-middle tab-name">Profile</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab-02" data-toggle="tab" href="#contact-02" role="tab" aria-controls="contact-02" aria-selected="false">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-envelope-open"></i></span>
+                                            <span class="align-middle tab-name">Contact</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="settings-tab-02" data-toggle="tab" href="#settings-02" role="tab" aria-controls="settings-02" aria-selected="false">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-settings"></i></span>
+                                            <span class="align-middle tab-name">Settings</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="TabContent-02">
+                                    <div class="tab-pane fade show active" id="home-02" role="tabpanel" aria-labelledby="home-tab">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet, assumenda atque consectetur dicta dolor dolores eaque in, incidunt iure maiores natus optio placeat reprehenderit, saepe veritatis voluptate voluptatum. Autem commodi consequuntur itaque iure iusto laudantium magni natus quibusdam sequi totam? Error impedit, tenetur? Distinctio est facilis rerum temporibus tenetur.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile-02" role="tabpanel" aria-labelledby="profile-tab">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi at corporis distinctio dolor dolore eos est et, ipsum labore laboriosam magnam nulla placeat porro praesentium quam qui repellendus sapiente tempora tempore temporibus totam unde ut voluptas voluptate voluptates voluptatum.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="contact-02" role="tabpanel" aria-labelledby="contact-tab">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium animi asperiores beatae blanditiis consequuntur dicta dolorum eveniet hic illum, inventore iure libero minus nisi odit officia perferendis placeat quis quod repellat rerum totam veritatis voluptatem. Ad ipsa laudantium porro quis ratione repudiandae temporibus totam.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="settings-02" role="tabpanel" aria-labelledby="settings-tab">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae ducimus earum est facere libero magni sunt vel veritatis voluptatibus! A commodi consequatur dolorem eveniet facere inventore molestiae nihil nobis odit optio, qui quod reiciendis repudiandae? Accusantium aliquid asperiores cumque cupiditate debitis ea eius, eveniet excepturi quibusdam quis repellendus veritatis.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Primary Active  -->
+                        
+                        <!-- Nav Pills -->
+                        <h6 class="text-uppercase font-weight-bold g-mb-15 text-center text-md-left">Version 3</h6>
+                        <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
+                            <div class="cn-nav-tabs-wrapper">
+                                <ul class="nav cn-nav-tabs nav-pills" id="tab-03" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="home-tab-03" data-toggle="tab" href="#home-03" role="tab" aria-controls="home-03" aria-selected="true">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-home"></i></span>
+                                            <span class="align-middle tab-name">Home</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="profile-tab-03" data-toggle="tab" href="#profile-03" role="tab" aria-controls="profile-03" aria-selected="false">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-user"></i></span>
+                                            <span class="align-middle tab-name">Profile</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab-03" data-toggle="tab" href="#contact-03" role="tab" aria-controls="contact-03" aria-selected="false">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-envelope-open"></i></span>
+                                            <span class="align-middle tab-name">Contact</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="settings-tab-03" data-toggle="tab" href="#settings-03" role="tab" aria-controls="settings-03" aria-selected="false">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-settings"></i></span>
+                                            <span class="align-middle tab-name">Settings</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="TabContent-03">
+                                    <div class="tab-pane fade show active" id="home-03" role="tabpanel" aria-labelledby="home-tab-03">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet, assumenda atque consectetur dicta dolor dolores eaque in, incidunt iure maiores natus optio placeat reprehenderit, saepe veritatis voluptate voluptatum. Autem commodi consequuntur itaque iure iusto laudantium magni natus quibusdam sequi totam? Error impedit, tenetur? Distinctio est facilis rerum temporibus tenetur.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile-03" role="tabpanel" aria-labelledby="profile-tab-03">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi at corporis distinctio dolor dolore eos est et, ipsum labore laboriosam magnam nulla placeat porro praesentium quam qui repellendus sapiente tempora tempore temporibus totam unde ut voluptas voluptate voluptates voluptatum.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="contact-03" role="tabpanel" aria-labelledby="contact-tab-03">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium animi asperiores beatae blanditiis consequuntur dicta dolorum eveniet hic illum, inventore iure libero minus nisi odit officia perferendis placeat quis quod repellat rerum totam veritatis voluptatem. Ad ipsa laudantium porro quis ratione repudiandae temporibus totam.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="settings-03" role="tabpanel" aria-labelledby="settings-tab-03">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae ducimus earum est facere libero magni sunt vel veritatis voluptatibus! A commodi consequatur dolorem eveniet facere inventore molestiae nihil nobis odit optio, qui quod reiciendis repudiandae? Accusantium aliquid asperiores cumque cupiditate debitis ea eius, eveniet excepturi quibusdam quis repellendus veritatis.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Nav Pills -->
+                        
+                        <!-- Justify Tabs -->
+                        <h6 class="text-uppercase font-weight-bold g-mb-15 text-center text-md-left">Version 4</h6>
+                        <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
+                            <div class="cn-nav-tabs-wrapper">
+                                <ul class="nav nav-tabs cn-nav-tabs nav-justified" id="tab-06" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="home-tab-06" data-toggle="tab" href="#home-06" role="tab" aria-controls="home-06" aria-selected="true">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-home"></i></span>
+                                            <span class="align-middle tab-name">Home</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="profile-tab-06" data-toggle="tab" href="#profile-06" role="tab" aria-controls="profile-06" aria-selected="false">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-user"></i></span>
+                                            <span class="align-middle tab-name">Profile</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab-06" data-toggle="tab" href="#contact-06" role="tab" aria-controls="contact-06" aria-selected="false">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-envelope-open"></i></span>
+                                            <span class="align-middle tab-name">Contact</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="settings-tab-06" data-toggle="tab" href="#settings-06" role="tab" aria-controls="settings-06" aria-selected="false">
+                                            <span class="align-middle g-mr-sm-3"><i class="icon-settings"></i></span>
+                                            <span class="align-middle tab-name">Settings</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="TabContent-06">
+                                    <div class="tab-pane fade show active" id="home-06" role="tabpanel" aria-labelledby="home-tab-06">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet, assumenda atque consectetur dicta dolor dolores eaque in, incidunt iure maiores natus optio placeat reprehenderit, saepe veritatis voluptate voluptatum. Autem commodi consequuntur itaque iure iusto laudantium magni natus quibusdam sequi totam? Error impedit, tenetur? Distinctio est facilis rerum temporibus tenetur.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile-06" role="tabpanel" aria-labelledby="profile-tab-06">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi at corporis distinctio dolor dolore eos est et, ipsum labore laboriosam magnam nulla placeat porro praesentium quam qui repellendus sapiente tempora tempore temporibus totam unde ut voluptas voluptate voluptates voluptatum.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="contact-06" role="tabpanel" aria-labelledby="contact-tab-06">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium animi asperiores beatae blanditiis consequuntur dicta dolorum eveniet hic illum, inventore iure libero minus nisi odit officia perferendis placeat quis quod repellat rerum totam veritatis voluptatem. Ad ipsa laudantium porro quis ratione repudiandae temporibus totam.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="settings-06" role="tabpanel" aria-labelledby="settings-tab-06">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae ducimus earum est facere libero magni sunt vel veritatis voluptatibus! A commodi consequatur dolorem eveniet facere inventore molestiae nihil nobis odit optio, qui quod reiciendis repudiandae? Accusantium aliquid asperiores cumque cupiditate debitis ea eius, eveniet excepturi quibusdam quis repellendus veritatis.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Justify Tabs -->
+                    </div>
+                </div>
+      
+                
+            </div>
+        </section>
+        <!-- END Colors -->
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-3.html' %}
+    <!-- END Footer -->
+
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

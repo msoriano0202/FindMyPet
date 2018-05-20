@@ -1,0 +1,566 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Badges | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Badges</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Components</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Badges</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+    
+        <!-- Badges -->
+        <section class="g-py-50 g-bg-white">
+            <div class="container g-px-10">
+            
+                <div>
+                    <h5 class="g-mb-10 font-weight-semibold">Badges used with icons </h5>
+                    <p class="g-mb-20">The default class to use these badges is <code>cn-badge</code> followed by an additional class to specify the position, e.g: <code>cn-badge-top-right</code></p>
+                </div>
+            
+                <!-- Default -->
+                <div class="g-mb-70 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <div class="row">
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Default</h6>
+                            <div>
+                                <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right">52</span>
+                                    <i class="fa fa-twitter g-font-size-20"></i>
+                                </a>
+                                <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right">4</span>
+                                    <i class="fa fa-facebook g-font-size-20"></i>
+                                </a>
+                                <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right">21</span>
+                                    <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                                </a>
+                                <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right">152</span>
+                                    <i class="fa fa-instagram g-font-size-20"></i>
+                                </a>
+                                <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right">5</span>
+                                    <i class="fa fa-skype g-font-size-20"></i>
+                                </a>
+                                <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right">10</span>
+                                    <i class="fa fa-linkedin g-font-size-20"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Rounded</h6>
+                            <div>
+                                <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right g-rounded-4">12</span>
+                                    <i class="fa fa-twitter g-font-size-20"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right g-rounded-4">55</span>
+                                    <i class="fa fa-facebook g-font-size-20"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-red-dark-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right g-rounded-4">23</span>
+                                    <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right g-rounded-4">6</span>
+                                    <i class="fa fa-instagram g-font-size-20"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right g-rounded-4">1</span>
+                                    <i class="fa fa-skype g-font-size-20"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right g-rounded-4">85</span>
+                                    <i class="fa fa-linkedin g-font-size-20"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Default -->
+            
+                <!-- Rounded Circle -->
+                <div class="g-mb-70 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <div class="row">
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Rounded Circle</h6>
+                            <div>
+                                <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right rounded-circle">22</span>
+                                    <i class="fa fa-twitter g-font-size-20"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right rounded-circle">42</span>
+                                    <i class="fa fa-facebook g-font-size-20"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right rounded-circle">5</span>
+                                    <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right rounded-circle">7</span>
+                                    <i class="fa fa-instagram g-font-size-20"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right rounded-circle">25</span>
+                                    <i class="fa fa-skype g-font-size-20"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right rounded-circle">32</span>
+                                    <i class="fa fa-linkedin g-font-size-20"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Rounded Circle Image</h6>
+                            <div>
+                                <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right rounded-circle cn-badge-img bg-cover" style="background-image: url('http://via.placeholder.com/50x50');"></span>
+                                    <i class="fa fa-twitter g-font-size-20"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right rounded-circle cn-badge-img bg-cover" style="background-image: url('http://via.placeholder.com/50x50');"></span>
+                                    <i class="fa fa-facebook g-font-size-20"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right rounded-circle cn-badge-img bg-cover" style="background-image: url('http://via.placeholder.com/50x50');"></span>
+                                    <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right rounded-circle cn-badge-img bg-cover" style="background-image: url('http://via.placeholder.com/50x50');"></span>
+                                    <i class="fa fa-instagram g-font-size-20"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right rounded-circle cn-badge-img bg-cover" style="background-image: url('http://via.placeholder.com/50x50');"></span>
+                                    <i class="fa fa-skype g-font-size-20"></i>
+                                </a>
+                            
+                                <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                    <span class="cn-badge cn-badge-top-right rounded-circle cn-badge-img bg-cover" style="background-image: url('http://via.placeholder.com/50x50');"></span>
+                                    <i class="fa fa-linkedin g-font-size-20"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Rounded Circle -->
+            
+                <!-- Colored -->
+                <div class="g-mb-70 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <div class="row">
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Primary Color</h6>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-primary rounded-circle">52</span>
+                                <i class="fa fa-twitter g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-primary rounded-circle">5</span>
+                                <i class="fa fa-facebook g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-primary rounded-circle">1</span>
+                                <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-primary rounded-circle">34</span>
+                                <i class="fa fa-instagram g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-primary rounded-circle">27</span>
+                                <i class="fa fa-skype g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-primary rounded-circle">16</span>
+                                <i class="fa fa-linkedin g-font-size-20"></i>
+                            </a>
+                            <p class="g-pt-10">You can use any color from the predefined classes. </p>
+                        </div>
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Danger Color</h6>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-danger rounded-circle">1</span>
+                                <i class="fa fa-twitter g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-danger rounded-circle">4</span>
+                                <i class="fa fa-facebook g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-danger rounded-circle">57</span>
+                                <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-danger rounded-circle">32</span>
+                                <i class="fa fa-instagram g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-danger rounded-circle">18</span>
+                                <i class="fa fa-skype g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-danger rounded-circle">10</span>
+                                <i class="fa fa-linkedin g-font-size-20"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Colored -->
+            
+                <!-- Sizes -->
+                <div class="g-mb-70 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <div class="g-px-20 g-pt-20">
+                        <h5 class="font-weight-bold text-uppercase">Sizes</h5>
+                        <p>Change the <code> cn-badge </code> class with your prefered size: <code>cn-badge-sm / lg / xl</code></p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Small</h6>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge-sm cn-badge-top-right">2</span>
+                                <i class="fa fa-twitter g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge-sm cn-badge-top-right">15</span>
+                                <i class="fa fa-facebook g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                <span class="cn-badge-sm cn-badge-top-right">5</span>
+                                <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge-sm cn-badge-top-right">54</span>
+                                <i class="fa fa-instagram g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h text-white g-m-10" href="#">
+                                <span class="cn-badge-sm cn-badge-top-right">49</span>
+                                <i class="fa fa-skype g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge-sm cn-badge-top-right">31</span>
+                                <i class="fa fa-linkedin g-font-size-20"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-6 g-p-20">
+                        
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Default</h6>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right">12</span>
+                                <i class="fa fa-twitter g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue0-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right">12</span>
+                                <i class="fa fa-facebook g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right">12</span>
+                                <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right">12</span>
+                                <i class="fa fa-instagram g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h text-white g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right">12</span>
+                                <i class="fa fa-skype g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right">12</span>
+                                <i class="fa fa-linkedin g-font-size-20"></i>
+                            </a>
+                    
+                        </div>
+                        <div class="col-md-6 g-p-20">
+                        
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Large</h6>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge-lg cn-badge-top-right">12</span>
+                                <i class="fa fa-twitter g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge-lg cn-badge-top-right">12</span>
+                                <i class="fa fa-facebook g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                <span class="cn-badge-lg cn-badge-top-right">12</span>
+                                <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge-lg cn-badge-top-right">12</span>
+                                <i class="fa fa-instagram g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h text-white g-m-10" href="#">
+                                <span class="cn-badge-lg cn-badge-top-right">12</span>
+                                <i class="fa fa-skype g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge-lg cn-badge-top-right">12</span>
+                                <i class="fa fa-linkedin g-font-size-20"></i>
+                            </a>
+                    
+                        </div>
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Extra Large</h6>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge-xl cn-badge-top-right">6</span>
+                                <i class="fa fa-twitter g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge-xl cn-badge-top-right">2</span>
+                                <i class="fa fa-facebook g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                <span class="cn-badge-xl cn-badge-top-right">15</span>
+                                <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge-xl cn-badge-top-right">12</span>
+                                <i class="fa fa-instagram g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h text-white g-m-10" href="#">
+                                <span class="cn-badge-xl cn-badge-top-right">24</span>
+                                <i class="fa fa-skype g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge-xl cn-badge-top-right">71</span>
+                                <i class="fa fa-linkedin g-font-size-20"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sizes -->
+            
+                <!-- Positions -->
+                <div class="g-mb-70 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <div class="g-px-20 g-pt-20">
+                        <h5 class="font-weight-bold text-uppercase">Positions</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Top Right</h6>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right">12</span>
+                                <i class="fa fa-twitter g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right">12</span>
+                                <i class="fa fa-facebook g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right">12</span>
+                                <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right">12</span>
+                                <i class="fa fa-instagram g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h text-white g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right">12</span>
+                                <i class="fa fa-skype g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right">12</span>
+                                <i class="fa fa-linkedin g-font-size-20"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Top Left</h6>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-left">12</span>
+                                <i class="fa fa-twitter g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-left">12</span>
+                                <i class="fa fa-facebook g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-left">12</span>
+                                <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-left">12</span>
+                                <i class="fa fa-instagram g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h text-white g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-left">12</span>
+                                <i class="fa fa-skype g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-left">12</span>
+                                <i class="fa fa-linkedin g-font-size-20"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Bottom Right</h6>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-bottom-right">12</span>
+                                <i class="fa fa-twitter g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-bottom-right b">12</span>
+                                <i class="fa fa-facebook g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-bottom-right">12</span>
+                                <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-bottom-right">12</span>
+                                <i class="fa fa-instagram g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h text-white g-m-10" href="#">
+                                <span class="cn-badge cn-badge-bottom-right">12</span>
+                                <i class="fa fa-skype g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-bottom-right">12</span>
+                                <i class="fa fa-linkedin g-font-size-20"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Bottom Left</h6>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-bottom-left">12</span>
+                                <i class="fa fa-twitter g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-bottom-left">12</span>
+                                <i class="fa fa-facebook g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-bottom-left">12</span>
+                                <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-bottom-left">12</span>
+                                <i class="fa fa-instagram g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h text-white g-m-10" href="#">
+                                <span class="cn-badge cn-badge-bottom-left">12</span>
+                                <i class="fa fa-skype g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-bottom-left">12</span>
+                                <i class="fa fa-linkedin g-font-size-20"></i>
+                            </a>
+                    
+                        </div>
+                    </div>
+                </div>
+                <!-- END Positions -->
+            
+                <!-- Bordered -->
+                <div class="g-mb-70 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <div class="row">
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Bordered 1px</h6>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-white g-border g-border-success g-border-1x">1</span>
+                                <i class="fa fa-twitter g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-white g-border g-border-success g-border-1x">1222</span>
+                                <i class="fa fa-facebook g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-white g-border g-border-success g-border-1x">52</span>
+                                <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-white g-border g-border-success g-border-1x">24</span>
+                                <i class="fa fa-instagram g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h text-white g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-white g-border g-border-success g-border-1x">17</span>
+                                <i class="fa fa-skype g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-bg-white g-border g-border-success g-border-1x">8</span>
+                                <i class="fa fa-linkedin g-font-size-20"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-6 g-p-20">
+                            <h6 class="g-mb-25 g-pb-10 font-weight-semibold text-uppercase g-border g-border-b-gray-300">Border Rounded 1px</h6>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-rounded-20 g-bg-white g-border g-border-success g-border-1x">1</span>
+                                <i class="fa fa-twitter g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-rounded-20 g-bg-white g-border g-border-success g-border-1x">12</span>
+                                <i class="fa fa-facebook g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-red-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-rounded-20 g-bg-white g-border g-border-success g-border-1x">52</span>
+                                <i class="fa fa-google-plus g-font-size-20" aria-hidden="true"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-rounded-20 g-bg-white g-border g-border-success g-border-1x">24</span>
+                                <i class="fa fa-instagram g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-cyan-h text-white g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-rounded-20 g-bg-white g-border g-border-success g-border-1x">17</span>
+                                <i class="fa fa-skype g-font-size-20"></i>
+                            </a>
+                            <a class="cn-icon g-bg-dark g-bg-blue-h g-m-10" href="#">
+                                <span class="cn-badge cn-badge-top-right g-rounded-20 g-bg-white g-border g-border-success g-border-1x">8</span>
+                                <i class="fa fa-linkedin g-font-size-20"></i>
+                            </a>
+                        </div>
+       
+                    </div>
+                </div>
+                <!-- END Bordered -->
+        
+            </div>
+    
+        </section>
+        <!-- END Badges -->
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+    
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

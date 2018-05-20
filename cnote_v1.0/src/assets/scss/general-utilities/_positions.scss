@@ -1,0 +1,88 @@
+/*
+    @
+    @   THEME POSITIONS ( Vertical, Horizontal )
+    @
+*/
+
+/*
+    ----- Absolute Center
+    ----- Absolute X Center
+    ----- Absolute Y Center
+*/
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+        
+        .g-absolute-center#{$infix} {
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            -webkit-backface-visibility: hidden;
+        }
+
+        .g-absolute-x-center#{$infix} {
+            position: absolute !important;
+            left: 50% !important;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+            -webkit-backface-visibility: hidden;
+        }
+
+        .g-absolute-y-center#{$infix} {
+            position: absolute !important;
+            top: 50% !important;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            -webkit-backface-visibility: hidden;
+        }
+        
+    }
+}
+
+/*
+    ----- Relative Center
+    ----- Relative X Center
+    ----- Relative Y Center
+*/
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    
+        
+        .g-relative-center#{$infix} {
+            position: relative;
+            top: 50% !important;
+            left: 50% !important;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            -webkit-backface-visibility: hidden;
+        }
+        .g-relative-x-center#{$infix} {
+            position: relative;
+            left: 50% !important;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+            -webkit-backface-visibility: hidden;
+        }
+    
+        .g-relative-y-center#{$infix} {
+            position: relative;
+            top: 50% !important;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            -webkit-backface-visibility: hidden;
+        }
+    }
+}
+
+
+

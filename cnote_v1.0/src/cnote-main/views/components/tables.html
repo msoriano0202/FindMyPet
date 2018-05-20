@@ -1,0 +1,588 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Tables | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Tables</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Components</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Tables</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Colors -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container">
+                
+                <!-- Default -->
+                <h6 class="text-uppercase font-weight-bold g-mb-15">Default Table</h6>
+                <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
+              
+                    <div class="table-responsive">
+                        <table class="table g-mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Settings</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>@ddw</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END Default -->
+    
+                <!-- Dark Table -->
+                <h6 class="text-uppercase font-weight-bold g-mb-15">Dark Table</h6>
+                <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
+                    <div class="table-responsive">
+                        <table class="table table-dark g-mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Settings</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>@ddw</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END Dark Table -->
+    
+                <!-- Table Striped -->
+                <h6 class="text-uppercase font-weight-bold g-mb-15">Striped Table</h6>
+                <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Settings</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>@ddw</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-dark table-striped g-mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Settings</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>@ddw</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END Table Striped -->
+    
+                <!-- Default Head -->
+                <h6 class="text-uppercase font-weight-bold g-mb-15">Table Head</h6>
+                <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
+                    <div class="table-responsive">
+                        <table class="table g-mb-0">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Settings</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>@ddw</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <table class="table g-mb-0">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Settings</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>@ddw</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END Default Head  -->
+    
+                <!-- Bordered -->
+                <h6 class="text-uppercase font-weight-bold g-mb-15">Table Bordered</h6>
+                <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Settings</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>@ddw</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-dark table-bordered g-mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Settings</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>@ddw</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END Bordered -->
+    
+                <!-- Table Hoverable Rows -->
+                <h6 class="text-uppercase font-weight-bold g-mb-15">Hoverable rows</h6>
+                <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Settings</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>@ddw</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-dark table-hover g-mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Settings</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>@ddw</td>
+                                <td>
+                                    <a href="#" class="btn btn-xs cn-btn-bluegray-600">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END Table Hoverable Rows -->
+            </div>
+        </section>
+        <!-- END Colors -->
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

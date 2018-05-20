@@ -1,0 +1,320 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Buttons | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Buttons</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Components</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Buttons</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Buttons -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container g-px-15">
+            
+                <!-- Default Colors -->
+                <h5 class="g-mb-10 font-weight-bold text-uppercase text-md-left text-center">Colored Buttons</h5>
+                <div class="g-p-30 g-mb-50 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <a href="#" class="btn cn-btn-green g-mb-10">Green</a>
+                    <a href="#" class="btn cn-btn-blue g-mb-10">Blue</a>
+                    <a href="#" class="btn cn-btn-red g-mb-10">Red</a>
+                    <a href="#" class="btn cn-btn-teal g-mb-10">Teal</a>
+                    <a href="#" class="btn cn-btn-purple g-mb-10">Purple</a>
+                    <a href="#" class="btn cn-btn-indigo g-mb-10">Indigo</a>
+                    <a href="#" class="btn cn-btn-cyan g-mb-10">Cyan</a>
+                    <a href="#" class="btn cn-btn-pink g-mb-10">Pink</a>
+                    <a href="#" class="btn cn-btn-yellow g-mb-10">Yellow</a>
+                    <a href="#" class="btn cn-btn-orange g-mb-10">Orange</a>
+                    <a href="#" class="btn cn-btn-brown g-mb-10">Brown</a>
+                    <a href="#" class="btn cn-btn-gray-700 g-mb-10">Gray 700</a>
+                
+                    <p class="g-mt-25">Add class: <code>cn-btn-*</code> where <span class="g-text-red-dark">*</span> can be any color from the predefined classes. <a
+                        href="colors.html" target="_blank">Pallete colors</a></p>
+                </div>
+                <!-- END Default Colors -->
+            
+                <!-- Outlined Colors -->
+                <h5 class="g-mb-10 font-weight-bold text-uppercase text-md-left text-center">Outlined Colors</h5>
+                <div class="g-p-30 g-mb-50 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <a href="#" class="btn cn-btn-outline-green g-mb-10">Green</a>
+                    <a href="#" class="btn cn-btn-outline-blue g-mb-10">Blue</a>
+                    <a href="#" class="btn cn-btn-outline-red g-mb-10">Red</a>
+                    <a href="#" class="btn cn-btn-outline-teal g-mb-10">Teal</a>
+                    <a href="#" class="btn cn-btn-outline-purple g-mb-10">Purple</a>
+                    <a href="#" class="btn cn-btn-outline-indigo g-mb-10">Indigo</a>
+                    <a href="#" class="btn cn-btn-outline-cyan g-mb-10">Cyan</a>
+                    <a href="#" class="btn cn-btn-outline-pink g-mb-10">Pink</a>
+                    <a href="#" class="btn cn-btn-outline-yellow g-mb-10">Yellow</a>
+                    <a href="#" class="btn cn-btn-outline-orange g-mb-10">Orange</a>
+                    <a href="#" class="btn cn-btn-outline-brown g-mb-10">Brown</a>
+                    <a href="#" class="btn cn-btn-outline-gray-700 g-mb-10">Gray 700</a>
+                
+                    <p class="g-mt-25">Add class: <code>cn-btn-outline-*</code> where <span class="g-text-red-dark">*</span> can be any color from the predefined classes. <a
+                        href="colors.html" target="_blank">Pallete colors</a></p>
+                </div>
+                <!-- END Outlined Colors -->
+            
+                <!-- Theme Colors -->
+                <h5 class="g-mb-10 font-weight-bold text-uppercase text-md-left text-center">Theme Colors</h5>
+                <div class="g-p-30 g-mb-50 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <a href="#" class="btn cn-btn-primary g-mb-10">Primary</a>
+                    <a href="#" class="btn cn-btn-secondary g-mb-10">Secondary</a>
+                    <a href="#" class="btn cn-btn-success g-mb-10">Success</a>
+                    <a href="#" class="btn cn-btn-danger g-mb-10">Danger</a>
+                    <a href="#" class="btn cn-btn-warning g-mb-10">Warning</a>
+                    <a href="#" class="btn cn-btn-info g-mb-10">Info</a>
+                    <a href="#" class="btn cn-btn-light g-mb-10">Light</a>
+                    <a href="#" class="btn cn-btn-dark g-mb-10">Dark</a>
+                </div>
+                <!-- END Theme Colors -->
+            
+                <!-- Theme Colors Outlined -->
+                <h5 class="g-mb-10 font-weight-bold text-uppercase text-md-left text-center">Theme Colors Outlined</h5>
+                <div class="g-p-30 g-mb-50 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <a href="#" class="btn btn-outline-primary g-mb-10">Primary</a>
+                    <a href="#" class="btn btn-outline-secondary g-mb-10">Secondary</a>
+                    <a href="#" class="btn btn-outline-success g-mb-10">Success</a>
+                    <a href="#" class="btn btn-outline-info g-mb-10">Info</a>
+                    <a href="#" class="btn btn-outline-danger g-mb-10">Danger</a>
+                    <a href="#" class="btn btn-outline-warning g-mb-10">Warning</a>
+                    <span class="d-inline-block g-p-7 g-bg-gray-900 g-rounded-5 g-mb-10">
+                     <a href="#" class="btn btn-outline-light">Light</a>
+                </span>
+                
+                    <a href="#" class="btn btn-outline-dark g-mb-10">Dark</a>
+                </div>
+                <!-- END Theme Colors Outlined -->
+            
+                <!-- Outlined Border Sizes -->
+                <h5 class="g-mb-10 font-weight-bold text-uppercase text-md-left text-center">Outlined Border Sizes</h5>
+                <div class="g-p-30 g-mb-50 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <div>
+                        <a href="#" class="btn cn-btn-outline-green g-mb-10">Border 1px Default</a>
+                        <a href="#" class="btn cn-btn-outline-blue g-border-2x g-mb-10">Border 2px</a>
+                        <a href="#" class="btn cn-btn-outline-red g-border-3x g-mb-10">Border 3px</a>
+                        <a href="#" class="btn cn-btn-outline-teal g-border-4x g-mb-10">Border 4px</a>
+                        <a href="#" class="btn cn-btn-outline-purple g-border-5x g-mb-10">Border 5px</a>
+                    </div>
+                    <div>
+                        <a href="#" class="btn cn-btn-outline-indigo g-mb-10">Border 1px Default</a>
+                        <a href="#" class="btn cn-btn-outline-cyan g-border-2x g-mb-10">Border 2px</a>
+                        <a href="#" class="btn cn-btn-outline-pink g-border-3x g-mb-10">Border 3px</a>
+                        <a href="#" class="btn cn-btn-outline-yellow g-border-4x g-mb-10">Border 4px</a>
+                        <a href="#" class="btn cn-btn-outline-orange g-border-5x g-mb-10">Border 5px</a>
+                    </div>
+                    <div>
+                        <a href="#" class="btn cn-btn-outline-gray-500 g-border-1x g-mb-10">Border 1px Default</a>
+                        <a href="#" class="btn cn-btn-outline-gray-600 g-border-2x g-mb-10">Border 2px</a>
+                        <a href="#" class="btn cn-btn-outline-gray-700 g-border-3x g-mb-10">Border 3px</a>
+                        <a href="#" class="btn cn-btn-outline-gray-800 g-border-4x g-mb-10">Border 4px</a>
+                        <a href="#" class="btn cn-btn-outline-gray-900 g-border-5x g-mb-10">Border 5px</a>
+                    </div>
+                </div>
+                <!-- END Outlined Border Sizes -->
+            
+                <!-- Button Sizes -->
+                <h5 class="g-mb-10 font-weight-bold text-uppercase text-md-left text-center">Button sizes</h5>
+                <div class="g-p-30 g-mb-50 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <div class="g-mb-0">
+                        <a href="#" class="btn btn-xs cn-btn-primary g-mr-10 g-mb-10">Extra Small</a>
+                        <a href="#" class="btn btn-sm cn-btn-primary g-mr-10 g-mb-10">Small</a>
+                        <a href="#" class="btn cn-btn-primary g-mr-10 g-mb-10">Default</a>
+                        <a href="#" class="btn btn-lg cn-btn-primary g-mr-10 g-mb-10">Large</a>
+                        <a href="#" class="btn btn-xlg cn-btn-primary g-mr-10 g-mb-10">Extra Large</a>
+                    </div>
+                    <div class="g-mb-10">
+                        <a href="#" class="btn btn-xs cn-btn-dark g-mr-10 g-mb-10">Extra Small</a>
+                        <a href="#" class="btn btn-sm cn-btn-dark g-mr-10 g-mb-10">Small</a>
+                        <a href="#" class="btn cn-btn-dark g-mr-10 g-mb-10">Default</a>
+                        <a href="#" class="btn btn-lg cn-btn-dark g-mr-10 g-mb-10">Large</a>
+                        <a href="#" class="btn btn-xlg cn-btn-dark g-mr-10 g-mb-10">Extra Large</a>
+                    </div>
+                    <div class="g-mb-10">
+                        <a href="#" class="btn btn-xs cn-btn-outline-primary g-mr-10 g-mb-10">Extra Small</a>
+                        <a href="#" class="btn btn-sm cn-btn-outline-primary g-mr-10 g-mb-10">Small</a>
+                        <a href="#" class="btn cn-btn-outline-primary g-mr-10 g-mb-10">Default</a>
+                        <a href="#" class="btn btn-lg cn-btn-outline-primary g-mr-10 g-mb-10">Large</a>
+                        <a href="#" class="btn btn-xlg cn-btn-outline-primary g-mr-10 g-mb-10">Extra Large</a>
+                    </div>
+                </div>
+                <!-- END Button Sizes -->
+            
+                <!-- Block Buttons -->
+                <h5 class="g-mb-10 font-weight-bold text-uppercase text-md-left text-center">Block Buttons</h5>
+                <div class="g-p-30 g-mb-50 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <div class="row">
+                        <div class="col-md-3 g-mb-10">
+                            <a href="#" class="btn btn-xs btn-block cn-btn-primary g-mr-10">Extra Small</a>
+                            <a href="#" class="btn btn-sm btn-block cn-btn-primary g-mr-10">Small</a>
+                            <a href="#" class="btn btn-block cn-btn-primary g-mr-10">Default</a>
+                            <a href="#" class="btn btn-lg btn-block cn-btn-primary g-mr-10">Large</a>
+                            <a href="#" class="btn btn-xlg btn-block cn-btn-primary g-mr-10">Extra Large</a>
+                        </div>
+                    
+                        <div class="col-md-3 g-mb-10">
+                            <a href="#" class="btn btn-xs btn-block cn-btn-outline-primary g-mr-10">Extra Small</a>
+                            <a href="#" class="btn btn-sm btn-block cn-btn-outline-primary g-mr-10">Small</a>
+                            <a href="#" class="btn btn-block cn-btn-outline-primary g-mr-10">Default</a>
+                            <a href="#" class="btn btn-lg btn-block cn-btn-outline-primary g-mr-10">Large</a>
+                            <a href="#" class="btn btn-xlg btn-block cn-btn-outline-primary g-mr-10">Extra Large</a>
+                        </div>
+                        <div class="col-md-3 g-mb-10">
+                            <a href="#" class="btn btn-xs btn-block cn-btn-purple-400 g-mr-10">Extra Small</a>
+                            <a href="#" class="btn btn-sm btn-block cn-btn-purple-400 g-mr-10">Small</a>
+                            <a href="#" class="btn btn-block cn-btn-purple-400 g-mr-10">Default</a>
+                            <a href="#" class="btn btn-lg btn-block cn-btn-purple-400 g-mr-10">Large</a>
+                            <a href="#" class="btn btn-xlg btn-block cn-btn-purple-400 g-mr-10">Extra Large</a>
+                        </div>
+                        <div class="col-md-3 g-mb-10">
+                            <a href="#" class="btn btn-xs btn-block cn-btn-outline-purple-400 g-mr-10">Extra Small</a>
+                            <a href="#" class="btn btn-sm btn-block cn-btn-outline-purple-400 g-mr-10">Small</a>
+                            <a href="#" class="btn btn-block cn-btn-outline-purple-400 g-mr-10">Default</a>
+                            <a href="#" class="btn btn-lg btn-block cn-btn-outline-purple-400 g-mr-10">Large</a>
+                            <a href="#" class="btn btn-xlg btn-block cn-btn-outline-purple-400 g-mr-10">Extra Large</a>
+                        </div>
+                    </div>
+            
+            
+                </div>
+                <!-- END Buttons Sizes -->
+            
+                <!-- Hover Effect v1 -->
+                <h5 class="g-mb-10 font-weight-bold text-uppercase text-md-left text-center">Hover Effect V1</h5>
+                <div class="g-p-30 g-mb-50 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <div class="row">
+                        <div class="col-md-3 g-mb-10">
+                            <a href="#" class="btn cn-btn-outline-primary btn-block cn-btn-hover-v1-left">Hover v1 left</a>
+                            <a href="#" class="btn cn-btn-outline-primary btn-block cn-btn-hover-v1-right">Hover v1 Right</a>
+                            <a href="#" class="btn cn-btn-outline-primary btn-block cn-btn-hover-v1-top">Hover v1 Top</a>
+                            <a href="#" class="btn cn-btn-outline-primary btn-block cn-btn-hover-v1-bottom">Hover v1 Bottom</a>
+                        </div>
+                        <div class="col-md-3 g-mb-10">
+                            <a href="#" class="btn cn-btn-outline-dark btn-block cn-btn-hover-v1-left">Hover v1 Left</a>
+                            <a href="#" class="btn cn-btn-outline-dark btn-block cn-btn-hover-v1-right">Hover v1 Right</a>
+                            <a href="#" class="btn cn-btn-outline-dark btn-block cn-btn-hover-v1-top">Hover v1 Top</a>
+                            <a href="#" class="btn cn-btn-outline-dark btn-block cn-btn-hover-v1-bottom">Hover v1 Bottom</a>
+                        </div>
+                        <div class="col-md-3 g-mb-10">
+                            <a href="#" class="btn cn-btn-dark btn-block cn-btn-hover-v1-left"><span>Hover v1 Left</span></a>
+                            <a href="#" class="btn cn-btn-dark btn-block cn-btn-hover-v1-right"><span>Hover v1 Right</span></a>
+                            <a href="#" class="btn cn-btn-dark btn-block cn-btn-hover-v1-top"><span>Hover v1 Top</span></a>
+                            <a href="#" class="btn cn-btn-dark btn-block cn-btn-hover-v1-bottom"><span>Hover v1 Bottom</span></a>
+                        </div>
+                        <div class="col-md-3 g-mb-10">
+                            <a href="#" class="btn cn-btn-success btn-block cn-btn-hover-v1-left"><span>Hover v1 Left</span></a>
+                            <a href="#" class="btn cn-btn-success btn-block cn-btn-hover-v1-right"><span>Hover v1 Right</span></a>
+                            <a href="#" class="btn cn-btn-success btn-block cn-btn-hover-v1-top"><span>Hover v1 Top</span></a>
+                            <a href="#" class="btn cn-btn-success btn-block cn-btn-hover-v1-bottom"><span>Hover v1 Bottom</span></a>
+                        </div>
+                        <p class="g-mt-25">Add class <code class="text-nowrap"> cn-btn-hover-v1-*</code> where <span class="g-text-red-dark">*</span> can be one of the following: <code class="text-nowrap">left / right / top / bottom</code></p>
+                    </div>
+            
+                </div>
+                <!-- END Hover Effect v1 -->
+            
+                <!-- Hover Effect 2 -->
+                <h5 class="g-mb-10 font-weight-bold text-uppercase text-md-left text-center">Hover Effect V2</h5>
+                <div class="g-p-30 g-mb-50 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <div>
+                        <a href="#" class="btn cn-btn-primary cn-btn-hover-v2-left g-mb-10">Hover v2 Left</a>
+                        <a href="#" class="btn cn-btn-primary cn-btn-hover-v2-left-2 g-mb-10">Hover v2 Left 2</a>
+                        <a href="#" class="btn cn-btn-primary cn-btn-hover-v2-right g-mb-10">Hover v2 Right 2</a>
+                        <a href="#" class="btn cn-btn-primary cn-btn-hover-v2-right-2 g-mb-10">Hover v2 Right 2</a>
+                        <a href="#" class="btn cn-btn-primary cn-btn-hover-v2-center g-mb-10">Hover v2 Center</a>
+                    </div>
+                    <div>
+                        <a href="#" class="btn cn-btn-blue-700 cn-btn-hover-v2-left g-mb-10">Hover v2 Left</a>
+                        <a href="#" class="btn cn-btn-blue-700 cn-btn-hover-v2-left-2 g-mb-10">Hover v2 Left 2</a>
+                        <a href="#" class="btn cn-btn-blue-700 cn-btn-hover-v2-right g-mb-10">Hover v2 Right 2</a>
+                        <a href="#" class="btn cn-btn-blue-700 cn-btn-hover-v2-right-2 g-mb-10">Hover v2 Right 2</a>
+                        <a href="#" class="btn cn-btn-blue-700 cn-btn-hover-v2-center g-mb-10">Hover v2 Center</a>
+                    </div>
+                    <p class="g-mt-25">Add class
+                        <code class="text-nowrap">cn-btn-hover-v2-*</code> where
+                        <span class="g-text-red-dark">*</span> can be one of the following:
+                        <code>left, left-2, right, right-2, center</code>
+                    </p>
+            
+                </div>
+                <!-- END Hover Effect 2 -->
+            
+                <!-- Buttons with Icon -->
+                <h5 class="g-mb-10 font-weight-bold text-uppercase text-md-left text-center">Buttons with Icon</h5>
+                <div class="g-p-30 g-mb-50 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <a href="#" class="btn cn-btn-dark g-mb-10"><i class="fa fa-home fa-fw"></i> Dark Button</a>
+                    <a href="#" class="btn cn-btn-dark g-mb-10"><i class="fa fa-check fa-fw"></i> Dark Button</a>
+                    <a href="#" class="btn cn-btn-dark g-mb-10"><i class="fa fa-user fa-fw"></i> Dark Button</a>
+                    <a href="#" class="btn cn-btn-dark g-mb-10"><i class="fa fa-cog fa-fw"></i> Dark Button</a>
+                    <a href="#" class="btn cn-btn-dark g-mb-10"><i class="fa fa-pencil fa-fw"></i> Dark Button</a>
+            
+                </div>
+                <!-- END Buttons with Icon -->
+            
+                <!-- Buttons Corners -->
+                <h5 class="g-mb-10 font-weight-bold text-uppercase text-md-left text-center">Button Corners</h5>
+                <div class="g-p-30 g-mb-50 g-bg-white g-border g-border-gray-300 g-shadow-v1">
+                    <div class="g-my-20">
+                        <h5 class="g-mb-10">No Rounded</h5>
+                        <a href="#" class="btn cn-btn-dark rounded-0 g-mb-10">Dark Button</a>
+                        <a href="#" class="btn cn-btn-outline-dark rounded-0 g-mb-10">Dark Outline</a>
+                        <a href="#" class="btn cn-btn-orange rounded-0 g-mb-10">Orange Button</a>
+                        <a href="#" class="btn cn-btn-primary rounded-0 g-mb-10">Primary Button</a>
+                        <a href="#" class="btn cn-btn-blue rounded-0 g-mb-10">Blue Button</a>
+                        <p>Just add class: <code>rounded-0</code></p>
+                    </div>
+                    <div class="g-my-20">
+                        <h5 class="g-mb-10">Rounded ( Default )</h5>
+                        <a href="#" class="btn cn-btn-dark g-mb-10">Dark Button</a>
+                        <a href="#" class="btn cn-btn-outline-dark g-mb-10">Dark Outline</a>
+                        <a href="#" class="btn cn-btn-orange g-mb-10">Orange Button</a>
+                        <a href="#" class="btn cn-btn-primary g-mb-10">Primary Button</a>
+                        <a href="#" class="btn cn-btn-blue g-mb-10">Blue Button</a>
+                    </div>
+                    <div class="g-my-20">
+                        <h5 class="g-mb-10">Pill Rounded</h5>
+                        <a href="#" class="btn cn-btn-dark g-rounded-50 g-mb-10">Dark Button</a>
+                        <a href="#" class="btn cn-btn-outline-dark g-rounded-50 g-mb-10">Dark Outline</a>
+                        <a href="#" class="btn cn-btn-orange g-rounded-50 g-mb-10">Orange Button</a>
+                        <a href="#" class="btn cn-btn-primary g-rounded-50 g-mb-10">Primary Button</a>
+                        <a href="#" class="btn cn-btn-blue g-rounded-50 g-mb-10">Blue Button</a>
+                        <p>Just add class: <code>g-rounded-50</code></p>
+                    </div>
+                </div>
+                <!-- END Buttons Corners -->
+        
+            </div>
+        </section>
+        <!-- END Buttons -->
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+    
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

@@ -1,0 +1,45 @@
+/*
+    @
+    @   21. TOOLTIPS + POPOVERS
+    @
+*/
+
+.tooltip {
+    z-index: 5555;
+}
+.bs-tooltip-top-demo,
+.bs-tooltip-bottom-demo,
+.bs-popover-top-demo,
+.bs-popover-bottom-demo {
+    .arrow {
+        left:48%;
+    }
+}
+.bs-tooltip-left-demo,
+.bs-tooltip-right-demo,
+.bs-popover-left-demo,
+.bs-popover-right-demo {
+    .arrow {
+        top:48%;
+    }
+}
+// Static Tooltips Example
+.static-tooltip-example {
+    .tooltip {
+        display: inline-block;
+        position: relative;
+        margin: .5rem;
+        opacity: 1;
+    }
+}
+
+// Static Popovers Example
+
+.static-popover-example {
+    .popover {
+        display: block;
+        position: relative;
+        margin: .5rem;
+        float: left;
+    }
+}

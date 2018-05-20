@@ -1,0 +1,40 @@
+/*
+
+    @
+    @   22. LIST / LIST-GROUPS
+    @
+    
+*/
+
+ul.list-striped li:nth-of-type(odd) {
+    background-color: #f7f8f9;
+}
+
+.list-group-item {
+    color: #111111;
+    @include hover-focus {
+        color: color-yiq($list-group-hover-bg);
+        background-color: $list-group-hover-bg;
+        border-color:darken($list-group-hover-bg, 2%);
+        @include transition(.2s);
+    }
+    
+    &.active {
+        @include hover-focus {
+            color: color-yiq($list-group-active-bg);
+            background-color: $list-group-active-bg;
+            border-color: darken($list-group-active-bg, 2%);
+        }
+        .bagde {
+            background-color: $white !important;
+            color: #111111;
+        }
+    }
+    &.disabled {
+        @include hover-focus {
+            color: $list-group-disabled-color;
+            background-color: $list-group-disabled-bg;
+            border-color: darken($list-group-disabled-bg, 2%);
+        }
+    }
+}

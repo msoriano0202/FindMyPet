@@ -1,0 +1,163 @@
+
+/*
+    @
+    @   17. TIMELINES
+    @
+*/
+
+.timeline-item {
+    position: relative;
+    z-index: 1;
+    .timeline-date {
+        margin-left: $timeline-icon-width + 20px;
+        z-index: 20;
+        height: $timeline-icon-height;
+        padding: 0 1rem;
+        span {
+            display: inline-block;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            background-color: theme-color("primary");
+            color: $white;
+            padding: 0.1rem 1.7rem;
+            font-size: 0.875rem;
+            border-radius:8px;
+        }
+    }
+    .timeline-icon {
+        width: $timeline-icon-width !important;
+        height: $timeline-icon-height !important;
+        line-height: $timeline-icon-height !important;
+        display: inline-block;
+        text-align: center;
+        background-color: $timeline-icon-bg;
+        color: $timeline-icon-color;
+        border-radius: $timeline-icon-rounded;
+    }
+    &.left-item {
+        @include media-breakpoint-up(md) {
+            .timeline-date {
+                left:50%;
+                margin-left: $timeline-icon-width / 1.5;
+                span {
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        left: -5px;
+                        border-width:5px 5px 5px 0px;
+                        border-color: transparent theme-color("primary") transparent transparent;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        -moz-transform: translateY(-50%);
+                        -webkit-transform: translateY(-50%);
+                    }
+                }
+            }
+            .timeline-content {
+                padding: 15px 0px;
+                .timeline-body {
+                    @include media-breakpoint-up(md) {
+                        border-top-right-radius: 0;
+                    }
+                }
+                &:before {
+                    left:100%;
+                }
+                width:50%;
+                margin-left: 0;
+                padding-right:$timeline-icon-width / 2;
+                border-radius:5px;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    bottom: 0px;
+                    border-style: solid;
+                    right:$timeline-icon-width / 2;
+                    top:0px;
+                    border-width:0 0px 15px 15px;
+                    border-color: transparent transparent theme-color("dark") transparent;
+                }
+            }
+        }
+  
+    }
+    &.right-item {
+        @include media-breakpoint-up(md) {
+            .timeline-date {
+                //background-color: #f82976;
+                right:50%;
+                margin-right: $timeline-icon-width / 1.5;
+                span {
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        width: 0;
+                        height: 0;
+                        bottom: 0px;
+                        border-style: solid;
+                        right: -5px;
+                        border-width:5px 0px 5px 5px;
+                        border-color: transparent transparent transparent theme-color("primary");
+                        top: 50%;
+                        transform: translateY(-50%);
+                        -moz-transform: translateY(-50%);
+                        -webkit-transform: translateY(-50%);
+                    }
+                }
+            }
+            .timeline-content {
+                padding: 15px 0px;
+                .timeline-body {
+                    @include media-breakpoint-up(md) {
+                        border-top-left-radius: 0;
+                    }
+                }
+                &:before {
+                    left:0;
+                    right:100%;
+                }
+                width:50%;
+                margin-left: 0;
+                left:50%;
+                padding-left:$timeline-icon-width / 2;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    bottom: 0px;
+                    border-style: solid;
+                    left: $timeline-icon-width / 2;
+                    top:0px;
+                    border-width:0px 15px 15px 0px;
+                    border-color: transparent transparent theme-color("dark") transparent;
+                }
+            }
+        }
+    }
+    
+    .timeline-content {
+        z-index: 1;
+        position: relative;
+        width:auto;
+        margin-left: $timeline-icon-width;
+        &:before {
+            background-color: $gray-400;
+            content: "";
+            height: 100%;
+            position: absolute;
+            top: 0;
+            width: 1px;
+            z-index: 10;
+            left: -$timeline-icon-width / 2;
+        }
+    }
+}

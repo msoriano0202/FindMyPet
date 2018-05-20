@@ -1,0 +1,6 @@
+## generic files to ignore
+
+/.idea
+/idea
+/node_modules
+package-lock.json

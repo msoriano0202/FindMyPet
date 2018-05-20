@@ -1,0 +1,123 @@
+{% extends '../_partials/cnote-main-layout.html' %}
+{% block page-title %}<title>Register 1 | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '../_partials/headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Register 1</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Register 1</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Register Section -->
+        <section class="register-section g-py-70 g-bg-white">
+            <div class="container">
+                <div class="row justify-content-center">
+    
+                    <div class="col-md-8 col-lg-6">
+                        <div class="g-bg-white g-border g-border-gray-300 g-px-30 g-py-35 g-shadow-v1">
+                            <h4 class="text-center g-pb-35">Create an account</h4>
+                            <!-- Register Form 1 -->
+                            <form class="register-form-1">
+                                <div class="form-group">
+                                    <label for="register-firstname">First Name</label>
+                                    <div class="input-group input-group-focus">
+                                    <span class="input-group-prepend g-w50">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                        <input type="text" class="form-control form-control-lg" id="register-firstname" name="firstname" placeholder="Bill">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-lastname">Last Name</label>
+                                    <div class="input-group input-group-focus">
+                                    <span class="input-group-prepend g-w50">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                        <input type="text" class="form-control form-control-lg" id="register-lastname" name="lastname" placeholder="Will">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-email">Email</label>
+                                    <div class="input-group input-group-focus">
+                                    <span class="input-group-prepend g-w50">
+                                        <i class="fa fa-envelope-open"></i>
+                                    </span>
+                                        <input type="email" class="form-control form-control-lg" id="register-email" name="email"  placeholder="E-mail">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-password">Password</label>
+                                    <div class="input-group input-group-focus">
+                                    <span class="input-group-prepend g-w50">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                        <input type="password" class="form-control form-control-lg" id="register-password" name="password"  placeholder="Your Password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-repassword">Password again</label>
+                                    <div class="input-group input-group-focus">
+                                    <span class="input-group-prepend g-w50">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                        <input type="password" class="form-control form-control-lg" id="register-repassword" name="repassword"  placeholder="Re-Password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control cn-custom-checkbox d-flex align-items-center">
+                                        <input class="custom-control-input" type="checkbox" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">
+                                            <span>I accept the <a href="#" class="g-ml-5">Terms and Conditions</a></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group g-mb-40">
+                                    <button type="submit" class="btn cn-btn-primary">Create your account</button>
+                                </div>
+                                <div class="text-center">
+                                    <p>Already have an account? <a href="ml">Sign in</a></p>
+                                </div>
+                            </form>
+                            <!-- END Register Form 1 -->
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+        </section>
+        <!-- END Register Section -->
+        
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '../_partials/footers/footer-1.html' %}
+    <!-- END Footer -->
+    
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}
+

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="cNote, a beautiful theme with awesome layouts">
+    <meta name="keywords" content="Theme, Template, Ecommerce, Bootstrap, SASS, Multipage, Onepage, Multipurpose, jQuery">
+    <meta name="distribution" content="global">
+    <title>cNote Documentation</title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+<section class="main-content">
+
+    <!-- Header Container -->
+    <div class="cn-header">
+        <div class="d-flex align-items-center h-100">
+
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="text-uppercase font-weight-bold">cNote v1.0</h1>
+                    <h5 class="text-uppercase font-weight-bold">Multi / Onepage / Ecommerce Template</h5>
+                    <div>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Author: <a href="http://theme-aspect.com/cnote-v1.0/">Aspect Themes</a></li>
+                            <li class="list-inline-item">Contact: <a href="mailto:support@theme-aspect.com">support@theme-aspect.com</a></li>
+                            <li class="list-inline-item">Created at: 26/04/2018</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- END Header Container -->
+
+    <div class="docs my-5">
+        <div class="container">
+            <div class="row">
+                <!-- Docs Sidebar -->
+                <div class="col-md-3">
+                    <nav class="navbar list-group">
+                        <a href="01-introduction.html" class="list-group-item list-group-item-action">Introduction</a>
+                        <a href="02-environment-setup.html" class="list-group-item list-group-item-action">Dev Environment Setup</a>
+                        <a href="03-workgulpfile.html" class="list-group-item list-group-item-action">Working with Gulp</a>
+                        <a href="04-project-structure.html" class="list-group-item list-group-item-action">Project Structure</a>
+                        <a href="05-using-preprocessors.html" class="list-group-item list-group-item-action">Using Preprocessors</a>
+                        <a href="06-general-classes.html" class="list-group-item list-group-item-action active">General Classes</a>
+                        <a href="07-colors.html" class="list-group-item list-group-item-action">Colors</a>
+                        <a href="08-font-icons.html" class="list-group-item list-group-item-action">Font Icons</a>
+                        <a href="09-plugins-list.html" class="list-group-item list-group-item-action">Plugins List</a>
+                        <a href="10-credits.html" class="list-group-item list-group-item-action">Source Assets</a>
+                        <a href="11-support.html" class="list-group-item list-group-item-action">Support</a>
+                    </nav>
+                    </aside>
+                </div>
+                <!-- END Docs Sidebar -->
+
+                <!-- Docs Content -->
+                <div class="col-md-9">
+                    <div class="docs-content">
+
+                        <!-- General Classes -->
+                        <div>
+                            <h4 class="text-uppercase font-weight-bold">General Classes</h4>
+                            <div class="alert alert-secondary">Bootstrap includes dozens of utilities—classes with a single purpose to reduce the frequency of highly repetitive declarations.</div>
+                            <p class="mb-0">Along with <a href="http://getbootstrap.com/docs/4.0/utilities/borders/" target="_blank">default Bootstrap 4 utility classes</a> Cnote introduces its own.
+                                They all live inside <code>cnote/src/assets/scss/general-utilities and general-components</code> file.</p>
+                            <p>The general classes are made to avoid as much as possible the repetition of some CSS code lines.</p>
+                            <p class="mb-0">It also relieves the user to search through so many files and customize the layout of a page as desired. This is possible by adding or changing some classes directly from HMTL files.</p>
+                            <p>SCSS has the ability to automatically generate some classes without writing them manually using functions and variables.</p>
+                            <p class="mb-0">These helpers can be easily recognized because of the prefix with which they are defined <code>.g-*</code></p>
+                            <p><code>.g-</code> stands from <b>general</b></p>
+     
+                            <p>In the following lines, we will present some of the general classes that Cnote has.</p>
+                            <p>There are classes for :</p>
+                            
+                            <p class="font-weight-bold">Margins:</p>
+                            <span class="d-block"> <code>.g-m-*</code> <span> ( all margins )</span></span>
+                            <span class="d-block"> <code>.g-ml-*</code><span> ( margin-left)</span></span>
+                            <span class="d-block"> <code>.g-mt-*</code><span> ( margin-top)</span></span>
+                            <span class="d-block"> <code>.g-mr-*</code><span> ( margin-right )</span></span>
+                            <span class="d-block mb-2"> <code>.g-mb-*</code><span> ( margin-bottom )</span></span>
+    
+                            <span class="d-block"> <code>.g-ml-minus-*</code> <span> negative margin-left</span></span>
+                            <span class="d-block"> <code>.g-mt-minus-*</code> <span> negative margin-top</span></span>
+                            <span class="d-block"> <code>.g-mr-minus-*</code> <span> negative margin-right</span></span>
+                            <span class="d-block mb-2"> <code>.g-mb-minus-*</code> <span> negative margin-bottom</span></span>
+    
+                            <span class="d-block"><code>.g-l-*</code> ( left )</span>
+                            <span class="d-block"><code>.g-t-*</code> ( top )</span>
+                            <span class="d-block"><code>.g-r-*</code> ( right )</span>
+                            <span class="d-block mb-2"><code>.g-b-*</code> ( bottom )</span>
+    
+                            <span class="d-block"><code>.g-l-minus-*</code> ( negative left )</span>
+                            <span class="d-block"><code>.g-t-minus-*</code> ( negative top )</span>
+                            <span class="d-block"><code>.g-r-minus-*</code> ( negative right )</span>
+                            <span class="d-block mb-2"><code>.g-b-minus-*</code> ( negative bottom )</span>
+    
+                            <span class="d-block"><span class="text-danger">( * )</span> can be a number from <b>1 to 150</b> pixels</span>
+                            <span class="d-block">(1-20) - <span class="font-italic">1 by 1</span></span>
+                            <span class="d-block">(20-50) - <span class="font-italic">5 by 5</span></span>
+                            <span class="d-block">(50-150) - <span class="font-italic">10 by 10</span></span>
+    
+                            <hr>
+                            
+                            <p class="font-weight-bold">Paddings:</p>
+                            <span class="d-block"> <code>.g-p-*</code> <span> ( all paddings )</span></span>
+                            <span class="d-block"> <code>.g-pl-*</code><span> ( padding-left)</span></span>
+                            <span class="d-block"> <code>.g-pt-*</code><span> ( padding-top)</span></span>
+                            <span class="d-block"> <code>.g-pr-*</code><span> ( padding-right )</span></span>
+                            <span class="d-block mb-2"> <code>.g-pb-*</code><span> ( padding-bottom )</span></span>
+                            <span class="d-block"><span class="text-danger">( * )</span> can be a number from <b>1 to 150</b> pixels</span>
+                            <span class="d-block">(1-20) - <span class="font-italic">1 by 1</span></span>
+                            <span class="d-block">(20-50) - <span class="font-italic">5 by 5</span></span>
+                            <span class="d-block">(50-150) - <span class="font-italic">10 by 10</span></span>
+    
+                            <hr>
+                            
+                            <p class="font-weight-bold">Widths and Heights:</p>
+                            <span class="d-block"><code>.g-w*</code> <span>( 10-100pixels ) 10 by 10</span></span>
+                            <span class="d-block"><code>.g-h*</code><span>( 10 - 800pixels ) 10 by 10 until 100, 50 by 50 until 800</span></span>
+    
+                            <hr>
+    
+                            <p class="font-weight-bold">Background colors:</p>
+                            <span class="d-block"><code>.g-bg-*</code> ( * ) can be any color from <a href="http://theme-aspect.com/cnote-v1.0/cnote-main/components/colors.html" target="_blank"> palette colors</a></span>
+                            <span>e.g: <code>.g-bg-blue / .g-bg-blue-200 / .g-bg-green</code></span>
+                            <span class="d-block">Need a background with opacity ? No problem.</span>
+                            <span class="d-block">You can use: <code>.g-bg-blue-opacity-*</code> ( * ) can be any number from 0 to 9</span>
+                            
+                            <hr>
+    
+                            <p class="font-weight-bold">Borders:</p>
+                            <span class="d-block"><code>.g-border</code> <span> ( all borders )</span></span>
+                            <span class="d-block"><code>.g-border-l</code> <span> ( border-left )</span></span>
+                            <span class="d-block"><code>.g-border-t</code> <span> ( border-top )</span></span>
+                            <span class="d-block"><code>.g-border-r</code> <span> ( border-right )</span></span>
+                            <span class="d-block"><code>.g-border-b</code> <span> ( border-bottom )</span></span>
+                            <span class="d-block"><code>.g-border-x</code> <span> ( border-left + border-right)</span></span>
+                            <span class="d-block mb-2"><code>.g-border-y</code> <span> ( border-top + border-bottom )</span></span>
+                            <span class="d-block"><b>NOTE: Using the classes above you will set a transparent border of 1 pixel </b></span>
+                            <span class="d-block">To add a specific color to border you'll need an additional class like: <br>
+                                <code>.g-border-blue </code><span> ( make all borders blue )</span> <br>
+                                <code>.g-border-l-blue</code> ( make left border blue )</span>
+                                <code>.g-border-x-blue</code> ( make left & right borders blue )</span> <br>
+                                <b> Only base colors: blue, red, green and so on</b> </span>
+                            <span class="d-block">If you need you can set a border width by adding the following class:  <br>
+                                <code>.g-border-width-*</code> ( * ) can be 1x-5x, this mean 1pixel to 5 pixels
+                            </span>
+    
+                            <hr>
+                            
+                            <p class="font-weight-bold">Font sizes:</p>
+                            <span class="d-block"><code>.g-font-size-*</code> ( * ) can be a number from 12 to 60 pixels</span>
+                            <span class="d-block">(1 by 1) from 12-25</span>
+                            <span class="d-block">(5 by 5) from 25-60</span>
+    
+                            <hr>
+                            
+                            <p class="font-weight-bold">Text colors:</p>
+                            <span class="d-block"><code>.g-text-* </code> ( * ) can be any color from <a href="http://theme-aspect.com/cnote-v1.0/cnote-main/components/colors.html" target="_blank"> palette colors</a></span>
+    
+                            <hr>
+                            
+                            <p>You can pick responsive variants to target specific viewports, e.g:<br>
+                                <code>.g-mr-md-10</code> for margin-right: 10px ( 0.625rem ) starting at the md breakpoint
+                                <br>
+                                <code>.g-p-lg-20</code> for padding: 20px ( 1.25rem ) starting at the lg breakpoint
+                            </p>
+
+
+                        </div>
+                        <!-- General Classes -->
+
+                    </div>
+                </div>
+                <!-- END Docs Content -->
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/prism.js"></script>
+</body>
+</html>

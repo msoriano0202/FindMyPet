@@ -1,0 +1,47 @@
+
+/*
+    @
+    @   19. PROFILE
+    @
+*/
+
+.user-img {
+    width:150px;
+    height:150px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: #ffffff;
+    border-radius:50%;
+    img {
+        border:4px solid #ffffff;
+
+    }
+}
+.change-user-img {
+    position: absolute;
+    background-color:#ffffff;
+    display:inline-block;
+    width:35px;
+    height:35px;
+    line-height:40px;
+    border-radius:50%;
+    border:1px solid $gray-400;
+    text-align:center;
+    bottom:5px;
+    right:10px;
+    &:hover {
+        background-color: theme-color("dark");
+        border: theme-color("dark");
+        i {
+            color:#ffffff;
+        }
+    }
+    i {
+        line-height:35px;
+        color:$gray-800;
+    }
+}
+
+.user-upload-label {
+    width:100%;
+}

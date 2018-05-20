@@ -1,0 +1,288 @@
+
+
+/*
+    @
+    @   GENERAL UTILITIES
+    @   THEME MARGINS & PADDINGS
+    @
+*/
+
+$unit: 0.0625rem;   //  1px
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    
+        // Margins & Paddings
+        @each $prop, $abbrev in (margin: m, padding: p) {
+            
+            // 0px to 20px [1 by 1[
+            @for $i from 0 through 20 {
+                $spacing-size: $unit * $i;
+    
+                .g-#{$abbrev}#{$infix}-#{$i}  {
+                    #{$prop}: $spacing-size !important;
+                }
+                .g-#{$abbrev}t#{$infix}-#{$i},
+                .g-#{$abbrev}y#{$infix}-#{$i} {
+                    #{$prop}-top: $spacing-size !important;
+                }
+    
+                .g-#{$abbrev}r#{$infix}-#{$i},
+                .g-#{$abbrev}x#{$infix}-#{$i} {
+                    #{$prop}-right: $spacing-size !important;
+                }
+    
+                .g-#{$abbrev}b#{$infix}-#{$i},
+                .g-#{$abbrev}y#{$infix}-#{$i} {
+                    #{$prop}-bottom: $spacing-size !important;
+                }
+    
+                .g-#{$abbrev}l#{$infix}-#{$i},
+                .g-#{$abbrev}x#{$infix}-#{$i} {
+                    #{$prop}-left: $spacing-size !important;
+                }
+            }
+            
+            // 25px to 50px [5 by 5]
+            @for $i from 0 through 5 {
+                $step: 5;
+                $i: 25 + ( $i * $step);
+                $spacing-size: $unit * $i;
+    
+                .g-#{$abbrev}#{$infix}-#{$i}  {
+                    #{$prop}: $spacing-size !important;
+                }
+                .g-#{$abbrev}t#{$infix}-#{$i},
+                .g-#{$abbrev}y#{$infix}-#{$i} {
+                    #{$prop}-top: $spacing-size !important;
+                }
+    
+                .g-#{$abbrev}r#{$infix}-#{$i},
+                .g-#{$abbrev}x#{$infix}-#{$i} {
+                    #{$prop}-right: $spacing-size !important;
+                }
+    
+                .g-#{$abbrev}b#{$infix}-#{$i},
+                .g-#{$abbrev}y#{$infix}-#{$i} {
+                    #{$prop}-bottom: $spacing-size !important;
+                }
+    
+                .g-#{$abbrev}l#{$infix}-#{$i},
+                .g-#{$abbrev}x#{$infix}-#{$i} {
+                    #{$prop}-left: $spacing-size !important;
+                }
+                
+            }
+            
+            // 50px to 150px [10 by 10]
+            @for $i from 0 through 10 {
+                $step: 10;
+                $i: 50 + ( $i * $step);
+                $spacing-size: $unit * $i;
+        
+                .g-#{$abbrev}#{$infix}-#{$i}  {
+                    #{$prop}: $spacing-size !important;
+                }
+                .g-#{$abbrev}t#{$infix}-#{$i},
+                .g-#{$abbrev}y#{$infix}-#{$i} {
+                    #{$prop}-top: $spacing-size !important;
+                }
+        
+                .g-#{$abbrev}r#{$infix}-#{$i},
+                .g-#{$abbrev}x#{$infix}-#{$i} {
+                    #{$prop}-right: $spacing-size !important;
+                }
+        
+                .g-#{$abbrev}b#{$infix}-#{$i},
+                .g-#{$abbrev}y#{$infix}-#{$i} {
+                    #{$prop}-bottom: $spacing-size !important;
+                }
+        
+                .g-#{$abbrev}l#{$infix}-#{$i},
+                .g-#{$abbrev}x#{$infix}-#{$i} {
+                    #{$prop}-left: $spacing-size !important;
+                }
+            }
+            
+        }
+
+        // Negative Margins
+        //
+        // ------------------------------------------------------------------------------------------
+        @each $prop, $abbrev in (margin: m) {
+            
+            // from 1 to 20px [1 by 1]
+            @for $i from 1 through 20 {
+                $spacing-size: $unit * $i;
+                // Margin Top
+                .g-#{$abbrev}t#{$infix}-minus-#{$i} {
+                    #{$prop}-top: -$spacing-size !important;
+                }
+                // Margin Right
+                .g-#{$abbrev}r#{$infix}-minus-#{$i} {
+                    #{$prop}-right: -$spacing-size !important;
+                }
+                // Margin Bottom
+                .g-#{$abbrev}b#{$infix}-minus-#{$i} {
+                    #{$prop}-bottom: -$spacing-size !important;
+                }
+                // Margin Left
+                .g-#{$abbrev}l#{$infix}-minus-#{$i} {
+                    #{$prop}-left: -$spacing-size !important;
+                }
+            }
+    
+            // from 25 to 50px [5by5]
+            @for $i from 0 through 5 {
+                $step: 5;
+                $i: 25 + ( $i * $step);
+                $spacing-size: $unit * $i;
+                // Margin Top
+                .g-#{$abbrev}t#{$infix}-minus-#{$i} {
+                    #{$prop}-top: -$spacing-size !important;
+                }
+                // Margin Right
+                .g-#{$abbrev}r#{$infix}-minus-#{$i} {
+                    #{$prop}-right: -$spacing-size !important;
+                }
+                // Margin Bottom
+                .g-#{$abbrev}b#{$infix}-minus-#{$i} {
+                    #{$prop}-bottom: -$spacing-size !important;
+                }
+                // Margin Left
+                .g-#{$abbrev}l#{$infix}-minus-#{$i} {
+                    #{$prop}-left: -$spacing-size !important;
+                }
+            }
+            // 50px to 150px [10 by 10]
+            @for $i from 0 through 10 {
+                $step: 10;
+                $i: 50 + ( $i * $step);
+                $spacing-size: $unit * $i;
+                // Margin Top
+                .g-#{$abbrev}t#{$infix}-minus-#{$i} {
+                    #{$prop}-top: -$spacing-size !important;
+                }
+                // Margin Right
+                .g-#{$abbrev}r#{$infix}-minus-#{$i} {
+                    #{$prop}-right: -$spacing-size !important;
+                }
+                // Margin Bottom
+                .g-#{$abbrev}b#{$infix}-minus-#{$i} {
+                    #{$prop}-bottom: -$spacing-size !important;
+                }
+                // Margin Left
+                .g-#{$abbrev}l#{$infix}-minus-#{$i} {
+                    #{$prop}-left: -$spacing-size !important;
+                }
+            }
+            // from 150 to 400px [25 by 25]
+            @for $i from 0 through 13 {
+                $step: 25;
+                $i: 150 + ( $i * $step);
+                $spacing-size: $unit * $i;
+        
+                // Margin Top
+                .g-#{$abbrev}t#{$infix}-minus-#{$i} {
+                    #{$prop}-top: -$spacing-size !important;
+                }
+                // Margin Right
+                .g-#{$abbrev}r#{$infix}-minus-#{$i} {
+                    #{$prop}-right: -$spacing-size !important;
+                }
+                // Margin Bottom
+                .g-#{$abbrev}b#{$infix}-minus-#{$i} {
+                    #{$prop}-bottom: -$spacing-size !important;
+                }
+                // Margin Left
+                .g-#{$abbrev}l#{$infix}-minus-#{$i} {
+                    #{$prop}-left: -$spacing-size !important;
+                }
+            }
+        }
+        
+        //  Top, Right, Bottom, Left
+        
+        //  0-20 (1 by 1)
+        // ------------------------------------------------------------------------------------------
+        @for $i from 0 through 20 {
+            $spacing-size: $unit * $i;
+            .g-top#{$infix}-#{$i} {  top: $spacing-size !important;  }
+            .g-left#{$infix}-#{$i} {  left: $spacing-size !important;  }
+            .g-right#{$infix}-#{$i} {  right: $spacing-size !important;  }
+            .g-bottom#{$infix}-#{$i} {  bottom: $spacing-size !important;  }
+        }
+        
+        // Negative
+        // 1-20 (1 by 1)
+        // ------------------------------------------------------------------------------------------
+        @for $i from 1 through 20 {
+            $spacing-size: $unit * $i;
+            
+            .g-top-minus#{$infix}-#{$i} {  top: -$spacing-size !important;  }
+            .g-left-minus#{$infix}-#{$i} {  left: -$spacing-size !important;  }
+            .g-right-minus#{$infix}-#{$i} {  right: -$spacing-size !important;  }
+            .g-bottom-minus#{$infix}-#{$i} {  bottom: -$spacing-size !important;  }
+        }
+
+        //  25-50 (5 by 5)
+        // ------------------------------------------------------------------------------------------
+        @for $i from 1 through 6 {
+            $step: 5;
+            $i: 20 + ( $i * $step);
+            $spacing-size: $unit * $i;
+        
+            .g-top#{$infix}-#{$i} {  top: $spacing-size !important;  }
+            .g-left#{$infix}-#{$i} {  left: $spacing-size !important;  }
+            .g-right#{$infix}-#{$i} {  right: $spacing-size !important;  }
+            .g-bottom#{$infix}-#{$i} {  bottom: $spacing-size !important;  }
+            
+            // Negative
+            .g-top-minus#{$infix}-#{$i} {  top: -$spacing-size !important;  }
+            .g-left-minus#{$infix}-#{$i} {  left: -$spacing-size !important;  }
+            .g-right-minus#{$infix}-#{$i} {  right: -$spacing-size !important;  }
+            .g-bottom-minus#{$infix}-#{$i} {  bottom: -$spacing-size !important;  }
+        }
+    
+        // 50-150 (10 by 10)
+        // ------------------------------------------------------------------------------------------
+        @for $i from 0 through 10 {
+            $step: 10;
+            $i: 50 + ( $i * $step);
+            $spacing-size: $unit * $i;
+        
+            .g-top#{$infix}-#{$i} {  top: $spacing-size !important;  }
+            .g-left#{$infix}-#{$i} {  left: $spacing-size !important;  }
+            .g-right#{$infix}-#{$i} {  right: $spacing-size !important;  }
+            .g-bottom#{$infix}-#{$i} {  bottom: $spacing-size !important;  }
+        
+            // Negative
+            .g-top-minus#{$infix}-#{$i} {  top: -$spacing-size !important;  }
+            .g-left-minus#{$infix}-#{$i} {  left: -$spacing-size !important;  }
+            .g-right-minus#{$infix}-#{$i} {  right: -$spacing-size !important;  }
+            .g-bottom-minus#{$infix}-#{$i} {  bottom: -$spacing-size !important;  }
+        }
+        
+    }
+}
+
+.g-top-25x {  top: 25% !important;  }
+.g-top-50x {  top: 50% !important;  }
+.g-top-75x {  top: 75% !important;  }
+.g-top-100x {  top: 100% !important;  }
+
+.g-right-25x {  right: 25% !important;  }
+.g-right-50x {  right: 50% !important;  }
+.g-right-75x {  right: 75% !important;  }
+.g-right-100x {  right: 100% !important;  }
+
+.g-bottom-25x {  bottom: 25% !important;  }
+.g-bottom-50x {  bottom: 50% !important;  }
+.g-bottom-75x {  bottom: 75% !important;  }
+.g-bottom-100x {  bottom: 100% !important;  }
+
+.g-left-25x {  left: 25% !important;  }
+.g-left-50x {  left: 50% !important;  }
+.g-left-75x {  left: 75% !important;  }
+.g-left-100x {  left: 100% !important;  }

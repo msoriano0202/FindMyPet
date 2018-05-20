@@ -1,0 +1,241 @@
+{% extends '_partials/_cnote-shop-layout.html' %}
+{% block page-title %}<title>Account Wishlist | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '_partials/_headers/_topbar-1.html' %}
+        {% include '_partials/_headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Account Wishlist</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Account Wishlist</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Account Orders -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-lg-3 g-mb-15">
+                        <aside class="user-sidebar g-p-10 g-border g-border-gray-300 g-shadow-v2">
+                            <div class="position-relative text-center g-mb-20">
+                                <div class="user-img position-relative g-flex-center g-border g-border-gray-400 g-my-20">
+                                    <i class="icon-user g-font-size-40 g-text-gray-400"></i>
+                                    <a href="#" class="change-user-img" data-toggle="modal" data-target="#userImgUploadModal"><i class="icon-reload"></i></a>
+                                </div>
+                                <h5 class="font-weight-bold g-text-gray-700">William Phrall</h5>
+                            </div>
+                            <div class="modal fade" id="userImgUploadModal" tabindex="-1" role="dialog" aria-labelledby="userImgUploadLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h6 class="modal-title text-center">Change your profile picture</h6>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form>
+                                            <div class="modal-body">
+                                                <input type="file" name="user-img-upload" id="user-img-upload" class="cn-custom-file-input cn-custom-file-input-v2" multiple />
+                                                <label class="user-upload-label text-center g-py-40" for="user-img-upload">
+                                                    <div>
+                                                        <i class="icon-cloud-upload g-font-size-25"></i>
+                                                    </div>
+                                                    <span class="g-font-size-16">Choose an image&hellip;</span>
+                                                </label>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-sm cn-btn-primary">Save changes</button>
+                                                <button type="button" class="btn btn-sm cn-btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-info">
+                                <nav class="list-group">
+                                    <a href="account-profile.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-user g-mr-5"></i>Profile
+                                    </a>
+                                    <a href="account-orders.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-bag g-mr-5"></i>Orders
+                                    </a>
+                                    <a href="./account-wishlist.html" class="list-group-item list-group-item-action active">
+                                        <i class="icon-heart g-mr-5"></i>Wishlist
+                                    </a>
+                                    <a href="account-addresses.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-map g-mr-5"></i>Addresses
+                                    </a>
+                                    <a href="account-payments.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-credit-card g-mr-5"></i>Payments
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <i class="icon-logout g-mr-5"></i>Logout
+                                    </a>
+                                </nav>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="profile-content g-border g-border-gray-300 g-p-10 g-shadow-v2">
+                            <h5 class="g-px-5 g-mb-30">Wishlist</h5>
+                            <!-- Shop Cart Table -->
+                            <div class="table-responsive table-responsive-lg">
+                                <table class="table table-bordered wishlist-cart-table table-hover g-m-0">
+                                    <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Price</th>
+                                        <th style="width:18%;">Quantity</th>
+                                        <th>Total</th>
+                                        <th class="text-center"><a href="#" class="btn-link">Remove</a></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="align-middle">
+                                            <div class="product-item">
+                                                <div class="product-thumbnail">
+                                                    <img src="http://via.placeholder.com/100x100/eee/777" class="img-fluid" alt="Image Description">
+                                                </div>
+                                                <div class="product-description">
+                                                    <h6 class="product-title font-weight-bold"><a href="#">Shoes</a></h6>
+                                                    <span>Black</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">$10</td>
+                                        <td class="align-middle">
+                                            <div class="input-group quantities">
+                                                <span class="input-group-prepend">
+                                                    <a href="#" class="quantity-minus" data-type="minus" data-field="update_product_01">
+                                                      <i class="fa fa-minus"></i>
+                                                    </a>
+                                                </span>
+                                                <input type="text" name="updates[]" id="update_product_01" class="form-control form-control-xs quantity" value="1" min="1" max="100" >
+                                                <span class="input-group-append">
+                                                    <a href="#" class="quantity-plus" data-type="plus" data-field="update_product_01">
+                                                        <i class="fa fa-plus"></i>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">
+                                            $10
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span><i class="fa fa-close"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="align-middle">
+                                            <div class="product-item">
+                                                <div class="product-thumbnail">
+                                                    <img src="http://via.placeholder.com/100x100/eee/777" class="img-fluid" alt="Image Description">
+                                                </div>
+                                                <div class="product-description">
+                                                    <h6 class="product-title font-weight-bold"><a href="#">Sneakers</a></h6>
+                                                    <span>Black</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">$34</td>
+                                        <td class="align-middle">
+                                            <div class="input-group quantities">
+                                                <span class="input-group-prepend">
+                                                    <a href="#" class="quantity-minus"  data-type="minus" data-field="update_product_02">
+                                                      <i class="fa fa-minus"></i>
+                                                    </a>
+                                                </span>
+                                                <input type="text" name="updates[]" id="update_product_02" class="form-control form-control-xs quantity" value="1" min="1" max="100" >
+                                                <span class="input-group-append">
+                                                    <a href="#" class="quantity-plus" data-type="plus" data-field="update_product_02">
+                                                        <i class="fa fa-plus"></i>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">
+                                            $34
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span><i class="fa fa-close"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="align-middle">
+                                            <div class="product-item">
+                                                <div class="product-thumbnail">
+                                                    <img src="http://via.placeholder.com/100x100/eee/777" class="img-fluid" alt="Image Description">
+                                                </div>
+                                                <div class="product-description">
+                                                    <h6 class="product-title font-weight-bold"><a href="#">High Heels</a></h6>
+                                                    <span>Red</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">$75</td>
+                                        <td class="align-middle">
+                                            <div class="input-group quantities">
+                                                <span class="input-group-prepend">
+                                                    <a href="#" class="quantity-minus" data-type="minus" data-field="update_product_03">
+                                                      <i class="fa fa-minus"></i>
+                                                    </a>
+                                                </span>
+                                                <input type="text" name="updates[]" id="update_product_03" class="form-control form-control-xs quantity" value="1" min="1" max="100" >
+                                                <span class="input-group-append">
+                                                    <a href="#" class="quantity-plus" data-type="plus" data-field="update_product_03">
+                                                        <i class="fa fa-plus"></i>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">
+                                            $75
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span><i class="fa fa-close"></i></span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- END Shop Cart Table -->
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!-- END Account Orders -->
+    
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '_partials/_footer.html' %}
+    <!-- END Footer -->
+
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

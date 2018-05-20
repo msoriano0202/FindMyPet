@@ -1,0 +1,173 @@
+{% extends '_partials/_cnote-shop-layout.html' %}
+{% block page-title %}<title>Account Profile | cNote Responsive Template</title> {% endblock %}
+
+{% block content %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    
+    <!-- Header -->
+    <header id="header" class="cn-header">
+        {% include '_partials/_headers/_topbar-1.html' %}
+        {% include '_partials/_headers/_main-header.html' %}
+    </header>
+    <!-- END Header -->
+    
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Page Header -->
+        <section class="jumbotron g-py-50 g-bg-gray-100 g-border-b g-border-b-gray-300">
+            <div class="container">
+                <div class="g-flex-md-middle">
+                    <h5 class="text-uppercase">Account Profile</h5>
+                    <nav aria-label="breadcrumb" class="ml-auto">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Account Profile</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- END Page Header -->
+        
+        <!-- Account Orders -->
+        <section class="g-py-70 g-bg-white">
+            <div class="container">
+    
+                <div class="row">
+                    <div class="col-lg-3 g-mb-15">
+                        <aside class="user-sidebar g-p-10 g-border g-border-gray-300 g-shadow-v2">
+                            <div class="position-relative text-center g-mb-20">
+                                <div class="user-img position-relative g-flex-center g-border g-border-gray-400 g-my-20">
+                                    <i class="icon-user g-font-size-40 g-text-gray-400"></i>
+                                    <a href="#" class="change-user-img" data-toggle="modal" data-target="#userImgUploadModal"><i class="icon-reload"></i></a>
+                                </div>
+                                <h5 class="font-weight-bold g-text-gray-700">William Phrall</h5>
+                            </div>
+                            <div class="modal fade" id="userImgUploadModal" tabindex="-1" role="dialog" aria-labelledby="userImgUploadLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h6 class="modal-title text-center">Change your profile picture</h6>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form>
+                                            <div class="modal-body">
+                                                <input type="file" name="user-img-upload" id="user-img-upload" class="cn-custom-file-input cn-custom-file-input-v2" multiple />
+                                                <label class="user-upload-label text-center g-py-40" for="user-img-upload">
+                                                    <div>
+                                                        <i class="icon-cloud-upload g-font-size-25"></i>
+                                                    </div>
+                                                    <span class="g-font-size-16">Choose an image&hellip;</span>
+                                                </label>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-sm cn-btn-primary">Save changes</button>
+                                                <button type="button" class="btn btn-sm cn-btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-info">
+                                <nav class="list-group">
+                                    <a href="./account-profile.html" class="list-group-item list-group-item-action active">
+                                        <i class="icon-user g-mr-5"></i>Profile
+                                    </a>
+                                    <a href="account-orders.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-bag g-mr-5"></i>Orders
+                                    </a>
+                                    <a href="account-wishlist.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-heart g-mr-5"></i>Wishlist
+                                    </a>
+                                    <a href="account-addresses.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-map g-mr-5"></i>Addresses
+                                    </a>
+                                    <a href="account-payments.html" class="list-group-item list-group-item-action">
+                                        <i class="icon-credit-card g-mr-5"></i>Payments
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <i class="icon-logout g-mr-5"></i>Logout
+                                    </a>
+                                </nav>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="profile-content g-border g-border-gray-300 g-p-10 g-shadow-v2">
+                            <h5 class="g-px-5">Account Settings</h5>
+                            <p class="g-px-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, reprehenderit.</p>
+                            <form class="row g-mt-30">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account-firstname">First Name</label>
+                                        <input class="form-control" type="text" id="account-firstname" value="William" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account-lastname">Last Name</label>
+                                        <input class="form-control" type="text" id="account-lastname" value="Phrall" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account-email">E-mail Address</label>
+                                        <input class="form-control" type="email" id="account-email" value="william.phrall@mail.com" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account-phone">Phone Number</label>
+                                        <input class="form-control" type="text" id="account-phone" value="003 0123 45789" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account-password">New Password</label>
+                                        <input class="form-control" type="password" id="account-password">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account-confirm-password">Confirm Password</label>
+                                        <input class="form-control" type="password" id="account-confirm-password">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-sm-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center g-mb-10">
+                                            <span class="g-mr-10 d-inline-block align-middle">Subscribe to newsletter</span>
+                                            <label class="toggle toggle-v2 d-inline-block align-middle">
+                                                <input type="checkbox" checked>
+                                                <span class="toggle-handle round">
+                                                    <i class="toggle-checked fa fa-check"></i>
+                                                    <i class="toggle-unchecked fa fa-close"></i>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <button class="btn cn-btn-primary" type="button">Update Profile</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        <!-- END Account Orders -->
+    
+    </div>
+    <!-- END Main Content -->
+    
+    <!-- Footer -->
+    {% include '_partials/_footer.html' %}
+    <!-- END Footer -->
+
+</div>
+<!-- END Main Wrapper -->
+{% endblock %}

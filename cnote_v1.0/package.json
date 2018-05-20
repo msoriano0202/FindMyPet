@@ -1,0 +1,53 @@
+{
+    "name": "cnote-theme",
+    "version": "1.0.0",
+    "description": "cNote - Multi, Onepage, E-commerce Template",
+    "main": "gulpfile.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git"
+    },
+    "author": "AspectTheme",
+    "license": "ISC",
+    "devDependencies": {
+        "bootstrap": "^4.1.1",
+        "bootstrap-datepicker": "^1.8.0",
+        "browser-sync": "^2.24.1",
+        "countup.js": "^1.9.1",
+        "event-stream": "^3.3.4",
+        "font-awesome": "^4.7.0",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "^4.1.0",
+        "gulp-browserify": "^0.5.1",
+        "gulp-clean-css": "^3.4.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-plumber": "^1.2.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-sass": "^3.2.1",
+        "gulp-streamify": "^1.0.2",
+        "gulp-swig": "^0.8.0",
+        "gulp-uglify": "^3.0.0",
+        "imagesloaded": "^4.1.4",
+        "jquery": "^3.3.1",
+        "jquery-circle-progress": "^1.2.2",
+        "jquery-countdown": "^2.2.0",
+        "jquery-ui": "^1.12.1",
+        "jquery.appear": "^1.0.1",
+        "magnific-popup": "^1.1.0",
+        "masonry-layout": "^4.2.0",
+        "merge-stream": "^1.0.1",
+        "owl.carousel": "^2.3.4",
+        "owl.carousel2.thumbs": "^0.1.8",
+        "popper.js": "^1.14.3",
+        "prismjs": "^1.14.0",
+        "pump": "^3.0.0",
+        "scrollreveal": "^3.3.6",
+        "simple-line-icons": "^2.4.1",
+        "swig": "^1.4.2",
+        "typed.js": "^2.0.5",
+        "vinyl-buffer": "^1.0.0",
+        "vinyl-source-stream": "^1.1.0"
+    }
+}

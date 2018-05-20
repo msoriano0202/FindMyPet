@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <meta name="description" content="cNote, a beautiful theme with awesome layouts">
+    <meta name="keywords" content="Theme, Template, Ecommerce, Bootstrap, SASS, Multipage, Onepage, Multipurpose, jQuery">
+    <meta name="distribution" content="global">
+    <title>cNote Documentation</title>
+    
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+<section class="main-content">
+    
+    <!-- Header Container -->
+    <div class="cn-header">
+        <div class="d-flex align-items-center h-100">
+            
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="text-uppercase font-weight-bold">cNote v1.0</h1>
+                    <h5 class="text-uppercase font-weight-bold">Multi / Onepage / Ecommerce Template</h5>
+                    <div>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Author: <a href="http://theme-aspect.com/cnote-v1.0/">Aspect Themes</a></li>
+                            <li class="list-inline-item">Contact: <a href="mailto:support@theme-aspect.com">support@theme-aspect.com</a></li>
+                            <li class="list-inline-item">Created at: 26/04/2018</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+    <!-- END Header Container -->
+    
+    <div class="docs my-5">
+        <div class="container">
+            <div class="row">
+                <!-- Docs Sidebar -->
+                <div class="col-md-3">
+                    <nav class="navbar list-group">
+                        <a href="01-introduction.html" class="list-group-item list-group-item-action">Introduction</a>
+                        <a href="02-environment-setup.html" class="list-group-item list-group-item-action">Dev Environment Setup</a>
+                        <a href="03-workgulpfile.html" class="list-group-item list-group-item-action active">Working with Gulp</a>
+                        <a href="04-project-structure.html" class="list-group-item list-group-item-action">Project Structure</a>
+                        <a href="05-using-preprocessors.html" class="list-group-item list-group-item-action">Using Preprocessors</a>
+                        <a href="06-general-classes.html" class="list-group-item list-group-item-action">General Classes</a>
+                        <a href="07-colors.html" class="list-group-item list-group-item-action">Colors</a>
+                        <a href="08-font-icons.html" class="list-group-item list-group-item-action">Font Icons</a>
+                        <a href="09-plugins-list.html" class="list-group-item list-group-item-action">Plugins List</a>
+                        <a href="10-credits.html" class="list-group-item list-group-item-action">Source Assets</a>
+                        <a href="11-support.html" class="list-group-item list-group-item-action">Support</a>
+                    </nav>
+                    </aside>
+                </div>
+                <!-- END Docs Sidebar -->
+                
+                <!-- Docs Content -->
+                <div class="col-md-9">
+                    <div class="docs-content">
+                        
+                        <!-- Introduction -->
+                        <div>
+                            <h4 class="font-weight-bold text-uppercase">Working with Gulp</h4>
+                            <p>Gulp is a JavaScript task runner. It helps with performing repetitive tasks like minification, compilation, etc. This is possible thanks to extensive Gulp Plugins library.</p>
+                            <p>Gulp tasks are already set up for you. They are stored inside cnote/gulpfile.js.</p>
+    
+                            <div class="alert alert-secondary">
+                                <p><code>gulp start</code>
+                                    this main command will fire default gulp task which includes: launching BrowserSync, vendor files concatination, javascript minification, sass compilation and lanching watch task.
+                                    BrowserSync will create dev server and sync your browser with your code editor.
+                                    Note: to use other separate tasks explained below you will need to open other Terminal window and leave this one with running server intact.
+                                </p>
+                            </div>
+                            
+                            <p>You can also run them separately, by typing the following tasks in your command line :</p>
+                            <ul>
+                                <li class="mb-2"><code>gulp html</code> - compiles all .html template files from <span class="font-weight-bold">src/</span> into <span class="font-weight-bold">dist/ </span> folder. </li>
+                                <li class="mb-2"><code>gulp main-js</code> - compiles the js code from <span class="font-weight-bold">src/</span> into <span class="font-weight-bold">dist/ </span> folder.</li>
+                                <li class="mb-2"><code>gulp main-scss</code> and <code>gulp vendor-scss</code> - compiles .scss files into non-minified CSS from <span class="font-weight-bold">src/</span> to <span class="font-weight-bold">dist/</span> folder.</li>
+                                <li class="mb-2"><code>gulp vendor-js</code>
+                                    copy all js libs / plugins you need from <span class="font-weight-bold">/node_modules</span> into <span class="font-weight-bold">/dist/assets/vendor/js/</span> folder.
+                                    <p> Check the gulpfile.js ( vendor-js task ) if you want to add / change something.</p>
+                                </li>
+                                <li class="mb-2"><code>gulp cssminify</code> -  minify all css files from <span class="font-weight-bold">dist/</span> .</li>
+                                <li class="mb-2"><code>gulp jsminify</code> - minify / uglify all js files from <span class="font-weight-bold">dist/</span> </li>
+                                <li class="mb-2"><code>gulp minify</code> - you can run this task instead of the two before. (cssminify and jsminify). It will be the same result.</li>
+                                <li class="mb-2"><code>gulp watch</code> -  launches <span class="font-weight-bold">watch</span> task. It will watch changes of your .scss / .js / .html files and automatically compile them into .css / .js / .html from <span class="font-weight-bold">dist/</span> folder.</li>
+                                <li><code>gulp fonts</code> - compile necessary fonts from <span class="font-weight-bold">node-modules/</span>.</li>
+                                <li><code>gulp images</code> - copy all images from <span class="font-weight-bold">src/</span>into <span class="font-weight-bold">dist/</span> .</li>
+                            </ul>
+    
+                            <div class="alert alert-secondary">
+                                <p class="mb-2">
+                                    <span class="font-weight-bold">Note:</span>
+                                    If you open a page in Firefox on local system like " file:///C:/cnote/your-path-file.html/ " the fonts will not be displayed !
+                                    <br>
+                                    Try Google Chrome instead or <code>gulp start</code> to spin up the server locally
+                                </p>
+                                <p>Firefox has security restrictions on accessing files outside the directory the HTML document lives in when loading files from the local file system. Fonts are one of the resources impacted by this.</p>
+                            </div>
+                        </div>
+                        <!-- END Introduction -->
+                    
+                    </div>
+                </div>
+                <!-- END Docs Content -->
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/prism.js"></script>
+</body>
+</html>
