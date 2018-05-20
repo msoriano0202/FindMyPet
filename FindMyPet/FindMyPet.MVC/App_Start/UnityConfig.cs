@@ -20,6 +20,7 @@ namespace FindMyPet.MVC
 
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<ManageController>(new InjectionConstructor());
 
             container.RegisterType<IFindMyPetServiceClient, FindMyPetServiceClient>();
             container.RegisterType<IOwnerServiceClient, OwnerServiceClient>();

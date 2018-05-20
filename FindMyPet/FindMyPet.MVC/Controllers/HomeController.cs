@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity;
 
 namespace FindMyPet.MVC.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public HomeController()
         {
@@ -16,6 +16,7 @@ namespace FindMyPet.MVC.Controllers
 
         public ActionResult Index()
         {
+            VerifySessionVariables();
             return View();
         }
 

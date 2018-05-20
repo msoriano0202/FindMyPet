@@ -1,18 +1,13 @@
-﻿using FindMyPet.MVC.Mappers;
+﻿using FindMyPet.MVC.DataLoaders;
 using FindMyPet.MVC.Models.Pet;
-using FindMyPet.MVC.ServiceClients;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using FindMyPet.MVC.DataLoaders;
+using System;
+using System.Web.Mvc;
 
 namespace FindMyPet.MVC.Controllers
 {
     [Authorize]
-    public class PetController : Controller
+    public class PetController : BaseController
     {
         private readonly IPetDataLoader _petDataLoader;
 
@@ -27,6 +22,7 @@ namespace FindMyPet.MVC.Controllers
         // GET: Pet
         public ActionResult Index()
         {
+            VerifySessionVariables();
             var model = _petDataLoader.GetPetsByOwner(User.Identity.GetUserId());
 
             return View(model);

@@ -15,21 +15,19 @@ using FindMyPet.MVC.DataLoaders;
 namespace FindMyPet.MVC.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private OwnerDataLoader _ownerManager;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, OwnerDataLoader ownerManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
-            OwnerManager = ownerManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -53,18 +51,6 @@ namespace FindMyPet.MVC.Controllers
             private set
             {
                 _userManager = value;
-            }
-        }
-
-        public OwnerDataLoader OwnerManager
-        {
-            get
-            {
-                return _ownerManager ?? new OwnerDataLoader();
-            }
-            private set
-            {
-                _ownerManager = value;
             }
         }
 
@@ -95,9 +81,7 @@ namespace FindMyPet.MVC.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    var owner = OwnerManager.GetOwnerByEmail(model.Email);
-                    Session["OwnerName"] = string.Format("{0} {1}", owner.FirstName, owner.LastName);
-
+                    LoadOwnerByEmail(model.Email);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -174,9 +158,7 @@ namespace FindMyPet.MVC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var ownerId = OwnerManager.RegisterOwner(user.Id, model.FirstName, model.LastName, model.Email);
-                    Session["OwnerName"] = string.Format("{0} {1}", model.FirstName, model.LastName);
-
+                    RegisterOwner(user.Id, model.FirstName, model.LastName, model.Email);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -413,6 +395,7 @@ namespace FindMyPet.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            CleanSessionVariables();
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
