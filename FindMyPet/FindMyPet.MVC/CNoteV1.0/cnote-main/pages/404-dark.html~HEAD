@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <meta name="description" content="cNote responsive template">
+    <meta name="keywords" content="Theme, Template, Ecommerce, Bootstrap, SASS, Multipage, Onepage, Ecommerce, Multipurpose, jQuery">
+    <meta name="distribution" content="global">
+    <title>404 -Not Found</title> 
+    
+    
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="../../assets/vendor/css/font-awesome.css">
+    <link rel="stylesheet" href="../../assets/vendor/css/simple-line-icons.css">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="../../assets/vendor/css/owl.carousel.css">
+    <link rel="stylesheet" href="../../assets/vendor/css/magnific-popup.css">
+    <link rel="stylesheet" href="../../assets/vendor/css/jquery-ui-slider.css">
+    
+    <!-- Main [ Bootstrap, Components, Generals ] -->
+    <link rel="stylesheet" href="../../assets/css/cnote-main/main.css">
+
+    
+    
+    <!-- Favicon Image-->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    <link rel="icon" type="image/png" href="../../assets/images/favicon.png">
+
+</head>
+<body data-spy="scroll" data-target=".cn-scrollspy" data-offset="50">
+
+<!-- Preloader -->
+<div id="preloader">
+    <div class="h-100 d-flex justify-content-center align-items-center">
+        <div class="ring"></div>
+        <div class="ring2"></div>
+    </div>
+</div>
+
+<!-- ScrollUp Window -->
+<div id="scrollUp">
+    <a href="#top">
+        <span class="fa fa-arrow-up"></span>
+    </a>
+</div>
+
+
+<!-- Main Wrapper -->
+<div id="main-wrapper" class="g-bg-bluegray-800 h-100 g-flex-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="text-center g-border g-border-dark g-border-3x g-p-100">
+                    <img class="g-mb-40" src="../../assets/images/404.png" width="300" alt="Image Description">
+                    <h3 class="g-font-size-50 g-mb-50 text-uppercase g-text-primary">Page not found</h3>
+                    <ul class="list-unstyled g-text-gray-400">
+                        <li class="g-mb-10">You may have mis-typed the URL.</li>
+                        <li class="g-mb-10">Or the page has been removed.</li>
+                        <li class="g-mb-10">Actually, there is nothing to see here...</li>
+                        <li class="g-mb-30">Click on the links below to do something, Thanks!</li>
+                    </ul>
+                    <a href="/cnote-main/homepages/homepage-1.html" class="btn cn-btn-primary g-rounded-50 g-mr-sm-20">
+                        <span class="fa fa-home g-mr-10"></span>Home
+                    </a>
+                    <a href="#" class="btn cn-btn-light g-rounded-50">
+                        <span class="fa fa-pencil g-mr-10"></span>Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Main Wrapper -->
+
+
+
+<!-- JS Main Files -->
+<script src="../../assets/vendor/js/jquery.js"></script>
+<script src="../../assets/vendor/js/popper.js"></script>
+<script src="../../assets/vendor/js/bootstrap.js"></script>
+
+<!-- JS Plugins -->
+<script src="../../assets/vendor/js/owl.carousel.js"></script>
+<script src="../../assets/vendor/js/owl.carousel2.thumbs.js"></script>
+<script src="../../assets/vendor/js/jquery.appear.js"></script>
+<script src="../../assets/vendor/js/jquery.countdown.js"></script>
+<script src="../../assets/vendor/js/countUp.js"></script>
+<script src="../../assets/vendor/js/masonry.pkgd.min.js"></script>
+<script src="../../assets/vendor/js/imagesloaded.pkgd.min.js"></script>
+<script src="../../assets/vendor/js/jquery.magnific-popup.js"></script>
+<script src="../../assets/vendor/js/circle-progress.js"></script>
+<script src="../../assets/vendor/js/typed.js"></script>
+<script src="../../assets/vendor/js/scrollreveal.js"></script>
+
+
+<!-- jQuery UI Widgets -->
+<script src="../../assets/vendor/js/widget.js"></script>
+<script src="../../assets/vendor/js/mouse.js"></script>
+<script src="../../assets/vendor/js/slider.js"></script>
+
+<script src="../../assets/js/cnote.js"></script>
+
+
+
+</body>
+</html>
