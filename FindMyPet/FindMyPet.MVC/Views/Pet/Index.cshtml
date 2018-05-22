@@ -5,34 +5,39 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="g-mb-10">
+    <span class="h3">Mis Mascotas</span>
+    <a href="/Pet/Create" class="btn cn-btn-primary g-ml-20 g-mb-10">Agregar Mascota</a>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </th>
-        <th></th>
-    </tr>
+@{int index = 0;}
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink(item.Name, "Edit", new { id = item.Code })
-        </td>
-        <td>
-            @item.DateOfBirth.ToString("dd / MMM / yyyy")
-        </td>
-        <td>
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
+    <div class="table-responsive">
+        <table class="table g-mb-0">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha Nacimiento</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    index++;
+                <tr>
+                    <th scope="row">@index</th>
+                    <td>@item.Name</td>
+                    <td>@item.DateOfBirth.ToString("dd / MMM / yyyy")</td>
+                    <td>
+                        <a href="/Pet/Edit/@item.Code" class="btn btn-xs cn-btn-bluegray-600">Editar</a>
+                        @*@Html.ActionLink("Editar", "Edit", new { id = item.Code, @class = "btn btn-xs cn-btn-bluegray-600" })*@
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
