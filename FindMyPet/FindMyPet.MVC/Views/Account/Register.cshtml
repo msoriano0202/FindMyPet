@@ -5,127 +5,111 @@
 
 @*<h2>@ViewBag.Title.</h2>*@
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "register-form-3", role = "form" }))
 {
     @Html.AntiForgeryToken()
 
     <!-- Register Section -->
-        <section class="register-section g-py g-bg-white">
-            <div class="container">
-                <div class="row justify-content-center">
-    
-                    <div class="col-md-8 col-lg-6">
-                        <div class="g-bg-white g-border g-border-gray-300 g-px-30 g-py-35 g-shadow-v1">
-                            <h4 class="text-center g-pb-35">Create an account</h4>
-                            <!-- Register Form 1 -->
-                            <form class="register-form-1">
+    <section class="register-section g-py g-bg-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="g-bg-white g-border g-border-gray-300 g-px-25 g-py-35 g-shadow-v1">
+                        <h4 class="text-center g-pb-35">Crear Cuenta</h4>
+
+                        <!-- Register Form -->
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="register-firstname">First Name</label>
+                                    <label for="register-firstname">Nombre</label>
                                     <div class="input-group input-group-focus">
-                                    <span class="input-group-prepend g-w50">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                        <input type="text" class="form-control form-control-lg" id="register-firstname" name="firstname" placeholder="Bill">
+                                        <span class="input-group-prepend g-w50">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        @Html.TextBoxFor(m => m.FirstName, new { @id = "register-firstname", @name = "firstname", @class = "form-control form-control-lg", @placeholder = "Nombre" })
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="register-lastname">Last Name</label>
+                                    <label for="register-lastname">Apellido</label>
                                     <div class="input-group input-group-focus">
-                                    <span class="input-group-prepend g-w50">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                        <input type="text" class="form-control form-control-lg" id="register-lastname" name="lastname" placeholder="Will">
+                                        <span class="input-group-prepend g-w50">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        @Html.TextBoxFor(m => m.LastName, new { @id = "register-lastname", @name = "lastname", @class = "form-control form-control-lg", @placeholder = "Apellido" })
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="register-email">Email</label>
-                                    <div class="input-group input-group-focus">
-                                    <span class="input-group-prepend g-w50">
-                                        <i class="fa fa-envelope-open"></i>
-                                    </span>
-                                        <input type="email" class="form-control form-control-lg" id="register-email" name="email"  placeholder="E-mail">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="register-password">Password</label>
-                                    <div class="input-group input-group-focus">
-                                    <span class="input-group-prepend g-w50">
-                                        <i class="fa fa-lock"></i>
-                                    </span>
-                                        <input type="password" class="form-control form-control-lg" id="register-password" name="password"  placeholder="Your Password">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="register-repassword">Password again</label>
-                                    <div class="input-group input-group-focus">
-                                    <span class="input-group-prepend g-w50">
-                                        <i class="fa fa-lock"></i>
-                                    </span>
-                                        <input type="password" class="form-control form-control-lg" id="register-repassword" name="repassword"  placeholder="Re-Password">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="custom-control cn-custom-checkbox d-flex align-items-center">
-                                        <input class="custom-control-input" type="checkbox" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">
-                                            <span>I accept the <a href="#" class="g-ml-5">Terms and Conditions</a></span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group g-mb-40">
-                                    <button type="submit" class="btn cn-btn-primary">Create your account</button>
-                                </div>
-                                <div class="text-center">
-                                    <p>Already have an account? <a href="ml">Sign in</a></p>
-                                </div>
-                            </form>
-                            <!-- END Register Form 1 -->
+                            </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="register-email">Correo</label>
+                                    <div class="input-group input-group-focus">
+                                        <span class="input-group-prepend g-w50">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
+                                        @Html.TextBoxFor(m => m.Email, new { @id = "register-email", @name = "email", @class = "form-control form-control-lg", @placeholder = "Correo" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="register-password">Contraseña</label>
+                                    <div class="input-group input-group-focus">
+                                        <span class="input-group-prepend g-w50">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                        @Html.PasswordFor(m => m.Password, new { @id = "register-password", @name = "password", @class = "form-control form-control-lg", @placeholder = "Contraseña" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="register-repassword">Confirmar Contraseña</label>
+                                    <div class="input-group input-group-focus">
+                                        <span class="input-group-prepend g-w50">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @id = "register-repassword", @name = "repassword", @class = "form-control form-control-lg", @placeholder = "Confirmar Contraseña" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="g-mb">
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                            @*
+                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                            *@
+                        </div>
+                        <div class="form-group g-px-8 g-py-15">
+                            <div class="custom-control cn-custom-checkbox d-flex align-items-center">
+                                <input class="custom-control-input" type="checkbox" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">
+                                    <span>Acepto los <a href="#" class="g-ml-5">Términos y Condiciones</a></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group g-px-8 g-mb-40">
+                            <input type="submit" class="btn cn-btn-primary" value="Crear Cuenta" />
+                        </div>
+                        <div class="text-center">
+                            <p>¿Ya tiene una cuenta? <a href="/Account/Login">Iniciar Sesión</a></p>
+                        </div>
+                        <!-- End Register Form -->
                     </div>
-            
                 </div>
             </div>
-        </section>
-        <!-- END Register Section -->
-
-    @*<h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>*@
+    </section>
+    <!-- END Register Section -->
 }
 
 @section Scripts {

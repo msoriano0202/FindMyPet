@@ -64,28 +64,29 @@ namespace FindMyPet.MVC.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [Display(Name = "First Name")]
+        [Required(ErrorMessage="Nombre es requerido.")]
+        [Display(Name = "Nombre")]
         public string FirstName { get; set; }
 
-        [Required]
-        [Display(Name = "Last Name")]
+        [Required(ErrorMessage = "Apellido es requerido.")]
+        [Display(Name = "Apellido")]
         public string LastName { get; set; }
 
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        [Required(ErrorMessage = "Correo es requerido.")]
+        [EmailAddress(ErrorMessage = "Correo no valido.")]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Correo")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Contraseña es requerida.")]
+        [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmar Contraseña")]
+        [Compare("Password", ErrorMessage = "La contraseña no coincide con confirmar contraseña.")]
         public string ConfirmPassword { get; set; }
     }
 

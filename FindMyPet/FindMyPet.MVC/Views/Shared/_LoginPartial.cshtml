@@ -3,7 +3,7 @@
 @if (Request.IsAuthenticated)
 {
     string ownerName = Session["OwnerName"] as string;
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @style= "text-align:right" }))
     {
     @Html.AntiForgeryToken()
 
@@ -23,10 +23,12 @@ else
 {
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link", id = "registerLink" })
+            @Html.ActionLink("Crear Cuenta", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link", id = "registerLink" })
         </li>
         <li class="nav-item">
-            @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link", id = "loginLink" })
+            <a id="loginLink" href="/Account/Login" class="nav-link">
+                <i class="icon-user g-mr-5"></i><span>Iniciar Sesión</span>
+            </a>
         </li>
     </ul>
 }
