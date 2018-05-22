@@ -237,6 +237,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PetController.cs" />
+    <Compile Include="Controllers\StaticContentController.cs" />
     <Compile Include="DataLoaders\OwnerDataLoader.cs" />
     <Compile Include="DataLoaders\PetDataLoader.cs" />
     <Compile Include="Global.asax.cs">
@@ -432,6 +433,7 @@
     <Content Include="Views\Pet\Create.cshtml" />
     <Content Include="Views\Pet\Edit.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\StaticContent\PageNotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

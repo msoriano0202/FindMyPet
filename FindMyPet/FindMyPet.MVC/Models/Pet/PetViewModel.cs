@@ -10,11 +10,13 @@ namespace FindMyPet.MVC.Models.Pet
     {
         public string Code { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Nombre es requerido.")]
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Fecha Nacimiento es requerida.")]
         [DataType("Date")]
+        [Display(Name = "Fecha Nacimiento")]
         public DateTime DateOfBirth { get; set; }
 
         public DateTimeOffset CreatedOn { get; set; }
