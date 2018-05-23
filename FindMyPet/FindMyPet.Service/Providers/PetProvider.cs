@@ -6,6 +6,7 @@ using FindMyPet.TableModel;
 using ServiceStack.OrmLite;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -100,7 +101,8 @@ namespace FindMyPet.MyServiceStack.Providers
             var petsByOwner = await _petDataAccess.GetPetsByOwnerIdAsync(request.OwnerId)
                                                   .ConfigureAwait(false);
 
-            return petsByOwner.ConvertAll(p => _petMapper.MapPetTableToPet(p));
+            return petsByOwner.ConvertAll(p => _petMapper.MapPetTableToPet(p))
+                              .OrderBy(p => p.Name).ToList();
         }
 
         public async Task<List<Pet>> SearchPetsAsync(SearchPetRequest request)

@@ -1,4 +1,5 @@
 ﻿using FindMyPet.DTO.Owner;
+using FindMyPet.MVC.Models.Profile;
 using FindMyPet.MVC.ServiceClients;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace FindMyPet.MVC.DataLoaders
         Owner GetuserByMembershipId(string membershipId);
         Owner GetOwnerById(int ownerId);
         Owner GetOwnerByEmail(string email);
+        Owner UpdateOwner(ProfileViewModel model);
     }
 
     public class OwnerDataLoader : IOwnerDataLoader
@@ -49,6 +51,11 @@ namespace FindMyPet.MVC.DataLoaders
         public Owner GetOwnerByEmail(string email)
         {
             return _ownerServiceClient.GetOwnerByEmail(email);
+        }
+
+        public Owner UpdateOwner(ProfileViewModel model)
+        {
+            return _ownerServiceClient.UpdateOwner(model);
         }
     }
 }

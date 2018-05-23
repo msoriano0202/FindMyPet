@@ -3,18 +3,20 @@
 @if (Request.IsAuthenticated)
 {
     string ownerName = Session["OwnerName"] as string;
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @style= "text-align:right" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
     {
     @Html.AntiForgeryToken()
 
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a id="manage" href="/Manage" class="nav-link" title="Manage">
+            <a id="manage" href="/Profile" class="nav-link" title="Manage">
                 <i class="icon-user g-mr-5"></i>@ownerName
             </a>
         </li>
         <li class="nav-item">
-            <a id="logoff" href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log off</a>
+            <a id="logoff" href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">
+                <i class="icon-logout g-mr-5"></i>Salir
+            </a>
         </li>
     </ul>
     }

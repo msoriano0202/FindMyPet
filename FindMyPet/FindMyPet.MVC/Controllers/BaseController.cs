@@ -61,5 +61,14 @@ namespace FindMyPet.MVC.Controllers
             }
         }
 
+        public void UpdateSessionOwnerName(string firstName, string lastName)
+        {
+            Session["OwnerName"] = string.Format("{0} {1}", firstName, lastName);
+        }
+
+        public string GetSessionOwnerName()
+        {
+            return Session["OwnerName"].ToString();
+        }
     }
 }

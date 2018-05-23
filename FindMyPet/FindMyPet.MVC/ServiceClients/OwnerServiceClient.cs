@@ -1,4 +1,5 @@
 ﻿using FindMyPet.DTO.Owner;
+using FindMyPet.MVC.Models.Profile;
 using ServiceStack;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace FindMyPet.MVC.ServiceClients
         Owner GetuserByMembershipId(string membershipId);
         Owner GetOwnerById(int ownerId);
         Owner GetOwnerByEmail(string email);
+        Owner UpdateOwner(ProfileViewModel model);
     }
 
     public class OwnerServiceClient : IOwnerServiceClient
@@ -65,6 +67,19 @@ namespace FindMyPet.MVC.ServiceClients
             var response = _findMyPetClient.JsonClient().Post(request);
 
             return response.FirstOrDefault();
+        }
+
+        public Owner UpdateOwner(ProfileViewModel model)
+        {
+            var request = new UpdateOwnerRequest
+            {
+                Id = model.Id,
+                FirstName = model.FirstName,
+                LastName = model.LastName
+            };
+            var response = _findMyPetClient.JsonClient().Post(request);
+
+            return response;
         }
     }
 }
