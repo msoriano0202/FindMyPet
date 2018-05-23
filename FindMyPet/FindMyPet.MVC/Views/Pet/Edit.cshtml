@@ -5,45 +5,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>PetViewModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    <div class="g-mb-15">
+        <span class="h4">Agregar Mascota</span>
+    </div>
+    <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="input1-1">Nombre:</label>
+            <div class="col-sm-5">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @id = "input1-1", @class = "form-control", @placeholder = "Nombre" } })
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(Model => Model.DateOfBirth, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
-                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="input1-2">Fecha Nacimiento:</label>
+            <div class="col-sm-2">
+                @Html.TextBoxFor(Model => Model.DateOfBirth, "{0:yyyy-MM-dd}", new { @id = "input1-2", @class = "form-control", @type = "date" })
             </div>
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div class="g-mb">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group g-mt-15">
+        <input type="submit" class="btn cn-btn-primary g-mr-10" value="Guardar" />
+        <a href="/Pet" class="btn cn-btn-secondary">Cancelar</a>
+    </div>
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
