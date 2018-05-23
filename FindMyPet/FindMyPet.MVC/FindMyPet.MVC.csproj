@@ -434,6 +434,7 @@
     <Content Include="Views\Pet\Edit.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\StaticContent\PageNotFound.cshtml" />
+    <Content Include="Views\Shared\_HeaderNavMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

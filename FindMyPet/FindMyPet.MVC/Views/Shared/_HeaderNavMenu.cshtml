@@ -1,0 +1,38 @@
+﻿
+<!-- Header -->
+<header id="header" class="cn-header position-relative">
+    <!-- Main Navbar -->
+    <div class="cn-navbar-wrapper g-border-b g-border-gray-300">
+        <nav class="navbar navbar-expand-lg">
+
+            <div class="container">
+                <div class="logo-wrapper">
+                    <a class="navbar-brand" href="/Home"><img class="logo" src="http://via.placeholder.com/150x50/eee/777" alt="Logo"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav g-ml-20">
+                        <li class="nav-item">
+                            @Html.ActionLink("Nosotros", "Index", "Home", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Acerca De", "About", "Home", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Contactanos", "Contact", "Home", null, new { @class = "nav-link" })
+                        </li>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink("Mis Mascotas", "Index", "Pet", null, new { @class = "nav-link" })
+                            </li>
+                        }
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+
+        </nav>
+    </div>
+    <!-- END Main Navbar -->
+</header>
+<!-- END Header -->
