@@ -3,7 +3,7 @@
 @if (Request.IsAuthenticated)
 {
     string ownerName = Session["OwnerName"] as string;
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class="ml-auto" }))
     {
     @Html.AntiForgeryToken()
 
