@@ -70,5 +70,11 @@ namespace FindMyPet.MVC.Controllers
         {
             return Session["OwnerName"].ToString();
         }
+
+        public void SetManageNavBarInfo()
+        {
+            ViewBag.FullName = this.GetSessionOwnerName();
+            ViewBag.ProfilePictureUrl = "/Content/Images/DefaultProfileOwnerImage.png";
+        }
     }
 }

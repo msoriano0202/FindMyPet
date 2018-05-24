@@ -54,6 +54,10 @@ namespace FindMyPet.MVC.Controllers
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
+            this.VerifySessionVariables();
+            this.SetManageNavBarInfo();
+
+            //Micky
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
@@ -217,6 +221,8 @@ namespace FindMyPet.MVC.Controllers
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
+            this.SetManageNavBarInfo();
+
             return View();
         }
 

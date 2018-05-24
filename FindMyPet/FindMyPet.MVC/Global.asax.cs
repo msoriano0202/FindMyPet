@@ -17,6 +17,10 @@ namespace FindMyPet.MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //Micky
+            //ClientDataTypeModelValidatorProvider.ResourceClassKey = "MyResources";
+            //DefaultModelBinder.ResourceClassKey = "MyResources";
         }
     }
 }

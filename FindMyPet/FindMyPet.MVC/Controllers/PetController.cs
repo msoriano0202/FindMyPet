@@ -22,7 +22,7 @@ namespace FindMyPet.MVC.Controllers
         // GET: Pet
         public ActionResult Index()
         {
-            VerifySessionVariables();
+            this.VerifySessionVariables();
             var model = _petDataLoader.GetPetsByOwner(User.Identity.GetUserId());
 
             return View(model);

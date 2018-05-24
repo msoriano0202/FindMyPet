@@ -27,34 +27,33 @@ namespace FindMyPet.MVC.Models
 
     public class SetPasswordViewModel
     {
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Contraseña")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Confirmar Contraseña")]
+        [Compare("NewPassword", ErrorMessage = "La contraseña no coincide con confirmar contraseña.")]
         public string ConfirmPassword { get; set; }
     }
 
     public class ChangePasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "La {0} es requerida.")]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "Contraseña Actual")]
         public string OldPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "La {0} es requerida.")]
+        [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Nueva Contraseña")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Confirmar nueva Contraseña")]
+        [Compare("NewPassword", ErrorMessage = "La nueva contraseña no coincide con confirmar nueva contraseña.")]
         public string ConfirmPassword { get; set; }
     }
 

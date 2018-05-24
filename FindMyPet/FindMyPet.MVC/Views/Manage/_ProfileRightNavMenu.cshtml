@@ -1,0 +1,53 @@
+﻿
+<div class="col-md-3">
+    <aside class="user-sidebar g-p-10 g-border g-border-gray-300 g-mb-15">
+        <div class="position-relative text-center g-mb-20">
+            <div class="user-img position-relative g-mb-20">
+                <img src="@Url.Content(ViewBag.ProfilePictureUrl)" class="img-fluid rounded-circle" alt="Profile Picture">
+                @*<a href="#" class="change-user-img" data-toggle="modal" data-target="#userImgUploadModal"><i class="icon-reload"></i></a>*@
+            </div>
+            <h5 class="font-weight-bold g-text-gray-700">@ViewBag.FullName</h5>
+        </div>
+        @*<div class="modal fade" id="userImgUploadModal" tabindex="-1" role="dialog" aria-labelledby="userImgUploadLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title text-center" id="userImgUploadLabel">Change your profile picture</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form>
+                            <div class="modal-body">
+                                <input type="file" name="user-img-upload" id="user-img-upload" class="cn-custom-file-input cn-custom-file-input-v2" multiple />
+                                <label class="user-upload-label text-center g-py-40" for="user-img-upload">
+                                    <span class="d-block">
+                                        <i class="icon-cloud-upload g-font-size-25"></i>
+                                    </span>
+                                    <span class="g-font-size-16">Choose an image&hellip;</span>
+                                </label>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm cn-btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-sm cn-btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>*@
+
+        <div class="user-info">
+            <nav class="list-group">
+                <a href="/Profile" class="list-group-item list-group-item-action active">
+                    <i class="icon-user g-mr-5"></i>Perfil
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="icon-lock g-mr-5"></i>Cambiar Contraseña
+                </a>
+                @*<a href="#" class="list-group-item list-group-item-action">
+                    <i class="icon-logout g-mr-5"></i>Logout
+                </a>*@
+            </nav>
+        </div>
+    </aside>
+</div>

@@ -54,10 +54,10 @@ namespace FindMyPet.MVC
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+                RequireNonLetterOrDigit = false, //used to be true
+                RequireDigit = false, //used to be true
+                RequireLowercase = false, //used to be true
+                RequireUppercase = false, //used to be true
             };
 
             // Configure user lockout defaults

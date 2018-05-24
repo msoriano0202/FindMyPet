@@ -16,7 +16,7 @@ namespace FindMyPet.MVC.Controllers
 
         public ActionResult Index()
         {
-            VerifySessionVariables();
+            this.VerifySessionVariables();
             return View();
         }
 

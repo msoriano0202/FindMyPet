@@ -81,7 +81,7 @@ namespace FindMyPet.MVC.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    LoadOwnerByEmail(model.Email);
+                    this.LoadOwnerByEmail(model.Email);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -89,7 +89,7 @@ namespace FindMyPet.MVC.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Intento de inicio de sesión no válido.");
                     return View(model);
             }
         }
@@ -158,7 +158,7 @@ namespace FindMyPet.MVC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    RegisterOwner(user.Id, model.FirstName, model.LastName, model.Email);
+                    this.RegisterOwner(user.Id, model.FirstName, model.LastName, model.Email);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -395,7 +395,7 @@ namespace FindMyPet.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            CleanSessionVariables();
+            this.CleanSessionVariables();
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
@@ -442,6 +442,7 @@ namespace FindMyPet.MVC.Controllers
 
         private void AddErrors(IdentityResult result)
         {
+            //TODO: Modify some ErrorMessages
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error);

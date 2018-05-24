@@ -25,7 +25,7 @@ namespace FindMyPet.MVC.Controllers
         // GET: Profile
         public ActionResult Index()
         {
-            VerifySessionVariables();
+            this.VerifySessionVariables();
 
             var owner = _ownerDataLoader.GetuserByMembershipId(User.Identity.GetUserId());
 
@@ -34,11 +34,10 @@ namespace FindMyPet.MVC.Controllers
             model.LastName = owner.LastName;
             model.Email = owner.Email;
 
-            ViewBag.FullName = GetSessionOwnerName();
-            ViewBag.ProfilePictureUrl = "/Content/Images/DefaultProfileOwnerImage.png";
-            //"http://localhost:8081/Content/Images/DefaultProfileOwnerImage.png";
-            //http://via.placeholder.com/200x200/eee/777
-
+            this.SetManageNavBarInfo();
+            //ViewBag.FullName = this.GetSessionOwnerName();
+            //ViewBag.ProfilePictureUrl = "/Content/Images/DefaultProfileOwnerImage.png";
+           
             return View(model);
         }
 
@@ -49,7 +48,7 @@ namespace FindMyPet.MVC.Controllers
             {
                 model.Id = (int)Session["OwnerId"];
                 _ownerDataLoader.UpdateOwner(model);
-                UpdateSessionOwnerName(model.FirstName, model.LastName);
+                this.UpdateSessionOwnerName(model.FirstName, model.LastName);
 
                 return RedirectToAction("Index");
             }
