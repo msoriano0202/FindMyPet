@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using FindMyPet.MVC.Models;
+using FindMyPet.MVC.Models.Profile;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -50,9 +51,41 @@ namespace FindMyPet.MVC.Controllers
             }
         }
 
+        // GET: Profile
+        public ActionResult Index()
+        {
+            this.VerifySessionVariables();
+            this.SetManageNavBarInfo();
+            var owner = this.GetuserByMembershipId();
+
+            var model = new ProfileViewModel();
+            model.FirstName = owner.FirstName;
+            model.LastName = owner.LastName;
+            model.Email = owner.Email;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(ProfileViewModel model)
+        {
+            try
+            {
+                this.UpdateOwnerById(model);
+                this.UpdateSessionOwnerName(model.FirstName, model.LastName);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         //
         // GET: /Manage/Index
-        public async Task<ActionResult> Index(ManageMessageId? message)
+        public async Task<ActionResult> Index2(ManageMessageId? message)
         {
             this.VerifySessionVariables();
             this.SetManageNavBarInfo();
@@ -244,7 +277,8 @@ namespace FindMyPet.MVC.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                //Micky: Redirect to ChangePassword with a message on url
+                return RedirectToAction("Index", "Manage");
             }
             AddErrors(result);
             return View(model);

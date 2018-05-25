@@ -1,4 +1,6 @@
-﻿using FindMyPet.MVC.DataLoaders;
+﻿using FindMyPet.DTO.Owner;
+using FindMyPet.MVC.DataLoaders;
+using FindMyPet.MVC.Models.Profile;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Web.Mvc;
@@ -20,6 +22,18 @@ namespace FindMyPet.MVC.Controllers
                 throw new ArgumentNullException(nameof(ownerDataLoader));
 
             _ownerDataLoader = ownerDataLoader;
+        }
+
+        public Owner GetuserByMembershipId()
+        {
+            var userMembershipId = User.Identity.GetUserId();
+            return _ownerDataLoader.GetuserByMembershipId(userMembershipId);
+        }
+
+        public void UpdateOwnerById(ProfileViewModel model)
+        {
+            model.Id = (int)Session["OwnerId"];
+            _ownerDataLoader.UpdateOwner(model);
         }
 
         public void RegisterOwner(string membershipId, string firstName, string lastName, string email)
