@@ -90,5 +90,10 @@ namespace FindMyPet.MVC.Controllers
             ViewBag.FullName = this.GetSessionOwnerName();
             ViewBag.ProfilePictureUrl = "/Content/Images/DefaultProfileOwnerImage.png";
         }
+
+        public void SelectMenuItemInProfilePage(string itemName)
+        {
+            ViewBag.SelectedItem = itemName;
+        }
     }
 }

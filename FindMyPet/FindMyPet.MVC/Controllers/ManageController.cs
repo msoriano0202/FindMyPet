@@ -56,8 +56,9 @@ namespace FindMyPet.MVC.Controllers
         {
             this.VerifySessionVariables();
             this.SetManageNavBarInfo();
-            var owner = this.GetuserByMembershipId();
+            this.SelectMenuItemInProfilePage("Index");
 
+            var owner = this.GetuserByMembershipId();
             var model = new ProfileViewModel();
             model.FirstName = owner.FirstName;
             model.LastName = owner.LastName;
@@ -254,7 +255,9 @@ namespace FindMyPet.MVC.Controllers
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
+            this.VerifySessionVariables();
             this.SetManageNavBarInfo();
+            this.SelectMenuItemInProfilePage("ChangePassword");
 
             return View();
         }
@@ -278,7 +281,7 @@ namespace FindMyPet.MVC.Controllers
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
                 //Micky: Redirect to ChangePassword with a message on url
-                return RedirectToAction("Index", "Manage");
+                return RedirectToAction("ChangePassword", "Manage");
             }
             AddErrors(result);
             return View(model);
