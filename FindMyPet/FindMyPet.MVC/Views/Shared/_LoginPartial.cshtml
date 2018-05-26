@@ -25,11 +25,13 @@ else
 {
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            @Html.ActionLink("Crear Cuenta", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link", id = "registerLink" })
-        </li>
-        <li class="nav-item">
             <a id="loginLink" href="/Account/Login" class="nav-link">
                 <i class="icon-user g-mr-5"></i><span>Iniciar Sesión</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a id="registerLink" href="/Account/Register" class="btn cn-btn-primary g-mt-15">
+                <i class="icon-notebook g-mr-5"></i><span>Crear Cuenta</span>
             </a>
         </li>
     </ul>
