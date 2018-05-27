@@ -1,21 +1,18 @@
 ﻿@model FindMyPet.MVC.Models.Profile.ProfileViewModel
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<section class="profile-section g-py g-bg-white">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_ProfileRightNavMenu")
+            <div class="col-md-9">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-    <!-- Profile Section -->
-    <section class="profile-section g-py g-bg-white">
-        <div class="container">
-            <div class="row">
-                @Html.Partial("_ProfileRightNavMenu")
-                <div class="col-md-9">
-                    @*<div class="profile-content g-border g-border-gray-300 g-p-10">*@
                     <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="input1-1">Nombre:</label>
@@ -44,13 +41,11 @@
                     <div class="form-group g-mt-15">
                         <input type="submit" class="btn btn-outline-primary g-mr-10" value="Actualizar" />
                     </div>
-                    @*</div>*@
-                </div>
+                }
             </div>
         </div>
-    </section>
-    <!-- END Profile Section -->
-}
+    </div>
+</section>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

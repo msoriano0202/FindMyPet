@@ -29,6 +29,8 @@ namespace FindMyPet.TableModel
         [StringLength(50)]
         public string Email { get; set; }
 
+        public string ProfileImageUrl { get; set; }
+
         [Required]
         public DateTimeOffset CreatedOn { get; set; }
     }
