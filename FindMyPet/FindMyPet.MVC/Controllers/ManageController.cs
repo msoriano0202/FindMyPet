@@ -8,6 +8,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using FindMyPet.MVC.Models;
 using FindMyPet.MVC.Models.Profile;
+using System.Collections.Generic;
+using System.IO;
+using System.Configuration;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -16,6 +19,7 @@ namespace FindMyPet.MVC.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private List<string> validImageExtensions = new List<string> { "jpg", "png" };
 
         public ManageController()
         {
@@ -56,7 +60,7 @@ namespace FindMyPet.MVC.Controllers
         {
             this.VerifySessionVariables();
             this.SetManageNavBarInfo();
-            this.SelectMenuItemInProfilePage("Index");
+            this.SetManageNavBarItem("Index");
 
             var owner = this.GetuserByMembershipId();
             var model = new ProfileViewModel();
@@ -74,7 +78,7 @@ namespace FindMyPet.MVC.Controllers
             try
             {
                 this.UpdateOwnerById(model);
-                this.UpdateSessionOwnerName(model.FirstName, model.LastName);
+                this.SetSessionOwnerName(model.FirstName, model.LastName);
 
                 return RedirectToAction("Index");
             }
@@ -82,6 +86,53 @@ namespace FindMyPet.MVC.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpPost]
+        public ActionResult UploadProfileImage()
+        {
+            if (Request.Files.Count > 0)
+            {
+                var message = string.Empty;
+
+                var file = Request.Files[0];
+                if (file.ContentLength == 0 || string.IsNullOrEmpty(file.FileName))
+                    message = "NoFile";
+                else if (!ValidImageExtension(file.FileName))
+                    message = "FileNoValid";
+                else
+                {
+                    var fileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), GetFileExtension(file.FileName));
+                    var uploadsFolder = ConfigurationManager.AppSettings["UploadsFolder"].ToString();
+                    var imagePath = Path.Combine(Server.MapPath(uploadsFolder), fileName);
+                    file.SaveAs(imagePath);
+
+                    this.UpdateOwnerImageProfile(imagePath);
+                    this.SetSessionOwnerProfilePictureUrl(imagePath);
+                }
+            }
+            
+            //Micky: Show messahe when there is no profile image selected or bad extension
+            //else { }
+
+            return RedirectToAction("Index");
+        }
+
+        private bool ValidImageExtension(string fileName)
+        {
+            var result = false;
+
+            var extension = GetFileExtension(fileName);
+            if (validImageExtensions.Contains(extension))
+                result = true;
+
+            return result;
+        }
+
+        private string GetFileExtension(string fileName)
+        {
+            var imgArr = fileName.Split('.');
+            return imgArr[imgArr.Length - 1].ToLower();
         }
 
         //
@@ -257,7 +308,7 @@ namespace FindMyPet.MVC.Controllers
         {
             this.VerifySessionVariables();
             this.SetManageNavBarInfo();
-            this.SelectMenuItemInProfilePage("ChangePassword");
+            this.SetManageNavBarItem("ChangePassword");
 
             return View();
         }

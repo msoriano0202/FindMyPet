@@ -16,6 +16,7 @@ namespace FindMyPet.MVC.ServiceClients
         Owner GetOwnerById(int ownerId);
         Owner GetOwnerByEmail(string email);
         Owner UpdateOwner(ProfileViewModel model);
+        void UpdateOwnerImageProfile(int ownerId, string imagePath);
     }
 
     public class OwnerServiceClient : IOwnerServiceClient
@@ -80,6 +81,17 @@ namespace FindMyPet.MVC.ServiceClients
             var response = _findMyPetClient.JsonClient().Post(request);
 
             return response;
+        }
+
+        public void UpdateOwnerImageProfile(int ownerId, string imagePath)
+        {
+            var request = new UpdateOwnerRequest
+            {
+                Id = ownerId,
+                ProfileImageUrl = imagePath
+            };
+
+            var response = _findMyPetClient.JsonClient().Post(request);
         }
     }
 }

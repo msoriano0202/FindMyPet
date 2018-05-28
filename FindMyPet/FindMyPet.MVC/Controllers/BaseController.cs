@@ -3,6 +3,7 @@ using FindMyPet.MVC.DataLoaders;
 using FindMyPet.MVC.Models.Profile;
 using Microsoft.AspNet.Identity;
 using System;
+using System.Configuration;
 using System.Web.Mvc;
 
 namespace FindMyPet.MVC.Controllers
@@ -12,9 +13,7 @@ namespace FindMyPet.MVC.Controllers
         private OwnerDataLoader _ownerDataLoader;
 
         public BaseController() : this(new OwnerDataLoader())
-        {
-
-        }
+        { }
 
         public BaseController(OwnerDataLoader ownerDataLoader)
         {
@@ -24,42 +23,7 @@ namespace FindMyPet.MVC.Controllers
             _ownerDataLoader = ownerDataLoader;
         }
 
-        public Owner GetuserByMembershipId()
-        {
-            var userMembershipId = User.Identity.GetUserId();
-            return _ownerDataLoader.GetuserByMembershipId(userMembershipId);
-        }
-
-        public void UpdateOwnerById(ProfileViewModel model)
-        {
-            model.Id = (int)Session["OwnerId"];
-            _ownerDataLoader.UpdateOwner(model);
-        }
-
-        public void RegisterOwner(string membershipId, string firstName, string lastName, string email)
-        {
-            var ownerId = _ownerDataLoader.RegisterOwner(membershipId, firstName, lastName, email);
-
-            Session["OwnerId"] = ownerId;
-            Session["OwnerName"] = string.Format("{0} {1}", firstName, lastName);
-            Session["OwnerMembershipId"] = membershipId;
-        }
-
-        public void LoadOwnerByEmail(string email)
-        {
-            var owner = _ownerDataLoader.GetOwnerByEmail(email);
-
-            Session["OwnerId"] = owner.Id;
-            Session["OwnerName"] = string.Format("{0} {1}", owner.FirstName, owner.LastName);
-            Session["OwnerMembershipId"] = User.Identity.GetUserId();
-        }
-
-        public void CleanSessionVariables()
-        {
-            Session["OwnerName"] = null;
-            Session["OwnerId"] = null;
-            Session["OwnerMembershipId"] = null;
-        }
+        #region --- VerifySessionVariables ---
 
         public void VerifySessionVariables()
         {
@@ -69,31 +33,137 @@ namespace FindMyPet.MVC.Controllers
                 var userMembershipId = User.Identity.GetUserId();
                 var owner = _ownerDataLoader.GetuserByMembershipId(userMembershipId);
 
-                Session["OwnerId"] = owner.Id;
-                Session["OwnerName"] = string.Format("{0} {1}", owner.FirstName, owner.LastName);
-                Session["OwnerMembershipId"] = userMembershipId;
+                SetSessionVariables(owner.Id,
+                                    string.Format("{0} {1}", owner.FirstName, owner.LastName),
+                                    userMembershipId,
+                                    string.IsNullOrEmpty(owner.ProfileImageUrl) ? GetDefaultImageProfile() : FormatSiteImageUrl(owner.ProfileImageUrl));
             }
         }
 
-        public void UpdateSessionOwnerName(string firstName, string lastName)
+        #endregion
+
+        #region --- Register Owner / Load Owner / Clean ---
+
+        public void RegisterOwner(string membershipId, string firstName, string lastName, string email)
         {
-            Session["OwnerName"] = string.Format("{0} {1}", firstName, lastName);
+            var ownerId = _ownerDataLoader.RegisterOwner(membershipId, firstName, lastName, email);
+
+            SetSessionVariables(ownerId, 
+                                string.Format("{0} {1}", firstName, lastName), 
+                                membershipId,
+                                GetDefaultImageProfile());
         }
+
+        public void LoadSignedInOwnerInSession()
+        {
+            var owner = _ownerDataLoader.GetuserByMembershipId(User.Identity.GetUserId());
+
+            SetSessionVariables(owner.Id,
+                                string.Format("{0} {1}", owner.FirstName, owner.LastName),
+                                User.Identity.GetUserId(),
+                                string.IsNullOrEmpty(owner.ProfileImageUrl) ? GetDefaultImageProfile() : FormatSiteImageUrl(owner.ProfileImageUrl));
+        }
+
+        private void SetSessionVariables(int ownerId, string ownerName, string membershipId, string profileImageUrl)
+        {
+            Session["OwnerId"] = ownerId;
+            Session["OwnerName"] = ownerName;
+            Session["OwnerMembershipId"] = membershipId;
+            Session["OwnerProfilePictureUrl"] = profileImageUrl;
+        }
+
+        public void CleanSessionVariables()
+        {
+            Session["OwnerName"] = null;
+            Session["OwnerId"] = null;
+            Session["OwnerMembershipId"] = null;
+            Session["OwnerProfilePictureUrl"] = null;
+        }
+
+        #endregion
+
+        #region --- GetuserByMembershipId ---
+
+        public Owner GetuserByMembershipId()
+        {
+            return _ownerDataLoader.GetuserByMembershipId(User.Identity.GetUserId());
+        }
+
+        #endregion
+
+        #region --- Updates Owner ---
+
+        public void UpdateOwnerById(ProfileViewModel model)
+        {
+            model.Id = (int)Session["OwnerId"];
+            _ownerDataLoader.UpdateOwner(model);
+        }
+
+        public void UpdateOwnerImageProfile(string imagePath)
+        {
+            var ownerId = (int)Session["OwnerId"];
+            _ownerDataLoader.UpdateOwnerImageProfile(ownerId, imagePath);
+        }
+
+        #endregion
+
+        #region --- Set/Get SessionVariables ---
 
         public string GetSessionOwnerName()
         {
             return Session["OwnerName"].ToString();
         }
 
+        public void SetSessionOwnerName(string firstName, string lastName)
+        {
+            Session["OwnerName"] = string.Format("{0} {1}", firstName, lastName);
+        }
+
+        public string GetSessionOwnerProfilePictureUrl()
+        {
+            return Session["OwnerProfilePictureUrl"].ToString();
+        }
+
+        public void SetSessionOwnerProfilePictureUrl(string profilePictureUrl)
+        {
+            Session["OwnerProfilePictureUrl"] = FormatSiteImageUrl(profilePictureUrl);
+        }
+
+        #endregion
+
+        #region --- ManageNavBar ---
+
         public void SetManageNavBarInfo()
         {
             ViewBag.FullName = this.GetSessionOwnerName();
-            ViewBag.ProfilePictureUrl = "/Content/Images/DefaultProfileOwnerImage.png";
+            ViewBag.ProfilePictureUrl = this.GetSessionOwnerProfilePictureUrl();
         }
 
-        public void SelectMenuItemInProfilePage(string itemName)
+        public void SetManageNavBarItem(string itemName)
         {
             ViewBag.SelectedItem = itemName;
         }
+
+        #endregion 
+
+        #region --- Helpers ---
+
+        private string GetDefaultImageProfile()
+        {
+            return ConfigurationManager.AppSettings["DefaultImageProfile"].ToString();
+        }
+
+        private string FormatSiteImageUrl(string imageUrl)
+        {
+            var uploadsFolder = ConfigurationManager.AppSettings["UploadsFolder"].ToString().Replace("/","\\");
+            var index = imageUrl.IndexOf(uploadsFolder);
+
+            if (index >= 0)
+                imageUrl = imageUrl.Substring(index, (imageUrl.Length - index));
+
+            return imageUrl;
+        }
+
+        #endregion
     }
 }

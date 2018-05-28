@@ -81,7 +81,7 @@ namespace FindMyPet.MVC.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    this.LoadOwnerByEmail(model.Email);
+                    this.LoadSignedInOwnerInSession();
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -158,8 +158,8 @@ namespace FindMyPet.MVC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    this.RegisterOwner(user.Id, model.FirstName, model.LastName, model.Email);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    this.RegisterOwner(user.Id, model.FirstName, model.LastName, model.Email);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

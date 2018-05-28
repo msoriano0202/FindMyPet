@@ -35,6 +35,7 @@ namespace FindMyPet.MyServiceStack.Mappers
                 FirstName = ownerTable.FirstName,
                 LastName = ownerTable.LastName,
                 Email = ownerTable.Email,
+                ProfileImageUrl = ownerTable.ProfileImageUrl,
                 CreatedOn = ownerTable.CreatedOn
             };
         }
@@ -49,6 +50,9 @@ namespace FindMyPet.MyServiceStack.Mappers
 
             if (request.Email != null && !request.Email.Equals(ownerTable.Email))
                 ownerTable.Email = request.Email;
+
+            if (request.ProfileImageUrl != null && !request.ProfileImageUrl.Equals(ownerTable.ProfileImageUrl))
+                ownerTable.ProfileImageUrl = request.ProfileImageUrl;
 
             return ownerTable;
         }

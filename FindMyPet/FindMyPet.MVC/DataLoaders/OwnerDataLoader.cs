@@ -15,6 +15,7 @@ namespace FindMyPet.MVC.DataLoaders
         Owner GetOwnerById(int ownerId);
         Owner GetOwnerByEmail(string email);
         Owner UpdateOwner(ProfileViewModel model);
+        void UpdateOwnerImageProfile(int ownerId, string imagePath);
     }
 
     public class OwnerDataLoader : IOwnerDataLoader
@@ -56,6 +57,11 @@ namespace FindMyPet.MVC.DataLoaders
         public Owner UpdateOwner(ProfileViewModel model)
         {
             return _ownerServiceClient.UpdateOwner(model);
+        }
+
+        public void UpdateOwnerImageProfile(int ownerId, string imagePath)
+        {
+            _ownerServiceClient.UpdateOwnerImageProfile(ownerId, imagePath);
         }
     }
 }
