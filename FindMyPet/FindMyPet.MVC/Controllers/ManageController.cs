@@ -20,6 +20,9 @@ namespace FindMyPet.MVC.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private List<string> validImageExtensions = new List<string> { "jpg", "png" };
+        private int defaultImageWidthSize = 750;
+        private int defaultImageHeightSize = 750;
+        private string defaultImageExtension = "jpg";
 
         public ManageController()
         {
@@ -102,13 +105,24 @@ namespace FindMyPet.MVC.Controllers
                     message = "FileNoValid";
                 else
                 {
-                    var fileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), GetFileExtension(file.FileName));
-                    var uploadsFolder = ConfigurationManager.AppSettings["UploadsFolder"].ToString();
-                    var imagePath = Path.Combine(Server.MapPath(uploadsFolder), fileName);
-                    file.SaveAs(imagePath);
+                    var owner = this.GetuserByMembershipId();
+                    var oldProfileImagePath = owner.ProfileImageUrl;
 
-                    this.UpdateOwnerImageProfile(imagePath);
-                    this.SetSessionOwnerProfilePictureUrl(imagePath);
+                    var uploadsFolder = Server.MapPath(ConfigurationManager.AppSettings["UploadsFolder"].ToString());
+                    var tempFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), GetFileExtension(file.FileName));
+                    var newFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), defaultImageExtension);
+
+                    var tempImageFilePath = Path.Combine(uploadsFolder, tempFileName);
+                    var newImageFilePath = Path.Combine(uploadsFolder, newFileName);
+
+                    file.SaveAs(tempImageFilePath);
+                    this.PerformImageResizeAndPutOnCanvas(uploadsFolder, tempFileName, defaultImageWidthSize, defaultImageHeightSize, newFileName);
+
+                    this.UpdateOwnerImageProfile(newImageFilePath);
+                    this.SetSessionOwnerProfilePictureUrl(newImageFilePath);
+
+                    System.IO.File.Delete(tempImageFilePath);
+                    System.IO.File.Delete(oldProfileImagePath);
                 }
             }
             

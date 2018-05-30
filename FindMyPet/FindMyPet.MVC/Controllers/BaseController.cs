@@ -1,5 +1,6 @@
 ﻿using FindMyPet.DTO.Owner;
 using FindMyPet.MVC.DataLoaders;
+using FindMyPet.MVC.Helpers;
 using FindMyPet.MVC.Models.Profile;
 using Microsoft.AspNet.Identity;
 using System;
@@ -10,17 +11,22 @@ namespace FindMyPet.MVC.Controllers
 {
     public class BaseController : Controller
     {
-        private OwnerDataLoader _ownerDataLoader;
+        private IOwnerDataLoader _ownerDataLoader;
+        private IImageHelper _imageHelper;
 
-        public BaseController() : this(new OwnerDataLoader())
+        public BaseController() : this(new OwnerDataLoader(), new ImageHelper())
         { }
 
-        public BaseController(OwnerDataLoader ownerDataLoader)
+        public BaseController(IOwnerDataLoader ownerDataLoader, IImageHelper imageHelper)
         {
             if (ownerDataLoader == null)
                 throw new ArgumentNullException(nameof(ownerDataLoader));
 
+            if (imageHelper == null)
+                throw new ArgumentNullException(nameof(imageHelper));
+
             _ownerDataLoader = ownerDataLoader;
+            _imageHelper = imageHelper;
         }
 
         #region --- VerifySessionVariables ---
@@ -146,7 +152,7 @@ namespace FindMyPet.MVC.Controllers
 
         #endregion 
 
-        #region --- Helpers ---
+        #region --- Private Helpers ---
 
         private string GetDefaultImageProfile()
         {
@@ -162,6 +168,15 @@ namespace FindMyPet.MVC.Controllers
                 imageUrl = imageUrl.Substring(index, (imageUrl.Length - index));
 
             return imageUrl;
+        }
+
+        #endregion
+
+        #region --- Image helper ---
+
+        public void PerformImageResizeAndPutOnCanvas(string pFilePath, string pFileName, int pWidth, int pHeight, string pOutputFileName)
+        {
+            _imageHelper.PerformImageResizeAndPutOnCanvas(pFilePath, pFileName, pWidth, pHeight, pOutputFileName);
         }
 
         #endregion

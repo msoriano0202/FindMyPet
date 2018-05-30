@@ -12,32 +12,49 @@
 
 @{int index = 0;}
 
-<div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
-    <div class="table-responsive">
-        <table class="table g-mb-0">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Fecha Nacimiento</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    index++;
-                <tr>
-                    <th scope="row">@index</th>
-                    <td>@item.Name</td>
-                    <td>@item.DateOfBirth.ToString("dd / MMM / yyyy")</td>
-                    <td>
-                        <a href="/Pet/Edit/@item.Code" class="btn btn-xs cn-btn-bluegray-600">Editar</a>
-                        @*@Html.ActionLink("Editar", "Edit", new { id = item.Code, @class = "btn btn-xs cn-btn-bluegray-600" })*@
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
+@if (!Model.Any())
+{
+    <div class="g-flex-center h-100">
+        <div class="container g-bg-gray-100">
+            <div class="text-center g-border g-border-gray-300 g-border-3x g-py-30 g-py-md-10">
+                <img src="@Url.Content("/Content/Images/DefaultPetImage.png")" class="img-fluid rounded-circle" alt="Profile Picture">
+                <ul class="list-unstyled g-text-gray-600 g-my-15 g-my-md-10">
+                    <li class="g-mb-4 g-mb-md-10">No tiene Mascotas registradas.</li>
+                    <li class="g-mb-4 g-mb-md-10">Agrege sus Mascotas.</li>
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
+}
+else
+{
+    <div class="g-mb-50 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
+        <div class="table-responsive">
+            <table class="table g-mb-0">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha Nacimiento</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        index++;
+                        <tr>
+                            <th scope="row">@index</th>
+                            <td>@item.Name</td>
+                            <td>@item.DateOfBirth.ToString("dd / MMM / yyyy")</td>
+                            <td>
+                                <a href="/Pet/Edit/@item.Code" class="btn btn-xs cn-btn-bluegray-600">Editar</a>
+                                @*@Html.ActionLink("Editar", "Edit", new { id = item.Code, @class = "btn btn-xs cn-btn-bluegray-600" })*@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

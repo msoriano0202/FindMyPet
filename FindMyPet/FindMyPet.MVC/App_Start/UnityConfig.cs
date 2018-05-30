@@ -1,5 +1,6 @@
 using FindMyPet.MVC.Controllers;
 using FindMyPet.MVC.DataLoaders;
+using FindMyPet.MVC.Helpers;
 using FindMyPet.MVC.Mappers;
 using FindMyPet.MVC.ServiceClients;
 using System.Web.Mvc;
@@ -30,6 +31,8 @@ namespace FindMyPet.MVC
 
             container.RegisterType<IOwnerDataLoader, OwnerDataLoader>();
             container.RegisterType<IPetDataLoader, PetDataLoader>();
+
+            container.RegisterType<IImageHelper, ImageHelper>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
