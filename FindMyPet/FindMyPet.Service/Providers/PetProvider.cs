@@ -101,8 +101,7 @@ namespace FindMyPet.MyServiceStack.Providers
             var petsByOwner = await _petDataAccess.GetPetsByOwnerIdAsync(request.OwnerId)
                                                   .ConfigureAwait(false);
 
-            return petsByOwner.ConvertAll(p => _petMapper.MapPetTableToPet(p))
-                              .OrderBy(p => p.Name).ToList();
+            return petsByOwner.ConvertAll(p => _petMapper.MapPetTableToPet(p));
         }
 
         public async Task<List<Pet>> SearchPetsAsync(SearchPetRequest request)

@@ -94,11 +94,10 @@ namespace FindMyPet.MyServiceStack.DataAccess
             var petsByOwner = new List<PetTable>();
             using (var dbConnection = _dbConnectionFactory.Open())
             {
-                var q = dbConnection.From<OwnerPetTable>()
-                                    .Where(op => op.OwnerTableId == ownerId)
-                                    .Select(op => op.PetTableId);
-
-                petsByOwner = await dbConnection.SelectAsync<PetTable>(p => Sql.In(p.Id, q));
+                var q = dbConnection.From<PetTable>()
+                         .Join<PetTable, OwnerPetTable>((p, po) => p.Id == po.PetTableId && po.OwnerTableId == ownerId)
+                         .Select().OrderBy(x => x.Name);
+                petsByOwner = await dbConnection.SelectAsync<PetTable>(q);
             }
 
             return petsByOwner;
