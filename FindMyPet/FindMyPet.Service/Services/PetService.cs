@@ -1,4 +1,5 @@
 ﻿using FindMyPet.DTO.Pet;
+using FindMyPet.DTO.Shared;
 using FindMyPet.MyServiceStack.Providers;
 using ServiceStack;
 using System;
@@ -39,12 +40,12 @@ namespace FindMyPet.MyServiceStack.Services
                                      .ConfigureAwait(false);
         }
 
-        public async Task<List<Pet>> Post(PetsByOwnerRequest request)
+        public async Task<PagedResponse<Pet>> Post(PetsByOwnerRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
-            return await _petProvider.PetsByOwnerAsync(request)
+            return await _petProvider.PetsByOwnerPagedAsync(request)
                                      .ConfigureAwait(false);
         }
 

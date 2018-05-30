@@ -1,5 +1,6 @@
 ﻿using FindMyPet.DTO.Owner;
 using FindMyPet.DTO.Pet;
+using FindMyPet.DTO.Shared;
 using FindMyPet.MyServiceStack.DataAccess;
 using FindMyPet.MyServiceStack.Mappers;
 using FindMyPet.TableModel;
@@ -18,6 +19,7 @@ namespace FindMyPet.MyServiceStack.Providers
         Task<Pet> UpdatePetAsync(UpdatePetRequest request);
         Task<Pet> GetPetAsync(PetRequest request);
         Task<List<Pet>> PetsByOwnerAsync(PetsByOwnerRequest request);
+        Task<PagedResponse<Pet>> PetsByOwnerPagedAsync(PetsByOwnerRequest request);
         Task<List<Pet>> SearchPetsAsync(SearchPetRequest request);
     }
 
@@ -102,6 +104,22 @@ namespace FindMyPet.MyServiceStack.Providers
                                                   .ConfigureAwait(false);
 
             return petsByOwner.ConvertAll(p => _petMapper.MapPetTableToPet(p));
+        }
+
+        public async Task<PagedResponse<Pet>> PetsByOwnerPagedAsync(PetsByOwnerRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var pagedResult = await _petDataAccess.GetPetsByOwnerPagedAsync(request)
+                                             .ConfigureAwait(false);
+
+            return new PagedResponse<Pet>
+            {
+                TotalRecords = pagedResult.TotalRecords,
+                TotalPages = pagedResult.TotalPages,
+                Result = pagedResult.Result.ConvertAll(p => _petMapper.MapPetTableToPet(p))
+            };
         }
 
         public async Task<List<Pet>> SearchPetsAsync(SearchPetRequest request)

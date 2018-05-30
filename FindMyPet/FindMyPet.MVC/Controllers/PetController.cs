@@ -2,6 +2,7 @@
 using FindMyPet.MVC.Models.Pet;
 using Microsoft.AspNet.Identity;
 using System;
+using System.Configuration;
 using System.Web.Mvc;
 
 namespace FindMyPet.MVC.Controllers
@@ -20,10 +21,13 @@ namespace FindMyPet.MVC.Controllers
         }
 
         // GET: Pet
-        public ActionResult Index()
+        public ActionResult Index(string petName, int? pageNumber)
         {
             this.VerifySessionVariables();
-            var model = _petDataLoader.GetPetsByOwner(User.Identity.GetUserId());
+            var pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultPageSize"].ToString());
+            pageNumber = pageNumber ?? 1;
+
+            var model = _petDataLoader.GetPetsByOwner(User.Identity.GetUserId(), pageSize, pageNumber.Value);
 
             return View(model);
         }

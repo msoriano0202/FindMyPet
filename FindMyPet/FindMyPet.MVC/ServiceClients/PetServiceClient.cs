@@ -10,7 +10,7 @@ namespace FindMyPet.MVC.ServiceClients
 {
     public interface IPetServiceClient
     {
-        List<Pet> GetPetsByOwnerId(int ownerId);
+        List<Pet> GetPetsByOwnerId(int ownerId, int pageSize, int pageNumber);
         Pet AddPet(CreatePetRequest request);
         Pet GetPet(PetRequest request);
         Pet UpdatePet(UpdatePetRequest request);
@@ -27,12 +27,12 @@ namespace FindMyPet.MVC.ServiceClients
             _findMyPetClient = findMyPetClient;
         }
 
-        public List<Pet> GetPetsByOwnerId(int ownerId)
+        public List<Pet> GetPetsByOwnerId(int ownerId, int pageSize, int pageNumber)
         {
-            var request = new PetsByOwnerRequest { OwnerId = ownerId };
+            var request = new PetsByOwnerRequest { OwnerId = ownerId, PageSize = pageSize, PageNumber = pageNumber };
             var response = _findMyPetClient.JsonClient().Post(request);
 
-            return response;
+            return response.Result;
         }
 
         public Pet AddPet(CreatePetRequest request)

@@ -11,7 +11,7 @@ namespace FindMyPet.MVC.DataLoaders
 {
     public interface IPetDataLoader
     {
-        List<PetViewModel> GetPetsByOwner(string membershipId);
+        List<PetViewModel> GetPetsByOwner(string membershipId, int pageSize, int pageNumber);
         void AddPet(string membershipId, PetViewModel model);
         PetViewModel GetPetByCode(string code);
         void UpdatePet(PetViewModel model);
@@ -39,10 +39,10 @@ namespace FindMyPet.MVC.DataLoaders
             _petMapper = petMapper;
         }
 
-        public List<PetViewModel> GetPetsByOwner(string membershipId)
+        public List<PetViewModel> GetPetsByOwner(string membershipId, int pageSize, int pageNumber)
         {
             var owner = _ownerServiceClient.GetuserByMembershipId(membershipId);
-            var pets = _petServiceClient.GetPetsByOwnerId(owner.Id);
+            var pets = _petServiceClient.GetPetsByOwnerId(owner.Id, pageSize, pageNumber);
             var petsViewModel = pets.ConvertAll(x => _petMapper.PetToViewModel(x));
 
             return petsViewModel;
