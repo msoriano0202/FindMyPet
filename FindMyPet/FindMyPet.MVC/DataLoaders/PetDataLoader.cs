@@ -1,6 +1,7 @@
 ﻿using FindMyPet.DTO.Pet;
 using FindMyPet.MVC.Mappers;
 using FindMyPet.MVC.Models.Pet;
+using FindMyPet.MVC.Models.Shared;
 using FindMyPet.MVC.ServiceClients;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,8 @@ namespace FindMyPet.MVC.DataLoaders
 {
     public interface IPetDataLoader
     {
-        List<PetViewModel> GetPetsByOwner(string membershipId, int pageSize, int pageNumber);
+        List<PetViewModel> GetPetsByOwner(string membershipId);
+        PagedResponseViewModel<PetViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber);
         void AddPet(string membershipId, PetViewModel model);
         PetViewModel GetPetByCode(string code);
         void UpdatePet(PetViewModel model);
@@ -39,13 +41,25 @@ namespace FindMyPet.MVC.DataLoaders
             _petMapper = petMapper;
         }
 
-        public List<PetViewModel> GetPetsByOwner(string membershipId, int pageSize, int pageNumber)
+        public List<PetViewModel> GetPetsByOwner(string membershipId)
         {
             var owner = _ownerServiceClient.GetuserByMembershipId(membershipId);
-            var pets = _petServiceClient.GetPetsByOwnerId(owner.Id, pageSize, pageNumber);
+            var pets = _petServiceClient.GetPetsByOwnerId(owner.Id);
             var petsViewModel = pets.ConvertAll(x => _petMapper.PetToViewModel(x));
 
             return petsViewModel;
+        }
+
+        public PagedResponseViewModel<PetViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber)
+        {
+            var petsPaged = _petServiceClient.GetPetsPagedByOwnerId(ownerId, pageSize, pageNumber);
+
+            return new PagedResponseViewModel<PetViewModel>
+            {
+                Result = petsPaged.Result.ConvertAll(x => _petMapper.PetToViewModel(x)),
+                TotalPages = petsPaged.TotalPages,
+                TotalRecords = petsPaged.TotalRecords
+            };
         }
 
         public void AddPet(string membershipId, PetViewModel model)

@@ -26,10 +26,18 @@ namespace FindMyPet.MVC.Controllers
             this.VerifySessionVariables();
             var pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultPageSize"].ToString());
             pageNumber = pageNumber ?? 1;
+           
+            var result = _petDataLoader.GetPetsPagedByOwner(this.GetSessionOwnerId(), pageSize, pageNumber.Value);
+            if (pageNumber < 0) pageNumber = 1;
+            else if (pageNumber > result.TotalPages) pageNumber = result.TotalPages;
 
-            var model = _petDataLoader.GetPetsByOwner(User.Identity.GetUserId(), pageSize, pageNumber.Value);
+                var pagedModel = new PetPagedListViewModel
+            {
+                Records = result.Result,
+                Pagination = this.SetPaginationViewModel("/Pet/?pageNumber=", result.TotalRecords, result.TotalPages, pageNumber.Value, pageSize)
+            };
 
-            return View(model);
+            return View(pagedModel);
         }
 
         // GET: Pet/Details/5

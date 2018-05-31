@@ -122,7 +122,9 @@ namespace FindMyPet.MVC.Controllers
                     this.SetSessionOwnerProfilePictureUrl(newImageFilePath);
 
                     System.IO.File.Delete(tempImageFilePath);
-                    System.IO.File.Delete(oldProfileImagePath);
+
+                    if(!string.IsNullOrEmpty(oldProfileImagePath))
+                        System.IO.File.Delete(oldProfileImagePath);
                 }
             }
             

@@ -2,6 +2,7 @@
 using FindMyPet.MVC.DataLoaders;
 using FindMyPet.MVC.Helpers;
 using FindMyPet.MVC.Models.Profile;
+using FindMyPet.MVC.Models.Shared;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Configuration;
@@ -115,6 +116,11 @@ namespace FindMyPet.MVC.Controllers
 
         #region --- Set/Get SessionVariables ---
 
+        public int GetSessionOwnerId()
+        {
+            return Convert.ToInt32(Session["OwnerId"]);
+        }
+
         public string GetSessionOwnerName()
         {
             return Session["OwnerName"].ToString();
@@ -177,6 +183,23 @@ namespace FindMyPet.MVC.Controllers
         public void PerformImageResizeAndPutOnCanvas(string pFilePath, string pFileName, int pWidth, int pHeight, string pOutputFileName)
         {
             _imageHelper.PerformImageResizeAndPutOnCanvas(pFilePath, pFileName, pWidth, pHeight, pOutputFileName);
+        }
+
+        #endregion
+
+        #region --- Pagination ---
+
+        public PaginationViewModel SetPaginationViewModel(string actionUrl, int totalRecords, int totalPages, int currentPage, int pageSize)
+        {
+            return new PaginationViewModel
+            {
+                ActionUrl = actionUrl,
+                EnablePagination = (totalPages > 1),
+                TotalRecords = totalRecords,
+                TotalPages = totalPages,
+                CurrentPage = currentPage,
+                PageSize = pageSize
+            };
         }
 
         #endregion

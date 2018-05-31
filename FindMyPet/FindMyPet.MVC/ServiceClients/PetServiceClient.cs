@@ -1,4 +1,5 @@
 ﻿using FindMyPet.DTO.Pet;
+using FindMyPet.MVC.Models.Shared;
 using ServiceStack;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,8 @@ namespace FindMyPet.MVC.ServiceClients
 {
     public interface IPetServiceClient
     {
-        List<Pet> GetPetsByOwnerId(int ownerId, int pageSize, int pageNumber);
+        List<Pet> GetPetsByOwnerId(int ownerId);
+        PagedResponseViewModel<Pet> GetPetsPagedByOwnerId(int ownerId, int pageSize, int pageNumber);
         Pet AddPet(CreatePetRequest request);
         Pet GetPet(PetRequest request);
         Pet UpdatePet(UpdatePetRequest request);
@@ -27,12 +29,25 @@ namespace FindMyPet.MVC.ServiceClients
             _findMyPetClient = findMyPetClient;
         }
 
-        public List<Pet> GetPetsByOwnerId(int ownerId, int pageSize, int pageNumber)
+        public List<Pet> GetPetsByOwnerId(int ownerId)
+        {
+            var request = new PetsByOwnerRequest { OwnerId = ownerId };
+            var response = _findMyPetClient.JsonClient().Post(request);
+
+            return response.Result;
+        }
+
+        public PagedResponseViewModel<Pet> GetPetsPagedByOwnerId(int ownerId, int pageSize, int pageNumber)
         {
             var request = new PetsByOwnerRequest { OwnerId = ownerId, PageSize = pageSize, PageNumber = pageNumber };
             var response = _findMyPetClient.JsonClient().Post(request);
 
-            return response.Result;
+            return new PagedResponseViewModel<Pet>
+            {
+                Result = response.Result,
+                TotalPages = response.TotalPages,
+                TotalRecords = response.TotalRecords
+            };
         }
 
         public Pet AddPet(CreatePetRequest request)
