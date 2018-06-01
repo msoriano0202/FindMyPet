@@ -3,7 +3,7 @@
 @if (Request.IsAuthenticated)
 {
     string ownerName = Session["OwnerName"] as string;
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class="ml-auto" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class= "ml-auto" }))
     {
     @Html.AntiForgeryToken()
 
@@ -14,7 +14,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a id="logoff" href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">
+            @*nav-link*@
+            <a id="logoff" href="javascript:document.getElementById('logoutForm').submit()" class="btn cn-btn-secondary g-mt-15 g-mb-20">
                 <i class="icon-logout g-mr-5"></i>Salir
             </a>
         </li>
@@ -30,7 +31,8 @@ else
             </a>
         </li>
         <li class="nav-item">
-            <a id="registerLink" href="/Account/Register" class="btn cn-btn-primary g-mt-15">
+            @*nav-link   btn cn-btn-primary g-mt-15*@
+            <a id="registerLink" href="/Account/Register" class="btn cn-btn-primary g-mt-15 g-mb-20">
                 <i class="icon-notebook g-mr-5"></i><span>Crear Cuenta</span>
             </a>
         </li>

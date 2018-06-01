@@ -2,13 +2,16 @@
 <!-- Header -->
 <header id="header" class="cn-header position-relative">
     <!-- Main Navbar -->
-    <div class="cn-navbar-wrapper g-border-b g-border-gray-300">
+    @*class="cn-navbar-wrapper g-border-b g-border-gray-300"  g-bg-bluegray-700 bg-dark*@
+    <div class="cn-navbar-wrapper cn-navbar-white-color g-bg-bluegray-700">
         <nav class="navbar navbar-expand-lg">
 
             <div class="container">
                 <div class="logo-wrapper">
-                    <a class="navbar-brand" href="/Home"><img class="logo" src="http://via.placeholder.com/150x50/eee/777" alt="Logo"></a>
-                    @*<p class="g-text-blue">Find My Pet</p>*@
+                    @*<a class="navbar-brand" href="/Home"><img class="logo" src="http://via.placeholder.com/150x50/eee/777" alt="Logo"></a>*@
+                    <a class="navbar-brand" href="/Home">
+                        <h4><i>Alerta Mascota</i></h4>
+                    </a>
                 </div>
                 <button class="navbar-toggler navbar-toggler-right border-0 cursor-pointer" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon cn-icon cn-icon-sm">
@@ -28,9 +31,12 @@
                         </li>
                         @if (Request.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                                @Html.ActionLink("Mis Mascotas", "Index", "Pet", null, new { @class = "nav-link" })
-                            </li>
+                        <li class="nav-item">
+                            @*@Html.ActionLink("Mis Mascotas", "Index", "Pet", null, new { @class = "nav-link" })*@
+                            <a id="registerLink" href="/Pet" class="nav-link">
+                                <i class="icon-social-github g-mr-5"></i><span>Mis Mascotas</span>
+                            </a>
+                        </li>
                         }
                     </ul>
                     @Html.Partial("_LoginPartial")

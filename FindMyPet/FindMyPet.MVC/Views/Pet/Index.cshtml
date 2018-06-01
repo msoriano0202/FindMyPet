@@ -54,11 +54,23 @@ else
                                 <td>
                                     @*<a href="/Pet/Edit/@item.Code" class="btn btn-xs cn-btn-bluegray-600">Editar</a>*@
 
+                                    @*
                                     <a id="editPet" href="/Pet/Edit/@item.Code" class="btn btn-xs cn-btn-dark g-mr-5" title="Editar">
                                         <i class="fa fa-pencil fa-fw"></i>
                                     </a>
                                     <a id="deletePet" href="#" class="btn btn-xs cn-btn-dark g-mr-5" title="Eliminar">
                                         <i class="fa fa-trash fa-fw"></i>
+                                    </a>
+                                    *@
+
+                                    @*g-mr-10 g-mb-10*@
+                                    <a id="editPet" href="/Pet/Edit/@item.Code" class="cn-icon cn-icon-xs rounded g-mb-5 g-bg-dark" title="Editar">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+
+                                    @*g-mr-10 g-mb-10*@
+                                    <a id="deletePet" href="#" class="cn-icon cn-icon-xs rounded g-mb-5 g-bg-dark" title="Borrar">
+                                        <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
                             </tr>
