@@ -34,15 +34,17 @@ namespace FindMyPet.MVC.Controllers
 
         public void VerifySessionVariables()
         {
-            var ownerMembershipId = Session["OwnerMembershipId"]?.ToString();
-            if (string.IsNullOrEmpty(ownerMembershipId) && Request.IsAuthenticated)
+            int ownerId = 0;
+            var ownerIdSession = Session["OwnerId"]?.ToString();
+            if (
+                (ownerIdSession == null || !Int32.TryParse(ownerIdSession, out ownerId)) && Request.IsAuthenticated
+               )
             {
-                var userMembershipId = User.Identity.GetUserId();
-                var owner = _ownerDataLoader.GetuserByMembershipId(userMembershipId);
+                var owner = _ownerDataLoader.GetuserByMembershipId(User.Identity.GetUserId());
 
                 SetSessionVariables(owner.Id,
                                     string.Format("{0} {1}", owner.FirstName, owner.LastName),
-                                    userMembershipId,
+                                    User.Identity.GetUserId(),
                                     string.IsNullOrEmpty(owner.ProfileImageUrl) ? GetDefaultImageProfile() : FormatSiteImageUrl(owner.ProfileImageUrl));
             }
         }
@@ -91,7 +93,7 @@ namespace FindMyPet.MVC.Controllers
 
         #region --- GetuserByMembershipId ---
 
-        public Owner GetuserByMembershipId()
+        public Owner GetUserByMembershipId()
         {
             return _ownerDataLoader.GetuserByMembershipId(User.Identity.GetUserId());
         }

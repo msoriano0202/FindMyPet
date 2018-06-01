@@ -65,7 +65,7 @@ namespace FindMyPet.MVC.Controllers
             this.SetManageNavBarInfo();
             this.SetManageNavBarItem("Index");
 
-            var owner = this.GetuserByMembershipId();
+            var owner = this.GetUserByMembershipId();
             var model = new ProfileViewModel();
             model.FirstName = owner.FirstName;
             model.LastName = owner.LastName;
@@ -105,7 +105,7 @@ namespace FindMyPet.MVC.Controllers
                     message = "FileNoValid";
                 else
                 {
-                    var owner = this.GetuserByMembershipId();
+                    var owner = this.GetUserByMembershipId();
                     var oldProfileImagePath = owner.ProfileImageUrl;
 
                     var uploadsFolder = Server.MapPath(ConfigurationManager.AppSettings["UploadsFolder"].ToString());
