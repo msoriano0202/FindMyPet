@@ -81,7 +81,6 @@ namespace FindMyPet.MVC.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    this.LoadSignedInOwnerInSession();
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

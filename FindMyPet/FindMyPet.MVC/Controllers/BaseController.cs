@@ -40,7 +40,8 @@ namespace FindMyPet.MVC.Controllers
                 (ownerIdSession == null || !Int32.TryParse(ownerIdSession, out ownerId)) && Request.IsAuthenticated
                )
             {
-                var owner = _ownerDataLoader.GetuserByMembershipId(User.Identity.GetUserId());
+                var membershipId = User.Identity.GetUserId();
+                var owner = _ownerDataLoader.GetuserByMembershipId(membershipId);
 
                 SetSessionVariables(owner.Id,
                                     string.Format("{0} {1}", owner.FirstName, owner.LastName),
@@ -65,7 +66,8 @@ namespace FindMyPet.MVC.Controllers
 
         public void LoadSignedInOwnerInSession()
         {
-            var owner = _ownerDataLoader.GetuserByMembershipId(User.Identity.GetUserId());
+            var membershipId = User.Identity.GetUserId();
+            var owner = _ownerDataLoader.GetuserByMembershipId(membershipId);
 
             SetSessionVariables(owner.Id,
                                 string.Format("{0} {1}", owner.FirstName, owner.LastName),
@@ -83,6 +85,7 @@ namespace FindMyPet.MVC.Controllers
 
         public void CleanSessionVariables()
         {
+            Session.Abandon();
             Session["OwnerName"] = null;
             Session["OwnerId"] = null;
             Session["OwnerMembershipId"] = null;
