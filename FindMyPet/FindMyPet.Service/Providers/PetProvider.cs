@@ -112,7 +112,7 @@ namespace FindMyPet.MyServiceStack.Providers
                 throw new ArgumentNullException(nameof(request));
 
             var pagedResult = await _petDataAccess.GetPetsByOwnerPagedAsync(request)
-                                             .ConfigureAwait(false);
+                                                  .ConfigureAwait(false);
 
             return new PagedResponse<Pet>
             {

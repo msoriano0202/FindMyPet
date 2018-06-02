@@ -21,20 +21,20 @@ namespace FindMyPet.MVC.Controllers
         }
 
         // GET: Pet
-        public ActionResult Index(string petName, int? pageNumber)
+        public ActionResult Index(int? page)
         {
             this.VerifySessionVariables();
             var pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultPageSize"].ToString());
-            pageNumber = pageNumber ?? 1;
+            page = page ?? 1;
            
-            var result = _petDataLoader.GetPetsPagedByOwner(this.GetSessionOwnerId(), pageSize, pageNumber.Value);
-            if (pageNumber < 0) pageNumber = 1;
-            else if (pageNumber > result.TotalPages) pageNumber = result.TotalPages;
+            var result = _petDataLoader.GetPetsPagedByOwner(this.GetSessionOwnerId(), pageSize, page.Value);
+            if (page < 0) page = 1;
+            else if (page > result.TotalPages) page = result.TotalPages;
 
-                var pagedModel = new PetPagedListViewModel
+            var pagedModel = new PetPagedListViewModel
             {
                 Records = result.Result,
-                Pagination = this.SetPaginationViewModel("/Pet/?pageNumber=", result.TotalRecords, result.TotalPages, pageNumber.Value, pageSize)
+                Pagination = this.SetPaginationViewModel("/Pet/?page=", result.TotalRecords, result.TotalPages, page.Value, pageSize)
             };
 
             return View(pagedModel);
