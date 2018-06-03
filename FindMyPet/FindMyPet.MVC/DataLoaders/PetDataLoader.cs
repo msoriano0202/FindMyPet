@@ -12,11 +12,11 @@ namespace FindMyPet.MVC.DataLoaders
 {
     public interface IPetDataLoader
     {
-        List<PetViewModel> GetPetsByOwner(string membershipId);
-        PagedResponseViewModel<PetViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber);
-        void AddPet(string membershipId, PetViewModel model);
         PetViewModel GetPetByCode(string code);
-        void UpdatePet(PetViewModel model);
+        Pet AddPet(string membershipId, PetViewModel model);
+        Pet UpdatePet(PetViewModel model);
+        PagedResponseViewModel<PetViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber);
+        //List<PetViewModel> GetPetsByOwner(string membershipId);
     }
 
     public class PetDataLoader : IPetDataLoader
@@ -41,13 +41,28 @@ namespace FindMyPet.MVC.DataLoaders
             _petMapper = petMapper;
         }
 
-        public List<PetViewModel> GetPetsByOwner(string membershipId)
+        public PetViewModel GetPetByCode(string code)
         {
-            var owner = _ownerServiceClient.GetuserByMembershipId(membershipId);
-            var pets = _petServiceClient.GetPetsByOwnerId(owner.Id);
-            var petsViewModel = pets.ConvertAll(x => _petMapper.PetToViewModel(x));
+            var request = new PetRequest { Code = Guid.Parse(code) };
+            var pet = _petServiceClient.GetPet(request);
+            return _petMapper.PetToViewModel(pet);
+        }
 
-            return petsViewModel;
+        public Pet AddPet(string membershipId, PetViewModel model)
+        {
+            var owner = _ownerServiceClient.GetOwnerByMembershipId(membershipId);
+            var request = _petMapper.ViewModelToCreateRequest(model);
+            request.OwnerId = owner.Id;
+
+            var response = _petServiceClient.AddPet(request);
+            return response;
+        }
+
+        public Pet UpdatePet(PetViewModel model)
+        {
+            var request = _petMapper.ViewModelToUpdateRequest(model);
+            var response = _petServiceClient.UpdatePet(request);
+            return response;
         }
 
         public PagedResponseViewModel<PetViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber)
@@ -62,26 +77,13 @@ namespace FindMyPet.MVC.DataLoaders
             };
         }
 
-        public void AddPet(string membershipId, PetViewModel model)
-        {
-            var owner = _ownerServiceClient.GetuserByMembershipId(membershipId);
-            var request = _petMapper.ViewModelToCreateRequest(model);
-            request.OwnerId = owner.Id;
+        //public List<PetViewModel> GetPetsByOwner(string membershipId)
+        //{
+        //    var owner = _ownerServiceClient.GetuserByMembershipId(membershipId);
+        //    var pets = _petServiceClient.GetPetsByOwnerId(owner.Id);
+        //    var petsViewModel = pets.ConvertAll(x => _petMapper.PetToViewModel(x));
 
-            _petServiceClient.AddPet(request);
-        }
-
-        public PetViewModel GetPetByCode(string code)
-        {
-            var request = new PetRequest { Code = Guid.Parse(code)};
-            var pet = _petServiceClient.GetPet(request);
-            return _petMapper.PetToViewModel(pet);
-        }
-
-        public void UpdatePet(PetViewModel model)
-        {
-            var request = _petMapper.ViewModelToUpdateRequest(model);
-            _petServiceClient.UpdatePet(request);
-        }
+        //    return petsViewModel;
+        //}
     }
 }

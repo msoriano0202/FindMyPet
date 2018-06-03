@@ -2,7 +2,7 @@
 
 namespace FindMyPet.DTO.Owner
 {
-    [Route("/updateowner", "POST")]
+    [Route("/owner", "PUT")]
     public class UpdateOwnerRequest : IReturn<Owner>
     {
         public int Id { get; set; }

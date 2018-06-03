@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace FindMyPet.TableModel
 {
-    public class ParameterGroupTable //: IHasId<int>
+    public class ParameterGroupTableModel //: IHasId<int>
     {
         [PrimaryKey]
         [AutoIncrement]
@@ -23,6 +23,6 @@ namespace FindMyPet.TableModel
         public string Description { get; set; }
 
         [Reference]
-        public List<ParameterValueTable> ParameterValues { get; set; }
+        public List<ParameterValueTableModel> ParameterValues { get; set; }
     }
 }

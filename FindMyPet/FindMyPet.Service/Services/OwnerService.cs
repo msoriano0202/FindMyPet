@@ -21,6 +21,15 @@ namespace FindMyPet.MyServiceStack.Services
             _ownerProvider = ownerProvider;
         }
 
+        public async Task<Owner> Get(OwnerRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _ownerProvider.GetOwnerAsync(request)
+                                       .ConfigureAwait(false);
+        }
+
         public async Task<Owner> Post(CreateOwnerRequest request)
         {
             if (request == null)
@@ -30,21 +39,12 @@ namespace FindMyPet.MyServiceStack.Services
                                        .ConfigureAwait(false);
         }
 
-        public async Task<Owner> Post(UpdateOwnerRequest request)
+        public async Task<Owner> Put(UpdateOwnerRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
             return await _ownerProvider.UpdateOwnerAsync(request)
-                                       .ConfigureAwait(false);
-        }
-
-        public async Task<Owner> Get(OwnerRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            return await _ownerProvider.GetOwnerAsync(request)
                                        .ConfigureAwait(false);
         }
 
@@ -56,7 +56,5 @@ namespace FindMyPet.MyServiceStack.Services
             return await _ownerProvider.SearchOwnersAsync(request)
                                        .ConfigureAwait(false);
         }
-
-       
     }
 }

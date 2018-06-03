@@ -12,8 +12,8 @@ namespace FindMyPet.MyServiceStack.Providers
 {
     public interface IOwnerProvider
     {
-        Task<Owner> CreateOwnerAsync(CreateOwnerRequest request);
         Task<Owner> GetOwnerAsync(OwnerRequest request);
+        Task<Owner> CreateOwnerAsync(CreateOwnerRequest request);
         Task<Owner> UpdateOwnerAsync(UpdateOwnerRequest request);
         Task<List<Owner>> SearchOwnersAsync(SearchOwnerRequest request);
     }
@@ -35,6 +35,25 @@ namespace FindMyPet.MyServiceStack.Providers
             _ownerMapper = ownerMapper;
         }
 
+        public async Task<Owner> GetOwnerAsync(OwnerRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (!request.Id.HasValue && string.IsNullOrEmpty(request.MembershipId))
+                throw new ArgumentException("Id and MembershipId are NULL");
+
+            OwnerTableModel table = null;
+            if (request.Id.HasValue)
+                table = await _ownerDataAccess.GetOwnerByIdAsync(request.Id.Value)
+                                              .ConfigureAwait(false);
+            else if (!string.IsNullOrEmpty(request.MembershipId))
+                table = await _ownerDataAccess.GetOwnerByMembershipIdAsync(request.MembershipId)
+                                              .ConfigureAwait(false);
+
+            return _ownerMapper.MapOwnerTableToOwner(table);
+        }
+
         public async Task<Owner> CreateOwnerAsync(CreateOwnerRequest request)
         {
             if (request == null)
@@ -49,17 +68,6 @@ namespace FindMyPet.MyServiceStack.Providers
                                                  .ConfigureAwait(false);
 
             return _ownerMapper.MapOwnerTableToOwner(newTable);
-        }
-
-        public async Task<Owner> GetOwnerAsync(OwnerRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            var table = await _ownerDataAccess.GetOwnerByIdAsync(request.Id)
-                                              .ConfigureAwait(false);
-
-            return _ownerMapper.MapOwnerTableToOwner(table);
         }
 
         public async Task<Owner> UpdateOwnerAsync(UpdateOwnerRequest request)
@@ -84,19 +92,19 @@ namespace FindMyPet.MyServiceStack.Providers
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
-            Expression<Func<OwnerTable, bool>> exp = (x) => x.Id > 0;
+            Expression<Func<OwnerTableModel, bool>> exp = (x) => x.Id > 0;
 
             if (!string.IsNullOrEmpty(request.MembershipId))
-                exp = exp.And<OwnerTable>(x => x.MembershipId == request.MembershipId);
+                exp = exp.And<OwnerTableModel>(x => x.MembershipId == request.MembershipId);
 
             if (!string.IsNullOrEmpty(request.FirstName))
-                exp = exp.And<OwnerTable>(x => x.FirstName.Contains(request.FirstName));
+                exp = exp.And<OwnerTableModel>(x => x.FirstName.Contains(request.FirstName));
 
             if (!string.IsNullOrEmpty(request.LastName))
-                exp = exp.And<OwnerTable>(x => x.LastName.Contains(request.LastName));
+                exp = exp.And<OwnerTableModel>(x => x.LastName.Contains(request.LastName));
 
             if (!string.IsNullOrEmpty(request.Email))
-                exp = exp.And<OwnerTable>(x => x.Email == request.Email);
+                exp = exp.And<OwnerTableModel>(x => x.Email == request.Email);
 
             var response = await _ownerDataAccess.SearchOwnersAsync(exp);
 

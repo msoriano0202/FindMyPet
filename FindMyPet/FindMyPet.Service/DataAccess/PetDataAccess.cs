@@ -13,21 +13,21 @@ namespace FindMyPet.MyServiceStack.DataAccess
 {
     public interface IPetDataAccess
     {
-        Task<int> AddPetAsync(int ownerId, PetTable petTable);
-        Task<int> UpdatePetAsync(PetTable petTable);
-        Task<PetTable> GetPetByIdAsync(int petId);
-        Task<PetTable> GetPetByCodeAsync(Guid petCode);
-        Task<List<PetTable>> GetPetsByOwnerIdAsync(int ownerId);
-        Task<PagedResponse<PetTable>> GetPetsByOwnerPagedAsync(PetsByOwnerRequest request);
-        Task<List<PetTable>> SearchPetsAsync(Expression<Func<PetTable, bool>> predicate);
+        Task<int> AddPetAsync(int ownerId, PetTableModel petTable);
+        Task<int> UpdatePetAsync(PetTableModel petTable);
+        Task<PetTableModel> GetPetByIdAsync(int petId);
+        Task<PetTableModel> GetPetByCodeAsync(Guid petCode);
+        Task<List<PetTableModel>> GetPetsByOwnerIdAsync(int ownerId);
+        Task<PagedResponse<PetTableModel>> GetPetsByOwnerPagedAsync(PetsByOwnerRequest request);
+        Task<List<PetTableModel>> SearchPetsAsync(Expression<Func<PetTableModel, bool>> predicate);
     }
 
     public class PetDataAccess : IPetDataAccess
     {
         private readonly IDbConnectionFactory _dbConnectionFactory;
-        private readonly IBaseDataAccess<PetTable> _petBaseDataAccess;
+        private readonly IBaseDataAccess<PetTableModel> _petBaseDataAccess;
 
-        public PetDataAccess(IDbConnectionFactory dbConnectionFactory, IBaseDataAccess<PetTable> petBaseDataAccess)
+        public PetDataAccess(IDbConnectionFactory dbConnectionFactory, IBaseDataAccess<PetTableModel> petBaseDataAccess)
         {
             if (dbConnectionFactory == null)
                 throw new ArgumentNullException(nameof(dbConnectionFactory));
@@ -39,7 +39,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
             _petBaseDataAccess = petBaseDataAccess;
         }
 
-        public async Task<int> AddPetAsync(int ownerId, PetTable petTable)
+        public async Task<int> AddPetAsync(int ownerId, PetTableModel petTable)
         {
             petTable.Code = Guid.NewGuid();
             petTable.CreatedOn = DateTime.Now;
@@ -49,17 +49,17 @@ namespace FindMyPet.MyServiceStack.DataAccess
             {
                 using (var trans = dbConnection.OpenTransaction(IsolationLevel.ReadCommitted))
                 {
-                    petId = await dbConnection.InsertAsync<PetTable>(petTable, selectIdentity: true)
+                    petId = await dbConnection.InsertAsync<PetTableModel>(petTable, selectIdentity: true)
                                               .ConfigureAwait(false);
 
-                    var ownerPetTable = new OwnerPetTable
+                    var ownerPetTable = new OwnerPetTableModel
                     {
-                        OwnerTableId = ownerId,
-                        PetTableId = (int)petId,
+                        OwnerTableModelId = ownerId,
+                        PetTableModelId = (int)petId,
                         CreatedOn = DateTime.Now
                     };
 
-                    await dbConnection.InsertAsync<OwnerPetTable>(ownerPetTable, selectIdentity: true)
+                    await dbConnection.InsertAsync<OwnerPetTableModel>(ownerPetTable, selectIdentity: true)
                                       .ConfigureAwait(false);
 
                     trans.Commit();
@@ -69,56 +69,56 @@ namespace FindMyPet.MyServiceStack.DataAccess
             return (int)petId;
         }
 
-        public async Task<int> UpdatePetAsync(PetTable petTable)
+        public async Task<int> UpdatePetAsync(PetTableModel petTable)
         {
             return await _petBaseDataAccess.UpdateAsync(petTable);
         }
 
-        public async Task<PetTable> GetPetByIdAsync(int petId)
+        public async Task<PetTableModel> GetPetByIdAsync(int petId)
         {
             return await _petBaseDataAccess.GetByIdAsync(petId);
         }
 
-        public async Task<PetTable> GetPetByCodeAsync(Guid petCode)
+        public async Task<PetTableModel> GetPetByCodeAsync(Guid petCode)
         {
-            var pet = new PetTable();
+            var pet = new PetTableModel();
 
             using (var dbConnection = _dbConnectionFactory.Open())
             {
-                pet = await dbConnection.SingleAsync<PetTable>(p => p.Code == petCode)
+                pet = await dbConnection.SingleAsync<PetTableModel>(p => p.Code == petCode)
                                         .ConfigureAwait(false);
             }
 
             return pet;
         }
 
-        public async Task<List<PetTable>> GetPetsByOwnerIdAsync(int ownerId)
+        public async Task<List<PetTableModel>> GetPetsByOwnerIdAsync(int ownerId)
         {
-            var petsByOwner = new List<PetTable>();
+            var petsByOwner = new List<PetTableModel>();
             using (var dbConnection = _dbConnectionFactory.Open())
             {
-                var q = dbConnection.From<PetTable>()
-                                    .Join<PetTable, OwnerPetTable>((p, po) => p.Id == po.PetTableId && po.OwnerTableId == ownerId)
+                var q = dbConnection.From<PetTableModel>()
+                                    .Join<PetTableModel, OwnerPetTableModel>((p, po) => p.Id == po.PetTableModelId && po.OwnerTableModelId == ownerId)
                                     .Select().OrderBy(x => x.Name);
 
-                petsByOwner = await dbConnection.SelectAsync<PetTable>(q)
+                petsByOwner = await dbConnection.SelectAsync<PetTableModel>(q)
                                                 .ConfigureAwait(false);
             }
 
             return petsByOwner;
         }
 
-        public async Task<PagedResponse<PetTable>> GetPetsByOwnerPagedAsync(PetsByOwnerRequest request)
+        public async Task<PagedResponse<PetTableModel>> GetPetsByOwnerPagedAsync(PetsByOwnerRequest request)
         {
-            var response = new PagedResponse<PetTable>();
-            var records = new List<PetTable>();
+            var response = new PagedResponse<PetTableModel>();
+            var records = new List<PetTableModel>();
             int totalRecords = 0;
             int totalPages = 0;
 
             using (var dbConnection = _dbConnectionFactory.Open())
             {
-                var q = dbConnection.From<PetTable>()
-                                    .Join<PetTable, OwnerPetTable>((p, po) => p.Id == po.PetTableId && po.OwnerTableId == request.OwnerId)
+                var q = dbConnection.From<PetTableModel>()
+                                    .Join<PetTableModel, OwnerPetTableModel>((p, po) => p.Id == po.PetTableModelId && po.OwnerTableModelId == request.OwnerId)
                                     .Select().OrderBy(x => x.Name);
 
                 //Micky: Place this logic into a helper to be available to all clases
@@ -143,13 +143,13 @@ namespace FindMyPet.MyServiceStack.DataAccess
                         q = q.Skip((request.PageNumber - 1) * request.PageSize).Take(request.PageSize);
                     }
 
-                    records = await dbConnection.SelectAsync<PetTable>(q)
+                    records = await dbConnection.SelectAsync<PetTableModel>(q)
                                                 .ConfigureAwait(false);
                 }
                 else
                 {
                     totalPages = 1;
-                    records = await dbConnection.SelectAsync<PetTable>(q)
+                    records = await dbConnection.SelectAsync<PetTableModel>(q)
                                                 .ConfigureAwait(false);
                 }
             }
@@ -160,7 +160,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
             return response;
         }
 
-        public async Task<List<PetTable>> SearchPetsAsync(Expression<Func<PetTable, bool>> predicate)
+        public async Task<List<PetTableModel>> SearchPetsAsync(Expression<Func<PetTableModel, bool>> predicate)
         {
             return await _petBaseDataAccess.GetListFilteredAsync(predicate);
         }

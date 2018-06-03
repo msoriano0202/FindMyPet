@@ -12,17 +12,7 @@
 
 @if (!Model.Records.Any())
 {
-    <div class="g-flex-center h-100">
-        <div class="container g-bg-gray-100">
-            <div class="text-center g-border g-border-gray-300 g-border-3x g-py-30 g-py-md-10">
-                <img src="@Url.Content("/Content/Images/DefaultPetImage.png")" class="img-fluid rounded-circle" alt="Profile Picture">
-                <ul class="list-unstyled g-text-gray-600 g-my-15 g-my-md-10">
-                    <li class="g-mb-4 g-mb-md-10">No tiene Mascotas registradas.</li>
-                    <li class="g-mb-4 g-mb-md-10">Agrege sus Mascotas.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+   @Html.Partial("_NoPets")
 }
 else
 {

@@ -9,16 +9,16 @@ namespace FindMyPet.MyServiceStack.Mappers
 {
     public interface IOwnerMapper
     {
-        OwnerTable MapCreateRequestToTable(CreateOwnerRequest request);
-        Owner MapOwnerTableToOwner(OwnerTable ownerTable);
-        OwnerTable MapUpdateRequestToTable(UpdateOwnerRequest request, OwnerTable ownerTable);
+        OwnerTableModel MapCreateRequestToTable(CreateOwnerRequest request);
+        Owner MapOwnerTableToOwner(OwnerTableModel ownerTable);
+        OwnerTableModel MapUpdateRequestToTable(UpdateOwnerRequest request, OwnerTableModel ownerTable);
     }
 
     public class OwnerMapper : IOwnerMapper
     {
-        public OwnerTable MapCreateRequestToTable(CreateOwnerRequest request)
+        public OwnerTableModel MapCreateRequestToTable(CreateOwnerRequest request)
         {
-            return new OwnerTable
+            return new OwnerTableModel
             {
                 MembershipId = request.MembershipId,
                 FirstName = request.FirstName,
@@ -27,7 +27,7 @@ namespace FindMyPet.MyServiceStack.Mappers
             };
         }
 
-        public Owner MapOwnerTableToOwner(OwnerTable ownerTable)
+        public Owner MapOwnerTableToOwner(OwnerTableModel ownerTable)
         {
             return new Owner
             {
@@ -40,7 +40,7 @@ namespace FindMyPet.MyServiceStack.Mappers
             };
         }
 
-        public OwnerTable MapUpdateRequestToTable(UpdateOwnerRequest request, OwnerTable ownerTable)
+        public OwnerTableModel MapUpdateRequestToTable(UpdateOwnerRequest request, OwnerTableModel ownerTable)
         {
             if (request.FirstName != null && !request.FirstName.Equals(ownerTable.FirstName))
                 ownerTable.FirstName = request.FirstName;

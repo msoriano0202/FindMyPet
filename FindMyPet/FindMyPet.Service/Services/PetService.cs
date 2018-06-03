@@ -22,33 +22,6 @@ namespace FindMyPet.MyServiceStack.Services
             _petProvider = petProvider;
         }
 
-        public async Task<Pet> Post(CreatePetRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            return await _petProvider.CreatePetAsync(request)
-                                     .ConfigureAwait(false);
-        }
-
-        public async Task<Pet> Post(UpdatePetRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            return await _petProvider.UpdatePetAsync(request)
-                                     .ConfigureAwait(false);
-        }
-
-        public async Task<PagedResponse<Pet>> Post(PetsByOwnerRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            return await _petProvider.PetsByOwnerPagedAsync(request)
-                                     .ConfigureAwait(false);
-        }
-
         public async Task<Pet> Get(PetRequest request)
         {
             if (request == null)
@@ -58,13 +31,40 @@ namespace FindMyPet.MyServiceStack.Services
                                      .ConfigureAwait(false);
         }
 
-        public async Task<List<Pet>> Post(SearchPetRequest request)
+        public async Task<Pet> Post(CreatePetRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
-            return await _petProvider.SearchPetsAsync(request)
+            return await _petProvider.CreatePetAsync(request)
                                      .ConfigureAwait(false);
         }
+
+        public async Task<Pet> Put(UpdatePetRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _petProvider.UpdatePetAsync(request)
+                                     .ConfigureAwait(false);
+        }
+        
+        public async Task<PagedResponse<Pet>> Post(PetsByOwnerRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _petProvider.PetsByOwnerPagedAsync(request)
+                                     .ConfigureAwait(false);
+        }
+
+        //public async Task<List<Pet>> Post(SearchPetRequest request)
+        //{
+        //    if (request == null)
+        //        throw new ArgumentNullException(nameof(request));
+
+        //    return await _petProvider.SearchPetsAsync(request)
+        //                             .ConfigureAwait(false);
+        //}
     }
 }

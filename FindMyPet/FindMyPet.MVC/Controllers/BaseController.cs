@@ -41,7 +41,7 @@ namespace FindMyPet.MVC.Controllers
                )
             {
                 var membershipId = User.Identity.GetUserId();
-                var owner = _ownerDataLoader.GetuserByMembershipId(membershipId);
+                var owner = _ownerDataLoader.GetOwnerByMembershipId(membershipId);
 
                 SetSessionVariables(owner.Id,
                                     string.Format("{0} {1}", owner.FirstName, owner.LastName),
@@ -56,24 +56,24 @@ namespace FindMyPet.MVC.Controllers
 
         public void RegisterOwner(string membershipId, string firstName, string lastName, string email)
         {
-            var ownerId = _ownerDataLoader.RegisterOwner(membershipId, firstName, lastName, email);
+            var owner = _ownerDataLoader.RegisterOwner(membershipId, firstName, lastName, email);
 
-            SetSessionVariables(ownerId, 
+            SetSessionVariables(owner.Id, 
                                 string.Format("{0} {1}", firstName, lastName), 
                                 membershipId,
                                 GetDefaultImageProfile());
         }
 
-        public void LoadSignedInOwnerInSession()
-        {
-            var membershipId = User.Identity.GetUserId();
-            var owner = _ownerDataLoader.GetuserByMembershipId(membershipId);
+        //public void LoadSignedInOwnerInSession()
+        //{
+        //    var membershipId = User.Identity.GetUserId();
+        //    var owner = _ownerDataLoader.GetOwnerByMembershipId(membershipId);
 
-            SetSessionVariables(owner.Id,
-                                string.Format("{0} {1}", owner.FirstName, owner.LastName),
-                                User.Identity.GetUserId(),
-                                string.IsNullOrEmpty(owner.ProfileImageUrl) ? GetDefaultImageProfile() : FormatSiteImageUrl(owner.ProfileImageUrl));
-        }
+        //    SetSessionVariables(owner.Id,
+        //                        string.Format("{0} {1}", owner.FirstName, owner.LastName),
+        //                        User.Identity.GetUserId(),
+        //                        string.IsNullOrEmpty(owner.ProfileImageUrl) ? GetDefaultImageProfile() : FormatSiteImageUrl(owner.ProfileImageUrl));
+        //}
 
         private void SetSessionVariables(int ownerId, string ownerName, string membershipId, string profileImageUrl)
         {
@@ -98,7 +98,7 @@ namespace FindMyPet.MVC.Controllers
 
         public Owner GetUserByMembershipId()
         {
-            return _ownerDataLoader.GetuserByMembershipId(User.Identity.GetUserId());
+            return _ownerDataLoader.GetOwnerByMembershipId(User.Identity.GetUserId());
         }
 
         #endregion

@@ -4,17 +4,17 @@ using System;
 
 namespace FindMyPet.TableModel
 {
-    public class OwnerPetTable : IHasId<int>
+    public class OwnerPetTableModel : IHasId<int>
     {
         [PrimaryKey]
         [AutoIncrement]
         public int Id { get; set; }
 
-        [References(typeof(OwnerTable))]
-        public int OwnerTableId { get; set; }
+        [References(typeof(OwnerTableModel))]
+        public int OwnerTableModelId { get; set; }
 
-        [References(typeof(PetTable))]
-        public int PetTableId { get; set; }
+        [References(typeof(PetTableModel))]
+        public int PetTableModelId { get; set; }
 
         [Required]
         public DateTimeOffset CreatedOn { get; set; }

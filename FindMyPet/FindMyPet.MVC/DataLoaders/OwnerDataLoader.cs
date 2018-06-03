@@ -10,12 +10,11 @@ namespace FindMyPet.MVC.DataLoaders
 {
     public interface IOwnerDataLoader
     {
-        int RegisterOwner(string membershipId, string firstName, string lastName, string email);
-        Owner GetuserByMembershipId(string membershipId);
+        Owner RegisterOwner(string membershipId, string firstName, string lastName, string email);
         Owner GetOwnerById(int ownerId);
-        Owner GetOwnerByEmail(string email);
+        Owner GetOwnerByMembershipId(string membershipId);
         Owner UpdateOwner(ProfileViewModel model);
-        void UpdateOwnerImageProfile(int ownerId, string imagePath);
+        Owner UpdateOwnerImageProfile(int ownerId, string imagePath);
     }
 
     public class OwnerDataLoader : IOwnerDataLoader
@@ -34,14 +33,9 @@ namespace FindMyPet.MVC.DataLoaders
             _ownerServiceClient = ownerServiceClient;
         }
 
-        public int RegisterOwner(string membershipId, string firstName, string lastName, string email)
+        public Owner RegisterOwner(string membershipId, string firstName, string lastName, string email)
         {
             return _ownerServiceClient.CreateOwner(membershipId, firstName, lastName, email);
-        }
-
-        public Owner GetuserByMembershipId(string membershipId)
-        {
-            return _ownerServiceClient.GetuserByMembershipId(membershipId);
         }
 
         public Owner GetOwnerById(int ownerId)
@@ -49,9 +43,9 @@ namespace FindMyPet.MVC.DataLoaders
             return _ownerServiceClient.GetOwnerById(ownerId);
         }
 
-        public Owner GetOwnerByEmail(string email)
+        public Owner GetOwnerByMembershipId(string membershipId)
         {
-            return _ownerServiceClient.GetOwnerByEmail(email);
+            return _ownerServiceClient.GetOwnerByMembershipId(membershipId);
         }
 
         public Owner UpdateOwner(ProfileViewModel model)
@@ -59,9 +53,9 @@ namespace FindMyPet.MVC.DataLoaders
             return _ownerServiceClient.UpdateOwner(model);
         }
 
-        public void UpdateOwnerImageProfile(int ownerId, string imagePath)
+        public Owner UpdateOwnerImageProfile(int ownerId, string imagePath)
         {
-            _ownerServiceClient.UpdateOwnerImageProfile(ownerId, imagePath);
+            return _ownerServiceClient.UpdateOwnerImageProfile(ownerId, imagePath);
         }
     }
 }

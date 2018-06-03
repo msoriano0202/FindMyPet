@@ -15,12 +15,12 @@ namespace FindMyPet.MyServiceStack.Providers
 {
     public interface IPetProvider
     {
+        Task<Pet> GetPetAsync(PetRequest request);
         Task<Pet> CreatePetAsync(CreatePetRequest request);
         Task<Pet> UpdatePetAsync(UpdatePetRequest request);
-        Task<Pet> GetPetAsync(PetRequest request);
-        Task<List<Pet>> PetsByOwnerAsync(PetsByOwnerRequest request);
         Task<PagedResponse<Pet>> PetsByOwnerPagedAsync(PetsByOwnerRequest request);
-        Task<List<Pet>> SearchPetsAsync(SearchPetRequest request);
+        //Task<List<Pet>> PetsByOwnerAsync(PetsByOwnerRequest request);
+        //Task<List<Pet>> SearchPetsAsync(SearchPetRequest request);
     }
 
     public class PetProvider : IPetProvider
@@ -38,6 +38,25 @@ namespace FindMyPet.MyServiceStack.Providers
 
             _petDataAccess = petDataAccess;
             _petMapper = petMapper;
+        }
+
+        public async Task<Pet> GetPetAsync(PetRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (!request.Id.HasValue && request.Code == null)
+                throw new ArgumentException("Id and Code are NULL");
+
+            PetTableModel table = null;
+            if (request.Id.HasValue)
+                table = await _petDataAccess.GetPetByIdAsync(request.Id.Value)
+                                            .ConfigureAwait(false);
+            else if (request.Code.HasValue)
+                table = await _petDataAccess.GetPetByCodeAsync(request.Code.Value)
+                                            .ConfigureAwait(false);
+
+            return _petMapper.MapPetTableToPet(table);
         }
 
         public async Task<Pet> CreatePetAsync(CreatePetRequest request)
@@ -61,7 +80,7 @@ namespace FindMyPet.MyServiceStack.Providers
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
-            PetTable table = null;
+            PetTableModel table = null;
 
             if(request.Id.HasValue)
                 table = await _petDataAccess.GetPetByIdAsync(request.Id.Value)
@@ -77,33 +96,6 @@ namespace FindMyPet.MyServiceStack.Providers
                                                    .ConfigureAwait(false);
 
             return _petMapper.MapPetTableToPet(updatedTable);
-        }
-
-        public async Task<Pet> GetPetAsync(PetRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            PetTable table = null;
-            if(request.Id.HasValue)
-                table = await _petDataAccess.GetPetByIdAsync(request.Id.Value)
-                                            .ConfigureAwait(false);
-            else if(request.Code.HasValue)
-                table = await _petDataAccess.GetPetByCodeAsync(request.Code.Value)
-                                            .ConfigureAwait(false);
-
-            return _petMapper.MapPetTableToPet(table);
-        }
-
-        public async Task<List<Pet>> PetsByOwnerAsync(PetsByOwnerRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            var petsByOwner = await _petDataAccess.GetPetsByOwnerIdAsync(request.OwnerId)
-                                                  .ConfigureAwait(false);
-
-            return petsByOwner.ConvertAll(p => _petMapper.MapPetTableToPet(p));
         }
 
         public async Task<PagedResponse<Pet>> PetsByOwnerPagedAsync(PetsByOwnerRequest request)
@@ -122,19 +114,30 @@ namespace FindMyPet.MyServiceStack.Providers
             };
         }
 
-        public async Task<List<Pet>> SearchPetsAsync(SearchPetRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+        //public async Task<List<Pet>> PetsByOwnerAsync(PetsByOwnerRequest request)
+        //{
+        //    if (request == null)
+        //        throw new ArgumentNullException(nameof(request));
 
-            Expression<Func<PetTable, bool>> exp = (x) => x.Id > 0;
+        //    var petsByOwner = await _petDataAccess.GetPetsByOwnerIdAsync(request.OwnerId)
+        //                                          .ConfigureAwait(false);
 
-            if (!string.IsNullOrEmpty(request.Name))
-                exp = exp.And<PetTable>(x => x.Name.Contains(request.Name));
+        //    return petsByOwner.ConvertAll(p => _petMapper.MapPetTableToPet(p));
+        //}
 
-            var response = await _petDataAccess.SearchPetsAsync(exp);
+        //public async Task<List<Pet>> SearchPetsAsync(SearchPetRequest request)
+        //{
+        //    if (request == null)
+        //        throw new ArgumentNullException(nameof(request));
 
-            return response.ConvertAll(pet => _petMapper.MapPetTableToPet(pet));
-        }
+        //    Expression<Func<PetTableModel, bool>> exp = (x) => x.Id > 0;
+
+        //    if (!string.IsNullOrEmpty(request.Name))
+        //        exp = exp.And<PetTableModel>(x => x.Name.Contains(request.Name));
+
+        //    var response = await _petDataAccess.SearchPetsAsync(exp);
+
+        //    return response.ConvertAll(pet => _petMapper.MapPetTableToPet(pet));
+        //}
     }
 }

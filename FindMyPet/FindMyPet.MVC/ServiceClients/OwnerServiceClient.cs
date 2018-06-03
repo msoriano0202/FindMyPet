@@ -11,12 +11,11 @@ namespace FindMyPet.MVC.ServiceClients
 {
     public interface IOwnerServiceClient
     {
-        int CreateOwner(string membershipId, string firstName, string lastName, string email);
-        Owner GetuserByMembershipId(string membershipId);
         Owner GetOwnerById(int ownerId);
-        Owner GetOwnerByEmail(string email);
+        Owner GetOwnerByMembershipId(string membershipId);
+        Owner CreateOwner(string membershipId, string firstName, string lastName, string email);
         Owner UpdateOwner(ProfileViewModel model);
-        void UpdateOwnerImageProfile(int ownerId, string imagePath);
+        Owner UpdateOwnerImageProfile(int ownerId, string imagePath);
     }
 
     public class OwnerServiceClient : IOwnerServiceClient
@@ -31,7 +30,23 @@ namespace FindMyPet.MVC.ServiceClients
             _findMyPetClient = findMyPetClient;
         }
 
-        public int CreateOwner(string membershipId, string firstName, string lastName, string email)
+        public Owner GetOwnerById(int ownerId)
+        {
+            var request = new OwnerRequest { Id = ownerId };
+            var response = _findMyPetClient.JsonClient().Get(request);
+
+            return response;
+        }
+
+        public Owner GetOwnerByMembershipId(string membershipId)
+        {
+            var request = new OwnerRequest { MembershipId = membershipId };
+            var response = _findMyPetClient.JsonClient().Get(request);
+
+            return response;
+        }
+
+        public Owner CreateOwner(string membershipId, string firstName, string lastName, string email)
         {
             var request = new CreateOwnerRequest
             {
@@ -43,33 +58,9 @@ namespace FindMyPet.MVC.ServiceClients
 
             var response = _findMyPetClient.JsonClient().Post(request);
 
-            return response.Id;
-        }
-
-        public Owner GetuserByMembershipId(string membershipId)
-        {
-            var request = new SearchOwnerRequest { MembershipId = membershipId };
-            var response = _findMyPetClient.JsonClient().Post(request);
-
-            return response.FirstOrDefault();
-        }
-
-        public Owner GetOwnerById(int ownerId)
-        {
-            var request = new OwnerRequest { Id = ownerId };
-            var response = _findMyPetClient.JsonClient().Get(request);
-
             return response;
         }
-
-        public Owner GetOwnerByEmail(string email)
-        {
-            var request = new SearchOwnerRequest { Email = email };
-            var response = _findMyPetClient.JsonClient().Post(request);
-
-            return response.FirstOrDefault();
-        }
-
+        
         public Owner UpdateOwner(ProfileViewModel model)
         {
             var request = new UpdateOwnerRequest
@@ -78,12 +69,12 @@ namespace FindMyPet.MVC.ServiceClients
                 FirstName = model.FirstName,
                 LastName = model.LastName
             };
-            var response = _findMyPetClient.JsonClient().Post(request);
+            var response = _findMyPetClient.JsonClient().Put(request);
 
             return response;
         }
 
-        public void UpdateOwnerImageProfile(int ownerId, string imagePath)
+        public Owner UpdateOwnerImageProfile(int ownerId, string imagePath)
         {
             var request = new UpdateOwnerRequest
             {
@@ -91,7 +82,8 @@ namespace FindMyPet.MVC.ServiceClients
                 ProfileImageUrl = imagePath
             };
 
-            var response = _findMyPetClient.JsonClient().Post(request);
+            var response = _findMyPetClient.JsonClient().Put(request);
+            return response;
         }
     }
 }

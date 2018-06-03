@@ -1,10 +1,11 @@
 ﻿using ServiceStack.DataAnnotations;
 using ServiceStack.Model;
 using System;
+using System.Collections.Generic;
 
 namespace FindMyPet.TableModel
 {
-    public class OwnerTable : IHasId<int>
+    public class OwnerTableModel : IHasId<int>
     {
         [PrimaryKey]
         [AutoIncrement]
@@ -29,9 +30,27 @@ namespace FindMyPet.TableModel
         [StringLength(50)]
         public string Email { get; set; }
 
+        [StringLength(15)]
+        public string PhoneNumber1 { get; set; }
+
+        [StringLength(15)]
+        public string PhoneNumber2 { get; set; }
+
+        [StringLength(100)]
+        public string Address1 { get; set; }
+
+        [StringLength(100)]
+        public string Address2 { get; set; }
+
         public string ProfileImageUrl { get; set; }
 
         [Required]
         public DateTimeOffset CreatedOn { get; set; }
+
+        [Reference]
+        public OwnerSettingTableModel Settings { get; set; }
+
+        [Reference]
+        public List<PetAlertTableModel> PetAlerts { get; set; }
     }
 }

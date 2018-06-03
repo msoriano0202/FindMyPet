@@ -54,7 +54,7 @@ namespace FindMypet.CrudTestConsole
             {
                 using (IDbTransaction trans = db.OpenTransaction(IsolationLevel.ReadCommitted))
                 {
-                    ownerId = db.Insert(new OwnerTable
+                    ownerId = db.Insert(new OwnerTableModel
                     {
                         Code = Guid.NewGuid(),
                         FirstName = firstName,
@@ -78,7 +78,7 @@ namespace FindMypet.CrudTestConsole
 
             using (var db = dbFactory.OpenDbConnection())
             {
-                var owners = db.Select(db.From<OwnerTable>());
+                var owners = db.Select(db.From<OwnerTableModel>());
                 foreach (var owner in owners)
                 {
                     System.Console.WriteLine(string.Format("{0}: {1} {2} ({3})", owner.Id, owner.FirstName, owner.LastName));
@@ -100,7 +100,7 @@ namespace FindMypet.CrudTestConsole
                 {
                     var createdOn = DateTime.Now;
 
-                    petId = db.Insert(new PetTable
+                    petId = db.Insert(new PetTableModel
                     {
                         Code = Guid.NewGuid(),
                         Name = name,
@@ -108,7 +108,7 @@ namespace FindMypet.CrudTestConsole
                         CreatedOn = createdOn
                     }, selectIdentity: true);
 
-                    db.Insert(new OwnerPetTable { OwnerTableId = ownerId, PetTableId = (int)petId, CreatedOn = createdOn });
+                    db.Insert(new OwnerPetTableModel { OwnerTableModelId = ownerId, PetTableModelId = (int)petId, CreatedOn = createdOn });
 
                     trans.Commit();
                 }
@@ -126,10 +126,10 @@ namespace FindMypet.CrudTestConsole
             using (var db = dbFactory.OpenDbConnection())
             {
                 var query = db.Select<FullOwnerPet>(db
-                                .From<OwnerTable>()
-                                .Join<OwnerTable, OwnerPetTable>((o, op) => o.Id == op.OwnerTableId)
-                                .Join<OwnerPetTable, PetTable>((op, p) => op.PetTableId == p.Id)
-                                .Where<OwnerTable>(o => o.Id > 0))
+                                .From<OwnerTableModel>()
+                                .Join<OwnerTableModel, OwnerPetTableModel>((o, op) => o.Id == op.OwnerTableModelId)
+                                .Join<OwnerPetTableModel, PetTableModel>((op, p) => op.PetTableModelId == p.Id)
+                                .Where<OwnerTableModel>(o => o.Id > 0))
                                 .ToList();
 
                 query.PrintDump();
@@ -149,9 +149,9 @@ namespace FindMypet.CrudTestConsole
 
             using (var db = dbFactory.OpenDbConnection())
             {
-                var query = db.From<PetTable>()
-                                .Join<PetTable, OwnerPetTable>((p, op) => p.Id == op.PetTableId)
-                                .Where<OwnerPetTable>(op => op.OwnerTableId == ownerId);
+                var query = db.From<PetTableModel>()
+                                .Join<PetTableModel, OwnerPetTableModel>((p, op) => p.Id == op.PetTableModelId)
+                                .Where<OwnerPetTableModel>(op => op.OwnerTableModelId == ownerId);
                 var results = db.Select(query);
 
                 results.PrintDump();

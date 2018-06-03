@@ -9,23 +9,23 @@ namespace FindMyPet.MyServiceStack.Mappers
 {
     public interface IPetMapper
     {
-        PetTable MapCreateRequestToTable(CreatePetRequest request);
-        Pet MapPetTableToPet(PetTable petTable);
-        PetTable MapUpdateRequestToTable(UpdatePetRequest request, PetTable petTable);
+        PetTableModel MapCreateRequestToTable(CreatePetRequest request);
+        Pet MapPetTableToPet(PetTableModel petTable);
+        PetTableModel MapUpdateRequestToTable(UpdatePetRequest request, PetTableModel petTable);
     }
 
     public class PetMapper : IPetMapper
     {
-        public PetTable MapCreateRequestToTable(CreatePetRequest request)
+        public PetTableModel MapCreateRequestToTable(CreatePetRequest request)
         {
-            return new PetTable
+            return new PetTableModel
             {
                 Name = request.Name,
                 DateOfBirth = request.DateOfBirth
             };
         }
 
-        public Pet MapPetTableToPet(PetTable petTable)
+        public Pet MapPetTableToPet(PetTableModel petTable)
         {
             return new Pet
             {
@@ -37,7 +37,7 @@ namespace FindMyPet.MyServiceStack.Mappers
             };
         }
 
-        public PetTable MapUpdateRequestToTable(UpdatePetRequest request, PetTable petTable)
+        public PetTableModel MapUpdateRequestToTable(UpdatePetRequest request, PetTableModel petTable)
         {
             if (request.Name != null && !request.Name.Equals(petTable.Name))
                 petTable.Name = request.Name;

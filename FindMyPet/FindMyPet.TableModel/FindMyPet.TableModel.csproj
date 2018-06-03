@@ -55,12 +55,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OwnerPetTable.cs" />
+    <Compile Include="OwnerPetTableModel.cs" />
+    <Compile Include="OwnerSettingTableModel.cs" />
+    <Compile Include="PetAlertTableModel.cs" />
+    <Compile Include="PetImageTableModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="OwnerTable.cs" />
-    <Compile Include="ParameterGroupTable.cs" />
-    <Compile Include="ParameterValueTable.cs" />
-    <Compile Include="PetTable.cs" />
+    <Compile Include="OwnerTableModel.cs" />
+    <Compile Include="ParameterGroupTableModel.cs" />
+    <Compile Include="ParameterValueTableModel.cs" />
+    <Compile Include="PetTableModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

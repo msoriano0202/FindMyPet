@@ -2,9 +2,10 @@
 
 namespace FindMyPet.DTO.Owner
 {
-    [Route("/owner/{Id}", "GET")]
+    [Route("/owner", "GET")]
     public class OwnerRequest : IReturn<Owner>
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
+        public string MembershipId { get; set; }
     }
 }
