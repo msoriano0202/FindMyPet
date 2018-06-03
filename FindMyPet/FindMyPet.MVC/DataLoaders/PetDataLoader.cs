@@ -50,9 +50,8 @@ namespace FindMyPet.MVC.DataLoaders
 
         public Pet AddPet(string membershipId, PetViewModel model)
         {
-            var owner = _ownerServiceClient.GetOwnerByMembershipId(membershipId);
             var request = _petMapper.ViewModelToCreateRequest(model);
-            request.OwnerId = owner.Id;
+            request.OwnerMembershipId = membershipId;
 
             var response = _petServiceClient.AddPet(request);
             return response;

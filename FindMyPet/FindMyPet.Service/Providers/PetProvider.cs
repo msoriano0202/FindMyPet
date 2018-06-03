@@ -64,9 +64,17 @@ namespace FindMyPet.MyServiceStack.Providers
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
+            if (!request.OwnerId.HasValue && string.IsNullOrEmpty(request.OwnerMembershipId))
+                throw new ArgumentException("OwnerId and OwnerMembershipId are NULL");
+
             var table = _petMapper.MapCreateRequestToTable(request);
 
-            var newId = await _petDataAccess.AddPetAsync(request.OwnerId, table)
+            int newId = 0;
+            if(request.OwnerId.HasValue)
+                newId = await _petDataAccess.AddPetAsync(request.OwnerId.Value, table)
+                                                .ConfigureAwait(false);
+            else if(!string.IsNullOrEmpty(request.OwnerMembershipId))
+                newId = await _petDataAccess.AddPetAsync(request.OwnerMembershipId, table)
                                             .ConfigureAwait(false);
 
             var newTable = await _petDataAccess.GetPetByIdAsync(newId)

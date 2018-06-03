@@ -14,6 +14,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
     public interface IPetDataAccess
     {
         Task<int> AddPetAsync(int ownerId, PetTableModel petTable);
+        Task<int> AddPetAsync(string ownerMembershipId, PetTableModel petTable);
         Task<int> UpdatePetAsync(PetTableModel petTable);
         Task<PetTableModel> GetPetByIdAsync(int petId);
         Task<PetTableModel> GetPetByCodeAsync(Guid petCode);
@@ -55,6 +56,39 @@ namespace FindMyPet.MyServiceStack.DataAccess
                     var ownerPetTable = new OwnerPetTableModel
                     {
                         OwnerTableModelId = ownerId,
+                        PetTableModelId = (int)petId,
+                        CreatedOn = DateTime.Now
+                    };
+
+                    await dbConnection.InsertAsync<OwnerPetTableModel>(ownerPetTable, selectIdentity: true)
+                                      .ConfigureAwait(false);
+
+                    trans.Commit();
+                }
+            }
+
+            return (int)petId;
+        }
+
+        public async Task<int> AddPetAsync(string ownerMembershipId, PetTableModel petTable)
+        {
+            petTable.Code = Guid.NewGuid();
+            petTable.CreatedOn = DateTime.Now;
+
+            long petId;
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                using (var trans = dbConnection.OpenTransaction(IsolationLevel.ReadCommitted))
+                {
+                    var owner = await dbConnection.SingleAsync<OwnerTableModel>(x => x.MembershipId == ownerMembershipId)
+                                                  .ConfigureAwait(false);
+
+                    petId = await dbConnection.InsertAsync<PetTableModel>(petTable, selectIdentity: true)
+                                              .ConfigureAwait(false);
+
+                    var ownerPetTable = new OwnerPetTableModel
+                    {
+                        OwnerTableModelId = owner.Id,
                         PetTableModelId = (int)petId,
                         CreatedOn = DateTime.Now
                     };
