@@ -14,6 +14,7 @@ namespace FindMyPet.MVC.ServiceClients
         Pet GetPet(PetRequest request);
         Pet AddPet(PetCreateRequest request);
         Pet UpdatePet(PetUpdateRequest request);
+        int DeletePet(PetDeleteRequest request);
         PagedResponseViewModel<Pet> GetPetsPagedByOwnerId(int ownerId, int pageSize, int pageNumber);
         //List<Pet> GetPetsByOwnerId(int ownerId);
     }
@@ -54,6 +55,13 @@ namespace FindMyPet.MVC.ServiceClients
         public Pet UpdatePet(PetUpdateRequest request)
         {
             var response = _findMyPetClient.JsonClient().Put(request);
+
+            return response;
+        }
+
+        public int DeletePet(PetDeleteRequest request)
+        {
+            var response = _findMyPetClient.JsonClient().Delete(request);
 
             return response;
         }

@@ -64,6 +64,7 @@
     <Compile Include="Owner\OwnerUpdateRequest.cs" />
     <Compile Include="Pet\PetCreateRequest.cs" />
     <Compile Include="Pet\Pet.cs" />
+    <Compile Include="Pet\PetDeleteRequest.cs" />
     <Compile Include="Pet\PetRequest.cs" />
     <Compile Include="Pet\PetsSearchByOwnerRequest.cs" />
     <Compile Include="Pet\PetSearchRequest.cs" />

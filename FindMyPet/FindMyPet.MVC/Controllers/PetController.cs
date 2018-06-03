@@ -94,9 +94,16 @@ namespace FindMyPet.MVC.Controllers
         }
 
         // GET: Pet/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            try
+            {
+                if (!string.IsNullOrEmpty(id))
+                    _petDataLoader.DeletePet(id);
+            }
+            catch (Exception ex) { }
+
+            return RedirectToAction("Index");
         }
 
         // POST: Pet/Delete/5

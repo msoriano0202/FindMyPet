@@ -15,6 +15,7 @@ namespace FindMyPet.MVC.DataLoaders
         PetViewModel GetPetByCode(string code);
         Pet AddPet(string membershipId, PetViewModel model);
         Pet UpdatePet(PetViewModel model);
+        int DeletePet(string code);
         PagedResponseViewModel<PetViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber);
         //List<PetViewModel> GetPetsByOwner(string membershipId);
     }
@@ -62,6 +63,12 @@ namespace FindMyPet.MVC.DataLoaders
             var request = _petMapper.ViewModelToUpdateRequest(model);
             var response = _petServiceClient.UpdatePet(request);
             return response;
+        }
+
+        public int DeletePet(string code)
+        {
+            var request = new PetDeleteRequest { Code = Guid.Parse(code) };
+            return _petServiceClient.DeletePet(request);
         }
 
         public PagedResponseViewModel<PetViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber)

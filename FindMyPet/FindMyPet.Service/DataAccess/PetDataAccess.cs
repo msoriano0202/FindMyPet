@@ -16,6 +16,8 @@ namespace FindMyPet.MyServiceStack.DataAccess
         Task<int> AddPetAsync(int ownerId, PetTableModel petTable);
         Task<int> AddPetAsync(string ownerMembershipId, PetTableModel petTable);
         Task<int> UpdatePetAsync(PetTableModel petTable);
+        Task<int> DeletePetAsync(int id);
+        Task<int> DeletePetAsync(Guid code);
         Task<PetTableModel> GetPetByIdAsync(int petId);
         Task<PetTableModel> GetPetByCodeAsync(Guid petCode);
         Task<List<PetTableModel>> GetPetsByOwnerIdAsync(int ownerId);
@@ -106,6 +108,34 @@ namespace FindMyPet.MyServiceStack.DataAccess
         public async Task<int> UpdatePetAsync(PetTableModel petTable)
         {
             return await _petBaseDataAccess.UpdateAsync(petTable);
+        }
+
+        public async Task<int> DeletePetAsync(int id)
+        {
+            return await _petBaseDataAccess.DeleteByIdAsync(id);
+        }
+
+        public async Task<int> DeletePetAsync(Guid code)
+        {
+            var records = 0;
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                using (var trans = dbConnection.OpenTransaction(IsolationLevel.ReadCommitted))
+                {
+                    var pet = await dbConnection.SingleAsync<PetTableModel>(x => x.Code == code)
+                                                .ConfigureAwait(false);
+
+                    await dbConnection.DeleteAsync<OwnerPetTableModel>(x => x.PetTableModelId == pet.Id)
+                                      .ConfigureAwait(false);
+
+                    records = await dbConnection.DeleteAsync<PetTableModel>(p => p.Code == code)
+                                    .ConfigureAwait(false);
+
+                    trans.Commit();
+                }
+            }
+
+            return records;
         }
 
         public async Task<PetTableModel> GetPetByIdAsync(int petId)

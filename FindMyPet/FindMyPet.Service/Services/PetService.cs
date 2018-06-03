@@ -48,7 +48,16 @@ namespace FindMyPet.MyServiceStack.Services
             return await _petProvider.UpdatePetAsync(request)
                                      .ConfigureAwait(false);
         }
-        
+
+        public async Task<int> Delete(PetDeleteRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _petProvider.DeletePetAsync(request)
+                                     .ConfigureAwait(false);
+        }
+
         public async Task<PagedResponse<Pet>> Post(PetsSearchByOwnerRequest request)
         {
             if (request == null)
