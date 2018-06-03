@@ -12,8 +12,8 @@ namespace FindMyPet.MVC.ServiceClients
     public interface IPetServiceClient
     {
         Pet GetPet(PetRequest request);
-        Pet AddPet(CreatePetRequest request);
-        Pet UpdatePet(UpdatePetRequest request);
+        Pet AddPet(PetCreateRequest request);
+        Pet UpdatePet(PetUpdateRequest request);
         PagedResponseViewModel<Pet> GetPetsPagedByOwnerId(int ownerId, int pageSize, int pageNumber);
         //List<Pet> GetPetsByOwnerId(int ownerId);
     }
@@ -31,7 +31,7 @@ namespace FindMyPet.MVC.ServiceClients
 
         public List<Pet> GetPetsByOwnerId(int ownerId)
         {
-            var request = new PetsByOwnerRequest { OwnerId = ownerId };
+            var request = new PetsSearchByOwnerRequest { OwnerId = ownerId };
             var response = _findMyPetClient.JsonClient().Post(request);
 
             return response.Result;
@@ -44,14 +44,14 @@ namespace FindMyPet.MVC.ServiceClients
             return response;
         }
 
-        public Pet AddPet(CreatePetRequest request)
+        public Pet AddPet(PetCreateRequest request)
         {
             var response = _findMyPetClient.JsonClient().Post(request);
 
             return response;
         }
 
-        public Pet UpdatePet(UpdatePetRequest request)
+        public Pet UpdatePet(PetUpdateRequest request)
         {
             var response = _findMyPetClient.JsonClient().Put(request);
 
@@ -60,7 +60,7 @@ namespace FindMyPet.MVC.ServiceClients
 
         public PagedResponseViewModel<Pet> GetPetsPagedByOwnerId(int ownerId, int pageSize, int pageNumber)
         {
-            var request = new PetsByOwnerRequest { OwnerId = ownerId, PageSize = pageSize, PageNumber = pageNumber };
+            var request = new PetsSearchByOwnerRequest { OwnerId = ownerId, PageSize = pageSize, PageNumber = pageNumber };
             var response = _findMyPetClient.JsonClient().Post(request);
 
             return new PagedResponseViewModel<Pet>

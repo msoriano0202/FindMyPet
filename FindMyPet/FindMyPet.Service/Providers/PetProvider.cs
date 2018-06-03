@@ -16,9 +16,9 @@ namespace FindMyPet.MyServiceStack.Providers
     public interface IPetProvider
     {
         Task<Pet> GetPetAsync(PetRequest request);
-        Task<Pet> CreatePetAsync(CreatePetRequest request);
-        Task<Pet> UpdatePetAsync(UpdatePetRequest request);
-        Task<PagedResponse<Pet>> PetsByOwnerPagedAsync(PetsByOwnerRequest request);
+        Task<Pet> CreatePetAsync(PetCreateRequest request);
+        Task<Pet> UpdatePetAsync(PetUpdateRequest request);
+        Task<PagedResponse<Pet>> PetsByOwnerPagedAsync(PetsSearchByOwnerRequest request);
         //Task<List<Pet>> PetsByOwnerAsync(PetsByOwnerRequest request);
         //Task<List<Pet>> SearchPetsAsync(SearchPetRequest request);
     }
@@ -59,7 +59,7 @@ namespace FindMyPet.MyServiceStack.Providers
             return _petMapper.MapPetTableToPet(table);
         }
 
-        public async Task<Pet> CreatePetAsync(CreatePetRequest request)
+        public async Task<Pet> CreatePetAsync(PetCreateRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -83,7 +83,7 @@ namespace FindMyPet.MyServiceStack.Providers
             return _petMapper.MapPetTableToPet(newTable);
         }
 
-        public async Task<Pet> UpdatePetAsync(UpdatePetRequest request)
+        public async Task<Pet> UpdatePetAsync(PetUpdateRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -106,7 +106,7 @@ namespace FindMyPet.MyServiceStack.Providers
             return _petMapper.MapPetTableToPet(updatedTable);
         }
 
-        public async Task<PagedResponse<Pet>> PetsByOwnerPagedAsync(PetsByOwnerRequest request)
+        public async Task<PagedResponse<Pet>> PetsByOwnerPagedAsync(PetsSearchByOwnerRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));

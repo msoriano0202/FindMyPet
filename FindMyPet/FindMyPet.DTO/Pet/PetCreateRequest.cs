@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace FindMyPet.DTO.Pet
 {
     [Route("/pet", "POST")]
-    public class CreatePetRequest : IReturn<Pet>
+    public class PetCreateRequest : IReturn<Pet>
     {
         public int? OwnerId { get; set; }
         public string OwnerMembershipId { get; set; }

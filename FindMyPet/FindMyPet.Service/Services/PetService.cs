@@ -31,7 +31,7 @@ namespace FindMyPet.MyServiceStack.Services
                                      .ConfigureAwait(false);
         }
 
-        public async Task<Pet> Post(CreatePetRequest request)
+        public async Task<Pet> Post(PetCreateRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -40,7 +40,7 @@ namespace FindMyPet.MyServiceStack.Services
                                      .ConfigureAwait(false);
         }
 
-        public async Task<Pet> Put(UpdatePetRequest request)
+        public async Task<Pet> Put(PetUpdateRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -49,7 +49,7 @@ namespace FindMyPet.MyServiceStack.Services
                                      .ConfigureAwait(false);
         }
         
-        public async Task<PagedResponse<Pet>> Post(PetsByOwnerRequest request)
+        public async Task<PagedResponse<Pet>> Post(PetsSearchByOwnerRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));

@@ -19,7 +19,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
         Task<PetTableModel> GetPetByIdAsync(int petId);
         Task<PetTableModel> GetPetByCodeAsync(Guid petCode);
         Task<List<PetTableModel>> GetPetsByOwnerIdAsync(int ownerId);
-        Task<PagedResponse<PetTableModel>> GetPetsByOwnerPagedAsync(PetsByOwnerRequest request);
+        Task<PagedResponse<PetTableModel>> GetPetsByOwnerPagedAsync(PetsSearchByOwnerRequest request);
         Task<List<PetTableModel>> SearchPetsAsync(Expression<Func<PetTableModel, bool>> predicate);
     }
 
@@ -142,7 +142,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
             return petsByOwner;
         }
 
-        public async Task<PagedResponse<PetTableModel>> GetPetsByOwnerPagedAsync(PetsByOwnerRequest request)
+        public async Task<PagedResponse<PetTableModel>> GetPetsByOwnerPagedAsync(PetsSearchByOwnerRequest request)
         {
             var response = new PagedResponse<PetTableModel>();
             var records = new List<PetTableModel>();

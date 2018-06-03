@@ -4,7 +4,7 @@ using System;
 namespace FindMyPet.DTO.Pet
 {
     [Route("/pet", "PUT")]
-    public class UpdatePetRequest : IReturn<Pet>
+    public class PetUpdateRequest : IReturn<Pet>
     {
         public int? Id { get; set; }
         public Guid? Code { get; set; }

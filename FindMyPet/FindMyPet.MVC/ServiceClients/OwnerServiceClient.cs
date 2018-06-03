@@ -48,7 +48,7 @@ namespace FindMyPet.MVC.ServiceClients
 
         public Owner CreateOwner(string membershipId, string firstName, string lastName, string email)
         {
-            var request = new CreateOwnerRequest
+            var request = new OwnerCreateRequest
             {
                 MembershipId = membershipId,
                 FirstName = firstName,
@@ -63,7 +63,7 @@ namespace FindMyPet.MVC.ServiceClients
         
         public Owner UpdateOwner(ProfileViewModel model)
         {
-            var request = new UpdateOwnerRequest
+            var request = new OwnerUpdateRequest
             {
                 Id = model.Id,
                 FirstName = model.FirstName,
@@ -76,7 +76,7 @@ namespace FindMyPet.MVC.ServiceClients
 
         public Owner UpdateOwnerImageProfile(int ownerId, string imagePath)
         {
-            var request = new UpdateOwnerRequest
+            var request = new OwnerUpdateRequest
             {
                 Id = ownerId,
                 ProfileImageUrl = imagePath

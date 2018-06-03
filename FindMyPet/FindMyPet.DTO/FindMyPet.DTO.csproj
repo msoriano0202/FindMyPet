@@ -57,17 +57,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Owner\CreateOwnerRequest.cs" />
+    <Compile Include="Owner\OwnerCreateRequest.cs" />
     <Compile Include="Owner\Owner.cs" />
     <Compile Include="Owner\OwnerRequest.cs" />
-    <Compile Include="Owner\SearchOwnerRequest.cs" />
-    <Compile Include="Owner\UpdateOwnerRequest.cs" />
-    <Compile Include="Pet\CreatePetRequest.cs" />
+    <Compile Include="Owner\OwnerSearchRequest.cs" />
+    <Compile Include="Owner\OwnerUpdateRequest.cs" />
+    <Compile Include="Pet\PetCreateRequest.cs" />
     <Compile Include="Pet\Pet.cs" />
     <Compile Include="Pet\PetRequest.cs" />
-    <Compile Include="Pet\PetsByOwnerRequest.cs" />
-    <Compile Include="Pet\SearchPetRequest.cs" />
-    <Compile Include="Pet\UpdatePetRequest.cs" />
+    <Compile Include="Pet\PetsSearchByOwnerRequest.cs" />
+    <Compile Include="Pet\PetSearchRequest.cs" />
+    <Compile Include="Pet\PetUpdateRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\PagedRequest.cs" />
     <Compile Include="Shared\PagedResponse.cs" />

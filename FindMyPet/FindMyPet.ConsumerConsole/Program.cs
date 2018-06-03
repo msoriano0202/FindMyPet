@@ -24,7 +24,7 @@ namespace FindMyPet.ConsumerConsole
 
         private static void AddOwner()
         {
-            var request = new CreateOwnerRequest
+            var request = new OwnerCreateRequest
             {
                 FirstName = "Tina",
                 LastName = "Santiago"

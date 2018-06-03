@@ -1,14 +1,14 @@
 ﻿using ServiceStack;
+using System.Collections.Generic;
 
 namespace FindMyPet.DTO.Owner
 {
-    [Route("/owner", "PUT")]
-    public class UpdateOwnerRequest : IReturn<Owner>
+    [Route("/searchowner", "POST")]
+    public class OwnerSearchRequest : IReturn<List<Owner>>
     {
-        public int Id { get; set; }
+        public string MembershipId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public string ProfileImageUrl { get; set; }
     }
 }

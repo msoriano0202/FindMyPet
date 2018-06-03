@@ -13,9 +13,9 @@ namespace FindMyPet.MyServiceStack.Providers
     public interface IOwnerProvider
     {
         Task<Owner> GetOwnerAsync(OwnerRequest request);
-        Task<Owner> CreateOwnerAsync(CreateOwnerRequest request);
-        Task<Owner> UpdateOwnerAsync(UpdateOwnerRequest request);
-        Task<List<Owner>> SearchOwnersAsync(SearchOwnerRequest request);
+        Task<Owner> CreateOwnerAsync(OwnerCreateRequest request);
+        Task<Owner> UpdateOwnerAsync(OwnerUpdateRequest request);
+        Task<List<Owner>> SearchOwnersAsync(OwnerSearchRequest request);
     }
 
     public class OwnerProvider : IOwnerProvider
@@ -54,7 +54,7 @@ namespace FindMyPet.MyServiceStack.Providers
             return _ownerMapper.MapOwnerTableToOwner(table);
         }
 
-        public async Task<Owner> CreateOwnerAsync(CreateOwnerRequest request)
+        public async Task<Owner> CreateOwnerAsync(OwnerCreateRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -70,7 +70,7 @@ namespace FindMyPet.MyServiceStack.Providers
             return _ownerMapper.MapOwnerTableToOwner(newTable);
         }
 
-        public async Task<Owner> UpdateOwnerAsync(UpdateOwnerRequest request)
+        public async Task<Owner> UpdateOwnerAsync(OwnerUpdateRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -87,7 +87,7 @@ namespace FindMyPet.MyServiceStack.Providers
             return _ownerMapper.MapOwnerTableToOwner(updatedTable);
         }
 
-        public async Task<List<Owner>> SearchOwnersAsync(SearchOwnerRequest request)
+        public async Task<List<Owner>> SearchOwnersAsync(OwnerSearchRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
