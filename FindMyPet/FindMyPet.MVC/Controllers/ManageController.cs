@@ -68,6 +68,10 @@ namespace FindMyPet.MVC.Controllers
             model.FirstName = owner.FirstName;
             model.LastName = owner.LastName;
             model.Email = owner.Email;
+            model.PhoneNumber1 = owner.PhoneNumber1;
+            model.PhoneNumber2 = owner.PhoneNumber2;
+            model.Address1 = owner.Address1;
+            model.Address2 = owner.Address2;
 
             this.SetManageNavBarInfo(owner, "Index");
             return View(model);

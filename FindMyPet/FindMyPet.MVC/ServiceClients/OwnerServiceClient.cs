@@ -67,7 +67,11 @@ namespace FindMyPet.MVC.ServiceClients
             {
                 Id = model.Id,
                 FirstName = model.FirstName,
-                LastName = model.LastName
+                LastName = model.LastName,
+                PhoneNumber1 = model.PhoneNumber1,
+                PhoneNumber2 = model.PhoneNumber2,
+                Address1 = model.Address1,
+                Address2 = model.Address2
             };
             var response = _findMyPetClient.JsonClient().Put(request);
 

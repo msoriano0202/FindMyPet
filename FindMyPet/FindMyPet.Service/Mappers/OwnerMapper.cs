@@ -35,6 +35,10 @@ namespace FindMyPet.MyServiceStack.Mappers
                 FirstName = ownerTable.FirstName,
                 LastName = ownerTable.LastName,
                 Email = ownerTable.Email,
+                PhoneNumber1 = ownerTable.PhoneNumber1,
+                PhoneNumber2 = ownerTable.PhoneNumber2,
+                Address1 = ownerTable.Address1,
+                Address2 = ownerTable.Address2,
                 ProfileImageUrl = ownerTable.ProfileImageUrl,
                 CreatedOn = ownerTable.CreatedOn
             };
@@ -50,6 +54,18 @@ namespace FindMyPet.MyServiceStack.Mappers
 
             if (request.Email != null && !request.Email.Equals(ownerTable.Email))
                 ownerTable.Email = request.Email;
+
+            if (request.PhoneNumber1 != null && !request.PhoneNumber1.Equals(ownerTable.PhoneNumber1))
+                ownerTable.PhoneNumber1 = request.PhoneNumber1;
+
+            if (request.PhoneNumber2 != null && !request.PhoneNumber2.Equals(ownerTable.PhoneNumber2))
+                ownerTable.PhoneNumber2 = request.PhoneNumber2;
+
+            if (request.Address1 != null && !request.Address1.Equals(ownerTable.Address1))
+                ownerTable.Address1 = request.Address1;
+
+            if (request.Address2 != null && !request.Address2.Equals(ownerTable.Address2))
+                ownerTable.Address2 = request.Address2;
 
             if (request.ProfileImageUrl != null && !request.ProfileImageUrl.Equals(ownerTable.ProfileImageUrl))
                 ownerTable.ProfileImageUrl = request.ProfileImageUrl;

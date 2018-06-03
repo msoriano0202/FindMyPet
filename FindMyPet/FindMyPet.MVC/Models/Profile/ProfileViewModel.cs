@@ -15,6 +15,18 @@ namespace FindMyPet.MVC.Models.Profile
 
         [Required(ErrorMessage = "Apellido es requerido.")]
         public string LastName { get; set; }
+        
+        [MaxLength(15)]
+        public string PhoneNumber1 { get; set; }
+
+        [MaxLength(15)]
+        public string PhoneNumber2 { get; set; }
+
+        [MaxLength(100)]
+        public string Address1 { get; set; }
+
+        [MaxLength(100)]
+        public string Address2 { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]

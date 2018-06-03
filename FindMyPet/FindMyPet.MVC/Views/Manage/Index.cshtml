@@ -14,24 +14,95 @@
                     @Html.AntiForgeryToken()
 
                     <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="input1-1">Nombre:</label>
-                            <div class="col-sm-10">
-                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @id = "input1-1", @class = "form-control", @placeholder = "Nombre" } })
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="input1-1">Nombre</label>
+                                    <div class="input-group input-group-focus">
+                                        @*<span class="input-group-prepend g-w50">
+                                            <i class="fa fa-user"></i>
+                                        </span>*@
+                                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @id = "input1-1", @class = "form-control", @placeholder = "Nombre" } })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="input1-2">Apellido</label>
+                                    <div class="input-group input-group-focus">
+                                        @*<span class="input-group-prepend g-w50">
+                                            <i class="fa fa-user"></i>
+                                        </span>*@
+                                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @id = "input1-2", @class = "form-control", @placeholder = "Apellido" } })
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="input1-2">Apellido:</label>
-                            <div class="col-sm-10">
-                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @id = "input1-2", @class = "form-control", @placeholder = "Nombre" } })
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="input1-3">Correo</label>
+                                    <div class="input-group input-group-focus">
+                                        @*<span class="input-group-prepend g-w50">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>*@
+                                        <input id="input1-3" class="form-control" value="@Model.Email" disabled />
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="input1-3">Email:</label>
-                            <div class="col-sm-10">
-                                <input id = "input1-3" class = "form-control" value="@Model.Email" disabled/>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="input1-4">Telefono 1</label>
+                                    <div class="input-group input-group-focus">
+                                        @*<span class="input-group-prepend g-w50">
+                                            <i class="fa fa-phone"></i>
+                                        </span>*@
+                                        @Html.EditorFor(model => model.PhoneNumber1, new { htmlAttributes = new { @id = "input1-4", @class = "form-control", @placeholder = "Telefono 1" } })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="input1-5">Telefono 2</label>
+                                    <div class="input-group input-group-focus">
+                                        @*<span class="input-group-prepend g-w50">
+                                            <i class="fa fa-phone"></i>
+                                        </span>*@
+                                        @Html.EditorFor(model => model.PhoneNumber2, new { htmlAttributes = new { @id = "input1-5", @class = "form-control", @placeholder = "Telefono 2" } })
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="input1-6">Dirección 1</label>
+                                    <div class="input-group input-group-focus">
+                                        @*<span class="input-group-prepend g-w50">
+                                            <i class="fa fa-home"></i>
+                                        </span>*@
+                                        @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @id = "input1-6", @class = "form-control", @placeholder = "Dirección 1" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="nput1-7">Dirección 2</label>
+                                    <div class="input-group input-group-focus">
+                                        @*<span class="input-group-prepend g-w50">
+                                            <i class="fa fa-home"></i>
+                                        </span>*@
+                                        @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @id = "input1-7", @class = "form-control", @placeholder = "Dirección 2" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="g-mb">
