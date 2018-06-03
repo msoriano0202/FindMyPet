@@ -45,8 +45,7 @@ namespace FindMyPet.MVC.Controllers
 
                 SetSessionVariables(owner.Id,
                                     string.Format("{0} {1}", owner.FirstName, owner.LastName),
-                                    User.Identity.GetUserId(),
-                                    string.IsNullOrEmpty(owner.ProfileImageUrl) ? GetDefaultImageProfile() : FormatSiteImageUrl(owner.ProfileImageUrl));
+                                    User.Identity.GetUserId());
             }
         }
 
@@ -59,28 +58,15 @@ namespace FindMyPet.MVC.Controllers
             var owner = _ownerDataLoader.RegisterOwner(membershipId, firstName, lastName, email);
 
             SetSessionVariables(owner.Id, 
-                                string.Format("{0} {1}", firstName, lastName), 
-                                membershipId,
-                                GetDefaultImageProfile());
+                                string.Format("{0} {1}", firstName, lastName),
+                                membershipId);
         }
 
-        //public void LoadSignedInOwnerInSession()
-        //{
-        //    var membershipId = User.Identity.GetUserId();
-        //    var owner = _ownerDataLoader.GetOwnerByMembershipId(membershipId);
-
-        //    SetSessionVariables(owner.Id,
-        //                        string.Format("{0} {1}", owner.FirstName, owner.LastName),
-        //                        User.Identity.GetUserId(),
-        //                        string.IsNullOrEmpty(owner.ProfileImageUrl) ? GetDefaultImageProfile() : FormatSiteImageUrl(owner.ProfileImageUrl));
-        //}
-
-        private void SetSessionVariables(int ownerId, string ownerName, string membershipId, string profileImageUrl)
+        private void SetSessionVariables(int ownerId, string ownerName, string membershipId)
         {
             Session["OwnerId"] = ownerId;
             Session["OwnerName"] = ownerName;
             Session["OwnerMembershipId"] = membershipId;
-            Session["OwnerProfilePictureUrl"] = profileImageUrl;
         }
 
         public void CleanSessionVariables()
@@ -89,7 +75,6 @@ namespace FindMyPet.MVC.Controllers
             Session["OwnerName"] = null;
             Session["OwnerId"] = null;
             Session["OwnerMembershipId"] = null;
-            Session["OwnerProfilePictureUrl"] = null;
         }
 
         #endregion
@@ -108,7 +93,7 @@ namespace FindMyPet.MVC.Controllers
         public void UpdateOwnerById(ProfileViewModel model)
         {
             model.Id = (int)Session["OwnerId"];
-            _ownerDataLoader.UpdateOwner(model);
+            var owner = _ownerDataLoader.UpdateOwner(model);
         }
 
         public void UpdateOwnerImageProfile(string imagePath)
@@ -136,35 +121,30 @@ namespace FindMyPet.MVC.Controllers
             Session["OwnerName"] = string.Format("{0} {1}", firstName, lastName);
         }
 
-        public string GetSessionOwnerProfilePictureUrl()
-        {
-            return Session["OwnerProfilePictureUrl"].ToString();
-        }
-
-        public void SetSessionOwnerProfilePictureUrl(string profilePictureUrl)
-        {
-            Session["OwnerProfilePictureUrl"] = FormatSiteImageUrl(profilePictureUrl);
-        }
-
         #endregion
 
         #region --- ManageNavBar ---
 
-        public void SetManageNavBarInfo()
+        public void SetManageNavBarInfo(Owner owner, string navItemSelected)
         {
             ViewBag.FullName = this.GetSessionOwnerName();
-            ViewBag.ProfilePictureUrl = this.GetSessionOwnerProfilePictureUrl();
+            ViewBag.ProfilePictureUrl = GetOwnerImageProfile(owner.ProfileImageUrl);
+            ViewBag.SelectedItem = navItemSelected;
         }
 
-        public void SetManageNavBarItem(string itemName)
-        {
-            ViewBag.SelectedItem = itemName;
-        }
-
-        #endregion 
+        #endregion
 
         #region --- Private Helpers ---
 
+        private string GetOwnerImageProfile(string profileImage)
+        {
+            if (string.IsNullOrEmpty(profileImage))
+                return GetDefaultImageProfile();
+            else {
+                return FormatSiteImageUrl(profileImage);
+            }
+        }
+        
         private string GetDefaultImageProfile()
         {
             return ConfigurationManager.AppSettings["DefaultImageProfile"].ToString();

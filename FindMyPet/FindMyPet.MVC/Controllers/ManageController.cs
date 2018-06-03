@@ -62,15 +62,14 @@ namespace FindMyPet.MVC.Controllers
         public ActionResult Index()
         {
             this.VerifySessionVariables();
-            this.SetManageNavBarInfo();
-            this.SetManageNavBarItem("Index");
-
             var owner = this.GetUserByMembershipId();
+
             var model = new ProfileViewModel();
             model.FirstName = owner.FirstName;
             model.LastName = owner.LastName;
             model.Email = owner.Email;
 
+            this.SetManageNavBarInfo(owner, "Index");
             return View(model);
         }
 
@@ -117,9 +116,7 @@ namespace FindMyPet.MVC.Controllers
 
                     file.SaveAs(tempImageFilePath);
                     this.PerformImageResizeAndPutOnCanvas(uploadsFolder, tempFileName, defaultImageWidthSize, defaultImageHeightSize, newFileName);
-
                     this.UpdateOwnerImageProfile(newImageFilePath);
-                    this.SetSessionOwnerProfilePictureUrl(newImageFilePath);
 
                     System.IO.File.Delete(tempImageFilePath);
 
@@ -156,7 +153,6 @@ namespace FindMyPet.MVC.Controllers
         public async Task<ActionResult> Index2(ManageMessageId? message)
         {
             this.VerifySessionVariables();
-            this.SetManageNavBarInfo();
 
             //Micky
             ViewBag.StatusMessage =
@@ -323,8 +319,9 @@ namespace FindMyPet.MVC.Controllers
         public ActionResult ChangePassword()
         {
             this.VerifySessionVariables();
-            this.SetManageNavBarInfo();
-            this.SetManageNavBarItem("ChangePassword");
+            var owner = this.GetUserByMembershipId();
+
+            this.SetManageNavBarInfo(owner, "ChangePassword");
 
             return View();
         }
@@ -495,5 +492,6 @@ namespace FindMyPet.MVC.Controllers
         }
 
 #endregion
+
     }
 }
