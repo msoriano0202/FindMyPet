@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="input1-1">Nombre</label>
+                                    <label for="input1-1"><strong>Nombre</strong></label>
                                     <div class="input-group input-group-focus">
                                         @*<span class="input-group-prepend g-w50">
                                             <i class="fa fa-user"></i>
@@ -29,11 +29,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="input1-2">Apellido</label>
+                                    <label for="input1-2"><strong>Apellido</strong></label>
                                     <div class="input-group input-group-focus">
-                                        @*<span class="input-group-prepend g-w50">
-                                            <i class="fa fa-user"></i>
-                                        </span>*@
                                         @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @id = "input1-2", @class = "form-control", @placeholder = "Apellido" } })
                                     </div>
                                 </div>
@@ -42,11 +39,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="input1-3">Correo</label>
+                                    <label for="input1-3"><strong>Correo</strong></label>
                                     <div class="input-group input-group-focus">
-                                        @*<span class="input-group-prepend g-w50">
-                                            <i class="fa fa-envelope"></i>
-                                        </span>*@
                                         <input id="input1-3" class="form-control" value="@Model.Email" disabled />
                                     </div>
                                 </div>
@@ -55,22 +49,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="input1-4">Telefono 1</label>
+                                    <label for="input1-4"><strong>Telefono 1</strong></label>
                                     <div class="input-group input-group-focus">
-                                        @*<span class="input-group-prepend g-w50">
-                                            <i class="fa fa-phone"></i>
-                                        </span>*@
                                         @Html.EditorFor(model => model.PhoneNumber1, new { htmlAttributes = new { @id = "input1-4", @class = "form-control", @placeholder = "Telefono 1" } })
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="input1-5">Telefono 2</label>
+                                    <label for="input1-5"><strong>Telefono 2</strong></label>
                                     <div class="input-group input-group-focus">
-                                        @*<span class="input-group-prepend g-w50">
-                                            <i class="fa fa-phone"></i>
-                                        </span>*@
                                         @Html.EditorFor(model => model.PhoneNumber2, new { htmlAttributes = new { @id = "input1-5", @class = "form-control", @placeholder = "Telefono 2" } })
                                     </div>
                                 </div>
@@ -79,11 +67,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="input1-6">Dirección 1</label>
+                                    <label for="input1-6"><strong>Dirección 1</strong></label>
                                     <div class="input-group input-group-focus">
-                                        @*<span class="input-group-prepend g-w50">
-                                            <i class="fa fa-home"></i>
-                                        </span>*@
                                         @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @id = "input1-6", @class = "form-control", @placeholder = "Dirección 1" } })
                                     </div>
                                 </div>
@@ -92,11 +77,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="nput1-7">Dirección 2</label>
+                                    <label for="nput1-7"><strong>Dirección 2</strong></label>
                                     <div class="input-group input-group-focus">
-                                        @*<span class="input-group-prepend g-w50">
-                                            <i class="fa fa-home"></i>
-                                        </span>*@
                                         @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @id = "input1-7", @class = "form-control", @placeholder = "Dirección 2" } })
                                     </div>
                                 </div>
