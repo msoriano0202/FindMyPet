@@ -1,6 +1,6 @@
 ﻿using FindMyPet.DTO.Owner;
 using FindMyPet.MVC.Mappers;
-using FindMyPet.MVC.Models.Profile;
+using FindMyPet.MVC.Models.Account;
 using FindMyPet.MVC.ServiceClients;
 using System;
 using System.Collections.Generic;

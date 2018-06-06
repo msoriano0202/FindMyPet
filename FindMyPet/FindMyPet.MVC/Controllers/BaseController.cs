@@ -2,7 +2,7 @@
 using FindMyPet.MVC.DataLoaders;
 using FindMyPet.MVC.Helpers;
 using FindMyPet.MVC.Mappers;
-using FindMyPet.MVC.Models.Profile;
+using FindMyPet.MVC.Models.Account;
 using FindMyPet.MVC.Models.Shared;
 using Microsoft.AspNet.Identity;
 using System;

@@ -68,6 +68,12 @@ namespace FindMyPet.MVC.Controllers
             }
         }
 
+        //public ActionResult Profile(string id)
+        //{
+
+        //    return View(model);
+        //}
+
         // GET: Pet/Edit/5
         public ActionResult Edit(string id)
         {

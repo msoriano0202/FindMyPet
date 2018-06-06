@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace FindMyPet.MVC.Models.Profile
+namespace FindMyPet.MVC.Models.Account
 {
     public class SettingsViewModel
     {

@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using FindMyPet.MVC.Models;
-using FindMyPet.MVC.Models.Profile;
+using FindMyPet.MVC.Models.Account;
 using System.Collections.Generic;
 using System.IO;
 using System.Configuration;

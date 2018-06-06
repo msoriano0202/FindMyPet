@@ -1,5 +1,5 @@
 ﻿using FindMyPet.DTO.Owner;
-using FindMyPet.MVC.Models.Profile;
+using FindMyPet.MVC.Models.Account;
 using System;
 using System.Collections.Generic;
 using System.Linq;
