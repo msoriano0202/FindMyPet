@@ -14,7 +14,7 @@ namespace FindMyPet.MVC.ServiceClients
 
     public class FindMyPetServiceClient : IFindMyPetServiceClient
     {
-        private string serviceAddress = ConfigurationManager.AppSettings.Get("ServiceAddress");
+        private string serviceAddress = ConfigurationManager.AppSettings["ServiceAddress"].ToString();
 
         public JsonServiceClient JsonClient()
         {
