@@ -1,4 +1,5 @@
 ﻿using FindMyPet.DTO.Owner;
+using FindMyPet.MVC.Mappers;
 using FindMyPet.MVC.Models.Profile;
 using FindMyPet.MVC.ServiceClients;
 using System;
@@ -14,6 +15,7 @@ namespace FindMyPet.MVC.DataLoaders
         Owner GetOwnerById(int ownerId);
         Owner GetOwnerByMembershipId(string membershipId);
         Owner UpdateOwner(ProfileViewModel model);
+        Owner UpdateSettingsOwner(SettingsViewModel model);
         Owner UpdateOwnerImageProfile(int ownerId, string imagePath);
     }
 
@@ -49,6 +51,11 @@ namespace FindMyPet.MVC.DataLoaders
         }
 
         public Owner UpdateOwner(ProfileViewModel model)
+        {
+            return _ownerServiceClient.UpdateOwner(model);
+        }
+
+        public Owner UpdateSettingsOwner(SettingsViewModel model)
         {
             return _ownerServiceClient.UpdateOwner(model);
         }

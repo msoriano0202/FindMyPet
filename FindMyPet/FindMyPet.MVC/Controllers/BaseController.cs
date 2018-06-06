@@ -1,6 +1,7 @@
 ﻿using FindMyPet.DTO.Owner;
 using FindMyPet.MVC.DataLoaders;
 using FindMyPet.MVC.Helpers;
+using FindMyPet.MVC.Mappers;
 using FindMyPet.MVC.Models.Profile;
 using FindMyPet.MVC.Models.Shared;
 using Microsoft.AspNet.Identity;
@@ -14,11 +15,12 @@ namespace FindMyPet.MVC.Controllers
     {
         private IOwnerDataLoader _ownerDataLoader;
         private IImageHelper _imageHelper;
+        protected IOwnerMapper _ownerMapper;
 
-        public BaseController() : this(new OwnerDataLoader(), new ImageHelper())
+        public BaseController() : this(new OwnerDataLoader(), new ImageHelper(), new OwnerMapper())
         { }
 
-        public BaseController(IOwnerDataLoader ownerDataLoader, IImageHelper imageHelper)
+        public BaseController(IOwnerDataLoader ownerDataLoader, IImageHelper imageHelper, IOwnerMapper ownerMapper)
         {
             if (ownerDataLoader == null)
                 throw new ArgumentNullException(nameof(ownerDataLoader));
@@ -26,8 +28,12 @@ namespace FindMyPet.MVC.Controllers
             if (imageHelper == null)
                 throw new ArgumentNullException(nameof(imageHelper));
 
+            if (ownerMapper == null)
+                throw new ArgumentNullException(nameof(ownerMapper));
+
             _ownerDataLoader = ownerDataLoader;
             _imageHelper = imageHelper;
+            _ownerMapper = ownerMapper;
         }
 
         #region --- VerifySessionVariables ---
@@ -94,6 +100,12 @@ namespace FindMyPet.MVC.Controllers
         {
             model.Id = (int)Session["OwnerId"];
             var owner = _ownerDataLoader.UpdateOwner(model);
+        }
+
+        public void UpdateSettingsOwnerByOwnerId(SettingsViewModel model)
+        {
+            model.OwnerId = (int)Session["OwnerId"];
+            var owner = _ownerDataLoader.UpdateSettingsOwner(model);
         }
 
         public void UpdateOwnerImageProfile(string imagePath)

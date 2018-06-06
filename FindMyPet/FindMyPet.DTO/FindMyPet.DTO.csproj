@@ -61,6 +61,7 @@
     <Compile Include="Owner\Owner.cs" />
     <Compile Include="Owner\OwnerRequest.cs" />
     <Compile Include="Owner\OwnerSearchRequest.cs" />
+    <Compile Include="Owner\OwnerSettings.cs" />
     <Compile Include="Owner\OwnerUpdateRequest.cs" />
     <Compile Include="Pet\PetCreateRequest.cs" />
     <Compile Include="Pet\Pet.cs" />

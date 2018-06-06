@@ -28,6 +28,7 @@ namespace FindMyPet.MVC
             container.RegisterType<IPetServiceClient, PetServiceClient>();
 
             container.RegisterType<IPetMapper, PetMapper>();
+            container.RegisterType<IOwnerMapper, OwnerMapper>();
 
             container.RegisterType<IOwnerDataLoader, OwnerDataLoader>();
             container.RegisterType<IPetDataLoader, PetDataLoader>();

@@ -15,6 +15,7 @@ namespace FindMyPet.MVC.ServiceClients
         Owner GetOwnerByMembershipId(string membershipId);
         Owner CreateOwner(string membershipId, string firstName, string lastName, string email);
         Owner UpdateOwner(ProfileViewModel model);
+        Owner UpdateOwner(SettingsViewModel model);
         Owner UpdateOwnerImageProfile(int ownerId, string imagePath);
     }
 
@@ -72,6 +73,27 @@ namespace FindMyPet.MVC.ServiceClients
                 PhoneNumber2 = model.PhoneNumber2,
                 Address1 = model.Address1,
                 Address2 = model.Address2
+            };
+            var response = _findMyPetClient.JsonClient().Put(request);
+
+            return response;
+        }
+
+        public Owner UpdateOwner(SettingsViewModel model)
+        {
+            var request = new OwnerUpdateRequest
+            {
+                Id = model.OwnerId,
+                Settings = new OwnerSettings
+                {
+                    ShowEmailForAlerts = model.ShowEmailForAlerts,
+                    ShowPhoneNumberForAlerts = model.ShowPhoneNumberForAlerts,
+                    ShowAddressForAlerts = model.ShowAddressForAlerts,
+                    ReceiveAlertsAll = model.ReceiveAlertsAll,
+                    ReceiveAlertsInRadio = model.ReceiveAlertsInRadio,
+                    ReceiveDistanceRadio = model.ReceiveDistanceRadio,
+                    SendDistanceRadio = model.SendDistanceRadio
+                }
             };
             var response = _findMyPetClient.JsonClient().Put(request);
 

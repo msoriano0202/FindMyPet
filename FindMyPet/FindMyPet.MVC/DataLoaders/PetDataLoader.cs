@@ -17,27 +17,21 @@ namespace FindMyPet.MVC.DataLoaders
         Pet UpdatePet(PetViewModel model);
         int DeletePet(string code);
         PagedResponseViewModel<PetViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber);
-        //List<PetViewModel> GetPetsByOwner(string membershipId);
     }
 
     public class PetDataLoader : IPetDataLoader
     {
-        private readonly IOwnerServiceClient _ownerServiceClient;
         private readonly IPetServiceClient _petServiceClient;
         private readonly IPetMapper _petMapper;
 
-        public PetDataLoader(IOwnerServiceClient ownerServiceClient, IPetServiceClient petServiceClient, IPetMapper petMapper)
+        public PetDataLoader(IPetServiceClient petServiceClient, IPetMapper petMapper)
         {
-            if (ownerServiceClient == null)
-                throw new ArgumentNullException(nameof(ownerServiceClient));
-
             if (petServiceClient == null)
                 throw new ArgumentNullException(nameof(petServiceClient));
 
             if (petMapper == null)
                 throw new ArgumentNullException(nameof(petMapper));
 
-            _ownerServiceClient = ownerServiceClient;
             _petServiceClient = petServiceClient;
             _petMapper = petMapper;
         }
@@ -82,14 +76,5 @@ namespace FindMyPet.MVC.DataLoaders
                 TotalRecords = petsPaged.TotalRecords
             };
         }
-
-        //public List<PetViewModel> GetPetsByOwner(string membershipId)
-        //{
-        //    var owner = _ownerServiceClient.GetuserByMembershipId(membershipId);
-        //    var pets = _petServiceClient.GetPetsByOwnerId(owner.Id);
-        //    var petsViewModel = pets.ConvertAll(x => _petMapper.PetToViewModel(x));
-
-        //    return petsViewModel;
-        //}
     }
 }

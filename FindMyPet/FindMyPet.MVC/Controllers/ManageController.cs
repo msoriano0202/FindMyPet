@@ -62,18 +62,11 @@ namespace FindMyPet.MVC.Controllers
         public ActionResult Index()
         {
             this.VerifySessionVariables();
+
             var owner = this.GetUserByMembershipId();
-
-            var model = new ProfileViewModel();
-            model.FirstName = owner.FirstName;
-            model.LastName = owner.LastName;
-            model.Email = owner.Email;
-            model.PhoneNumber1 = owner.PhoneNumber1;
-            model.PhoneNumber2 = owner.PhoneNumber2;
-            model.Address1 = owner.Address1;
-            model.Address2 = owner.Address2;
-
+            var model = _ownerMapper.OwnerToProfileViewModel(owner);
             this.SetManageNavBarInfo(owner, "Index");
+
             return View(model);
         }
 
@@ -150,6 +143,33 @@ namespace FindMyPet.MVC.Controllers
         {
             var imgArr = fileName.Split('.');
             return imgArr[imgArr.Length - 1].ToLower();
+        }
+
+        public ActionResult Settings()
+        {
+            this.VerifySessionVariables();
+
+            var owner = this.GetUserByMembershipId();
+            var model = _ownerMapper.OwnerToSettingsViewModel(owner);
+            this.SetManageNavBarInfo(owner, "Settings");
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Settings(SettingsViewModel model)
+        {
+            try
+            {
+                model.ShowEmailForAlerts = true; //Always Checked
+                this.UpdateSettingsOwnerByOwnerId(model);
+
+                return RedirectToAction("Settings");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         //

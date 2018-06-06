@@ -28,10 +28,10 @@ namespace FindMyPet.TableModel
         public string Comment { get; set; }
 
         [Required]
-        public int XCord { get; set; }
+        public float XCord { get; set; }
 
         [Required]
-        public int YCord { get; set; }
+        public float YCord { get; set; }
 
         public string ImageUrl { get; set; }
 

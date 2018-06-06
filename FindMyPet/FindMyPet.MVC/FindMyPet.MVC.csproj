@@ -243,8 +243,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CustomHtmlHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="IdentityExtentions\CustomizePasswordValidation.cs" />
+    <Compile Include="Mappers\OwnerMapper.cs" />
     <Compile Include="Mappers\PetMapper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -252,6 +254,7 @@
     <Compile Include="Models\Pet\PetPagedListViewModel.cs" />
     <Compile Include="Models\Pet\PetViewModel.cs" />
     <Compile Include="Models\Profile\ProfileViewModel.cs" />
+    <Compile Include="Models\Profile\SettingsViewModel.cs" />
     <Compile Include="Models\Shared\PagedResponseViewModel.cs" />
     <Compile Include="Models\Shared\PaginationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -408,7 +411,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -452,6 +457,7 @@
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Shared\_Pagination.cshtml" />
     <Content Include="Views\Pet\_NoPets.cshtml" />
+    <Content Include="Views\Manage\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

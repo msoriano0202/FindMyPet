@@ -11,7 +11,9 @@ namespace FindMyPet.MyServiceStack.Mappers
     {
         OwnerTableModel MapCreateRequestToTable(OwnerCreateRequest request);
         Owner MapOwnerTableToOwner(OwnerTableModel ownerTable);
+        OwnerSettings MapSettingsTableToSettings(OwnerSettingTableModel settingsTable);
         OwnerTableModel MapUpdateRequestToTable(OwnerUpdateRequest request, OwnerTableModel ownerTable);
+        OwnerSettingTableModel MapUpdateRequestToTable(OwnerSettings request, OwnerSettingTableModel settingsTable);
     }
 
     public class OwnerMapper : IOwnerMapper
@@ -40,7 +42,22 @@ namespace FindMyPet.MyServiceStack.Mappers
                 Address1 = ownerTable.Address1,
                 Address2 = ownerTable.Address2,
                 ProfileImageUrl = ownerTable.ProfileImageUrl,
-                CreatedOn = ownerTable.CreatedOn
+                CreatedOn = ownerTable.CreatedOn,
+                Settings = MapSettingsTableToSettings(ownerTable.SettingTableModel)
+            };
+        }
+
+        public OwnerSettings MapSettingsTableToSettings(OwnerSettingTableModel settingsTable)
+        {
+            return new OwnerSettings
+            {
+                ShowEmailForAlerts = settingsTable.ShowEmailForAlerts,
+                ShowPhoneNumberForAlerts = settingsTable.ShowPhoneNumberForAlerts,
+                ShowAddressForAlerts = settingsTable.ShowAddressForAlerts,
+                ReceiveAlertsAll = settingsTable.ReceiveAlertsAll,
+                ReceiveAlertsInRadio = settingsTable.ReceiveAlertsInRadio,
+                ReceiveDistanceRadio = settingsTable.ReceiveDistanceRadio,
+                SendDistanceRadio = settingsTable.SendDistanceRadio
             };
         }
 
@@ -70,7 +87,36 @@ namespace FindMyPet.MyServiceStack.Mappers
             if (request.ProfileImageUrl != null && !request.ProfileImageUrl.Equals(ownerTable.ProfileImageUrl))
                 ownerTable.ProfileImageUrl = request.ProfileImageUrl;
 
+            if (request.Settings != null)
+                ownerTable.SettingTableModel = MapUpdateRequestToTable(request.Settings, ownerTable.SettingTableModel);
+
             return ownerTable;
+        }
+
+        public OwnerSettingTableModel MapUpdateRequestToTable(OwnerSettings request, OwnerSettingTableModel settingsTable)
+        {
+            if(!request.ShowEmailForAlerts.Equals(settingsTable.ShowEmailForAlerts))
+                settingsTable.ShowEmailForAlerts = request.ShowEmailForAlerts;
+
+            if (!request.ShowPhoneNumberForAlerts.Equals(settingsTable.ShowPhoneNumberForAlerts))
+                settingsTable.ShowPhoneNumberForAlerts = request.ShowPhoneNumberForAlerts;
+
+            if (!request.ShowAddressForAlerts.Equals(settingsTable.ShowAddressForAlerts))
+                settingsTable.ShowAddressForAlerts = request.ShowAddressForAlerts;
+
+            if (!request.ReceiveAlertsAll.Equals(settingsTable.ReceiveAlertsAll))
+                settingsTable.ReceiveAlertsAll = request.ReceiveAlertsAll;
+
+            if (!request.ReceiveAlertsInRadio.Equals(settingsTable.ReceiveAlertsInRadio))
+                settingsTable.ReceiveAlertsInRadio = request.ReceiveAlertsInRadio;
+
+            if (!request.ReceiveDistanceRadio.Equals(settingsTable.ReceiveDistanceRadio))
+                settingsTable.ReceiveDistanceRadio = request.ReceiveDistanceRadio;
+
+            if (!request.SendDistanceRadio.Equals(settingsTable.SendDistanceRadio))
+                settingsTable.SendDistanceRadio = request.SendDistanceRadio;
+
+            return settingsTable;
         }
     }
 }

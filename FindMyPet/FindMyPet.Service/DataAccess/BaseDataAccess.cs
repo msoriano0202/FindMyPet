@@ -77,6 +77,8 @@ namespace FindMyPet.MyServiceStack.DataAccess
             {
                 data = await dbConnection.SingleByIdAsync<T>(id)
                                          .ConfigureAwait(false);
+
+                dbConnection.LoadReferences(data);
             }
             return data;
         }

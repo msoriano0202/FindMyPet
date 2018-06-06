@@ -48,7 +48,7 @@ namespace FindMyPet.TableModel
         public DateTimeOffset CreatedOn { get; set; }
 
         [Reference]
-        public OwnerSettingTableModel Settings { get; set; }
+        public OwnerSettingTableModel SettingTableModel { get; set; }
 
         [Reference]
         public List<PetAlertTableModel> PetAlerts { get; set; }

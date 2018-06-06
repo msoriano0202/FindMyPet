@@ -1,0 +1,120 @@
+﻿@model FindMyPet.MVC.Models.Profile.SettingsViewModel
+@{
+    ViewBag.Title = "Configuracion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string isChecked(bool value)
+    {
+        if (value)
+            return "checked";
+        else
+            return string.Empty;
+    }
+}
+
+<section class="profile-section g-py g-bg-white">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_ProfileRightNavMenu")
+            <div class="col-md-9">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                        <div class="widget categories-widget">
+                            <label class="g-text-primary"><strong>Que información personal mostrar cuando se emitan alertas:</strong></label>
+                            <hr />
+                            <ul class="list-unstyled">
+                                <li class="g-flex-middle g-mb-10">
+                                    <span>Mostrar Correo Electrónico <i>(activo por defecto)</i></span>
+                                    <label class="toggle form-check-inline ml-auto">
+                                        <input class="toggleCheckBox" type="checkbox" name="ShowEmailForAlerts" @isChecked(Model.ShowEmailForAlerts) value="@Model.ShowEmailForAlerts" disabled>
+                                        <span class="toggle-handle round"></span>
+                                    </label>
+                                </li>
+                                <li class="g-flex-middle g-mb-10">
+                                    <span>Mostrar Número de Teléfono</span>
+                                    <label class="toggle form-check-inline ml-auto">
+                                        <input class="toggleCheckBox" type="checkbox" name="ShowPhoneNumberForAlerts" @isChecked(Model.ShowPhoneNumberForAlerts) value="@Model.ShowPhoneNumberForAlerts">
+                                        <span class="toggle-handle round"></span>
+                                    </label>
+                                </li>
+                                <li class="g-flex-middle g-mb-10">
+                                    <span>Mostrar Dirección</span>
+                                    <label class="toggle form-check-inline ml-auto">
+                                        <input class="toggleCheckBox" type="checkbox" name="ShowAddressForAlerts" @isChecked(Model.ShowAddressForAlerts) value="@Model.ShowAddressForAlerts">
+                                        <span class="toggle-handle round"></span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <br />
+                        <div class="widget categories-widget">
+                            <label class="g-text-primary"><strong>Que alertas recibir:</strong></label>
+                            <hr />
+                            <ul class="list-unstyled">
+                                <li class="g-flex-middle g-mb-10">
+                                    <span>Recibir todas las alertas</span>
+                                    <label class="toggle form-check-inline ml-auto">
+                                        <input class="toggleCheckBox" type="checkbox" name="ReceiveAlertsAll" @isChecked(Model.ReceiveAlertsAll) value="@Model.ReceiveAlertsAll">
+                                        <span class="toggle-handle round"></span>
+                                    </label>
+                                </li>
+                                <li class="g-flex-middle g-mb-10">
+                                    <span>Recibir alertas dentro del radio de alcance</span>
+                                    <label class="toggle form-check-inline ml-auto">
+                                        <input class="toggleCheckBox" type="checkbox" name="ReceiveAlertsInRadio" @isChecked(Model.ReceiveAlertsInRadio) value="@Model.ReceiveAlertsInRadio">
+                                        <span class="toggle-handle round"></span>
+                                    </label>
+                                </li>
+                                <li class="g-flex-middle g-mb-10">
+                                    <span>Radio de alcance</span>
+                                    <input id="ReceiveDistanceRadio" name="ReceiveDistanceRadio" type="text" class="ml-auto col-1" value="@Model.ReceiveDistanceRadio" />
+                                </li>
+                            </ul>
+                        </div>
+                        <br />
+                        <div class="widget categories-widget">
+                            <label class="g-text-primary"><strong>Alertas que se envian:</strong></label>
+                            <hr />
+                            <ul class="list-unstyled">
+                                <li class="g-flex-middle g-mb-10">
+                                    <span>Radio de alcance</span>
+                                    <input id="SendDistanceRadio" name="SendDistanceRadio" type="text" class="ml-auto col-1" value="@Model.SendDistanceRadio" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="g-mb">
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group g-mt-15">
+                        <input type="submit" class="btn btn-outline-primary g-mr-10" value="Guardar Cambios" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function ()
+        {
+            $(".toggleCheckBox").click(function () {
+                if ($(this).is(":checked")) {
+                    $(this).val(true);
+                } else {
+                    $(this).val(false);
+                }
+            });
+        });
+    </script>
+    
+}
+

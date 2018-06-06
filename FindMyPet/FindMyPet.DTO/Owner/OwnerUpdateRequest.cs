@@ -14,5 +14,6 @@ namespace FindMyPet.DTO.Owner
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string ProfileImageUrl { get; set; }
+        public OwnerSettings Settings { get; set; }
     }
 }
