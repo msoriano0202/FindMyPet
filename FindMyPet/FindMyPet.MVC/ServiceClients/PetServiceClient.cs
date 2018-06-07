@@ -16,7 +16,7 @@ namespace FindMyPet.MVC.ServiceClients
         Pet UpdatePet(PetUpdateRequest request);
         int DeletePet(PetDeleteRequest request);
         PagedResponseViewModel<Pet> GetPetsPagedByOwnerId(int ownerId, int pageSize, int pageNumber);
-        //List<Pet> GetPetsByOwnerId(int ownerId);
+        PetImage AddPetImage(string petCode, string imageUrl, bool isImageProfile);
     }
 
     public class PetServiceClient : IPetServiceClient
@@ -79,5 +79,17 @@ namespace FindMyPet.MVC.ServiceClients
             };
         }
 
+        public PetImage AddPetImage(string petCode, string imageUrl, bool isImageProfile)
+        {
+            var request = new PetImageAddRequest()
+            {
+                PetCode = Guid.Parse(petCode),
+                ImageUrl = imageUrl,
+                IsImageProfile = isImageProfile
+            };
+
+            var response = _findMyPetClient.JsonClient().Post(request);
+            return response;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FindMyPet.DTO.Owner;
+using FindMyPet.DTO.Pet;
 using FindMyPet.MVC.DataLoaders;
 using FindMyPet.MVC.Helpers;
 using FindMyPet.MVC.Mappers;
@@ -8,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Configuration;
 using System.Web.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -16,6 +19,11 @@ namespace FindMyPet.MVC.Controllers
         private IOwnerDataLoader _ownerDataLoader;
         private IImageHelper _imageHelper;
         protected IOwnerMapper _ownerMapper;
+
+        private List<string> validImageExtensions = new List<string> { "jpg", "png" };
+        protected int defaultImageWidthSize = 750;
+        protected int defaultImageHeightSize = 750;
+        protected string defaultImageExtension = "jpg";
 
         public BaseController() : this(new OwnerDataLoader(), new ImageHelper(), new OwnerMapper())
         { }
@@ -146,6 +154,16 @@ namespace FindMyPet.MVC.Controllers
 
         #endregion
 
+        #region -- PetProfileNavBar --
+        public void SetPetProfileNavBarInfo(Pet pet, string navItemSelected)
+        {
+            ViewBag.PetCode = pet.Code;
+            ViewBag.PetFullName = pet.Name;
+            ViewBag.PetProfilePictureUrl = GetPetImageProfile(pet);
+            ViewBag.PetSelectedItem = navItemSelected;
+        }
+        #endregion
+
         #region --- Private Helpers ---
 
         private string GetOwnerImageProfile(string profileImage)
@@ -156,10 +174,29 @@ namespace FindMyPet.MVC.Controllers
                 return FormatSiteImageUrl(profileImage);
             }
         }
+
+        private string GetPetImageProfile(Pet pet)
+        {
+            var imageUrl = GetDefaultPetImageProfile();
+
+            if (pet.Images.Count > 0)
+            {
+                var profileImage = pet.Images.SingleOrDefault(x => x.IsProfileImage);
+                if (profileImage != null)
+                    imageUrl = FormatSiteImageUrl(profileImage.ImageUrl);
+            }
+
+            return imageUrl;
+        }
         
         private string GetDefaultImageProfile()
         {
             return ConfigurationManager.AppSettings["DefaultImageProfile"].ToString();
+        }
+
+        private string GetDefaultPetImageProfile()
+        {
+            return ConfigurationManager.AppSettings["DefaultImagePetProfile"].ToString();
         }
 
         private string FormatSiteImageUrl(string imageUrl)
@@ -176,6 +213,23 @@ namespace FindMyPet.MVC.Controllers
         #endregion
 
         #region --- Image helper ---
+
+        public bool ValidImageExtension(string fileName)
+        {
+            var result = false;
+
+            var extension = GetFileExtension(fileName);
+            if (validImageExtensions.Contains(extension))
+                result = true;
+
+            return result;
+        }
+
+        public string GetFileExtension(string fileName)
+        {
+            var imgArr = fileName.Split('.');
+            return imgArr[imgArr.Length - 1].ToLower();
+        }
 
         public void PerformImageResizeAndPutOnCanvas(string pFilePath, string pFileName, int pWidth, int pHeight, string pOutputFileName)
         {

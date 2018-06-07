@@ -5,6 +5,7 @@ using System;
 using System.Threading.Tasks;
 using System.Data;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using FindMyPet.DTO.Shared;
 using FindMyPet.DTO.Pet;
@@ -107,12 +108,14 @@ namespace FindMyPet.MyServiceStack.DataAccess
 
         public async Task<int> UpdatePetAsync(PetTableModel petTable)
         {
-            return await _petBaseDataAccess.UpdateAsync(petTable);
+            return await _petBaseDataAccess.UpdateAsync(petTable)
+                                           .ConfigureAwait(false);
         }
 
         public async Task<int> DeletePetAsync(int id)
         {
-            return await _petBaseDataAccess.DeleteByIdAsync(id);
+            return await _petBaseDataAccess.DeleteByIdAsync(id)
+                                           .ConfigureAwait(false);
         }
 
         public async Task<int> DeletePetAsync(Guid code)
@@ -140,7 +143,8 @@ namespace FindMyPet.MyServiceStack.DataAccess
 
         public async Task<PetTableModel> GetPetByIdAsync(int petId)
         {
-            return await _petBaseDataAccess.GetByIdAsync(petId);
+            return await _petBaseDataAccess.GetByIdAsync(petId)
+                                           .ConfigureAwait(false);
         }
 
         public async Task<PetTableModel> GetPetByCodeAsync(Guid petCode)
@@ -151,6 +155,8 @@ namespace FindMyPet.MyServiceStack.DataAccess
             {
                 pet = await dbConnection.SingleAsync<PetTableModel>(p => p.Code == petCode)
                                         .ConfigureAwait(false);
+
+                await dbConnection.LoadReferencesAsync(pet);
             }
 
             return pet;
@@ -226,7 +232,8 @@ namespace FindMyPet.MyServiceStack.DataAccess
 
         public async Task<List<PetTableModel>> SearchPetsAsync(Expression<Func<PetTableModel, bool>> predicate)
         {
-            return await _petBaseDataAccess.GetListFilteredAsync(predicate);
+            return await _petBaseDataAccess.GetListFilteredAsync(predicate)
+                                           .ConfigureAwait(false);
         }
     }
 }

@@ -9,40 +9,42 @@ namespace FindMyPet.MVC.Mappers
 {
     public interface IPetMapper
     {
-        PetViewModel PetToViewModel(Pet pet);
-        PetCreateRequest ViewModelToCreateRequest(PetViewModel model);
-        PetUpdateRequest ViewModelToUpdateRequest(PetViewModel model);
+        PetProfileViewModel PetToProfileViewModel(Pet pet);
+        PetCreateRequest ProfileViewModelToCreateRequest(PetProfileViewModel model);
+        PetUpdateRequest ProfileViewModelToUpdateRequest(PetProfileViewModel model);
     }
 
     public class PetMapper : IPetMapper
     {
-        public PetViewModel PetToViewModel(Pet pet)
+        public PetProfileViewModel PetToProfileViewModel(Pet pet)
         {
-            return new PetViewModel
+            return new PetProfileViewModel
             {
                 Code = pet.Code.ToString(),
                 Name = pet.Name,
                 DateOfBirth = pet.DateOfBirth.Date,
-                CreatedOn = pet.CreatedOn
+                Description = pet.Description
             };
         }
 
-        public PetCreateRequest ViewModelToCreateRequest(PetViewModel model)
+        public PetCreateRequest ProfileViewModelToCreateRequest(PetProfileViewModel model)
         {
             return new PetCreateRequest
             {
                 Name = model.Name,
-                DateOfBirth = model.DateOfBirth
+                DateOfBirth = model.DateOfBirth,
+                Description = model.Description
             };
         }
 
-        public PetUpdateRequest ViewModelToUpdateRequest(PetViewModel model)
+        public PetUpdateRequest ProfileViewModelToUpdateRequest(PetProfileViewModel model)
         {
             return new PetUpdateRequest
             {
                 Code = Guid.Parse(model.Code),
                 Name = model.Name,
-                DateOfBirth = model.DateOfBirth
+                DateOfBirth = model.DateOfBirth,
+                Description = model.Description
             };
         }
     }

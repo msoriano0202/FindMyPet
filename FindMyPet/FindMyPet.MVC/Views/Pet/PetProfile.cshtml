@@ -1,0 +1,61 @@
+﻿@model FindMyPet.MVC.Models.Pet.PetProfileViewModel
+@{
+    ViewBag.Title = "Perfil Mascota";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="profile-section g-py g-bg-white">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_PetProfileRightNavMenu")
+            <div class="col-md-9">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="input1-1" class="g-text-primary"><strong>Nombre</strong></label>
+                                    <div class="input-group input-group-focus">
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @id = "input1-1", @class = "form-control", @placeholder = "Nombre" } })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="input1-2" class="g-text-primary"><strong>Fecha Nacimiento</strong></label>
+                                    <div class="input-group input-group-focus">
+                                        @Html.TextBoxFor(Model => Model.DateOfBirth, "{0:yyyy-MM-dd}", new { @id = "input1-2", @class = "form-control", @type = "date" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="input1-3" class="g-text-primary"><strong>Descripción</strong></label>
+                                    <div class="input-group input-group-focus">
+                                        <textarea class="form-control" name="Description" rows="5" id="input1-3" placeholder="Descripción ...">@Model.Description</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="g-mb">
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group g-mt-15">
+                        <input type="submit" class="btn btn-outline-primary g-mr-10" value="Actualizar Información" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace FindMyPet.MVC.Models.Pet
 {
-    public class PetViewModel
+    public class PetProfileViewModel
     {
         public string Code { get; set; }
 
@@ -18,6 +15,9 @@ namespace FindMyPet.MVC.Models.Pet
         [DataType("Date")]
         [Display(Name = "Fecha Nacimiento")]
         public DateTime DateOfBirth { get; set; }
+
+        [Display(Name = "Descripción")]
+        public string Description { get; set; }
 
         public DateTimeOffset CreatedOn { get; set; }
     }

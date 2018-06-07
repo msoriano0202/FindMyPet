@@ -1,8 +1,10 @@
 ﻿using FindMyPet.MVC.DataLoaders;
+using FindMyPet.MVC.Mappers;
 using FindMyPet.MVC.Models.Pet;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Configuration;
+using System.IO;
 using System.Web.Mvc;
 
 namespace FindMyPet.MVC.Controllers
@@ -11,13 +13,18 @@ namespace FindMyPet.MVC.Controllers
     public class PetController : BaseController
     {
         private readonly IPetDataLoader _petDataLoader;
+        private readonly IPetMapper _petMapper;
 
-        public PetController(IPetDataLoader petDataLoader)
+        public PetController(IPetDataLoader petDataLoader, IPetMapper petMapper)
         {
             if (petDataLoader == null)
                 throw new ArgumentNullException(nameof(petDataLoader));
 
+            if (petMapper == null)
+                throw new ArgumentNullException(nameof(petMapper));
+
             _petDataLoader = petDataLoader;
+            _petMapper = petMapper;
         }
 
         // GET: Pet
@@ -49,18 +56,24 @@ namespace FindMyPet.MVC.Controllers
         // GET: Pet/Create
         public ActionResult Create()
         {
-            return View();
+            var now = System.DateTime.Now;
+            var model = new PetProfileViewModel()
+            {
+                DateOfBirth = now.Date
+            };
+
+            return View(model);
         }
 
         // POST: Pet/Create
         [HttpPost]
-        public ActionResult Create(PetViewModel model)
+        public ActionResult Create(PetProfileViewModel model)
         {
             try
             {
-                _petDataLoader.AddPet(User.Identity.GetUserId(), model);
+                var pet = _petDataLoader.AddPet(User.Identity.GetUserId(), model);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("PetProfile", new { id = pet.Code});
             }
             catch
             {
@@ -68,35 +81,67 @@ namespace FindMyPet.MVC.Controllers
             }
         }
 
-        //public ActionResult Profile(string id)
-        //{
-
-        //    return View(model);
-        //}
-
-        // GET: Pet/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult PetProfile(string id)
         {
-            var model = _petDataLoader.GetPetByCode(id);
+            this.VerifySessionVariables();
+
+            var pet = _petDataLoader.GetPetByCode(id);
+            var model = _petMapper.PetToProfileViewModel(pet);
+            SetPetProfileNavBarInfo(pet, "PetProfile");
 
             return View(model);
         }
 
-        // POST: Pet/Edit/5
         [HttpPost]
-        public ActionResult Edit(string id, PetViewModel model)
+        [ValidateAntiForgeryToken]
+        public ActionResult PetProfile(string id, PetProfileViewModel model)
         {
             try
             {
                 model.Code = id;
                 _petDataLoader.UpdatePet(model);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("PetProfile", new { id = id});
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return View();
             }
+        }
+
+        [HttpPost]
+        public ActionResult UploadPetProfileImage(string id)
+        {
+            if (Request.Files.Count > 0)
+            {
+                var message = string.Empty;
+
+                var file = Request.Files[0];
+                if (file.ContentLength == 0 || string.IsNullOrEmpty(file.FileName))
+                    message = "NoFile";
+                else if (!ValidImageExtension(file.FileName))
+                    message = "FileNoValid";
+                else
+                {
+                    var uploadsFolder = Server.MapPath(ConfigurationManager.AppSettings["UploadsFolder"].ToString());
+                    var tempFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), GetFileExtension(file.FileName));
+                    var newFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), this.defaultImageExtension);
+
+                    var tempImageFilePath = Path.Combine(uploadsFolder, tempFileName);
+                    var newImageFilePath = Path.Combine(uploadsFolder, newFileName);
+
+                    file.SaveAs(tempImageFilePath);
+                    this.PerformImageResizeAndPutOnCanvas(uploadsFolder, tempFileName, this.defaultImageWidthSize, this.defaultImageHeightSize, newFileName);
+                    _petDataLoader.AddPetImage(id, newImageFilePath, true);
+
+                    System.IO.File.Delete(tempImageFilePath);
+                }
+            }
+
+            //Micky: Show messahe when there is no profile image selected or bad extension
+            //else { }
+
+            return RedirectToAction("PetProfile", new { id = id });
         }
 
         // GET: Pet/Delete/5

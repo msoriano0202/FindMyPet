@@ -19,10 +19,6 @@ namespace FindMyPet.MVC.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private List<string> validImageExtensions = new List<string> { "jpg", "png" };
-        private int defaultImageWidthSize = 750;
-        private int defaultImageHeightSize = 750;
-        private string defaultImageExtension = "jpg";
 
         public ManageController()
         {
@@ -58,7 +54,7 @@ namespace FindMyPet.MVC.Controllers
             }
         }
 
-        // GET: Profile
+        // GET: Index
         public ActionResult Index()
         {
             this.VerifySessionVariables();
@@ -97,7 +93,7 @@ namespace FindMyPet.MVC.Controllers
                 var file = Request.Files[0];
                 if (file.ContentLength == 0 || string.IsNullOrEmpty(file.FileName))
                     message = "NoFile";
-                else if (!ValidImageExtension(file.FileName))
+                else if (!this.ValidImageExtension(file.FileName))
                     message = "FileNoValid";
                 else
                 {
@@ -106,13 +102,13 @@ namespace FindMyPet.MVC.Controllers
 
                     var uploadsFolder = Server.MapPath(ConfigurationManager.AppSettings["UploadsFolder"].ToString());
                     var tempFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), GetFileExtension(file.FileName));
-                    var newFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), defaultImageExtension);
+                    var newFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), this.defaultImageExtension);
 
                     var tempImageFilePath = Path.Combine(uploadsFolder, tempFileName);
                     var newImageFilePath = Path.Combine(uploadsFolder, newFileName);
 
                     file.SaveAs(tempImageFilePath);
-                    this.PerformImageResizeAndPutOnCanvas(uploadsFolder, tempFileName, defaultImageWidthSize, defaultImageHeightSize, newFileName);
+                    this.PerformImageResizeAndPutOnCanvas(uploadsFolder, tempFileName, this.defaultImageWidthSize, this.defaultImageHeightSize, newFileName);
                     this.UpdateOwnerImageProfile(newImageFilePath);
 
                     System.IO.File.Delete(tempImageFilePath);
@@ -126,23 +122,6 @@ namespace FindMyPet.MVC.Controllers
             //else { }
 
             return RedirectToAction("Index");
-        }
-
-        private bool ValidImageExtension(string fileName)
-        {
-            var result = false;
-
-            var extension = GetFileExtension(fileName);
-            if (validImageExtensions.Contains(extension))
-                result = true;
-
-            return result;
-        }
-
-        private string GetFileExtension(string fileName)
-        {
-            var imgArr = fileName.Split('.');
-            return imgArr[imgArr.Length - 1].ToLower();
         }
 
         public ActionResult Settings()

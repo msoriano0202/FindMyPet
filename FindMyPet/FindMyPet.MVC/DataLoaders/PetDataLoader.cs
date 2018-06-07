@@ -12,11 +12,12 @@ namespace FindMyPet.MVC.DataLoaders
 {
     public interface IPetDataLoader
     {
-        PetViewModel GetPetByCode(string code);
-        Pet AddPet(string membershipId, PetViewModel model);
-        Pet UpdatePet(PetViewModel model);
+        Pet GetPetByCode(string code);
+        Pet AddPet(string membershipId, PetProfileViewModel model);
+        Pet UpdatePet(PetProfileViewModel model);
         int DeletePet(string code);
-        PagedResponseViewModel<PetViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber);
+        PagedResponseViewModel<PetProfileViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber);
+        PetImage AddPetImage(string petCode, string imageUrl, bool isImageProfile);
     }
 
     public class PetDataLoader : IPetDataLoader
@@ -36,25 +37,24 @@ namespace FindMyPet.MVC.DataLoaders
             _petMapper = petMapper;
         }
 
-        public PetViewModel GetPetByCode(string code)
+        public Pet GetPetByCode(string code)
         {
             var request = new PetRequest { Code = Guid.Parse(code) };
-            var pet = _petServiceClient.GetPet(request);
-            return _petMapper.PetToViewModel(pet);
+            return _petServiceClient.GetPet(request);
         }
 
-        public Pet AddPet(string membershipId, PetViewModel model)
+        public Pet AddPet(string membershipId, PetProfileViewModel model)
         {
-            var request = _petMapper.ViewModelToCreateRequest(model);
+            var request = _petMapper.ProfileViewModelToCreateRequest(model);
             request.OwnerMembershipId = membershipId;
 
             var response = _petServiceClient.AddPet(request);
             return response;
         }
 
-        public Pet UpdatePet(PetViewModel model)
+        public Pet UpdatePet(PetProfileViewModel model)
         {
-            var request = _petMapper.ViewModelToUpdateRequest(model);
+            var request = _petMapper.ProfileViewModelToUpdateRequest(model);
             var response = _petServiceClient.UpdatePet(request);
             return response;
         }
@@ -65,16 +65,21 @@ namespace FindMyPet.MVC.DataLoaders
             return _petServiceClient.DeletePet(request);
         }
 
-        public PagedResponseViewModel<PetViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber)
+        public PagedResponseViewModel<PetProfileViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber)
         {
             var petsPaged = _petServiceClient.GetPetsPagedByOwnerId(ownerId, pageSize, pageNumber);
 
-            return new PagedResponseViewModel<PetViewModel>
+            return new PagedResponseViewModel<PetProfileViewModel>
             {
-                Result = petsPaged.Result.ConvertAll(x => _petMapper.PetToViewModel(x)),
+                Result = petsPaged.Result.ConvertAll(x => _petMapper.PetToProfileViewModel(x)),
                 TotalPages = petsPaged.TotalPages,
                 TotalRecords = petsPaged.TotalRecords
             };
+        }
+
+        public PetImage AddPetImage(string petCode, string imageUrl, bool isImageProfile)
+        {
+            return _petServiceClient.AddPetImage(petCode, imageUrl, isImageProfile);
         }
     }
 }

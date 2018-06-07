@@ -1,4 +1,5 @@
 ﻿using FindMyPet.DTO.Pet;
+using FindMyPet.Shared;
 using FindMyPet.TableModel;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace FindMyPet.MyServiceStack.Mappers
     {
         PetTableModel MapCreateRequestToTable(PetCreateRequest request);
         Pet MapPetTableToPet(PetTableModel petTable);
+        PetImage MapPetImageTableToPetImage(PetImageTableModel petImageTable);
         PetTableModel MapUpdateRequestToTable(PetUpdateRequest request, PetTableModel petTable);
     }
 
@@ -21,7 +23,9 @@ namespace FindMyPet.MyServiceStack.Mappers
             return new PetTableModel
             {
                 Name = request.Name,
-                DateOfBirth = request.DateOfBirth
+                DateOfBirth = request.DateOfBirth,
+                Status = (int)PetStatusEnum.Active,
+                Description = request.Description
             };
         }
 
@@ -32,8 +36,23 @@ namespace FindMyPet.MyServiceStack.Mappers
                 Id = petTable.Id,
                 Code = petTable.Code,
                 Name = petTable.Name,
-                DateOfBirth= petTable.DateOfBirth,
-                CreatedOn = petTable.CreatedOn
+                Status = petTable.Status.ToString(),
+                Description = petTable.Description,
+                DateOfBirth = petTable.DateOfBirth,
+                CreatedOn = petTable.CreatedOn,
+                Images = (petTable.Images != null && petTable.Images.Any()) ?
+                                    petTable.Images.ConvertAll(x => MapPetImageTableToPetImage(x)).ToList() :
+                                    new List<PetImage>()
+            };
+        }
+
+        public PetImage MapPetImageTableToPetImage(PetImageTableModel petImageTable)
+        {
+            return new PetImage
+            {
+                Id = petImageTable.Id,
+                ImageUrl = petImageTable.ImageUrl,
+                IsProfileImage = petImageTable.IsProfileImage
             };
         }
 
@@ -44,6 +63,9 @@ namespace FindMyPet.MyServiceStack.Mappers
 
             if (request.DateOfBirth != null && !request.DateOfBirth.Equals(petTable.DateOfBirth))
                 petTable.DateOfBirth = request.DateOfBirth;
+
+            if (request.Description != null && !request.Description.Equals(petTable.Description))
+                petTable.Description = request.Description;
 
             return petTable;
         }

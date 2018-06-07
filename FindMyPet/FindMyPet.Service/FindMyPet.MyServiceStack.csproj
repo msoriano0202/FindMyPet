@@ -107,14 +107,18 @@
     <Compile Include="DataAccess\BaseDataAccess.cs" />
     <Compile Include="DataAccess\OwnerDataAccess.cs" />
     <Compile Include="DataAccess\PetDataAccess.cs" />
+    <Compile Include="DataAccess\PetImageDataAccess.cs" />
     <Compile Include="FindMyPetHost.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mappers\OwnerMapper.cs" />
+    <Compile Include="Mappers\PetImageMapper.cs" />
     <Compile Include="Mappers\PetMapper.cs" />
     <Compile Include="Providers\OwnerProvider.cs" />
+    <Compile Include="Providers\PetImageProvider.cs" />
     <Compile Include="Providers\PetProvider.cs" />
+    <Compile Include="Services\PetImageService.cs" />
     <Compile Include="Services\PetService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\OwnerService.cs" />
@@ -123,6 +127,10 @@
     <ProjectReference Include="..\FindMyPet.DTO\FindMyPet.DTO.csproj">
       <Project>{4c263c91-6114-4407-b90e-0c90bf3ea505}</Project>
       <Name>FindMyPet.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindMyPet.Shared\FindMyPet.Shared.csproj">
+      <Project>{6311e754-4faa-4a86-8aef-d4b84277e175}</Project>
+      <Name>FindMyPet.Shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\FindMyPet.TableModel\FindMyPet.TableModel.csproj">
       <Project>{10304af5-323c-424d-9eb7-9000d5e66271}</Project>

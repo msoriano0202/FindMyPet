@@ -69,8 +69,13 @@ namespace FindMyPet.MyServiceStack
             container.RegisterAutoWiredAs<PetMapper, IPetMapper>();
             container.RegisterAutoWiredAs<PetDataAccess, IPetDataAccess>();
 
+            container.RegisterAutoWiredAs<PetImageProvider, IPetImageProvider>();
+            container.RegisterAutoWiredAs<PetImageMapper, IPetImageMapper>();
+            container.RegisterAutoWiredAs<PetImageDataAccess, IPetImageDataAccess>();
+
             container.RegisterAutoWiredAs<BaseDataAccess<OwnerTableModel>, IBaseDataAccess<OwnerTableModel>>();
             container.RegisterAutoWiredAs<BaseDataAccess<PetTableModel>, IBaseDataAccess<PetTableModel>>();
+            container.RegisterAutoWiredAs<BaseDataAccess<PetImageTableModel>, IBaseDataAccess<PetImageTableModel>>();
         }
     }
 }
