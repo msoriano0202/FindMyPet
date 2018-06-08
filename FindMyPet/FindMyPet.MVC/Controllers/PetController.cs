@@ -14,8 +14,9 @@ namespace FindMyPet.MVC.Controllers
     {
         private readonly IPetDataLoader _petDataLoader;
         private readonly IPetMapper _petMapper;
+        private readonly IPetImageMapper _petImageMapper;
 
-        public PetController(IPetDataLoader petDataLoader, IPetMapper petMapper)
+        public PetController(IPetDataLoader petDataLoader, IPetMapper petMapper, IPetImageMapper petImageMapper)
         {
             if (petDataLoader == null)
                 throw new ArgumentNullException(nameof(petDataLoader));
@@ -23,8 +24,12 @@ namespace FindMyPet.MVC.Controllers
             if (petMapper == null)
                 throw new ArgumentNullException(nameof(petMapper));
 
+            if (petImageMapper == null)
+                throw new ArgumentNullException(nameof(petImageMapper));
+
             _petDataLoader = petDataLoader;
             _petMapper = petMapper;
+            _petImageMapper = petImageMapper;
         }
 
         // GET: Pet
@@ -109,8 +114,19 @@ namespace FindMyPet.MVC.Controllers
             }
         }
 
+        public ActionResult PetAlbum(string id)
+        {
+            this.VerifySessionVariables();
+
+            var pet = _petDataLoader.GetPetByCode(id);
+            var model = pet.Images.ConvertAll(x => _petImageMapper.PetImageToPetImageViewModel(x));
+            SetPetProfileNavBarInfo(pet, "PetAlbum");
+
+            return View(model);
+        }
+
         [HttpPost]
-        public ActionResult UploadPetProfileImage(string id)
+        public ActionResult UploadPetProfileImage(string id, string an)
         {
             if (Request.Files.Count > 0)
             {
@@ -141,7 +157,42 @@ namespace FindMyPet.MVC.Controllers
             //Micky: Show messahe when there is no profile image selected or bad extension
             //else { }
 
-            return RedirectToAction("PetProfile", new { id = id });
+            return RedirectToAction(an, new { id = id });
+        }
+
+        [HttpPost]
+        public ActionResult UploadPetImage(string id)
+        {
+            if (Request.Files.Count > 0)
+            {
+                var message = string.Empty;
+
+                var file = Request.Files[0];
+                if (file.ContentLength == 0 || string.IsNullOrEmpty(file.FileName))
+                    message = "NoFile";
+                else if (!ValidImageExtension(file.FileName))
+                    message = "FileNoValid";
+                else
+                {
+                    var uploadsFolder = Server.MapPath(ConfigurationManager.AppSettings["UploadsFolder"].ToString());
+                    var tempFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), GetFileExtension(file.FileName));
+                    var newFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), this.defaultImageExtension);
+
+                    var tempImageFilePath = Path.Combine(uploadsFolder, tempFileName);
+                    var newImageFilePath = Path.Combine(uploadsFolder, newFileName);
+
+                    file.SaveAs(tempImageFilePath);
+                    this.PerformImageResizeAndPutOnCanvas(uploadsFolder, tempFileName, this.defaultImageWidthSize, this.defaultImageHeightSize, newFileName);
+                    _petDataLoader.AddPetImage(id, newImageFilePath, false);
+
+                    System.IO.File.Delete(tempImageFilePath);
+                }
+            }
+
+            //Micky: Show messahe when there is no profile image selected or bad extension
+            //else { }
+
+            return RedirectToAction("PetAlbum", new { id = id });
         }
 
         // GET: Pet/Delete/5

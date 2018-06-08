@@ -1,0 +1,72 @@
+﻿@model IEnumerable<FindMyPet.MVC.Models.Pet.PetImageViewModel>
+
+@{
+    ViewBag.Title = "PetAlbum";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="profile-section g-py g-bg-white">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_PetProfileRightNavMenu")
+            <div class="col-md-9">
+                <div class="form-group form-inline">
+                    <h4 class="g-text-primary">Album de Fotos</h4>
+                    <a href="#" data-toggle="modal" data-target="#petImgUploadModal" class="btn cn-btn-primary g-ml-10">
+                        <i class="fa icon-cloud-upload fa-fw"></i> Agregar Imagen
+                    </a>
+                </div>
+                <hr />
+                <div class="widget feeds-widget">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-3 g-p-3">
+                                <a href="#">
+                                    <img src="@Url.Content(item.ImageUrl)" alt="Image Description" class="img-fluid g-rounded-5">
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    <a href="#" data-toggle="modal" data-target="#petImgUploadModal" class="btn cn-btn-primary g-mt-15 col-3">
+                        <i class="fa icon-cloud-upload fa-fw"></i> Agregar Imagen
+                    </a>
+                </div>*@
+            </div>
+
+            <div class="modal fade" id="petImgUploadModal" tabindex="-1" role="dialog" aria-labelledby="petImgUploadLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title text-center" id="petImgUploadLabel">Agregar Imagen</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="/Pet/UploadPetImage?id=@ViewBag.PetCode" method="post" enctype="multipart/form-data" role="form">
+                            <div class="modal-body">
+                                <input type="file" name="pet-img-upload" id="pet-img-upload" class="cn-custom-file-input cn-custom-file-input-v2" />
+                                <label class="user-upload-label text-center g-py-40" for="pet-img-upload">
+                                    <span class="d-block">
+                                        <i class="icon-cloud-upload g-font-size-25"></i>
+                                    </span>
+                                    <span class="g-font-size-16">Escoger imagen&hellip;</span>
+                                </label>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-sm cn-btn-primary" value="Guardar Imagen" />
+                                <button type="button" class="btn btn-sm cn-btn-secondary" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

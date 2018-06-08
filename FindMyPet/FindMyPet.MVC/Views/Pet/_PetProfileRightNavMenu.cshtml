@@ -31,9 +31,8 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="/Pet/UploadPetProfileImage?id=@ViewBag.PetCode" method="post" enctype="multipart/form-data" role="form">
-                        @*@using (Html.BeginForm("UploadPetProfileImage", "Pet", FormMethod.Post, new { id = ViewBag.PetCode,  enctype = "multipart/form-data" }))
-                        {*@
+                        @using (Html.BeginForm("UploadPetProfileImage", "Pet", new { id = @ViewBag.PetCode, an = @ViewBag.PetSelectedItem }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
                             <div class="modal-body">
                                 <input type="file" name="user-img-upload" id="user-img-upload" class="cn-custom-file-input cn-custom-file-input-v2" />
                                 <label class="user-upload-label text-center g-py-40" for="user-img-upload">
@@ -47,8 +46,7 @@
                                 <input type="submit" class="btn btn-sm cn-btn-primary" value="Guardar Imagen" />
                                 <button type="button" class="btn btn-sm cn-btn-secondary" data-dismiss="modal">Cerrar</button>
                             </div>
-                        @*}*@
-                        </form>
+                        }
                     </div>
                 </div>
             </div>
@@ -58,7 +56,7 @@
                 <a href="/Pet/PetProfile/@ViewBag.PetCode" class="list-group-item list-group-item-action @IsActiveMenuItem("PetProfile")">
                     <i class="icon-user g-mr-5"></i>Perfil
                 </a>
-                <a href="#" class="list-group-item list-group-item-action @IsActiveMenuItem("PhotoAlbum")">
+                <a href="/Pet/PetAlbum/@ViewBag.PetCode" class="list-group-item list-group-item-action @IsActiveMenuItem("PetAlbum")">
                     <i class="icon-picture g-mr-5"></i>Album
                 </a>
                 <a href="#" class="list-group-item list-group-item-action @IsActiveMenuItem("Settings")">

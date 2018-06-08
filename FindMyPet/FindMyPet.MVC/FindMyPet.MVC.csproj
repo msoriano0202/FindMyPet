@@ -248,10 +248,12 @@
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="IdentityExtentions\CustomizePasswordValidation.cs" />
     <Compile Include="Mappers\OwnerMapper.cs" />
+    <Compile Include="Mappers\PetImageMapper.cs" />
     <Compile Include="Mappers\PetMapper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Pet\PetImageViewModel.cs" />
     <Compile Include="Models\Pet\PetPagedListViewModel.cs" />
     <Compile Include="Models\Pet\PetProfileViewModel.cs" />
     <Compile Include="Models\Account\ProfileViewModel.cs" />
@@ -460,6 +462,7 @@
     <Content Include="Views\Manage\Settings.cshtml" />
     <Content Include="Views\Pet\PetProfile.cshtml" />
     <Content Include="Views\Pet\_PetProfileRightNavMenu.cshtml" />
+    <Content Include="Views\Pet\PetAlbum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

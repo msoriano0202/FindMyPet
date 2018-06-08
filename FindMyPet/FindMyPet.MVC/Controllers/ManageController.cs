@@ -84,7 +84,7 @@ namespace FindMyPet.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadProfileImage()
+        public ActionResult UploadProfileImage(string an)
         {
             if (Request.Files.Count > 0)
             {
@@ -121,7 +121,7 @@ namespace FindMyPet.MVC.Controllers
             //Micky: Show messahe when there is no profile image selected or bad extension
             //else { }
 
-            return RedirectToAction("Index");
+            return RedirectToAction(an);
         }
 
         public ActionResult Settings()

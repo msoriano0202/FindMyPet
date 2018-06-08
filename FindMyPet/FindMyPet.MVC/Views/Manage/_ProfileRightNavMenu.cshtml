@@ -31,7 +31,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        @using (Html.BeginForm("UploadProfileImage", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("UploadProfileImage", "Manage", new { an = ViewBag.SelectedItem }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             <div class="modal-body">
                                 <input type="file" name="user-img-upload" id="user-img-upload" class="cn-custom-file-input cn-custom-file-input-v2" />

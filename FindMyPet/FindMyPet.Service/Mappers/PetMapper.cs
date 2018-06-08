@@ -48,7 +48,10 @@ namespace FindMyPet.MyServiceStack.Mappers
         private List<PetImage> GetPetImages(List<PetImageTableModel> petImages)
         {
             if (petImages != null && petImages.Any())
+            {
+                petImages = petImages.OrderByDescending(x => x.CreatedOn).ToList();
                 return petImages.ConvertAll(x => MapPetImageTableToPetImage(x)).ToList();
+            }
             else
                 return new List<PetImage>();
         }
