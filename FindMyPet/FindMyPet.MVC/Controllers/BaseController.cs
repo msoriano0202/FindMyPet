@@ -19,16 +19,17 @@ namespace FindMyPet.MVC.Controllers
         private IOwnerDataLoader _ownerDataLoader;
         private IImageHelper _imageHelper;
         protected IOwnerMapper _ownerMapper;
+        private IGeneralHelper _generalHelper;
 
         private List<string> validImageExtensions = new List<string> { "jpg", "png" };
         protected int defaultImageWidthSize = 750;
         protected int defaultImageHeightSize = 750;
         protected string defaultImageExtension = "jpg";
 
-        public BaseController() : this(new OwnerDataLoader(), new ImageHelper(), new OwnerMapper())
+        public BaseController() : this(new OwnerDataLoader(), new ImageHelper(), new OwnerMapper(), new GeneralHelper())
         { }
 
-        public BaseController(IOwnerDataLoader ownerDataLoader, IImageHelper imageHelper, IOwnerMapper ownerMapper)
+        public BaseController(IOwnerDataLoader ownerDataLoader, IImageHelper imageHelper, IOwnerMapper ownerMapper, IGeneralHelper generalHelper)
         {
             if (ownerDataLoader == null)
                 throw new ArgumentNullException(nameof(ownerDataLoader));
@@ -39,9 +40,13 @@ namespace FindMyPet.MVC.Controllers
             if (ownerMapper == null)
                 throw new ArgumentNullException(nameof(ownerMapper));
 
+            if (generalHelper == null)
+                throw new ArgumentNullException(nameof(generalHelper));
+
             _ownerDataLoader = ownerDataLoader;
             _imageHelper = imageHelper;
             _ownerMapper = ownerMapper;
+            _generalHelper = generalHelper;
         }
 
         #region --- VerifySessionVariables ---
@@ -201,13 +206,7 @@ namespace FindMyPet.MVC.Controllers
 
         private string FormatSiteImageUrl(string imageUrl)
         {
-            var uploadsFolder = ConfigurationManager.AppSettings["UploadsFolder"].ToString().Replace("/","\\");
-            var index = imageUrl.IndexOf(uploadsFolder);
-
-            if (index >= 0)
-                imageUrl = imageUrl.Substring(index, (imageUrl.Length - index));
-
-            return imageUrl;
+            return _generalHelper.FormatSiteImageUrl(imageUrl);
         }
 
         #endregion

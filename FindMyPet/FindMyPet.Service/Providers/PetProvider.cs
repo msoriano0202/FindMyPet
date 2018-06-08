@@ -57,7 +57,7 @@ namespace FindMyPet.MyServiceStack.Providers
                 table = await _petDataAccess.GetPetByCodeAsync(request.Code.Value)
                                             .ConfigureAwait(false);
 
-            return _petMapper.MapPetTableToPet(table);
+            return _petMapper.MapPetTableToPet(table, true);
         }
 
         public async Task<Pet> CreatePetAsync(PetCreateRequest request)
@@ -81,7 +81,7 @@ namespace FindMyPet.MyServiceStack.Providers
             var newTable = await _petDataAccess.GetPetByIdAsync(newId)
                                                .ConfigureAwait(false);
 
-            return _petMapper.MapPetTableToPet(newTable);
+            return _petMapper.MapPetTableToPet(newTable, false);
         }
 
         public async Task<Pet> UpdatePetAsync(PetUpdateRequest request)
@@ -104,7 +104,7 @@ namespace FindMyPet.MyServiceStack.Providers
             var updatedTable = await _petDataAccess.GetPetByIdAsync(table.Id)
                                                    .ConfigureAwait(false);
 
-            return _petMapper.MapPetTableToPet(updatedTable);
+            return _petMapper.MapPetTableToPet(updatedTable, false);
         }
 
         public async Task<int> DeletePetAsync(PetDeleteRequest request)
@@ -138,7 +138,7 @@ namespace FindMyPet.MyServiceStack.Providers
             {
                 TotalRecords = pagedResult.TotalRecords,
                 TotalPages = pagedResult.TotalPages,
-                Result = pagedResult.Result.ConvertAll(p => _petMapper.MapPetTableToPet(p))
+                Result = pagedResult.Result.ConvertAll(p => _petMapper.MapPetTableToPet(p, false))
             };
         }
 

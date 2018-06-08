@@ -34,6 +34,7 @@ namespace FindMyPet.MVC
             container.RegisterType<IPetDataLoader, PetDataLoader>();
 
             container.RegisterType<IImageHelper, ImageHelper>();
+            container.RegisterType<IGeneralHelper, GeneralHelper>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

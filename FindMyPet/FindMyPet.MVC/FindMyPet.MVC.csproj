@@ -244,6 +244,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CustomHtmlHelper.cs" />
+    <Compile Include="Helpers\GeneralHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="IdentityExtentions\CustomizePasswordValidation.cs" />
     <Compile Include="Mappers\OwnerMapper.cs" />

@@ -1,4 +1,5 @@
 ﻿using FindMyPet.DTO.Pet;
+using FindMyPet.MVC.Helpers;
 using FindMyPet.MVC.Mappers;
 using FindMyPet.MVC.Models.Pet;
 using FindMyPet.MVC.Models.Shared;

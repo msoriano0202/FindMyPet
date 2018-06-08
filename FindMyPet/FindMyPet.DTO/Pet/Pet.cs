@@ -15,6 +15,7 @@ namespace FindMyPet.DTO.Pet
         public string Description { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTimeOffset CreatedOn { get; set; }
+        public string ProfileImageUrl { get; set; }
         public List<PetImage> Images { get; set; }
     }
 }

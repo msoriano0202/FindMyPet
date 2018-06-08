@@ -11,7 +11,7 @@ namespace FindMyPet.MyServiceStack.Mappers
     public interface IPetMapper
     {
         PetTableModel MapCreateRequestToTable(PetCreateRequest request);
-        Pet MapPetTableToPet(PetTableModel petTable);
+        Pet MapPetTableToPet(PetTableModel petTable, bool includeImages);
         PetImage MapPetImageTableToPetImage(PetImageTableModel petImageTable);
         PetTableModel MapUpdateRequestToTable(PetUpdateRequest request, PetTableModel petTable);
     }
@@ -29,7 +29,7 @@ namespace FindMyPet.MyServiceStack.Mappers
             };
         }
 
-        public Pet MapPetTableToPet(PetTableModel petTable)
+        public Pet MapPetTableToPet(PetTableModel petTable, bool includeImages)
         {
             return new Pet
             {
@@ -40,10 +40,31 @@ namespace FindMyPet.MyServiceStack.Mappers
                 Description = petTable.Description,
                 DateOfBirth = petTable.DateOfBirth,
                 CreatedOn = petTable.CreatedOn,
-                Images = (petTable.Images != null && petTable.Images.Any()) ?
-                                    petTable.Images.ConvertAll(x => MapPetImageTableToPetImage(x)).ToList() :
-                                    new List<PetImage>()
+                ProfileImageUrl = GetProfileImage(petTable.Images),
+                Images = (includeImages ? GetPetImages(petTable.Images) : null)
             };
+        }
+
+        private List<PetImage> GetPetImages(List<PetImageTableModel> petImages)
+        {
+            if (petImages != null && petImages.Any())
+                return petImages.ConvertAll(x => MapPetImageTableToPetImage(x)).ToList();
+            else
+                return new List<PetImage>();
+        }
+
+        private string GetProfileImage(List<PetImageTableModel> petImages)
+        {
+            string imageUrl = null;
+
+            if (petImages != null && petImages.Any())
+            {
+                var profileImage = petImages.SingleOrDefault(x => x.IsProfileImage);
+                if (profileImage != null)
+                    imageUrl = profileImage.ImageUrl;
+            }
+
+            return imageUrl;
         }
 
         public PetImage MapPetImageTableToPetImage(PetImageTableModel petImageTable)
@@ -55,6 +76,12 @@ namespace FindMyPet.MyServiceStack.Mappers
                 IsProfileImage = petImageTable.IsProfileImage
             };
         }
+
+        //private List<PetImage> OnlyProfileImage(List<PetImageTableModel> petImagesTable)
+        //{
+        //    var profileImage = petImagesTable.FirstOrDefault(x => x.IsProfileImage);
+        //    return new List<PetImage> { MapPetImageTableToPetImage(profileImage) };
+        //}
 
         public PetTableModel MapUpdateRequestToTable(PetUpdateRequest request, PetTableModel petTable)
         {

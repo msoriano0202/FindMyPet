@@ -222,7 +222,14 @@ namespace FindMyPet.MyServiceStack.DataAccess
                     records = await dbConnection.SelectAsync<PetTableModel>(q)
                                                 .ConfigureAwait(false);
                 }
+
+                if (records.Any())
+                    foreach (var item in records)
+                    {
+                        await dbConnection.LoadReferencesAsync(item);
+                    }
             }
+
             response.TotalRecords = totalRecords;
             response.TotalPages = totalPages;
             response.Result = records;

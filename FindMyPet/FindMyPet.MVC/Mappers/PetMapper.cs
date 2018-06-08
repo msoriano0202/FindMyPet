@@ -1,7 +1,9 @@
 ﻿using FindMyPet.DTO.Pet;
+using FindMyPet.MVC.Helpers;
 using FindMyPet.MVC.Models.Pet;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 
@@ -16,14 +18,29 @@ namespace FindMyPet.MVC.Mappers
 
     public class PetMapper : IPetMapper
     {
+        private readonly IGeneralHelper _generalHelper;
+
+        public PetMapper(IGeneralHelper generalHelper)
+        {
+            if (generalHelper == null)
+                throw new ArgumentNullException(nameof(generalHelper));
+
+            _generalHelper = generalHelper;
+        }
+
         public PetProfileViewModel PetToProfileViewModel(Pet pet)
         {
+            var defaultPetImage = ConfigurationManager.AppSettings["DefaultImagePetProfile"].ToString();
+
             return new PetProfileViewModel
             {
                 Code = pet.Code.ToString(),
                 Name = pet.Name,
                 DateOfBirth = pet.DateOfBirth.Date,
-                Description = pet.Description
+                Description = pet.Description,
+                ProfileImageUrl = !string.IsNullOrEmpty(pet.ProfileImageUrl) 
+                                        ? _generalHelper.FormatSiteImageUrl(pet.ProfileImageUrl) 
+                                        : defaultPetImage
             };
         }
 
