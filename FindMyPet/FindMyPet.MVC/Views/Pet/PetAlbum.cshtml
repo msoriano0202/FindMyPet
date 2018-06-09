@@ -12,28 +12,37 @@
             <div class="col-md-9">
                 <div class="form-group form-inline">
                     <h4 class="g-text-primary">Album de Fotos</h4>
-                    <a href="#" data-toggle="modal" data-target="#petImgUploadModal" class="btn cn-btn-primary g-ml-10">
+                    <a href="#" data-toggle="modal" data-target="#petImgUploadModal" class="btn btn-outline-primary g-ml-25">
                         <i class="fa icon-cloud-upload fa-fw"></i> Agregar Imagen
                     </a>
                 </div>
                 <hr />
                 <div class="widget feeds-widget">
-                    <div class="row">
+                    <div class="row justify-content-center zoom">
                         @foreach (var item in Model)
                         {
-                            <div class="col-3 g-p-3">
-                                <a href="#">
-                                    <img src="@Url.Content(item.ImageUrl)" alt="Image Description" class="img-fluid g-rounded-5">
-                                </a>
+                        <div class="col-3 g-p-3">
+                            <div class="member g-border g-border-gray-300 g-border-primary-h">
+                                <div class="caption">
+                                    <div class="caption-default">
+                                        <img src="@Url.Content(item.ImageUrl)" class="img-fluid" alt="@ViewBag.PetFullName">
+                                    </div>
+                                    <div class="caption-active g-bg-white-opacity-5">
+                                        <div class="h-100 g-flex-center g-px-20">
+                                            <div class="text-center g-text-white">
+                                                <ul class="list-inline mx-auto text-center">
+                                                    <li class="list-inline-item"><a href="#" class="cn-icon cn-icon-sm cn-icon-cyan rounded-circle" title="Definir como Imagen de Perfil"><i class="fa fa-picture-o"></i></a></li>
+                                                    <li class="list-inline-item g-ml-15"><a href="#" class="cn-icon cn-icon-sm cn-icon-cyan rounded-circle" title="Borrar Imagen"><i class="fa fa-trash"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
                         }
                     </div>
                 </div>
-                @*<div class="form-group">
-                    <a href="#" data-toggle="modal" data-target="#petImgUploadModal" class="btn cn-btn-primary g-mt-15 col-3">
-                        <i class="fa icon-cloud-upload fa-fw"></i> Agregar Imagen
-                    </a>
-                </div>*@
             </div>
 
             <div class="modal fade" id="petImgUploadModal" tabindex="-1" role="dialog" aria-labelledby="petImgUploadLabel" aria-hidden="true">
