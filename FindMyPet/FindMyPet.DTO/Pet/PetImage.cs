@@ -9,6 +9,7 @@ namespace FindMyPet.DTO.Pet
     public class PetImage
     {
         public int Id { get; set; }
+        public Guid Code { get; set; }
         public string ImageUrl { get; set; }
         public bool IsProfileImage { get; set; }
     }

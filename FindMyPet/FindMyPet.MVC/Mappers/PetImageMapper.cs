@@ -30,6 +30,7 @@ namespace FindMyPet.MVC.Mappers
             return new PetImageViewModel
             {
                 Id = petImage.Id,
+                Code = petImage.Code.ToString(),
                 ImageUrl = _generalHelper.FormatSiteImageUrl(petImage.ImageUrl),
                 IsProfileImage = petImage.IsProfileImage
             };

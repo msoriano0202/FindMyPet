@@ -8,6 +8,7 @@ namespace FindMyPet.MVC.Models.Pet
     public class PetImageViewModel
     {
         public int Id { get; set; }
+        public string Code { get; set; }
         public string ImageUrl { get; set; }
         public bool IsProfileImage { get; set; }
     }

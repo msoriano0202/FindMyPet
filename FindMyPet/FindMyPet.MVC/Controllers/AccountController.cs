@@ -36,9 +36,9 @@ namespace FindMyPet.MVC.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -75,6 +75,34 @@ namespace FindMyPet.MVC.Controllers
                 return View(model);
             }
 
+            var user = await UserManager.FindByNameAsync(model.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Cuenta no registrada en el sistema.");
+                return View(model);
+            }
+            if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+            {
+                return RedirectToAction("AccountNoConfirmed", new { email = model.Email });
+            }
+            //if (await UserManager.IsLockedOutAsync(user.Id))
+            //{
+            //    return View("Lockout");
+            //}
+            //if (await UserManager.CheckPasswordAsync(user, model.Password))
+            //{
+            //    // Uncomment to enable lockout when password login fails
+            //    //await UserManager.ResetAccessFailedCountAsync(user.Id);
+            //    return await LoginCommon(user, model.RememberMe, returnUrl);
+            //}
+            //else
+            //{
+            //    // Uncomment to enable lockout when password login fails
+            //    //await UserManager.AccessFailedAsync(user.Id);
+            //    ModelState.AddModelError("", "Invalid login attempt.");
+            //    return View(model);
+            //}
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -91,6 +119,26 @@ namespace FindMyPet.MVC.Controllers
                     ModelState.AddModelError("", "Intento de inicio de sesión no válido.");
                     return View(model);
             }
+        }
+
+        [AllowAnonymous]
+        public ActionResult AccountNoConfirmed(string email)
+        {
+            ViewBag.ConfirmationEmail = email;
+            return View();
+        }
+
+        [AllowAnonymous]
+        public async Task<ActionResult> ResendConfirmationEmail(string email)
+        {
+            var user = await UserManager.FindByNameAsync(email);
+
+            if (user == null)
+                return View("Index", "Home");
+
+            await SendConfirmationEmailAsync(user.Id);
+
+            return RedirectToAction("AccountRegistered");
         }
 
         //
@@ -136,6 +184,15 @@ namespace FindMyPet.MVC.Controllers
             }
         }
 
+        private async Task SendConfirmationEmailAsync(string userId)
+        {
+            // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+            // Send an email with this link
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
+            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userId, code = code }, protocol: Request.Url.Scheme);
+            await UserManager.SendEmailAsync(userId, "Alerta Mascota: Confirmar Cuenta", $"Por favor, haga click en este link para confirmar su cuenta: {callbackUrl}");
+        }
+
         //
         // GET: /Account/Register
         [AllowAnonymous]
@@ -157,22 +214,24 @@ namespace FindMyPet.MVC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     this.RegisterOwner(user.Id, model.FirstName, model.LastName, model.Email);
 
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    await SendConfirmationEmailAsync(user.Id);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("AccountRegistered");
                 }
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult AccountRegistered()
+        {
+            return View();
         }
 
         //

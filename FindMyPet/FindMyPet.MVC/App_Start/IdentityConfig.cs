@@ -19,6 +19,9 @@ namespace FindMyPet.MVC
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
+            var emailHelper = new Helpers.EmailHelper();
+            emailHelper.SendEmail(message);
+
             return Task.FromResult(0);
         }
     }

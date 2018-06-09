@@ -244,6 +244,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CustomHtmlHelper.cs" />
+    <Compile Include="Helpers\EmailHelper.cs" />
     <Compile Include="Helpers\GeneralHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="IdentityExtentions\CustomizePasswordValidation.cs" />
@@ -463,6 +464,8 @@
     <Content Include="Views\Pet\PetProfile.cshtml" />
     <Content Include="Views\Pet\_PetProfileRightNavMenu.cshtml" />
     <Content Include="Views\Pet\PetAlbum.cshtml" />
+    <Content Include="Views\Account\AccountRegistered.cshtml" />
+    <Content Include="Views\Account\AccountNoConfirmed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

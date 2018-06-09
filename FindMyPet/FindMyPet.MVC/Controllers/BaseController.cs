@@ -20,16 +20,18 @@ namespace FindMyPet.MVC.Controllers
         private IImageHelper _imageHelper;
         protected IOwnerMapper _ownerMapper;
         private IGeneralHelper _generalHelper;
+        protected IEmailHelper _emailHelper;
 
         private List<string> validImageExtensions = new List<string> { "jpg", "png" };
         protected int defaultImageWidthSize = 750;
         protected int defaultImageHeightSize = 750;
         protected string defaultImageExtension = "jpg";
 
-        public BaseController() : this(new OwnerDataLoader(), new ImageHelper(), new OwnerMapper(), new GeneralHelper())
+        public BaseController() : this(new OwnerDataLoader(), new ImageHelper(), new OwnerMapper(), new GeneralHelper(), new EmailHelper())
         { }
 
-        public BaseController(IOwnerDataLoader ownerDataLoader, IImageHelper imageHelper, IOwnerMapper ownerMapper, IGeneralHelper generalHelper)
+        public BaseController(IOwnerDataLoader ownerDataLoader, IImageHelper imageHelper, IOwnerMapper ownerMapper, 
+                              IGeneralHelper generalHelper, IEmailHelper emailHelper)
         {
             if (ownerDataLoader == null)
                 throw new ArgumentNullException(nameof(ownerDataLoader));
@@ -43,10 +45,14 @@ namespace FindMyPet.MVC.Controllers
             if (generalHelper == null)
                 throw new ArgumentNullException(nameof(generalHelper));
 
+            if (emailHelper == null)
+                throw new ArgumentNullException(nameof(emailHelper));
+
             _ownerDataLoader = ownerDataLoader;
             _imageHelper = imageHelper;
             _ownerMapper = ownerMapper;
             _generalHelper = generalHelper;
+            _emailHelper = emailHelper;
         }
 
         #region --- VerifySessionVariables ---

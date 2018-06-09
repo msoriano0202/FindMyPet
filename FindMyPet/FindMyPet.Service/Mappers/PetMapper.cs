@@ -12,12 +12,21 @@ namespace FindMyPet.MyServiceStack.Mappers
     {
         PetTableModel MapCreateRequestToTable(PetCreateRequest request);
         Pet MapPetTableToPet(PetTableModel petTable, bool includeImages);
-        PetImage MapPetImageTableToPetImage(PetImageTableModel petImageTable);
         PetTableModel MapUpdateRequestToTable(PetUpdateRequest request, PetTableModel petTable);
     }
 
     public class PetMapper : IPetMapper
     {
+        private readonly IPetImageMapper _petImageMapper;
+
+        public PetMapper(IPetImageMapper petImageMapper)
+        {
+            if (petImageMapper == null)
+                throw new ArgumentNullException(nameof(petImageMapper));
+
+            _petImageMapper = petImageMapper;
+        }
+
         public PetTableModel MapCreateRequestToTable(PetCreateRequest request)
         {
             return new PetTableModel
@@ -50,7 +59,7 @@ namespace FindMyPet.MyServiceStack.Mappers
             if (petImages != null && petImages.Any())
             {
                 petImages = petImages.OrderByDescending(x => x.CreatedOn).ToList();
-                return petImages.ConvertAll(x => MapPetImageTableToPetImage(x)).ToList();
+                return petImages.ConvertAll(x => _petImageMapper.MapPetImageTableToPetImage(x)).ToList();
             }
             else
                 return new List<PetImage>();
@@ -69,22 +78,6 @@ namespace FindMyPet.MyServiceStack.Mappers
 
             return imageUrl;
         }
-
-        public PetImage MapPetImageTableToPetImage(PetImageTableModel petImageTable)
-        {
-            return new PetImage
-            {
-                Id = petImageTable.Id,
-                ImageUrl = petImageTable.ImageUrl,
-                IsProfileImage = petImageTable.IsProfileImage
-            };
-        }
-
-        //private List<PetImage> OnlyProfileImage(List<PetImageTableModel> petImagesTable)
-        //{
-        //    var profileImage = petImagesTable.FirstOrDefault(x => x.IsProfileImage);
-        //    return new List<PetImage> { MapPetImageTableToPetImage(profileImage) };
-        //}
 
         public PetTableModel MapUpdateRequestToTable(PetUpdateRequest request, PetTableModel petTable)
         {

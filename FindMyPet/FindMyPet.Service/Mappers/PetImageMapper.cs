@@ -29,6 +29,7 @@ namespace FindMyPet.MyServiceStack.Mappers
             return new PetImage
             {
                 Id = petImageTable.Id,
+                Code = petImageTable.Code,
                 ImageUrl = petImageTable.ImageUrl,
                 IsProfileImage= petImageTable.IsProfileImage
             };

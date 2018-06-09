@@ -37,6 +37,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
         public async Task<int> AddPetImageAsync(int petId, PetImageTableModel petImageTable)
         {
             petImageTable.PetTableModelId = petId;
+            petImageTable.Code = Guid.NewGuid();
             petImageTable.CreatedOn = DateTime.Now;
 
             return await _petImageBaseDataAccess.AddAsync(petImageTable);
@@ -44,6 +45,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
 
         public async Task<int> AddPetImageAsync(Guid petCode, PetImageTableModel petImageTable)
         {
+            petImageTable.Code = Guid.NewGuid();
             petImageTable.CreatedOn = DateTime.Now;
 
             long imagePetId;
@@ -54,11 +56,11 @@ namespace FindMyPet.MyServiceStack.DataAccess
                     var pet = await dbConnection.SingleAsync<PetTableModel>(x => x.Code == petCode)
                                         .ConfigureAwait(false);
 
-                    if(petImageTable.IsProfileImage)
+                    petImageTable.PetTableModelId = pet.Id;
+
+                    if (petImageTable.IsProfileImage)
                         await dbConnection.UpdateOnlyAsync(new PetImageTableModel { IsProfileImage = false }, x => x.IsProfileImage, x => x.PetTableModelId == pet.Id)
                                           .ConfigureAwait(false);
-
-                    petImageTable.PetTableModelId = pet.Id;
 
                     imagePetId = await dbConnection.InsertAsync<PetImageTableModel>(petImageTable, selectIdentity: true)
                                         .ConfigureAwait(false);

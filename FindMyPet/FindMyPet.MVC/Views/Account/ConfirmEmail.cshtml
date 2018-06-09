@@ -1,10 +1,19 @@
 ﻿@{
-    ViewBag.Title = "Confirm Email";
+    ViewBag.Title = "Confirmar Correo";
 }
 
-<h2>@ViewBag.Title.</h2>
-<div>
-    <p>
-        Thank you for confirming your email. Please @Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-    </p>
+<div class="g-flex-center h-100">
+    <div class="container g-bg-gray-100">
+        <div class="text-center g-border g-border-gray-300 g-border-3x g-py-30 g-py-md-100">
+            <h3 class="g-font-size-md-50 g-font-size-30 g-text-primary">¡Bienvenido a Alerta Mascota!</h3>
+            <ul class="list-unstyled g-text-gray-600 g-my-15 g-my-md-40">
+                <li class="g-mb-4 g-mb-md-10">Gracias por confirmar su correo.</li>
+                <li class="g-mb-4 g-mb-md-10">Juntos haremos que recuperar a nuestro engreido sea muy fácil.</li>
+            </ul>
+            <h2 class="font-montserrat font-weight-bold g-mb-30">"Unidos por nuestros Engreidos"</h2>
+            <div class="d-sm-flex justify-content-center">
+                @Html.ActionLink(">> Iniciar Sesión <<", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+            </div>
+        </div>
+    </div>
 </div>

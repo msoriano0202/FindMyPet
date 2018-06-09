@@ -20,9 +20,7 @@ namespace FindMyPet.DataMigrationConsole
                 var connection = ConfigurationManager.ConnectionStrings["FindMyPet"].ConnectionString;
 
                 var isUpdateAll = Convert.ToBoolean(ConfigurationManager.AppSettings["UpdateAll"]);
-
                 var updateTables = ConfigurationManager.AppSettings["UpdateTables"].Split(',').ToList();
-
                 var nameSpace = ConfigurationManager.AppSettings["ModelNamespace"];
 
                 //load the assembly for dynamic to load model
@@ -32,6 +30,8 @@ namespace FindMyPet.DataMigrationConsole
                 var models = asm.GetTypes().Where(p =>
                      p.Namespace == nameSpace
                 ).ToList();
+
+                models = GetTablesInOrder(models);
 
                 List<object> objects = new List<object>();
                 foreach (var model in models)
@@ -72,6 +72,31 @@ namespace FindMyPet.DataMigrationConsole
                 System.Console.Read();
                 //throw ex;
             }
+        }
+
+        public static List<Type> GetTablesInOrder(List<Type> models)
+        {
+            var orderedTables = new List<string>
+            {
+                "OwnerTableModel",
+                "OwnerSettingTableModel",
+                "PetTableModel",
+                "OwnerPetTableModel",
+                "PetImageTableModel",
+                "PetAlertTableModel",
+                "ParameterGroupTableModel",
+                "ParameterValueTableModel"
+            };
+
+            var newOrderedList = new List<Type>();
+
+            foreach (var table in orderedTables)
+            {
+                var found = models.SingleOrDefault(x => x.Name == table);
+                newOrderedList.Add(found);
+            }
+
+            return newOrderedList;
         }
     }
 }
