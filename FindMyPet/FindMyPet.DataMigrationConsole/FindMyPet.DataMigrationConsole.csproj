@@ -71,6 +71,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FindMyPet.Shared\FindMyPet.Shared.csproj">
+      <Project>{6311e754-4faa-4a86-8aef-d4b84277e175}</Project>
+      <Name>FindMyPet.Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FindMyPet.TableModel\FindMyPet.TableModel.csproj">
       <Project>{10304af5-323c-424d-9eb7-9000d5e66271}</Project>
       <Name>FindMyPet.TableModel</Name>

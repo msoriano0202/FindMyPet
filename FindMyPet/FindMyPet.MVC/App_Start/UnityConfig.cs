@@ -3,6 +3,7 @@ using FindMyPet.MVC.DataLoaders;
 using FindMyPet.MVC.Helpers;
 using FindMyPet.MVC.Mappers;
 using FindMyPet.MVC.ServiceClients;
+using FindMyPet.Shared;
 using System.Web.Mvc;
 using Unity;
 using Unity.Injection;
@@ -37,6 +38,7 @@ namespace FindMyPet.MVC
             container.RegisterType<IImageHelper, ImageHelper>();
             container.RegisterType<IGeneralHelper, GeneralHelper>();
             container.RegisterType<IEmailHelper, EmailHelper>();
+            container.RegisterType<IGlobalHelper, GlobalHelper>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

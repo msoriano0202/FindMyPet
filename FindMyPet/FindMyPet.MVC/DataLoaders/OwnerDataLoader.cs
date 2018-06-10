@@ -23,7 +23,7 @@ namespace FindMyPet.MVC.DataLoaders
     {
         private readonly IOwnerServiceClient _ownerServiceClient;
 
-        public OwnerDataLoader() : this(new OwnerServiceClient(new FindMyPetServiceClient()))
+        public OwnerDataLoader() : this(new OwnerServiceClient())
         {
         }
 

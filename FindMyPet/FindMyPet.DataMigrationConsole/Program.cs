@@ -1,4 +1,5 @@
 ﻿using FindMyPet.DataMigrationConsole.CustomProviders;
+using FindMyPet.Shared;
 using ServiceStack.OrmLite;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,6 @@ namespace FindMyPet.DataMigrationConsole
             try
             {
                 //get the connection string and other settings from app.config
-                var connection = ConfigurationManager.ConnectionStrings["FindMyPet"].ConnectionString;
 
                 var isUpdateAll = Convert.ToBoolean(ConfigurationManager.AppSettings["UpdateAll"]);
                 var updateTables = ConfigurationManager.AppSettings["UpdateTables"].Split(',').ToList();
@@ -40,7 +40,7 @@ namespace FindMyPet.DataMigrationConsole
                 }
 
                 //create the db factory with OrmLite
-                var dbFactory = new OrmLiteConnectionFactory(connection, SqlServerDialect.Provider);
+                var dbFactory = new OrmLiteConnectionFactory(ConnectionString, SqlServerDialect.Provider);
 
                 using (var db = dbFactory.OpenDbConnection())
                 {
@@ -97,6 +97,15 @@ namespace FindMyPet.DataMigrationConsole
             }
 
             return newOrderedList;
+        }
+
+        private static string ConnectionString
+        {
+            get
+            {
+                var gh = new GlobalHelper();
+                return gh.GetConnectionStringByEnvironment("FindMyPet");
+            }
         }
     }
 }

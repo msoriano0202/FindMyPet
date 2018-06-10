@@ -1,6 +1,7 @@
 ﻿using FindMyPet.MyServiceStack.DataAccess;
 using FindMyPet.MyServiceStack.Mappers;
 using FindMyPet.MyServiceStack.Providers;
+using FindMyPet.Shared;
 using FindMyPet.TableModel;
 using ServiceStack;
 using ServiceStack.Api.Swagger;
@@ -16,15 +17,12 @@ using System.Web.Hosting;
 
 namespace FindMyPet.MyServiceStack
 {
-    public class FindMyPetHost : AppHostHttpListenerBase //AppHostBase //
+    public class FindMyPetHost : AppHostHttpListenerBase
     {
-        private string ConnectionString
+        private readonly IGlobalHelper _globalHelper;
+
+        public FindMyPetHost() : this(new GlobalHelper())
         {
-            get
-            {
-                return ConfigurationManager.ConnectionStrings["FindMyPet"]
-                                           .ConnectionString;
-            }
         }
 
         /// <summary>
@@ -32,8 +30,14 @@ namespace FindMyPet.MyServiceStack
         /// as well as all assemblies that need to be loaded – in this case we only need to
         /// use the current assembly so I have passed that using typeof()
         /// </summary>
-        public FindMyPetHost() : base("Find My Pet Service", typeof(FindMyPetHost).Assembly)
-        { }
+        public FindMyPetHost(IGlobalHelper globalHelper) 
+            : base("Find My Pet Service", typeof(FindMyPetHost).Assembly)
+        {
+            if (globalHelper == null)
+                throw new ArgumentNullException(nameof(globalHelper));
+
+            _globalHelper = globalHelper;
+        }
 
         /// <summary>
         /// This method is used to configure things like Inversion-of-Control Containers
@@ -76,6 +80,14 @@ namespace FindMyPet.MyServiceStack
             container.RegisterAutoWiredAs<BaseDataAccess<OwnerTableModel>, IBaseDataAccess<OwnerTableModel>>();
             container.RegisterAutoWiredAs<BaseDataAccess<PetTableModel>, IBaseDataAccess<PetTableModel>>();
             container.RegisterAutoWiredAs<BaseDataAccess<PetImageTableModel>, IBaseDataAccess<PetImageTableModel>>();
+        }
+
+        private string ConnectionString
+        {
+            get
+            {
+                return _globalHelper.GetConnectionStringByEnvironment("FindMyPet");
+            }
         }
     }
 }

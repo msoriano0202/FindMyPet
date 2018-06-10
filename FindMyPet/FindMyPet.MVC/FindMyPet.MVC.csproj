@@ -490,6 +490,10 @@
       <Project>{4c263c91-6114-4407-b90e-0c90bf3ea505}</Project>
       <Name>FindMyPet.DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FindMyPet.Shared\FindMyPet.Shared.csproj">
+      <Project>{6311e754-4faa-4a86-8aef-d4b84277e175}</Project>
+      <Name>FindMyPet.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyResources.resx">

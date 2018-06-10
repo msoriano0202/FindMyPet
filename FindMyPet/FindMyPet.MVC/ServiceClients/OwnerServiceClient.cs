@@ -23,6 +23,10 @@ namespace FindMyPet.MVC.ServiceClients
     {
         private readonly IFindMyPetServiceClient _findMyPetClient;
 
+        public OwnerServiceClient(): this(new FindMyPetServiceClient())
+        { 
+        }
+
         public OwnerServiceClient(IFindMyPetServiceClient findMyPetClient)
         {
             if (findMyPetClient == null)

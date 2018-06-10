@@ -1,6 +1,8 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using FindMyPet.Shared;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -21,13 +23,22 @@ namespace FindMyPet.MVC.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("FindMyPetMembership", throwIfV1Schema: false)
+            : base(ConnectionString, throwIfV1Schema: false)
         {
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        private static string ConnectionString
+        {
+            get
+            {
+                var gh = new GlobalHelper();
+                return gh.GetConnectionStringByEnvironment("FindMyPetMembership");
+            }
         }
     }
 }

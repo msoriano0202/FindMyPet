@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace FindMyPet.Shared
 {
+    public enum EnvironmentEnum
+    {
+        Local = 0,
+        Development = 1,
+        Production = 2
+    }
+
     public enum PetStatusEnum
     {
         Active = 1,
