@@ -26,15 +26,11 @@
                             @Html.ActionLink("Nosotros", "Index", "Home", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Acerca De", "About", "Home", null, new { @class = "nav-link" })
-                        </li>
-                        <li class="nav-item">
-                            @Html.ActionLink("Contactanos", "Contact", "Home", null, new { @class = "nav-link" })
+                            @Html.ActionLink("¿ Como Funciona ?", "About", "Home", null, new { @class = "nav-link" })
                         </li>
                         @if (Request.IsAuthenticated)
                         {
                         <li class="nav-item">
-                            @*@Html.ActionLink("Mis Mascotas", "Index", "Pet", null, new { @class = "nav-link" })*@
                             <a id="registerLink" href="/Pet" class="nav-link">
                                 <i class="icon-social-github g-mr-5"></i><span>Mis Mascotas</span>
                             </a>
