@@ -6,6 +6,7 @@ using System;
 using System.Configuration;
 using System.IO;
 using System.Web.Mvc;
+using System.Collections.Generic;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -32,7 +33,6 @@ namespace FindMyPet.MVC.Controllers
             _petImageMapper = petImageMapper;
         }
 
-        // GET: Pet
         public ActionResult Index(int? page)
         {
             this.VerifySessionVariables();
@@ -52,13 +52,6 @@ namespace FindMyPet.MVC.Controllers
             return View(pagedModel);
         }
 
-        // GET: Pet/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Pet/Create
         public ActionResult Create()
         {
             var now = System.DateTime.Now;
@@ -70,8 +63,8 @@ namespace FindMyPet.MVC.Controllers
             return View(model);
         }
 
-        // POST: Pet/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(PetProfileViewModel model)
         {
             try
@@ -195,7 +188,6 @@ namespace FindMyPet.MVC.Controllers
             return RedirectToAction("PetAlbum", new { id = id });
         }
 
-        // GET: Pet/Delete/5
         public ActionResult Delete(string id)
         {
             try
@@ -208,20 +200,29 @@ namespace FindMyPet.MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        // POST: Pet/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult SharePet(string id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            this.VerifySessionVariables();
 
-                return RedirectToAction("Index");
-            }
-            catch
+            var pet = _petDataLoader.GetPetByCode(id);
+            var model = new PetShareViewModel
             {
-                return View();
-            }
+                Code = "01010101010101",
+                Owners = new List<PetSharedOwnerViewModel>
+                {
+                    new PetSharedOwnerViewModel { FullName = "Miguel Soriano", CreatedOn = new DateTime(2015,2,7) },
+                    new PetSharedOwnerViewModel { FullName = "Emanuel Soriano", CreatedOn = new DateTime(2018,7,12) }
+                }
+            };
+            SetPetProfileNavBarInfo(pet, "SharePet");
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult SharePet(string Code, string Email)
+        {
+            return View();
         }
     }
 }

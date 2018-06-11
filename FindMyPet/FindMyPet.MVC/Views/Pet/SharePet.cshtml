@@ -1,0 +1,60 @@
+﻿@model FindMyPet.MVC.Models.Pet.PetShareViewModel
+
+@{
+    ViewBag.Title = "SharePet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="profile-section g-py g-bg-white">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_PetProfileRightNavMenu")
+            <div class="col-md-9">
+                <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.Code)
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <label for="input1-1" class="g-text-primary"><strong>Correo</strong></label>
+                                    <div class="input-group input-group-focus">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @id = "input1-1", @class = "col-md-6 form-control", @placeholder = "Correo" } })
+                                        <input type="submit" class="btn btn-outline-primary g-ml-20" value="Compartir Mascota" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-mb">
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                        </div>
+                    }
+                        <div class="g-mt-20">
+                            <label for="input1-1" class="g-text-primary"><strong>Propietarios de la Mascota</strong></label>
+                            <div class="list-group text-center text-sm-left">
+                                @foreach (var item in Model.Owners)
+                                {
+                                    <a href="#" class="list-group-item d-sm-flex">
+                                        <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                            <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Imagen Propietario">
+                                        </div>
+                                        <div>
+                                            <div class="">
+                                                <h6 class="g-mb-sm-10 font-weight-bold">@item.FullName</h6>
+                                                <span class="g-mb-10 g-mb-sm-0 d-block"><small>@item.CreatedOn.ToString("dd / MMM / yyyy")</small></span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -259,6 +259,7 @@
     <Compile Include="Models\Pet\PetProfileViewModel.cs" />
     <Compile Include="Models\Account\ProfileViewModel.cs" />
     <Compile Include="Models\Account\SettingsViewModel.cs" />
+    <Compile Include="Models\Pet\PetShareViewModel.cs" />
     <Compile Include="Models\Shared\PagedResponseViewModel.cs" />
     <Compile Include="Models\Shared\PaginationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -474,6 +475,7 @@
     <Content Include="Views\Pet\PetAlbum.cshtml" />
     <Content Include="Views\Account\AccountRegistered.cshtml" />
     <Content Include="Views\Account\AccountNoConfirmed.cshtml" />
+    <Content Include="Views\Pet\SharePet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
