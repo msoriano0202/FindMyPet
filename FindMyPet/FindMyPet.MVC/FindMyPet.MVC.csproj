@@ -384,8 +384,16 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\BoxerHeachado.png" />
+    <Content Include="Content\Images\BoxerMano.jpg" />
     <Content Include="Content\Images\DefaultPetImage.png" />
     <Content Include="Content\Images\DefaultProfileOwnerImage.png" />
+    <Content Include="Content\Images\PerroGato001.jpg" />
+    <Content Include="Content\Images\PerroGato002.jpg" />
+    <Content Include="Content\Images\PerroGato003.jpg" />
+    <Content Include="Content\Images\PerroGato004.jpg" />
+    <Content Include="Content\Images\Varios001.jpg" />
+    <Content Include="Content\Images\Varios002.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -470,7 +478,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
