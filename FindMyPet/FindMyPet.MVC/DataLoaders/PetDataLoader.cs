@@ -20,6 +20,7 @@ namespace FindMyPet.MVC.DataLoaders
         int SharePet(string petCode, string ownerMembershipId);
         PagedResponseViewModel<PetProfileViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber);
         PetImage AddPetImage(string petCode, string imageUrl, bool isImageProfile);
+        int DeletePetImage(string code);
     }
 
     public class PetDataLoader : IPetDataLoader
@@ -88,6 +89,12 @@ namespace FindMyPet.MVC.DataLoaders
         public PetImage AddPetImage(string petCode, string imageUrl, bool isImageProfile)
         {
             return _petServiceClient.AddPetImage(petCode, imageUrl, isImageProfile);
+        }
+
+        public int DeletePetImage(string code)
+        {
+            var request = new PetImageDeleteRequest { Code = Guid.Parse(code) };
+            return _petServiceClient.DeletePetImage(request);
         }
     }
 }

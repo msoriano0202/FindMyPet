@@ -18,6 +18,7 @@ namespace FindMyPet.MVC.ServiceClients
         int SharePet(PetShareRequest request);
         PagedResponseViewModel<Pet> GetPetsPagedByOwnerId(int ownerId, int pageSize, int pageNumber);
         PetImage AddPetImage(string petCode, string imageUrl, bool isImageProfile);
+        int DeletePetImage(PetImageDeleteRequest request);
     }
 
     public class PetServiceClient : IPetServiceClient
@@ -98,6 +99,13 @@ namespace FindMyPet.MVC.ServiceClients
             };
 
             var response = _findMyPetClient.JsonClient().Post(request);
+            return response;
+        }
+
+        public int DeletePetImage(PetImageDeleteRequest request)
+        {
+            var response = _findMyPetClient.JsonClient().Delete(request);
+
             return response;
         }
     }

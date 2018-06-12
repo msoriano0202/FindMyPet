@@ -14,6 +14,8 @@ namespace FindMyPet.MyServiceStack.DataAccess
     {
         Task<int> AddPetImageAsync(int petId, PetImageTableModel petImageTable);
         Task<int> AddPetImageAsync(Guid petCode, PetImageTableModel petImageTable);
+        Task<int> DeletePetImageAsync(int petId);
+        Task<int> DeletePetImageAsync(Guid petCode);
         Task<PetImageTableModel> GetPetImageByIdAsync(int petImageId);
     }
 
@@ -40,7 +42,8 @@ namespace FindMyPet.MyServiceStack.DataAccess
             petImageTable.Code = Guid.NewGuid();
             petImageTable.CreatedOn = DateTime.Now;
 
-            return await _petImageBaseDataAccess.AddAsync(petImageTable);
+            return await _petImageBaseDataAccess.AddAsync(petImageTable)
+                                                .ConfigureAwait(false);
         }
 
         public async Task<int> AddPetImageAsync(Guid petCode, PetImageTableModel petImageTable)
@@ -54,7 +57,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                 using (var trans = dbConnection.OpenTransaction(IsolationLevel.ReadCommitted))
                 {
                     var pet = await dbConnection.SingleAsync<PetTableModel>(x => x.Code == petCode)
-                                        .ConfigureAwait(false);
+                                                .ConfigureAwait(false);
 
                     petImageTable.PetTableModelId = pet.Id;
 
@@ -70,6 +73,24 @@ namespace FindMyPet.MyServiceStack.DataAccess
             }
 
             return (int)imagePetId;
+        }
+
+        public async Task<int> DeletePetImageAsync(int petId)
+        {
+            return await _petImageBaseDataAccess.DeleteByIdAsync(petId)
+                                                .ConfigureAwait(false);
+        }
+
+        public async Task<int> DeletePetImageAsync(Guid petCode)
+        {
+            int records;
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                records = await dbConnection.DeleteAsync<PetImageTableModel>(x => x.Code == petCode)
+                                            .ConfigureAwait(false);
+            }
+
+            return records;
         }
 
         public async Task<PetImageTableModel> GetPetImageByIdAsync(int petImageId)

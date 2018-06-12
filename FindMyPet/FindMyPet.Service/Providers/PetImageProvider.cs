@@ -12,6 +12,7 @@ namespace FindMyPet.MyServiceStack.Providers
     public interface IPetImageProvider
     {
         Task<PetImage> AddPetImageAsync(PetImageAddRequest request);
+        Task<int> DeletePetImageAsync(PetImageDeleteRequest request);
     }
 
     public class PetImageProvider : IPetImageProvider
@@ -53,6 +54,25 @@ namespace FindMyPet.MyServiceStack.Providers
                                                     .ConfigureAwait(false);
 
             return _petImageMapper.MapPetImageTableToPetImage(newTable);
+        }
+
+        public async Task<int> DeletePetImageAsync(PetImageDeleteRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (!request.Id.HasValue && !request.Code.HasValue)
+                throw new ArgumentException("PetId and PetCode are NULL");
+
+            var result = 0;
+            if (request.Id.HasValue)
+                result = await _petImageDataAccess.DeletePetImageAsync(request.Id.Value)
+                                                  .ConfigureAwait(false);
+            else if (request.Code.HasValue)
+                result = await _petImageDataAccess.DeletePetImageAsync(request.Code.Value)
+                                                  .ConfigureAwait(false);
+
+            return result;
         }
     }
 }

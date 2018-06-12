@@ -202,6 +202,13 @@ namespace FindMyPet.MVC.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult DeleteImage(string code, string id)
+        {
+            var result = _petDataLoader.DeletePetImage(id);
+          
+            return RedirectToAction("PetAlbum", new { id = code });
+        }
+
         public ActionResult PetShare(string id)
         {
             this.VerifySessionVariables();
