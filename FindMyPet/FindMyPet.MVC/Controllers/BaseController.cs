@@ -202,7 +202,7 @@ namespace FindMyPet.MVC.Controllers
         
         private string GetDefaultImageProfile()
         {
-            return ConfigurationManager.AppSettings["DefaultImageProfile"].ToString();
+            return ConfigurationManager.AppSettings["DefaultImageOwnerProfile"].ToString();
         }
 
         private string GetDefaultPetImageProfile()

@@ -8,6 +8,7 @@ using System.Net;
 using System.Configuration;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace FindMyPet.MVC.Helpers
 {
@@ -22,6 +23,7 @@ namespace FindMyPet.MVC.Helpers
     public interface IEmailHelper
     {
         void SendEmail(IdentityMessage identityMessage);
+        void SendEmailSharePet(string email, string petName, string callbackUrl);
     }
 
     public class EmailHelper : IEmailHelper
@@ -33,6 +35,17 @@ namespace FindMyPet.MVC.Helpers
             message.To = identityMessage.Destination;
             message.Subject = identityMessage.Subject;
             message.Body = identityMessage.Body;
+
+            SendEmail(message);
+        }
+
+        public void SendEmailSharePet(string email, string petName, string body)
+        {
+            var message = new Message();
+            message.From = ConfigurationManager.AppSettings["FromEmail"].ToString();
+            message.To = email;
+            message.Subject = $"Alerta Mascota: Compartir Mascota - {petName}";
+            message.Body = body;
 
             SendEmail(message);
         }

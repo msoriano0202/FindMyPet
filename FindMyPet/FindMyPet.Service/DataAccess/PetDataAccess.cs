@@ -19,8 +19,10 @@ namespace FindMyPet.MyServiceStack.DataAccess
         Task<int> UpdatePetAsync(PetTableModel petTable);
         Task<int> DeletePetAsync(int id);
         Task<int> DeletePetAsync(Guid code);
+        Task<int> SharePetAsync(string petCode, string ownerMemebershipId);
         Task<PetTableModel> GetPetByIdAsync(int petId);
         Task<PetTableModel> GetPetByCodeAsync(Guid petCode);
+        Task<List<PetOwner>> GetOwnersByPetIdAsync(int petId);
         Task<List<PetTableModel>> GetPetsByOwnerIdAsync(int ownerId);
         Task<PagedResponse<PetTableModel>> GetPetsByOwnerPagedAsync(PetsSearchByOwnerRequest request);
         Task<List<PetTableModel>> SearchPetsAsync(Expression<Func<PetTableModel, bool>> predicate);
@@ -141,6 +143,36 @@ namespace FindMyPet.MyServiceStack.DataAccess
             return records;
         }
 
+        public async Task<int> SharePetAsync(string petCode, string ownerMemebershipId)
+        {
+            long records = 0;
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                using (var trans = dbConnection.OpenTransaction(IsolationLevel.ReadCommitted))
+                {
+                    var pet = await dbConnection.SingleAsync<PetTableModel>(x => x.Code == Guid.Parse(petCode))
+                                                .ConfigureAwait(false);
+
+                    var owner = await dbConnection.SingleAsync<OwnerTableModel>(x => x.MembershipId == ownerMemebershipId)
+                                                  .ConfigureAwait(false);
+
+                    var ownerPetTable = new OwnerPetTableModel
+                    {
+                        OwnerTableModelId = owner.Id,
+                        PetTableModelId = pet.Id,
+                        CreatedOn = DateTime.Now
+                    };
+
+                    records = await dbConnection.InsertAsync<OwnerPetTableModel>(ownerPetTable, selectIdentity: true)
+                                                .ConfigureAwait(false);
+
+                    trans.Commit();
+                }
+            }
+
+            return (int)records;
+        }
+
         public async Task<PetTableModel> GetPetByIdAsync(int petId)
         {
             return await _petBaseDataAccess.GetByIdAsync(petId)
@@ -160,6 +192,34 @@ namespace FindMyPet.MyServiceStack.DataAccess
             }
 
             return pet;
+        }
+
+        public async Task<List<PetOwner>> GetOwnersByPetIdAsync(int petId)
+        {
+            var petOwners = new List<PetOwner>();
+
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                var q = dbConnection.From<OwnerTableModel>()
+                                    .Join<OwnerTableModel, OwnerPetTableModel>((o, op) => o.Id == op.OwnerTableModelId && op.PetTableModelId == petId);
+
+                var results = await dbConnection.SelectMultiAsync<OwnerTableModel, OwnerPetTableModel>(q)
+                                                .ConfigureAwait(false);
+
+                if (results.Any())
+                {
+                    foreach (var item in results)
+                    {
+                        petOwners.Add(new PetOwner {
+                            FullName = $"{item.Item1.FirstName} {item.Item1.LastName}",
+                            ProfileImageUrl = item.Item1.ProfileImageUrl,
+                            RegisteredDate = item.Item2.CreatedOn
+                        });
+                    }
+                }
+            }
+
+            return petOwners;
         }
 
         public async Task<List<PetTableModel>> GetPetsByOwnerIdAsync(int ownerId)

@@ -14,7 +14,7 @@
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
-                        @Html.HiddenFor(m => m.Code)
+                        <input type="hidden" name="id" value="@Model.PetCode" />
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="form-group">
@@ -37,7 +37,7 @@
                                 {
                                     <a href="#" class="list-group-item d-sm-flex">
                                         <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
-                                            <img class="g-w50 rounded-circle" src="http://via.placeholder.com/100x100/eee/777" alt="Imagen Propietario">
+                                            <img class="g-w50 rounded-circle" src="@Url.Content(item.ProfileImageUrl)" alt="Imagen Propietario">
                                         </div>
                                         <div>
                                             <div class="">

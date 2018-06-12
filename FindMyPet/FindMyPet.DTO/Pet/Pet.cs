@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FindMyPet.DTO.Owner;
 
 namespace FindMyPet.DTO.Pet
 {
@@ -17,5 +18,6 @@ namespace FindMyPet.DTO.Pet
         public DateTimeOffset CreatedOn { get; set; }
         public string ProfileImageUrl { get; set; }
         public List<PetImage> Images { get; set; }
+        public List<PetOwner> Owners { get; set; } 
     }
 }

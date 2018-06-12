@@ -8,7 +8,7 @@ namespace FindMyPet.MVC.Models.Pet
 {
     public class PetShareViewModel
     {
-        public string Code { get; set; }
+        public string PetCode { get; set; }
 
         [Required(ErrorMessage = "Correo es requerido.")]
         [Display(Name = "Correo")]
@@ -21,7 +21,7 @@ namespace FindMyPet.MVC.Models.Pet
     public class PetSharedOwnerViewModel
     {
         public string FullName { get; set; }
-        public string ProfileImage { get; set; }
+        public string ProfileImageUrl { get; set; }
         public DateTime CreatedOn { get; set; }
     }
 }

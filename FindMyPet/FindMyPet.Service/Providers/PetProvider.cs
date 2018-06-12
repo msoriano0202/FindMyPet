@@ -19,6 +19,7 @@ namespace FindMyPet.MyServiceStack.Providers
         Task<Pet> CreatePetAsync(PetCreateRequest request);
         Task<Pet> UpdatePetAsync(PetUpdateRequest request);
         Task<int> DeletePetAsync(PetDeleteRequest request);
+        Task<int> SharePetAsync(PetShareRequest request);
         Task<PagedResponse<Pet>> PetsByOwnerPagedAsync(PetsSearchByOwnerRequest request);
         //Task<List<Pet>> PetsByOwnerAsync(PetsByOwnerRequest request);
         //Task<List<Pet>> SearchPetsAsync(SearchPetRequest request);
@@ -57,7 +58,13 @@ namespace FindMyPet.MyServiceStack.Providers
                 table = await _petDataAccess.GetPetByCodeAsync(request.Code.Value)
                                             .ConfigureAwait(false);
 
-            return _petMapper.MapPetTableToPet(table, true);
+            var owners = await _petDataAccess.GetOwnersByPetIdAsync(table.Id)
+                                                  .ConfigureAwait(false);
+
+            var pet = _petMapper.MapPetTableToPet(table, true);
+            pet.Owners = owners;
+
+            return pet;
         }
 
         public async Task<Pet> CreatePetAsync(PetCreateRequest request)
@@ -121,6 +128,20 @@ namespace FindMyPet.MyServiceStack.Providers
                                               .ConfigureAwait(false);
             else if (request.Code.HasValue)
                 records = await _petDataAccess.DeletePetAsync(request.Code.Value)
+                                              .ConfigureAwait(false);
+
+            return records;
+        }
+
+        public async Task<int> SharePetAsync(PetShareRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (string.IsNullOrEmpty(request.PetCode) &&  string.IsNullOrEmpty(request.OwnerMembershipId))
+                throw new ArgumentException("PetCode and UserCode are NULL");
+
+            var records = await _petDataAccess.SharePetAsync(request.PetCode, request.OwnerMembershipId)
                                               .ConfigureAwait(false);
 
             return records;

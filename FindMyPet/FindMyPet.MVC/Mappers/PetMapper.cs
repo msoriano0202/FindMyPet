@@ -1,4 +1,5 @@
-﻿using FindMyPet.DTO.Pet;
+﻿using FindMyPet.DTO.Owner;
+using FindMyPet.DTO.Pet;
 using FindMyPet.MVC.Helpers;
 using FindMyPet.MVC.Models.Pet;
 using System;
@@ -12,6 +13,7 @@ namespace FindMyPet.MVC.Mappers
     public interface IPetMapper
     {
         PetProfileViewModel PetToProfileViewModel(Pet pet);
+        PetShareViewModel PetToPetShareViewModel(Pet pet);
         PetCreateRequest ProfileViewModelToCreateRequest(PetProfileViewModel model);
         PetUpdateRequest ProfileViewModelToUpdateRequest(PetProfileViewModel model);
     }
@@ -44,6 +46,22 @@ namespace FindMyPet.MVC.Mappers
             };
         }
 
+        public PetShareViewModel PetToPetShareViewModel(Pet pet)
+        {
+            var defaultOwnerImage = ConfigurationManager.AppSettings["DefaultImageOwnerProfile"].ToString();
+
+            return new PetShareViewModel
+            {
+                PetCode = pet.Code.ToString(),
+                Owners = pet.Owners.ConvertAll(x => new PetSharedOwnerViewModel {
+                    FullName = x.FullName,
+                    ProfileImageUrl = !string.IsNullOrEmpty(x.ProfileImageUrl)
+                                        ? _generalHelper.FormatSiteImageUrl(x.ProfileImageUrl)
+                                        : defaultOwnerImage
+                }).OrderBy(x => x.FullName).ToList()
+            };
+        }
+        
         public PetCreateRequest ProfileViewModelToCreateRequest(PetProfileViewModel model)
         {
             return new PetCreateRequest

@@ -49,14 +49,14 @@ namespace FindMyPet.MyServiceStack.Services
                                      .ConfigureAwait(false);
         }
 
-        public async Task<int> Delete(PetDeleteRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+        //public async Task<int> Delete(PetDeleteRequest request)
+        //{
+        //    if (request == null)
+        //        throw new ArgumentNullException(nameof(request));
 
-            return await _petProvider.DeletePetAsync(request)
-                                     .ConfigureAwait(false);
-        }
+        //    return await _petProvider.DeletePetAsync(request)
+        //                             .ConfigureAwait(false);
+        //}
 
         public async Task<PagedResponse<Pet>> Post(PetsSearchByOwnerRequest request)
         {
@@ -64,6 +64,12 @@ namespace FindMyPet.MyServiceStack.Services
                 throw new ArgumentNullException(nameof(request));
 
             return await _petProvider.PetsByOwnerPagedAsync(request)
+                                     .ConfigureAwait(false);
+        }
+
+        public async Task<int> Post(PetShareRequest request)
+        {
+            return await _petProvider.SharePetAsync(request)
                                      .ConfigureAwait(false);
         }
 

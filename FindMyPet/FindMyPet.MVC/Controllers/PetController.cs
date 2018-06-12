@@ -7,6 +7,8 @@ using System.Configuration;
 using System.IO;
 using System.Web.Mvc;
 using System.Collections.Generic;
+using System.Web;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -200,29 +202,41 @@ namespace FindMyPet.MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult SharePet(string id)
+        public ActionResult PetShare(string id)
         {
             this.VerifySessionVariables();
 
             var pet = _petDataLoader.GetPetByCode(id);
-            var model = new PetShareViewModel
-            {
-                Code = "01010101010101",
-                Owners = new List<PetSharedOwnerViewModel>
-                {
-                    new PetSharedOwnerViewModel { FullName = "Miguel Soriano", CreatedOn = new DateTime(2015,2,7) },
-                    new PetSharedOwnerViewModel { FullName = "Emanuel Soriano", CreatedOn = new DateTime(2018,7,12) }
-                }
-            };
-            SetPetProfileNavBarInfo(pet, "SharePet");
+            var model = _petMapper.PetToPetShareViewModel(pet);
+            SetPetProfileNavBarInfo(pet, "PetShare");
 
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult SharePet(string Code, string Email)
+        public ActionResult PetShare(string id, string Email)
         {
-            return View();
+            var pet = _petDataLoader.GetPetByCode(id);
+
+            var callbackUrl = Url.Action("ConfirmPetShare", "Pet", new { code = id }, protocol: Request.Url.Scheme);
+            var body = $"Por favor, haga click en este link para compartir ser propietario de la mascota: {callbackUrl}";
+            _emailHelper.SendEmailSharePet(Email, pet.Name, body);
+
+            return RedirectToAction("PetShare", new { id = id });
+        }
+
+        public ActionResult ConfirmPetShare(string code)
+        {
+            var userId = User.Identity.GetUserId();
+
+            try
+            {
+                var result = _petDataLoader.SharePet(code, userId);
+            }
+            catch (Exception ex)
+            { }
+
+            return RedirectToAction("Index");
         }
     }
 }

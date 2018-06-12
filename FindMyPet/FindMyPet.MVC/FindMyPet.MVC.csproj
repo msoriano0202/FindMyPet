@@ -475,7 +475,7 @@
     <Content Include="Views\Pet\PetAlbum.cshtml" />
     <Content Include="Views\Account\AccountRegistered.cshtml" />
     <Content Include="Views\Account\AccountNoConfirmed.cshtml" />
-    <Content Include="Views\Pet\SharePet.cshtml" />
+    <Content Include="Views\Pet\PetShare.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

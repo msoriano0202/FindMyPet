@@ -17,6 +17,7 @@ namespace FindMyPet.MVC.DataLoaders
         Pet AddPet(string membershipId, PetProfileViewModel model);
         Pet UpdatePet(PetProfileViewModel model);
         int DeletePet(string code);
+        int SharePet(string petCode, string ownerMembershipId);
         PagedResponseViewModel<PetProfileViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber);
         PetImage AddPetImage(string petCode, string imageUrl, bool isImageProfile);
     }
@@ -64,6 +65,12 @@ namespace FindMyPet.MVC.DataLoaders
         {
             var request = new PetDeleteRequest { Code = Guid.Parse(code) };
             return _petServiceClient.DeletePet(request);
+        }
+
+        public int SharePet(string petCode, string ownerMembershipId)
+        {
+            var request = new PetShareRequest { PetCode = petCode, OwnerMembershipId = ownerMembershipId };
+            return _petServiceClient.SharePet(request);
         }
 
         public PagedResponseViewModel<PetProfileViewModel> GetPetsPagedByOwner(int ownerId, int pageSize, int pageNumber)
