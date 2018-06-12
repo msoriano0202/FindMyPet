@@ -69,6 +69,7 @@
     <Compile Include="Pet\PetImage.cs" />
     <Compile Include="Pet\PetImageAddRequest.cs" />
     <Compile Include="Pet\PetImageDeleteRequest.cs" />
+    <Compile Include="Pet\PetImageSetAsDefaultRequest.cs" />
     <Compile Include="Pet\PetOwner.cs" />
     <Compile Include="Pet\PetRequest.cs" />
     <Compile Include="Pet\PetShareRequest.cs" />

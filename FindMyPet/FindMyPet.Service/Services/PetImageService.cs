@@ -31,6 +31,15 @@ namespace FindMyPet.MyServiceStack.Services
                                           .ConfigureAwait(false);
         }
 
+        public async Task<int> Put(PetImageSetAsDefaultRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _petImageProvider.SetPetImageAsDefaultAsync(request)
+                                          .ConfigureAwait(false);
+        }
+
         public async Task<int> Delete(PetImageDeleteRequest request)
         {
             if (request == null)

@@ -22,6 +22,6 @@ namespace FindMyPet.MVC.Models.Pet
     {
         public string FullName { get; set; }
         public string ProfileImageUrl { get; set; }
-        public DateTime CreatedOn { get; set; }
+        public DateTime RegisteredDate { get; set; }
     }
 }

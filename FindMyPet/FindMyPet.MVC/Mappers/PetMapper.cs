@@ -57,7 +57,8 @@ namespace FindMyPet.MVC.Mappers
                     FullName = x.FullName,
                     ProfileImageUrl = !string.IsNullOrEmpty(x.ProfileImageUrl)
                                         ? _generalHelper.FormatSiteImageUrl(x.ProfileImageUrl)
-                                        : defaultOwnerImage
+                                        : defaultOwnerImage,
+                    RegisteredDate = x.RegisteredDate.Date
                 }).OrderBy(x => x.FullName).ToList()
             };
         }

@@ -209,6 +209,13 @@ namespace FindMyPet.MVC.Controllers
             return RedirectToAction("PetAlbum", new { id = code });
         }
 
+        public ActionResult SetImageProfile(string code, string id)
+        {
+            var result = _petDataLoader.SetPetImageAsDefault(id);
+
+            return RedirectToAction("PetAlbum", new { id = code });
+        }
+
         public ActionResult PetShare(string id)
         {
             this.VerifySessionVariables();

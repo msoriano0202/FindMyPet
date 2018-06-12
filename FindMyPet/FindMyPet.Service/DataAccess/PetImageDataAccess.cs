@@ -14,8 +14,10 @@ namespace FindMyPet.MyServiceStack.DataAccess
     {
         Task<int> AddPetImageAsync(int petId, PetImageTableModel petImageTable);
         Task<int> AddPetImageAsync(Guid petCode, PetImageTableModel petImageTable);
-        Task<int> DeletePetImageAsync(int petId);
-        Task<int> DeletePetImageAsync(Guid petCode);
+        Task<int> SetPetImageAsDefaultAsync(int petImageId);
+        Task<int> SetPetImageAsDefaultAsync(Guid petImageCode);
+        Task<int> DeletePetImageAsync(int petImageId);
+        Task<int> DeletePetImageAsync(Guid petImageCode);
         Task<PetImageTableModel> GetPetImageByIdAsync(int petImageId);
     }
 
@@ -75,18 +77,64 @@ namespace FindMyPet.MyServiceStack.DataAccess
             return (int)imagePetId;
         }
 
-        public async Task<int> DeletePetImageAsync(int petId)
+        public async Task<int> SetPetImageAsDefaultAsync(int petImageId)
         {
-            return await _petImageBaseDataAccess.DeleteByIdAsync(petId)
+            int result;
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                using (var trans = dbConnection.OpenTransaction(IsolationLevel.ReadCommitted))
+                {
+                    var petImage = await dbConnection.SingleAsync<PetImageTableModel>(x => x.Id == petImageId)
+                                                     .ConfigureAwait(false);
+
+                    await dbConnection.UpdateOnlyAsync(new PetImageTableModel { IsProfileImage = false }, x => x.IsProfileImage, x => x.PetTableModelId == petImage.PetTableModelId)
+                                      .ConfigureAwait(false);
+
+                    result = await dbConnection.UpdateOnlyAsync(new PetImageTableModel { IsProfileImage = true }, x => x.IsProfileImage, x => x.Id == petImageId)
+                                               .ConfigureAwait(false);
+
+                    trans.Commit();
+                }
+            }
+
+            return result;
+        }
+
+        public async Task<int> SetPetImageAsDefaultAsync(Guid petImageCode)
+        {
+            int result;
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                using (var trans = dbConnection.OpenTransaction(IsolationLevel.ReadCommitted))
+                {
+                    var petImage = await dbConnection.SingleAsync<PetImageTableModel>(x => x.Code == petImageCode)
+                                                     .ConfigureAwait(false);
+
+                    await dbConnection.UpdateOnlyAsync(new PetImageTableModel { IsProfileImage = false }, x => x.IsProfileImage, x => x.PetTableModelId == petImage.PetTableModelId)
+                                      .ConfigureAwait(false);
+
+                    result = await dbConnection.UpdateOnlyAsync(new PetImageTableModel { IsProfileImage = true }, x => x.IsProfileImage, x => x.Id == petImage.Id)
+                                               .ConfigureAwait(false);
+
+                    trans.Commit();
+                }
+            }
+
+            return result;
+        }
+
+        public async Task<int> DeletePetImageAsync(int petImageId)
+        {
+            return await _petImageBaseDataAccess.DeleteByIdAsync(petImageId)
                                                 .ConfigureAwait(false);
         }
 
-        public async Task<int> DeletePetImageAsync(Guid petCode)
+        public async Task<int> DeletePetImageAsync(Guid petImageCode)
         {
             int records;
             using (var dbConnection = _dbConnectionFactory.Open())
             {
-                records = await dbConnection.DeleteAsync<PetImageTableModel>(x => x.Code == petCode)
+                records = await dbConnection.DeleteAsync<PetImageTableModel>(x => x.Code == petImageCode)
                                             .ConfigureAwait(false);
             }
 
