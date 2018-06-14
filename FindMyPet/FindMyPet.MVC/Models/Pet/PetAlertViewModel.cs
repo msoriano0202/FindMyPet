@@ -13,5 +13,6 @@ namespace FindMyPet.MVC.Models.Pet
         public float Longitude { get; set; }
         public string Commets { get; set; }
         public int Type { get; set; }
+        public bool MakeItPublic { get; set; }
     }
 }

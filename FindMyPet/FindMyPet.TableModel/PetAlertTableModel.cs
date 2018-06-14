@@ -50,6 +50,7 @@ namespace FindMyPet.TableModel
         public DateTimeOffset CreatedOn { get; set; }
 
         public DateTimeOffset? SolvedOn { get; set; }
+        public bool MakeItPublic { get; set; }
 
         public bool Approved { get; set; }
     }

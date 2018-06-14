@@ -20,7 +20,7 @@ namespace FindMyPet.MVC.DataLoaders
         Owner UpdateSettingsOwner(SettingsViewModel model);
         Owner UpdateOwnerImageProfile(int ownerId, string imagePath);
         PetAlert AddPetAlert(PetAlertViewModel model);
-        PetAlert FoundPet(int ownerId, string petCode, string comment);
+        PetAlert FoundPet(PetAlertViewModel model);
     }
 
     public class OwnerDataLoader : IOwnerDataLoader
@@ -74,9 +74,9 @@ namespace FindMyPet.MVC.DataLoaders
             return _ownerServiceClient.AddPetAlert(model);
         }
 
-        public PetAlert FoundPet(int ownerId, string petCode, string comment)
+        public PetAlert FoundPet(PetAlertViewModel model)
         {
-            return _ownerServiceClient.FoundPet(ownerId, petCode, comment);
+            return _ownerServiceClient.FoundPet(model);
         }
     }
 }

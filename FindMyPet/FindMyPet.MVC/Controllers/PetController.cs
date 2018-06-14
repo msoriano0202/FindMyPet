@@ -300,7 +300,8 @@ namespace FindMyPet.MVC.Controllers
 
             try
             {
-                var petAlert = _ownerDataLoader.FoundPet(ownerId, id, model.Commets);
+                model.MakeItPublic = true;
+                var petAlert = _ownerDataLoader.FoundPet(model);
             }
             catch (Exception ex)
             { }

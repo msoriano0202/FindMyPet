@@ -14,7 +14,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
     public interface IPetAlertDataAccess
     {
         Task<int> AddPetAlertAsync(PetAlertTableModel petAlertTable);
-        Task<int> FoundPet(int petId, string foundComment);
+        Task<int> FoundPet(int petId, string foundComment, bool makeItPublic);
         Task<PetAlertTableModel> GetPetAlertByIdAsync(int petAlertId);
         Task<PetAlertTableModel> GetPetAlertByCodeAsync(Guid petAlertCode);
         Task<List<PetAlert>> GetPetAlertsByPetIdAsync(int petId);
@@ -43,7 +43,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                                 .ConfigureAwait(false);
         }
 
-        public async Task<int> FoundPet(int petId, string foundComment)
+        public async Task<int> FoundPet(int petId, string foundComment, bool makeItPublic)
         {
             var petAlertId = 0;
 
@@ -54,8 +54,9 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                                                                        a.AlertStatus == (int)AlertStatusEnum.Active)
                                                  .ConfigureAwait(false);
 
-                petAlert.AlertStatus = (int)AlertStatusEnum.Deleted;
                 petAlert.CommentFound = foundComment;
+                petAlert.AlertStatus = (int)AlertStatusEnum.Deleted;
+                petAlert.MakeItPublic = makeItPublic;
                 petAlert.SolvedOn = System.DateTime.Now;
                 await dbConnection.UpdateAsync(petAlert).ConfigureAwait(false);
 

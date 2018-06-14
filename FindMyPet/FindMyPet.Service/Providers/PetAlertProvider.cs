@@ -92,7 +92,7 @@ namespace FindMyPet.MyServiceStack.Providers
                 pet = await _petDataAccess.GetPetByCodeAsync(request.PetCode.Value)
                                           .ConfigureAwait(false);
 
-            var petAlertId = await _petAlertDataAccess.FoundPet(pet.Id, request.Comment)
+            var petAlertId = await _petAlertDataAccess.FoundPet(pet.Id, request.Comment, request.MakeItPublic)
                                                       .ConfigureAwait(false);
 
             var petAlert = await _petAlertDataAccess.GetPetAlertByIdAsync(petAlertId)

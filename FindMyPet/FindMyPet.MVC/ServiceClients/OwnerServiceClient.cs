@@ -20,7 +20,7 @@ namespace FindMyPet.MVC.ServiceClients
         Owner UpdateOwner(SettingsViewModel model);
         Owner UpdateOwnerImageProfile(int ownerId, string imagePath);
         PetAlert AddPetAlert(PetAlertViewModel model);
-        PetAlert FoundPet(int ownerId, string petCode, string comment);
+        PetAlert FoundPet(PetAlertViewModel model);
     }
 
     public class OwnerServiceClient : IOwnerServiceClient
@@ -138,13 +138,14 @@ namespace FindMyPet.MVC.ServiceClients
             return response;
         }
 
-        public PetAlert FoundPet(int ownerId, string petCode, string comment)
+        public PetAlert FoundPet(PetAlertViewModel model)
         {
             var request = new PetAlertFoundRequest
             {
-                OwnerId = ownerId,
-                PetCode = Guid.Parse(petCode),
-                Comment = comment
+                OwnerId = model.OwnerId,
+                PetCode = Guid.Parse(model.PetCode),
+                Comment = model.Commets,
+                MakeItPublic = model.MakeItPublic
             };
 
             var response = _findMyPetClient.JsonClient().Put(request);

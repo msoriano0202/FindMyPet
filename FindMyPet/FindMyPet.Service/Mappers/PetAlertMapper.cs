@@ -31,6 +31,7 @@ namespace FindMyPet.MyServiceStack.Mappers
                 PositionImageUrl = request.PositionImageUrl,
                 AlertStatus = (int)AlertStatusEnum.Active,
                 CreatedOn = System.DateTime.Now,
+                MakeItPublic = false,
                 Approved = false
             };
         }
