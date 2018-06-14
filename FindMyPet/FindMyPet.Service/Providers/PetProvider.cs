@@ -29,8 +29,9 @@ namespace FindMyPet.MyServiceStack.Providers
     {
         private readonly IPetDataAccess _petDataAccess;
         private readonly IPetMapper _petMapper;
+        private readonly IPetAlertDataAccess _petAlertDataAccess;
 
-        public PetProvider(IPetDataAccess petDataAccess, IPetMapper petMapper)
+        public PetProvider(IPetDataAccess petDataAccess, IPetMapper petMapper, IPetAlertDataAccess petAlertDataAccess)
         {
             if (petDataAccess == null)
                 throw new ArgumentNullException(nameof(petDataAccess));
@@ -38,8 +39,12 @@ namespace FindMyPet.MyServiceStack.Providers
             if (petMapper == null)
                 throw new ArgumentNullException(nameof(petMapper));
 
+            if (petAlertDataAccess == null)
+                throw new ArgumentNullException(nameof(petAlertDataAccess));
+
             _petDataAccess = petDataAccess;
             _petMapper = petMapper;
+            _petAlertDataAccess = petAlertDataAccess;
         }
 
         public async Task<Pet> GetPetAsync(PetRequest request)
@@ -59,10 +64,14 @@ namespace FindMyPet.MyServiceStack.Providers
                                             .ConfigureAwait(false);
 
             var owners = await _petDataAccess.GetOwnersByPetIdAsync(table.Id)
+                                             .ConfigureAwait(false);
+
+            var alerts = await _petAlertDataAccess.GetPetAlertsByPetIdAsync(table.Id)
                                                   .ConfigureAwait(false);
 
             var pet = _petMapper.MapPetTableToPet(table, true);
             pet.Owners = owners;
+            pet.Alerts = alerts;
 
             return pet;
         }

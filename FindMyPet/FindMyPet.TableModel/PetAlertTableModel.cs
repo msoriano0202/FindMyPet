@@ -47,6 +47,6 @@ namespace FindMyPet.TableModel
         [Required]
         public DateTimeOffset CreatedOn { get; set; }
 
-        public DateTimeOffset SolvedOn { get; set; }
+        public DateTimeOffset? SolvedOn { get; set; }
     }
 }

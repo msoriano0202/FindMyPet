@@ -390,10 +390,12 @@
     <Content Include="Content\Images\BoxerMano.jpg" />
     <Content Include="Content\Images\DefaultPetImage.png" />
     <Content Include="Content\Images\DefaultProfileOwnerImage.png" />
+    <Content Include="Content\Images\HappyFace.png" />
     <Content Include="Content\Images\PerroGato001.jpg" />
     <Content Include="Content\Images\PerroGato002.jpg" />
     <Content Include="Content\Images\PerroGato003.jpg" />
     <Content Include="Content\Images\PerroGato004.jpg" />
+    <Content Include="Content\Images\PerroGato005.png" />
     <Content Include="Content\Images\Varios001.jpg" />
     <Content Include="Content\Images\Varios002.jpg" />
     <Content Include="favicon.ico" />
@@ -478,6 +480,7 @@
     <Content Include="Views\Account\AccountNoConfirmed.cshtml" />
     <Content Include="Views\Pet\PetShare.cshtml" />
     <Content Include="Views\Pet\PetAlert.cshtml" />
+    <Content Include="Views\Pet\PetFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

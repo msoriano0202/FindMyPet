@@ -27,5 +27,14 @@ namespace FindMyPet.MyServiceStack.Services
             return await _petAlertProvider.CreatePetAlertAsync(request)
                                           .ConfigureAwait(false);
         }
+
+        public async Task<PetAlert> Put(PetAlertFoundRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _petAlertProvider.FoundPetAsync(request)
+                                          .ConfigureAwait(false);
+        }
     }
 }

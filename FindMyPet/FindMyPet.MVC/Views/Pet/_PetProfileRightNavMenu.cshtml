@@ -63,7 +63,13 @@
                     <i class="icon-share g-mr-5"></i>Compartir Mascota
                 </a>
                 <a href="/Pet/PetAlert/@ViewBag.PetCode" class="list-group-item list-group-item-action @IsActiveMenuItem("PetAlert")">
-                    <i class="icon-bell g-mr-5"></i>Enviar Alerta
+                    @if (!ViewBag.PetHasActiveAlerts)
+                    {
+                        <i class="icon-bell g-mr-5"></i><span>Enviar Alerta</span>
+                    }
+                    else{
+                        <i class="icon-heart g-mr-5"></i><span>Encontrado</span>
+                    }
                 </a>
                 @*<a href="#" class="list-group-item list-group-item-action @IsActiveMenuItem("Historial")">
                     <i class="icon-list g-mr-5"></i>Historial de Alertas

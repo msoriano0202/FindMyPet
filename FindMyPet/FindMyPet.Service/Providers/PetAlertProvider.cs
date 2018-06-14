@@ -13,6 +13,7 @@ namespace FindMyPet.MyServiceStack.Providers
     public interface IPetAlertProvider
     {
         Task<PetAlert> CreatePetAlertAsync(PetAlertCreateRequest request);
+        Task<PetAlert> FoundPetAsync(PetAlertFoundRequest request);
     }
 
     public class PetAlertProvider : IPetAlertProvider
@@ -73,6 +74,31 @@ namespace FindMyPet.MyServiceStack.Providers
                                                     .ConfigureAwait(false);
 
             return _petAlertMapper.MapPetAlertTableToPetAlert(newTable);
+        }
+
+        public async Task<PetAlert> FoundPetAsync(PetAlertFoundRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (!request.PetId.HasValue && !request.PetCode.HasValue)
+                throw new ArgumentException("Id and Code are NULL");
+
+            PetTableModel pet = null;
+            if (request.PetId.HasValue)
+                pet = await _petDataAccess.GetPetByIdAsync(request.PetId.Value)
+                                          .ConfigureAwait(false);
+            else if (request.PetCode.HasValue)
+                pet = await _petDataAccess.GetPetByCodeAsync(request.PetCode.Value)
+                                          .ConfigureAwait(false);
+
+            var petAlertId = await _petAlertDataAccess.FoundPet(pet.Id)
+                                                      .ConfigureAwait(false);
+
+            var petAlert = await _petAlertDataAccess.GetPetAlertByIdAsync(petAlertId)
+                                                    .ConfigureAwait(false);
+
+            return _petAlertMapper.MapPetAlertTableToPetAlert(petAlert);
         }
     }
 }

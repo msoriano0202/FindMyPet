@@ -1,4 +1,6 @@
-﻿using FindMyPet.TableModel;
+﻿using FindMyPet.DTO.PetAlert;
+using FindMyPet.Shared;
+using FindMyPet.TableModel;
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
 using System;
@@ -12,8 +14,10 @@ namespace FindMyPet.MyServiceStack.DataAccess
     public interface IPetAlertDataAccess
     {
         Task<int> AddPetAlertAsync(PetAlertTableModel petAlertTable);
+        Task<int> FoundPet(int petId);
         Task<PetAlertTableModel> GetPetAlertByIdAsync(int petAlertId);
         Task<PetAlertTableModel> GetPetAlertByCodeAsync(Guid petAlertCode);
+        Task<List<PetAlert>> GetPetAlertsByPetIdAsync(int petId);
     }
 
     public class PetAlertDataAccess : IPetAlertDataAccess
@@ -39,6 +43,27 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                                 .ConfigureAwait(false);
         }
 
+        public async Task<int> FoundPet(int petId)
+        {
+            var petAlertId = 0;
+
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                var petAlert = await dbConnection.SingleAsync<PetAlertTableModel>(a => a.PetId.HasValue && a.PetId == petId && 
+                                                                                       a.AlertType == (int)AlertTypeEnum.Lost &&
+                                                                                       a.AlertStatus == (int)AlertStatusEnum.Active)
+                                                 .ConfigureAwait(false);
+
+                petAlert.AlertStatus = (int)AlertStatusEnum.Deleted;
+                petAlert.SolvedOn = System.DateTime.Now;
+                await dbConnection.UpdateAsync(petAlert).ConfigureAwait(false);
+
+                petAlertId = petAlert.Id;
+            }
+
+            return petAlertId;
+        }
+
         public async Task<PetAlertTableModel> GetPetAlertByIdAsync(int petAlertId)
         {
             return await _petAlertBaseDataAccess.GetByIdAsync(petAlertId)
@@ -58,6 +83,31 @@ namespace FindMyPet.MyServiceStack.DataAccess
             }
 
             return petAlert;
+        }
+
+        public async Task<List<PetAlert>> GetPetAlertsByPetIdAsync(int petId)
+        {
+            var alerts = new List<PetAlert>();
+
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                var alertsTable = await dbConnection.SelectAsync<PetAlertTableModel>(p => p.PetId.HasValue && p.PetId.Value == petId)
+                                                    .ConfigureAwait(false);
+
+                if (alertsTable.Any())
+                {
+                    alerts = alertsTable.ConvertAll(a => new PetAlert {
+                        Id = a.Id,
+                        Code = a.Code,
+                        Type = a.AlertType,
+                        CreatedOn = a.CreatedOn,
+                        SolvedOn = a.SolvedOn,
+                        Status = a.AlertStatus
+                    });
+                }
+            }
+
+            return alerts;
         }
     }
 }

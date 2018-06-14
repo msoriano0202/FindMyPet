@@ -1,0 +1,41 @@
+﻿@model FindMyPet.MVC.Models.Pet.PetAlertViewModel
+
+@{
+    ViewBag.Title = "Mascota Encontrada";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="profile-section g-py g-bg-white">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_PetProfileRightNavMenu")
+            <div id="sendAlert" class="col-md-9">
+                <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
+                    @using (Html.BeginForm("PetFound","Pet", new { id = Model.PetCode }, FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="input1-2" class="g-text-primary"><strong>Comentarios </strong>(Opcional)</label>
+                                        <div class="input-group input-group-focus">
+                                            @Html.TextAreaFor(model => model.Commets, rows: 10, columns: 1, htmlAttributes: new { @class = "form-control" })
+                                        </div>
+                                        <div class="row">
+                                            <input type="submit" class="btn btn-xlg btn-block btn-outline-success g-mt-5" value="Encontrado !!!" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 g-mt-50">
+                                    <img src="~/Content/Images/PerroGato005.png" class="img-fluid"/>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

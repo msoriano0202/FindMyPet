@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Web.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using FindMyPet.Shared;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -168,10 +169,14 @@ namespace FindMyPet.MVC.Controllers
         #region -- PetProfileNavBar --
         public void SetPetProfileNavBarInfo(Pet pet, string navItemSelected)
         {
+            var activeAlert = pet.Alerts.SingleOrDefault(a => a.Status == (int)AlertStatusEnum.Active);
+
             ViewBag.PetCode = pet.Code;
             ViewBag.PetFullName = pet.Name;
             ViewBag.PetProfilePictureUrl = GetPetImageProfile(pet);
             ViewBag.PetSelectedItem = navItemSelected;
+
+            ViewBag.PetHasActiveAlerts = (activeAlert != null) ? true : false;
         }
         #endregion
 

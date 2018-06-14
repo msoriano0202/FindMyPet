@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Web;
 using Microsoft.AspNet.Identity.Owin;
 using FindMyPet.Shared;
+using System.Linq;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -259,14 +260,15 @@ namespace FindMyPet.MVC.Controllers
             this.VerifySessionVariables();
 
             var pet = _petDataLoader.GetPetByCode(id);
-            var model = new PetAlertViewModel()
-            {
-                PetCode = id
-            };
+            var activeAlert = pet.Alerts.SingleOrDefault(a => a.Status == (int)AlertStatusEnum.Active);
 
             SetPetProfileNavBarInfo(pet, "PetAlert");
+            var model = new PetAlertViewModel() { PetCode = id };
 
-            return View(model);
+            if (activeAlert == null)   
+                return View(model);
+            else
+                return View("PetFound", model);
         }
 
         [HttpPost]
@@ -286,6 +288,24 @@ namespace FindMyPet.MVC.Controllers
             { }
             
             return RedirectToAction("PetAlert", new { id = id });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PetFound(string id, PetAlertViewModel model)
+        {
+            this.VerifySessionVariables();
+
+            var ownerId = this.GetSessionOwnerId();
+
+            try
+            {
+                var petAlert = _ownerDataLoader.FoundPet(ownerId, id, model.Commets );
+            }
+            catch (Exception ex)
+            { }
+
+            return RedirectToAction("Index");
         }
     }
 }

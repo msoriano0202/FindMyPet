@@ -20,6 +20,7 @@ namespace FindMyPet.MyServiceStack.Mappers
         {
             return new PetAlertTableModel
             {
+                Code = Guid.NewGuid(),
                 OwnerTableModelId = request.OwnerId,
                 PetId = request.PetId,
                 AlertType = request.Type,

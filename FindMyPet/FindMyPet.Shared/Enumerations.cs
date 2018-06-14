@@ -20,12 +20,18 @@ namespace FindMyPet.Shared
         Found = 3
     }
 
+    /// <summary>
+    /// Lost = 1 / Abandom = 2
+    /// </summary>
     public enum AlertTypeEnum
     {
         Lost = 1,
         Abandom = 2
     }
 
+    /// <summary>
+    /// Active = 1 / Deleted = 2
+    /// </summary>
     public enum AlertStatusEnum
     {
         Active = 1,

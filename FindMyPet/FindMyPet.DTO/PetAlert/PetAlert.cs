@@ -18,6 +18,6 @@ namespace FindMyPet.DTO.PetAlert
         public int Type { get; set; }
         public int Status { get; set; }
         public DateTimeOffset CreatedOn { get; set; }
-        public DateTimeOffset SolvedOn { get; set; }
+        public DateTimeOffset? SolvedOn { get; set; }
     }
 }
