@@ -296,11 +296,11 @@ namespace FindMyPet.MVC.Controllers
         {
             this.VerifySessionVariables();
 
-            var ownerId = this.GetSessionOwnerId();
+            model.OwnerId = this.GetSessionOwnerId();
+            model.PetCode = id;
 
             try
             {
-                model.MakeItPublic = true;
                 var petAlert = _ownerDataLoader.FoundPet(model);
             }
             catch (Exception ex)

@@ -3,6 +3,14 @@
 @{
     ViewBag.Title = "Mascota Encontrada";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string isChecked(bool value)
+    {
+        if (value)
+            return "checked";
+        else
+            return string.Empty;
+    }
 }
 
 <section class="profile-section g-py g-bg-white">
@@ -20,7 +28,18 @@
                                     <div class="form-group">
                                         <label for="input1-2" class="g-text-primary"><strong>Comentarios </strong>(Opcional)</label>
                                         <div class="input-group input-group-focus">
-                                            @Html.TextAreaFor(model => model.Commets, rows: 10, columns: 1, htmlAttributes: new { @class = "form-control" })
+                                            @Html.TextAreaFor(model => model.Commets, rows: 7, columns: 1, htmlAttributes: new { @class = "form-control" })
+                                        </div>
+                                        <div class="widget categories-widget">
+                                            <ul class="list-unstyled">
+                                                <li class="g-flex-middle g-mb-10">
+                                                    <span class="g-text-primary">Desea compartir su caso al publico ?</span>
+                                                    <label class="toggle form-check-inline ml-auto">
+                                                        <input class="toggleCheckBox" type="checkbox" name="MakeItPublic" @isChecked(Model.MakeItPublic) value="@Model.MakeItPublic">
+                                                        <span class="toggle-handle round"></span>
+                                                    </label>
+                                                </li>
+                                            </ul>
                                         </div>
                                         <div class="row">
                                             <input type="submit" class="btn btn-xlg btn-block btn-outline-success g-mt-5" value="Encontrado !!!" />
@@ -39,3 +58,19 @@
     </div>
 </section>
 
+@section Scripts {
+
+    <script>
+        $(document).ready(function ()
+        {
+            $(".toggleCheckBox").click(function () {
+                if ($(this).is(":checked")) {
+                    $(this).val(true);
+                } else {
+                    $(this).val(false);
+                }
+            });
+        });
+    </script>
+    
+}
