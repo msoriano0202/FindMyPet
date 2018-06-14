@@ -57,6 +57,7 @@ namespace FindMyPet.MyServiceStack.Providers
                 else if (request.PetCode.HasValue)
                     pet = await _petDataAccess.GetPetByCodeAsync(request.PetCode.Value)
                                               .ConfigureAwait(false);
+
                 table.PetId = pet.Id;
 
                 newId = await _petAlertDataAccess.AddPetAlertAsync(table)
@@ -64,7 +65,6 @@ namespace FindMyPet.MyServiceStack.Providers
             }
             else
             {
-
                 //else if (request.PetCode.HasValue)
                 //    newId = await _petAlertDataAccess.AddPetAlertAsync(request.PetCode.Value, table)
                 //  
@@ -92,7 +92,7 @@ namespace FindMyPet.MyServiceStack.Providers
                 pet = await _petDataAccess.GetPetByCodeAsync(request.PetCode.Value)
                                           .ConfigureAwait(false);
 
-            var petAlertId = await _petAlertDataAccess.FoundPet(pet.Id)
+            var petAlertId = await _petAlertDataAccess.FoundPet(pet.Id, request.Comment)
                                                       .ConfigureAwait(false);
 
             var petAlert = await _petAlertDataAccess.GetPetAlertByIdAsync(petAlertId)

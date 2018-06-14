@@ -29,6 +29,8 @@ namespace FindMyPet.TableModel
 
         public string Comment { get; set; }
 
+        public string CommentFound { get; set; }
+
         [Required]
         public float Latitude { get; set; }
 
@@ -48,5 +50,7 @@ namespace FindMyPet.TableModel
         public DateTimeOffset CreatedOn { get; set; }
 
         public DateTimeOffset? SolvedOn { get; set; }
+
+        public bool Approved { get; set; }
     }
 }

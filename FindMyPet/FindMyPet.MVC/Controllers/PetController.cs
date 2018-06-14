@@ -287,7 +287,7 @@ namespace FindMyPet.MVC.Controllers
             catch (Exception ex)
             { }
             
-            return RedirectToAction("PetAlert", new { id = id });
+            return RedirectToAction("PetProfile", new { id = id });
         }
 
         [HttpPost]
@@ -300,12 +300,12 @@ namespace FindMyPet.MVC.Controllers
 
             try
             {
-                var petAlert = _ownerDataLoader.FoundPet(ownerId, id, model.Commets );
+                var petAlert = _ownerDataLoader.FoundPet(ownerId, id, model.Commets);
             }
             catch (Exception ex)
             { }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("PetProfile", new { id = id });
         }
     }
 }
