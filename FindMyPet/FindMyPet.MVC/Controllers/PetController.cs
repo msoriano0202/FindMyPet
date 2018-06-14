@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Collections.Generic;
 using System.Web;
 using Microsoft.AspNet.Identity.Owin;
+using FindMyPet.Shared;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -251,6 +252,40 @@ namespace FindMyPet.MVC.Controllers
             { }
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult PetAlert(string id)
+        {
+            this.VerifySessionVariables();
+
+            var pet = _petDataLoader.GetPetByCode(id);
+            var model = new PetAlertViewModel()
+            {
+                PetCode = id
+            };
+
+            SetPetProfileNavBarInfo(pet, "PetAlert");
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PetAlert(string id, PetAlertViewModel model)
+        {
+            this.VerifySessionVariables();
+
+            model.OwnerId = this.GetSessionOwnerId();
+            model.Type = (int)AlertTypeEnum.Lost;
+
+            try
+            {
+                var petAlert = _ownerDataLoader.AddPetAlert(model);
+            }
+            catch (Exception ex)
+            { }
+            
+            return RedirectToAction("PetAlert", new { id = id });
         }
     }
 }

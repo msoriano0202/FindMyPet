@@ -73,6 +73,10 @@ namespace FindMyPet.MyServiceStack
             container.RegisterAutoWiredAs<PetMapper, IPetMapper>();
             container.RegisterAutoWiredAs<PetDataAccess, IPetDataAccess>();
 
+            container.RegisterAutoWiredAs<PetAlertProvider, IPetAlertProvider>();
+            container.RegisterAutoWiredAs<PetAlertMapper, IPetAlertMapper>();
+            container.RegisterAutoWiredAs<PetAlertDataAccess, IPetAlertDataAccess>();
+
             container.RegisterAutoWiredAs<PetImageProvider, IPetImageProvider>();
             container.RegisterAutoWiredAs<PetImageMapper, IPetImageMapper>();
             container.RegisterAutoWiredAs<PetImageDataAccess, IPetImageDataAccess>();
@@ -80,6 +84,7 @@ namespace FindMyPet.MyServiceStack
             container.RegisterAutoWiredAs<BaseDataAccess<OwnerTableModel>, IBaseDataAccess<OwnerTableModel>>();
             container.RegisterAutoWiredAs<BaseDataAccess<PetTableModel>, IBaseDataAccess<PetTableModel>>();
             container.RegisterAutoWiredAs<BaseDataAccess<PetImageTableModel>, IBaseDataAccess<PetImageTableModel>>();
+            container.RegisterAutoWiredAs<BaseDataAccess<PetAlertTableModel>, IBaseDataAccess<PetAlertTableModel>>();
         }
 
         private string ConnectionString

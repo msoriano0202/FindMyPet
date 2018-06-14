@@ -254,6 +254,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Pet\PetAlertViewModel.cs" />
     <Compile Include="Models\Pet\PetImageViewModel.cs" />
     <Compile Include="Models\Pet\PetPagedListViewModel.cs" />
     <Compile Include="Models\Pet\PetProfileViewModel.cs" />
@@ -476,6 +477,7 @@
     <Content Include="Views\Account\AccountRegistered.cshtml" />
     <Content Include="Views\Account\AccountNoConfirmed.cshtml" />
     <Content Include="Views\Pet\PetShare.cshtml" />
+    <Content Include="Views\Pet\PetAlert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,6 +1,8 @@
 ﻿using FindMyPet.DTO.Owner;
+using FindMyPet.DTO.PetAlert;
 using FindMyPet.MVC.Mappers;
 using FindMyPet.MVC.Models.Account;
+using FindMyPet.MVC.Models.Pet;
 using FindMyPet.MVC.ServiceClients;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,7 @@ namespace FindMyPet.MVC.DataLoaders
         Owner UpdateOwner(ProfileViewModel model);
         Owner UpdateSettingsOwner(SettingsViewModel model);
         Owner UpdateOwnerImageProfile(int ownerId, string imagePath);
+        PetAlert AddPetAlert(PetAlertViewModel model);
     }
 
     public class OwnerDataLoader : IOwnerDataLoader
@@ -63,6 +66,11 @@ namespace FindMyPet.MVC.DataLoaders
         public Owner UpdateOwnerImageProfile(int ownerId, string imagePath)
         {
             return _ownerServiceClient.UpdateOwnerImageProfile(ownerId, imagePath);
+        }
+
+        public PetAlert AddPetAlert(PetAlertViewModel model)
+        {
+            return _ownerServiceClient.AddPetAlert(model);
         }
     }
 }

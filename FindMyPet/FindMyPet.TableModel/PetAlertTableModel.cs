@@ -14,6 +14,8 @@ namespace FindMyPet.TableModel
         [AutoIncrement]
         public int Id { get; set; }
 
+        public Guid Code { get; set; }
+
         [References(typeof(OwnerTableModel))]
         public int OwnerTableModelId { get; set; }
 
@@ -23,19 +25,28 @@ namespace FindMyPet.TableModel
         /// Types: Lost / Abandom 
         /// </summary>
         [Required]
-        public int AlterType { get; set; }
+        public int AlertType { get; set; }
 
         public string Comment { get; set; }
 
         [Required]
-        public float XCord { get; set; }
+        public float Latitude { get; set; }
 
         [Required]
-        public float YCord { get; set; }
+        public float Longitude { get; set; }
 
         public string ImageUrl { get; set; }
+        public string PositionImageUrl { get; set; }
+
+        /// <summary>
+        /// Types: Active / Deleted
+        /// </summary>
+        [Required]
+        public int AlertStatus { get; set; }
 
         [Required]
         public DateTimeOffset CreatedOn { get; set; }
+
+        public DateTimeOffset SolvedOn { get; set; }
     }
 }

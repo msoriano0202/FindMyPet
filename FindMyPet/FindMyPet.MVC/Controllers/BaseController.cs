@@ -16,7 +16,7 @@ namespace FindMyPet.MVC.Controllers
 {
     public class BaseController : Controller
     {
-        private IOwnerDataLoader _ownerDataLoader;
+        protected IOwnerDataLoader _ownerDataLoader;
         private IImageHelper _imageHelper;
         protected IOwnerMapper _ownerMapper;
         private IGeneralHelper _generalHelper;

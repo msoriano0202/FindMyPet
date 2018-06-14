@@ -106,6 +106,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\BaseDataAccess.cs" />
     <Compile Include="DataAccess\OwnerDataAccess.cs" />
+    <Compile Include="DataAccess\PetAlertDataAccess.cs" />
     <Compile Include="DataAccess\PetDataAccess.cs" />
     <Compile Include="DataAccess\PetImageDataAccess.cs" />
     <Compile Include="FindMyPetHost.cs" />
@@ -113,11 +114,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mappers\OwnerMapper.cs" />
+    <Compile Include="Mappers\PetAlertMapper.cs" />
     <Compile Include="Mappers\PetImageMapper.cs" />
     <Compile Include="Mappers\PetMapper.cs" />
     <Compile Include="Providers\OwnerProvider.cs" />
+    <Compile Include="Providers\PetAlertProvider.cs" />
     <Compile Include="Providers\PetImageProvider.cs" />
     <Compile Include="Providers\PetProvider.cs" />
+    <Compile Include="Services\PetAlertService.cs" />
     <Compile Include="Services\PetImageService.cs" />
     <Compile Include="Services\PetService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

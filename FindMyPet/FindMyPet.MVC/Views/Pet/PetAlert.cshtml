@@ -1,0 +1,108 @@
+﻿@model FindMyPet.MVC.Models.Pet.PetAlertViewModel
+
+@{
+    ViewBag.Title = "Alerta Mascota";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="profile-section g-py g-bg-white">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_PetProfileRightNavMenu")
+            <div id="sendAlert" class="col-md-9">
+                <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div id="noGeolocation" class="g-flex-center col-12 text-center">
+                            <div id="message" class="g-mt-100 g-mb-100">La Geolocalizacion no es soportada en su browser</div>
+                        </div>
+                        <div id="yesGeolocation" class="col-12">
+                            <input type="hidden" id="PetCode" name="PetCode" value="@Model.PetCode" />
+                            <input type="hidden" id="Latitude" name="Latitude" value="@Model.Latitude" />
+                            <input type="hidden" id="Longitude" name="Longitude" value="@Model.Longitude" />
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="input1-1" class="g-text-primary"><strong>Ubicacion</strong></label>
+                                        <div class="input-group input-group-focus">
+                                            <div id="map" style="height: 300px; width: 100%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="input1-2" class="g-text-primary"><strong>Comentarios </strong>(Opcional)</label>
+                                        <div class="input-group input-group-focus">
+                                            @Html.TextAreaFor(model => model.Commets, rows: 10, columns: 1, htmlAttributes: new { @class = "form-control" })
+                                        </div>
+                                        <div class="row">
+                                            <input type="submit" class="btn btn-xlg btn-block btn-outline-danger g-mt-5" value="Alertar !!!" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#noGeolocation').hide();
+            $('#message').hide();
+            $('#yesGeolocation').hide();
+
+            if (navigator.geolocation) {
+                $('#yesGeolocation').show();
+            }
+            else {
+                $('#noGeolocation').show();
+                $('#message').show();
+            }
+        });
+
+        function initMap() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+        };
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            $('#Latitude').val(latitude);
+            $('#Longitude').val(longitude);
+
+            var uluru = { lat: latitude, lng: longitude };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: uluru,
+                clickableIcons: false,
+                disableDefaultUI: true,
+                disableDoubleClickZoom: true,
+                draggable: false,
+                fullscreenControl: false
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                clickable: false
+            });
+        };
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhCfBbsNOvMGMnHNpG9_9OQDg36MPrVio&callback=initMap">
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
