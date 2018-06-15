@@ -45,7 +45,7 @@ namespace FindMyPet.MyServiceStack.Mappers
                 Id = petTable.Id,
                 Code = petTable.Code,
                 Name = petTable.Name,
-                Status = petTable.Status.ToString(),
+                Status = petTable.Status,
                 Description = petTable.Description,
                 DateOfBirth = petTable.DateOfBirth,
                 CreatedOn = petTable.CreatedOn,

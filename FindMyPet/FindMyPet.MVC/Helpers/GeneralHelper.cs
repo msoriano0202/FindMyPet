@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FindMyPet.Shared;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace FindMyPet.MVC.Helpers
     public interface IGeneralHelper
     {
         string FormatSiteImageUrl(string imageUrl);
+        string GetPetStatus(int status);
     }
 
     public class GeneralHelper : IGeneralHelper
@@ -22,6 +24,26 @@ namespace FindMyPet.MVC.Helpers
                 imageUrl = imageUrl.Substring(index, (imageUrl.Length - index));
 
             return imageUrl;
+        }
+
+        public string GetPetStatus(int status)
+        {
+            var result = string.Empty;
+
+            switch (status)
+            {
+                case (int)PetStatusEnum.Active:
+                    result = "Activo";
+                    break;
+                case (int)PetStatusEnum.Lost:
+                    result = "Perdido";
+                    break;
+                case (int)PetStatusEnum.Found:
+                    result = "Encontrado";
+                    break;
+            }
+
+            return result;
         }
     }
 }

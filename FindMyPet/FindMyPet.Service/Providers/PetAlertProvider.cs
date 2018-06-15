@@ -61,7 +61,7 @@ namespace FindMyPet.MyServiceStack.Providers
                 table.PetId = pet.Id;
 
                 newId = await _petAlertDataAccess.AddPetAlertAsync(table)
-                                                .ConfigureAwait(false);
+                                                 .ConfigureAwait(false);
             }
             else
             {

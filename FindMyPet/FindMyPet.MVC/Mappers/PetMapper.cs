@@ -42,7 +42,8 @@ namespace FindMyPet.MVC.Mappers
                 Description = pet.Description,
                 ProfileImageUrl = !string.IsNullOrEmpty(pet.ProfileImageUrl) 
                                         ? _generalHelper.FormatSiteImageUrl(pet.ProfileImageUrl) 
-                                        : defaultPetImage
+                                        : defaultPetImage,
+                Status = _generalHelper.GetPetStatus(pet.Status)
             };
         }
 

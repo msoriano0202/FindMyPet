@@ -13,6 +13,9 @@ namespace FindMyPet.Shared
         Production = 2
     }
 
+    /// <summary>
+    ///  Active = 1 / Lost = 2 / Found = 3
+    /// </summary>
     public enum PetStatusEnum
     {
         Active = 1,

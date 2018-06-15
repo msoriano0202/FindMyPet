@@ -12,7 +12,7 @@ namespace FindMyPet.DTO.Pet
         public int Id { get; set; }
         public Guid Code { get; set; }
         public string Name { get; set; }
-        public string Status { get; set; }
+        public int Status { get; set; }
         public string Description { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTimeOffset CreatedOn { get; set; }

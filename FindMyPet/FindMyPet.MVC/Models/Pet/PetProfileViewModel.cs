@@ -19,8 +19,10 @@ namespace FindMyPet.MVC.Models.Pet
         [Display(Name = "Descripción")]
         public string Description { get; set; }
 
-        public DateTimeOffset CreatedOn { get; set; }
+        public string Status { get; set; }
 
         public string ProfileImageUrl { get; set; }
+
+        public DateTimeOffset CreatedOn { get; set; }
     }
 }

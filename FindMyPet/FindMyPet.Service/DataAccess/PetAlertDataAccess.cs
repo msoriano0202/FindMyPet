@@ -39,8 +39,25 @@ namespace FindMyPet.MyServiceStack.DataAccess
 
         public async Task<int> AddPetAlertAsync(PetAlertTableModel petAlertTable)
         {
-            return await _petAlertBaseDataAccess.AddAsync(petAlertTable)
+            long newId;
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                using (var trans = dbConnection.OpenTransaction())
+                {
+                    var pet = await dbConnection.SingleAsync<PetTableModel>(p => p.Id == petAlertTable.PetId)
                                                 .ConfigureAwait(false);
+
+                    newId = await dbConnection.InsertAsync<PetAlertTableModel>(petAlertTable, selectIdentity: true)
+                                              .ConfigureAwait(false);
+
+                    await dbConnection.UpdateOnlyAsync(new PetTableModel { Status = (int)PetStatusEnum.Lost }, x => x.Status, x => x.Id == pet.Id)
+                                      .ConfigureAwait(false);
+
+                    trans.Commit();
+                }
+            }
+
+            return (int)newId;
         }
 
         public async Task<int> FoundPet(int petId, string foundComment, bool makeItPublic)
@@ -49,18 +66,29 @@ namespace FindMyPet.MyServiceStack.DataAccess
 
             using (var dbConnection = _dbConnectionFactory.Open())
             {
-                var petAlert = await dbConnection.SingleAsync<PetAlertTableModel>(a => a.PetId.HasValue && a.PetId == petId && 
-                                                                                       a.AlertType == (int)AlertTypeEnum.Lost &&
-                                                                                       a.AlertStatus == (int)AlertStatusEnum.Active)
-                                                 .ConfigureAwait(false);
+                using (var trans = dbConnection.OpenTransaction())
+                {
+                    var pet = await dbConnection.SingleAsync<PetTableModel>(p => p.Id == petId)
+                                                .ConfigureAwait(false);
 
-                petAlert.CommentFound = foundComment;
-                petAlert.AlertStatus = (int)AlertStatusEnum.Deleted;
-                petAlert.MakeItPublic = makeItPublic;
-                petAlert.SolvedOn = System.DateTime.Now;
-                await dbConnection.UpdateAsync(petAlert).ConfigureAwait(false);
+                    var petAlert = await dbConnection.SingleAsync<PetAlertTableModel>(a => a.PetId.HasValue && a.PetId == petId &&
+                                                                                           a.AlertType == (int)AlertTypeEnum.Lost &&
+                                                                                           a.AlertStatus == (int)AlertStatusEnum.Active)
+                                                     .ConfigureAwait(false);
 
-                petAlertId = petAlert.Id;
+                    petAlert.CommentFound = foundComment;
+                    petAlert.AlertStatus = (int)AlertStatusEnum.Deleted;
+                    petAlert.MakeItPublic = makeItPublic;
+                    petAlert.SolvedOn = System.DateTime.Now;
+                    await dbConnection.UpdateAsync(petAlert).ConfigureAwait(false);
+
+                    await dbConnection.UpdateOnlyAsync(new PetTableModel { Status = (int)PetStatusEnum.Found }, x => x.Status, x => x.Id == pet.Id)
+                                      .ConfigureAwait(false);
+
+                    petAlertId = petAlert.Id;
+
+                    trans.Commit();
+                }
             }
 
             return petAlertId;

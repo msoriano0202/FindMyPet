@@ -35,6 +35,7 @@ else
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nombre</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Fecha Nacimiento</th>
                             <th scope="auto">Acciones</th>
                         </tr>
@@ -43,33 +44,34 @@ else
                         @foreach (var item in Model.Records)
                         {
                             index++;
-                            <tr>
-                                <th scope="row">
-                                    @index
-                                </th>
-                                <td>
-                                    <a href="/Pet/PetProfile/@item.Code">
-                                        <div class="d-sm-flex justify-content-start align-items-center">
-                                            <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
-                                                <img class="g-w50 rounded-circle" src="@Url.Content(item.ProfileImageUrl)" alt="Pet Image">
-                                            </div>
-                                            <div>
-                                                <h6 class="d-sm-inline-block">@item.Name</h6>
-                                            </div>
+                        <tr>
+                            <th scope="row">
+                                @index
+                            </th>
+                            <td>
+                                <a href="/Pet/PetProfile/@item.Code">
+                                    <div class="d-sm-flex justify-content-start align-items-center">
+                                        <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                            <img class="g-w50 rounded-circle" src="@Url.Content(item.ProfileImageUrl)" alt="Pet Image">
                                         </div>
-                                    </a>
-                                </td>
-                                <td>@item.DateOfBirth.ToString("dd / MMM / yyyy")</td>
-                                <td>
-                                    <a id="deletePet" href="/Pet/Delete/@item.Code" class="cn-icon cn-icon-outline-primary cn-icon-primary-h cn-icon-xs rounded g-mr-5 g-mb-5" title="Borrar">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                                        <div>
+                                            <h6 class="d-sm-inline-block">@item.Name</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>@item.Status</td>
+                            <td>@item.DateOfBirth.ToString("dd / MMM / yyyy")</td>
+                            <td>
+                                <a id="deletePet" href="/Pet/Delete/@item.Code" class="cn-icon cn-icon-outline-primary cn-icon-primary-h cn-icon-xs rounded g-mr-5 g-mb-5" title="Borrar">
+                                    <i class="fa fa-trash"></i>
+                                </a>
 
-                                    <a id="alertPet" href="/Pet/PetAlert/@item.Code" class="cn-icon cn-icon-outline-danger cn-icon-danger-h cn-icon-xs rounded g-mr-5" title="Alertar">
-                                        <i class="fa fa-bell"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                                <a id="alertPet" href="/Pet/PetAlert/@item.Code" class="cn-icon cn-icon-outline-danger cn-icon-danger-h cn-icon-xs rounded g-mr-5" title="Alertar">
+                                    <i class="fa fa-bell"></i>
+                                </a>
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
