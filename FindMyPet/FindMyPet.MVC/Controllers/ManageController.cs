@@ -59,7 +59,7 @@ namespace FindMyPet.MVC.Controllers
         {
             this.VerifySessionVariables();
 
-            var owner = this.GetUserByMembershipId();
+            var owner = this.GetUserByMembershipId(User.Identity.GetUserId());
             var model = _ownerMapper.OwnerToProfileViewModel(owner);
             this.SetManageNavBarInfo(owner, "Index");
 
@@ -97,7 +97,7 @@ namespace FindMyPet.MVC.Controllers
                     message = "FileNoValid";
                 else
                 {
-                    var owner = this.GetUserByMembershipId();
+                    var owner = this.GetUserByMembershipId(User.Identity.GetUserId());
                     var oldProfileImagePath = owner.ProfileImageUrl;
 
                     var uploadsFolder = Server.MapPath(ConfigurationManager.AppSettings["UploadsFolder"].ToString());
@@ -128,7 +128,7 @@ namespace FindMyPet.MVC.Controllers
         {
             this.VerifySessionVariables();
 
-            var owner = this.GetUserByMembershipId();
+            var owner = this.GetUserByMembershipId(User.Identity.GetUserId());
             var model = _ownerMapper.OwnerToSettingsViewModel(owner);
             this.SetManageNavBarInfo(owner, "Settings");
 
@@ -322,7 +322,7 @@ namespace FindMyPet.MVC.Controllers
         public ActionResult ChangePassword()
         {
             this.VerifySessionVariables();
-            var owner = this.GetUserByMembershipId();
+            var owner = this.GetUserByMembershipId(User.Identity.GetUserId());
 
             this.SetManageNavBarInfo(owner, "ChangePassword");
 

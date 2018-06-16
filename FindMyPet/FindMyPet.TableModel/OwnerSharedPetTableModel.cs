@@ -4,7 +4,7 @@ using System;
 
 namespace FindMyPet.TableModel
 {
-    public class OwnerPetTableModel : IHasId<int>
+    public class OwnerSharedPetTableModel : IHasId<int>
     {
         [PrimaryKey]
         [AutoIncrement]
@@ -16,10 +16,15 @@ namespace FindMyPet.TableModel
         [References(typeof(PetTableModel))]
         public int PetTableModelId { get; set; }
 
+        public Guid TokenCode { get; set; }
+
+        public string ToOwnerEmail { get; set; }
+
         [Required]
         public DateTimeOffset CreatedOn { get; set; }
 
-        [Required]
-        public bool IsFirstOwner { get; set; }
+        public bool Used { get; set; }
+
+        public DateTimeOffset? UsedOn { get; set; }
     }
 }

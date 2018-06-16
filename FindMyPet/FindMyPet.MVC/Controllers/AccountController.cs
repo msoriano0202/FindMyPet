@@ -214,6 +214,7 @@ namespace FindMyPet.MVC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, "Owner");
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     this.RegisterOwner(user.Id, model.FirstName, model.LastName, model.Email);
 

@@ -19,7 +19,8 @@ namespace FindMyPet.MyServiceStack.DataAccess
         Task<int> UpdatePetAsync(PetTableModel petTable);
         Task<int> DeletePetAsync(int id);
         Task<int> DeletePetAsync(Guid code);
-        Task<int> SharePetAsync(string petCode, string ownerMemebershipId);
+        Task<string> CreateSharePetAsync(PetShareCreateRequest request);
+        Task<int> ConfirmSharePetAsync(PetShareConfirmRequest request);
         Task<PetTableModel> GetPetByIdAsync(int petId);
         Task<PetTableModel> GetPetByCodeAsync(Guid petCode);
         Task<List<PetOwner>> GetOwnersByPetIdAsync(int petId);
@@ -62,6 +63,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                     {
                         OwnerTableModelId = ownerId,
                         PetTableModelId = (int)petId,
+                        IsFirstOwner = true,
                         CreatedOn = DateTime.Now
                     };
 
@@ -95,6 +97,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                     {
                         OwnerTableModelId = owner.Id,
                         PetTableModelId = (int)petId,
+                        IsFirstOwner = true,
                         CreatedOn = DateTime.Now
                     };
 
@@ -143,30 +146,79 @@ namespace FindMyPet.MyServiceStack.DataAccess
             return records;
         }
 
-        public async Task<int> SharePetAsync(string petCode, string ownerMemebershipId)
+        public async Task<string> CreateSharePetAsync(PetShareCreateRequest request)
+        {
+            long records = 0;
+            PetTableModel pet;
+            var token = Guid.NewGuid();
+
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                using (var trans = dbConnection.OpenTransaction(IsolationLevel.ReadCommitted))
+                {
+                    if (request.PetId.HasValue)
+                        pet = await dbConnection.SingleByIdAsync<PetTableModel>(request.PetId.Value)
+                                                .ConfigureAwait(false);
+                    else
+                        pet = await dbConnection.SingleAsync<PetTableModel>(x => x.Code == request.PetCode)
+                                                .ConfigureAwait(false);
+
+                    var newtable = new OwnerSharedPetTableModel
+                    {
+                        OwnerTableModelId = request.OwnerId,
+                        PetTableModelId = pet.Id,
+                        TokenCode = token,
+                        ToOwnerEmail = request.ToOwnerEmail,
+                        Used = false,
+                        CreatedOn = DateTime.Now
+                    };
+
+                    records = await dbConnection.InsertAsync<OwnerSharedPetTableModel>(newtable, selectIdentity: true)
+                                                .ConfigureAwait(false);
+
+                    trans.Commit();
+                }
+            }
+
+            return token.ToString();
+        }
+
+        public async Task<int> ConfirmSharePetAsync(PetShareConfirmRequest request)
         {
             long records = 0;
             using (var dbConnection = _dbConnectionFactory.Open())
             {
                 using (var trans = dbConnection.OpenTransaction(IsolationLevel.ReadCommitted))
                 {
-                    var pet = await dbConnection.SingleAsync<PetTableModel>(x => x.Code == Guid.Parse(petCode))
-                                                .ConfigureAwait(false);
+                    var requestRecord = await dbConnection.SingleAsync<OwnerSharedPetTableModel>(x => x.TokenCode == request.Token && !x.Used)
+                                                          .ConfigureAwait(false);
 
-                    var owner = await dbConnection.SingleAsync<OwnerTableModel>(x => x.MembershipId == ownerMemebershipId)
-                                                  .ConfigureAwait(false);
-
-                    var ownerPetTable = new OwnerPetTableModel
+                    if (requestRecord != null)
                     {
-                        OwnerTableModelId = owner.Id,
-                        PetTableModelId = pet.Id,
-                        CreatedOn = DateTime.Now
-                    };
-
-                    records = await dbConnection.InsertAsync<OwnerPetTableModel>(ownerPetTable, selectIdentity: true)
+                        var pet = await dbConnection.SingleAsync<PetTableModel>(x => x.Id == requestRecord.PetTableModelId)
                                                 .ConfigureAwait(false);
 
-                    trans.Commit();
+                        var owner = await dbConnection.SingleAsync<OwnerTableModel>(x => x.Email == requestRecord.ToOwnerEmail)
+                                                      .ConfigureAwait(false);
+
+                        var ownerPetTable = new OwnerPetTableModel
+                        {
+                            OwnerTableModelId = owner.Id,
+                            PetTableModelId = pet.Id,
+                            IsFirstOwner = false,
+                            CreatedOn = DateTime.Now
+                        };
+
+                        records = await dbConnection.InsertAsync<OwnerPetTableModel>(ownerPetTable, selectIdentity: true)
+                                                    .ConfigureAwait(false);
+
+                        await dbConnection.UpdateOnlyAsync(new OwnerSharedPetTableModel { Used = true }, x => x.Used, x => x.Id == requestRecord.Id)
+                                          .ConfigureAwait(false);
+                        await dbConnection.UpdateOnlyAsync(new OwnerSharedPetTableModel { UsedOn = System.DateTime.Now }, x => x.UsedOn, x => x.Id == requestRecord.Id)
+                                          .ConfigureAwait(false);
+
+                        trans.Commit();
+                    }
                 }
             }
 

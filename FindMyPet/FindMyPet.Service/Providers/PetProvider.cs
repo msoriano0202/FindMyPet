@@ -19,7 +19,8 @@ namespace FindMyPet.MyServiceStack.Providers
         Task<Pet> CreatePetAsync(PetCreateRequest request);
         Task<Pet> UpdatePetAsync(PetUpdateRequest request);
         Task<int> DeletePetAsync(PetDeleteRequest request);
-        Task<int> SharePetAsync(PetShareRequest request);
+        Task<string> CreateSharePetAsync(PetShareCreateRequest request);
+        Task<int> ConfirmSharePetAsync(PetShareConfirmRequest request);
         Task<PagedResponse<Pet>> PetsByOwnerPagedAsync(PetsSearchByOwnerRequest request);
         //Task<List<Pet>> PetsByOwnerAsync(PetsByOwnerRequest request);
         //Task<List<Pet>> SearchPetsAsync(SearchPetRequest request);
@@ -142,19 +143,32 @@ namespace FindMyPet.MyServiceStack.Providers
             return records;
         }
 
-        public async Task<int> SharePetAsync(PetShareRequest request)
+        public async Task<string> CreateSharePetAsync(PetShareCreateRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
-            if (string.IsNullOrEmpty(request.PetCode) &&  string.IsNullOrEmpty(request.OwnerMembershipId))
-                throw new ArgumentException("PetCode and UserCode are NULL");
+            if (!request.PetId.HasValue && !request.PetCode.HasValue)
+                throw new ArgumentException("PetId and PetCode are NULL");
 
-            var records = await _petDataAccess.SharePetAsync(request.PetCode, request.OwnerMembershipId)
+
+            var token = await _petDataAccess.CreateSharePetAsync(request)
+                                            .ConfigureAwait(false);
+
+            return token;
+        }
+
+        public async Task<int> ConfirmSharePetAsync(PetShareConfirmRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var records = await _petDataAccess.ConfirmSharePetAsync(request)
                                               .ConfigureAwait(false);
 
             return records;
         }
+
 
         public async Task<PagedResponse<Pet>> PetsByOwnerPagedAsync(PetsSearchByOwnerRequest request)
         {

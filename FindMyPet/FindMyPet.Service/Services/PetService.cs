@@ -64,9 +64,15 @@ namespace FindMyPet.MyServiceStack.Services
                                      .ConfigureAwait(false);
         }
 
-        public async Task<int> Post(PetShareRequest request)
+        public async Task<string> Post(PetShareCreateRequest request)
         {
-            return await _petProvider.SharePetAsync(request)
+            return await _petProvider.CreateSharePetAsync(request)
+                                     .ConfigureAwait(false);
+        }
+
+        public async Task<int> Put(PetShareConfirmRequest request)
+        {
+            return await _petProvider.ConfirmSharePetAsync(request)
                                      .ConfigureAwait(false);
         }
 

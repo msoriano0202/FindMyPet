@@ -232,9 +232,11 @@ namespace FindMyPet.MVC.Controllers
         [HttpPost]
         public ActionResult PetShare(string id, string Email)
         {
+            var ownerId = this.GetSessionOwnerId();
             var pet = _petDataLoader.GetPetByCode(id);
+            var token = _petDataLoader.CreateSharePetToken(ownerId, id, Email);
 
-            var callbackUrl = Url.Action("ConfirmPetShare", "Pet", new { code = id }, protocol: Request.Url.Scheme);
+            var callbackUrl = Url.Action("ConfirmPetShare", "Pet", new { code = token }, protocol: Request.Url.Scheme);
             var body = $"Por favor, haga click en este link para compartir ser propietario de la mascota: {callbackUrl}";
             _emailHelper.SendEmailSharePet(Email, pet.Name, body);
 
@@ -243,11 +245,9 @@ namespace FindMyPet.MVC.Controllers
 
         public ActionResult ConfirmPetShare(string code)
         {
-            var userId = User.Identity.GetUserId();
-
             try
             {
-                var result = _petDataLoader.SharePet(code, userId);
+                var result = _petDataLoader.ConfirmSharePet(code);
             }
             catch (Exception ex)
             { }

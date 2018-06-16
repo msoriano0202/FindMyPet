@@ -107,9 +107,9 @@ namespace FindMyPet.MVC.Controllers
 
         #region --- GetuserByMembershipId ---
 
-        public Owner GetUserByMembershipId()
+        public Owner GetUserByMembershipId(string userId)
         {
-            return _ownerDataLoader.GetOwnerByMembershipId(User.Identity.GetUserId());
+            return _ownerDataLoader.GetOwnerByMembershipId(userId);
         }
 
         #endregion

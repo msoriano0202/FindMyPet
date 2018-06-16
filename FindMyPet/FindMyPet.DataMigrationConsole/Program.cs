@@ -79,11 +79,12 @@ namespace FindMyPet.DataMigrationConsole
             var orderedTables = new List<string>
             {
                 "OwnerTableModel",
-                "OwnerSettingTableModel",
                 "PetTableModel",
                 "OwnerPetTableModel",
+                "OwnerSettingTableModel",
                 "PetImageTableModel",
                 "PetAlertTableModel",
+                "OwnerSharedPetTableModel",
                 "ParameterGroupTableModel",
                 "ParameterValueTableModel"
             };
