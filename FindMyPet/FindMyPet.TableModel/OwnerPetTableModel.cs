@@ -10,6 +10,9 @@ namespace FindMyPet.TableModel
         [AutoIncrement]
         public int Id { get; set; }
 
+        [Required]
+        public Guid Code { get; set; }
+
         [References(typeof(OwnerTableModel))]
         public int OwnerTableModelId { get; set; }
 

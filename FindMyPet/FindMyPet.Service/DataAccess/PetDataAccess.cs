@@ -46,6 +46,18 @@ namespace FindMyPet.MyServiceStack.DataAccess
             _petBaseDataAccess = petBaseDataAccess;
         }
 
+        private OwnerPetTableModel GetNewOwnerPetTableModel(int ownerId, int petId, bool firstOwner)
+        {
+            return new OwnerPetTableModel
+            {
+                Code = Guid.NewGuid(),
+                OwnerTableModelId = ownerId,
+                PetTableModelId = petId,
+                IsFirstOwner = firstOwner,
+                CreatedOn = DateTime.Now
+            };
+        }
+
         public async Task<int> AddPetAsync(int ownerId, PetTableModel petTable)
         {
             petTable.Code = Guid.NewGuid();
@@ -59,13 +71,15 @@ namespace FindMyPet.MyServiceStack.DataAccess
                     petId = await dbConnection.InsertAsync<PetTableModel>(petTable, selectIdentity: true)
                                               .ConfigureAwait(false);
 
-                    var ownerPetTable = new OwnerPetTableModel
-                    {
-                        OwnerTableModelId = ownerId,
-                        PetTableModelId = (int)petId,
-                        IsFirstOwner = true,
-                        CreatedOn = DateTime.Now
-                    };
+                    var ownerPetTable = GetNewOwnerPetTableModel(ownerId, (int)petId, true);
+                    //var ownerPetTable = new OwnerPetTableModel
+                    //{
+                    //    Code = Guid.NewGuid(),
+                    //    OwnerTableModelId = ownerId,
+                    //    PetTableModelId = (int)petId,
+                    //    IsFirstOwner = true,
+                    //    CreatedOn = DateTime.Now
+                    //};
 
                     await dbConnection.InsertAsync<OwnerPetTableModel>(ownerPetTable, selectIdentity: true)
                                       .ConfigureAwait(false);
@@ -93,13 +107,15 @@ namespace FindMyPet.MyServiceStack.DataAccess
                     petId = await dbConnection.InsertAsync<PetTableModel>(petTable, selectIdentity: true)
                                               .ConfigureAwait(false);
 
-                    var ownerPetTable = new OwnerPetTableModel
-                    {
-                        OwnerTableModelId = owner.Id,
-                        PetTableModelId = (int)petId,
-                        IsFirstOwner = true,
-                        CreatedOn = DateTime.Now
-                    };
+                    var ownerPetTable = GetNewOwnerPetTableModel(owner.Id, (int)petId, true);
+                    //var ownerPetTable = new OwnerPetTableModel
+                    //{
+                    //    Code = Guid.NewGuid(),
+                    //    OwnerTableModelId = owner.Id,
+                    //    PetTableModelId = (int)petId,
+                    //    IsFirstOwner = true,
+                    //    CreatedOn = DateTime.Now
+                    //};
 
                     await dbConnection.InsertAsync<OwnerPetTableModel>(ownerPetTable, selectIdentity: true)
                                       .ConfigureAwait(false);
@@ -201,13 +217,15 @@ namespace FindMyPet.MyServiceStack.DataAccess
                         var owner = await dbConnection.SingleAsync<OwnerTableModel>(x => x.Email == requestRecord.ToOwnerEmail)
                                                       .ConfigureAwait(false);
 
-                        var ownerPetTable = new OwnerPetTableModel
-                        {
-                            OwnerTableModelId = owner.Id,
-                            PetTableModelId = pet.Id,
-                            IsFirstOwner = false,
-                            CreatedOn = DateTime.Now
-                        };
+                        var ownerPetTable = GetNewOwnerPetTableModel(owner.Id, pet.Id, false);
+                        //var ownerPetTable = new OwnerPetTableModel
+                        //{
+                        //    Code = Guid.NewGuid(),
+                        //    OwnerTableModelId = owner.Id,
+                        //    PetTableModelId = pet.Id,
+                        //    IsFirstOwner = false,
+                        //    CreatedOn = DateTime.Now
+                        //};
 
                         records = await dbConnection.InsertAsync<OwnerPetTableModel>(ownerPetTable, selectIdentity: true)
                                                     .ConfigureAwait(false);
