@@ -22,20 +22,30 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav g-ml-20">
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             @Html.ActionLink("Nosotros", "Index", "Home", null, new { @class = "nav-link" })
-                        </li>
+                        </li>*@
+
                         <li class="nav-item">
                             @Html.ActionLink("¿ Como Funciona ?", "About", "Home", null, new { @class = "nav-link" })
                         </li>
-                        @if (Request.IsAuthenticated)
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="homepages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Busqueda</a>
+                            <ul class="dropdown-menu" aria-labelledby="homepages">
+                                <li><a class="dropdown-item" href="/PetSearch">Alertas en Mapa</a></li>
+                                <li><a class="dropdown-item" href="#">Casos de Exito</a></li>
+                            </ul>
+                        </li>
+
+                        @*@if (Request.IsAuthenticated)
                         {
                         <li class="nav-item">
                             <a id="registerLink" href="/Pet" class="nav-link">
                                 <i class="icon-social-github g-mr-5"></i><span>Mis Mascotas</span>
                             </a>
                         </li>
-                        }
+                        }*@
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>

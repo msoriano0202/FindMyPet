@@ -1,0 +1,93 @@
+﻿@using FindMyPet.MVC.Helpers;
+
+@model FindMyPet.MVC.Models.PetSearch.PetSearchViewModel
+
+@{
+    ViewBag.Title = "Alertas de Mascota";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<div class="row col-12">
+    <div class='d-sm-flex justify-content-start align-items-center'>
+        <div class='g-mr-sm-15 g-mb-10 g-mb-sm-0'>
+            <img class='g-w50 rounded-circle' src='\uploads\b1c8eccd-735b-4cb2-9744-37bbc24da96e.jpg' alt='Image Description'>
+        </div>
+        <div>
+            <h6 class='g-mr-sm-10 font-weight-bold d-sm-inline-block'>Marti Soriano</h6><a href='' class='g-font-size-14'>[ Ver más ]</a>
+            <p><span class='g-bg-primary font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10'>17 / Jun / 2018 11:23:03 AM</span></p>
+        </div>
+    </div>
+</div>*@
+
+<section id="petSearch" class="g-border-gray-300">
+    <div class="container g-py-40 g-px-10">
+        <div class="section-title text-center">
+            <h4 class="title text-uppercase cn-heading-v2 font-weight-bold">Alertas de Mascotas</h4>
+        </div>
+    </div>
+    <div class="row col-12">
+        <div id="map" style="height: 500px; width: 100%;"></div>
+    </div>
+</section>
+
+@section Scripts {
+
+    <script>
+        var map;
+
+        function initMap() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+        };
+
+        function infoCallback(infowindow, marker) {
+            return function () { infowindow.open(map, marker); };
+        };
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var points = @JavaScriptConvert.SerializeObject(Model.Points);
+
+            var uluru = { lat: latitude, lng: longitude };
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: uluru
+            });
+
+            for (var i = 0; i < points.length; i++) {
+                var petCode = points[i].petCode;
+                var petName = points[i].petName;
+                var petImageUrl = points[i].petProfileImageUrl;
+                var lostDate = points[i].lostDateTime;
+                var latlong = { lat: points[i].latitude, lng: points[i].longitude }
+
+                console.log(points[i]);
+                var marker = new google.maps.Marker({
+                    position: latlong,
+                    map: map,
+                    title: points[i].petName
+                });
+
+                var infowindow = new google.maps.InfoWindow({
+                    content:"<div class='d-sm-flex justify-content-start align-items-center'>" +
+                            "<div class='g-mr-sm-15 g-mb-10 g-mb-sm-0'>" +
+                            "<img class='g-w50 rounded-circle' src='" + petImageUrl + "' alt='Image Description'>" +
+                            "</div>" +
+                            "<div>" +
+                            "<h6 class='g-mr-sm-10 font-weight-bold d-sm-inline-block'>" + petName + "</h6><a target='_blank' href='/Pet/PublicProfile/" + petCode + "' class='g-font-size-14'>[ Ver más ]</a>" +
+                            "<p><span class='g-mt-5 g-bg-primary font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10'>" + lostDate + "</span></p>" +
+                            "</div>" +
+                            "</div>"
+                });
+
+                google.maps.event.addListener(marker, 'click', infoCallback(infowindow, marker));
+            };
+        };
+    </script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhCfBbsNOvMGMnHNpG9_9OQDg36MPrVio&callback=initMap">
+    </script>
+
+}

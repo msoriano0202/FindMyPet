@@ -308,5 +308,11 @@ namespace FindMyPet.MVC.Controllers
 
             return RedirectToAction("PetProfile", new { id = id });
         }
+
+        [AllowAnonymous]
+        public ActionResult PublicProfile(string id)
+        {
+            return View();
+        }
     }
 }

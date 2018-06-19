@@ -224,6 +224,14 @@ namespace FindMyPet.MVC.Controllers
 
         #region --- Image helper ---
 
+        public string GetPetImageProfile(string petImage)
+        {
+            if (string.IsNullOrEmpty(petImage))
+                return GetDefaultPetImageProfile();
+            else
+                return FormatSiteImageUrl(petImage);
+        }
+
         public bool ValidImageExtension(string fileName)
         {
             var result = false;

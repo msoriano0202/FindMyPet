@@ -109,6 +109,7 @@
     <Compile Include="DataAccess\PetAlertDataAccess.cs" />
     <Compile Include="DataAccess\PetDataAccess.cs" />
     <Compile Include="DataAccess\PetImageDataAccess.cs" />
+    <Compile Include="DataAccess\PetSearchDataAccess.cs" />
     <Compile Include="FindMyPetHost.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -117,10 +118,13 @@
     <Compile Include="Mappers\PetAlertMapper.cs" />
     <Compile Include="Mappers\PetImageMapper.cs" />
     <Compile Include="Mappers\PetMapper.cs" />
+    <Compile Include="Mappers\PetSearchMapper.cs" />
     <Compile Include="Providers\OwnerProvider.cs" />
     <Compile Include="Providers\PetAlertProvider.cs" />
     <Compile Include="Providers\PetImageProvider.cs" />
     <Compile Include="Providers\PetProvider.cs" />
+    <Compile Include="Providers\PetSearchProvider.cs" />
+    <Compile Include="Services\PetSearchService.cs" />
     <Compile Include="Services\PetAlertService.cs" />
     <Compile Include="Services\PetImageService.cs" />
     <Compile Include="Services\PetService.cs" />

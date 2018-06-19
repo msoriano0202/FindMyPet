@@ -36,23 +36,26 @@ namespace FindMyPet.MVC
             var adminPwd = ConfigurationManager.AppSettings["AdminPwd"].ToString();
             var adminRole = ConfigurationManager.AppSettings["AdminRole"].ToString();
 
-            var adminUser = new ApplicationUser()
+            var adminUserExist = UserManager.FindByEmail(adminEmail);
+            if (adminUserExist == null)
             {
-                UserName = adminEmail,
-                Email = adminEmail,
-                EmailConfirmed = true
-            };
-            var chkUser = UserManager.Create(adminUser, adminPwd);
+                var adminUser = new ApplicationUser()
+                {
+                    UserName = adminEmail,
+                    Email = adminEmail,
+                    EmailConfirmed = true
+                };
+                var chkUser = UserManager.Create(adminUser, adminPwd);
 
-            if (chkUser.Succeeded)
-                UserManager.AddToRole(adminUser.Id, adminRole);
-            /**************************/
+                if (chkUser.Succeeded)
+                    UserManager.AddToRole(adminUser.Id, adminRole);
+                /**************************/
 
-            /***  Default Admin User in System ***/
-            var ownerDataLoader = new OwnerDataLoader();
-            ownerDataLoader.RegisterOwner(adminUser.Id, "Admin", "Admin", adminEmail);
-            /*************************************/
-
+                /***  Default Admin User in System ***/
+                var ownerDataLoader = new OwnerDataLoader();
+                ownerDataLoader.RegisterOwner(adminUser.Id, "Admin", "Admin", adminEmail);
+                /*************************************/
+            }
         }
     }
 }

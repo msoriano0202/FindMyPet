@@ -40,4 +40,14 @@ namespace FindMyPet.Shared
         Active = 1,
         Deleted = 2
     }
+
+    /// <summary>
+    /// Pending = 0 / Approved = 1 / Rejected = 2
+    /// </summary>
+    public enum ApproveStatusEnum
+    {
+        Pending = 0,
+        Approved = 1,
+        Rejected = 2
+    }
 }

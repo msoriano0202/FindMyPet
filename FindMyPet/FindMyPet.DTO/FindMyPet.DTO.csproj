@@ -66,6 +66,8 @@
     <Compile Include="PetAlert\PetAlert.cs" />
     <Compile Include="PetAlert\PetAlertCreateRequest.cs" />
     <Compile Include="PetAlert\PetAlertFoundRequest.cs" />
+    <Compile Include="PetSearch\PetLost.cs" />
+    <Compile Include="PetSearch\PetSearchByDateRequest.cs" />
     <Compile Include="Pet\PetCreateRequest.cs" />
     <Compile Include="Pet\Pet.cs" />
     <Compile Include="Pet\PetDeleteRequest.cs" />
