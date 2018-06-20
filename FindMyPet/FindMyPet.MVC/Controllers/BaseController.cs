@@ -182,15 +182,6 @@ namespace FindMyPet.MVC.Controllers
 
         #region --- Private Helpers ---
 
-        private string GetOwnerImageProfile(string profileImage)
-        {
-            if (string.IsNullOrEmpty(profileImage))
-                return GetDefaultImageProfile();
-            else {
-                return FormatSiteImageUrl(profileImage);
-            }
-        }
-
         private string GetPetImageProfile(Pet pet)
         {
             var imageUrl = GetDefaultPetImageProfile();
@@ -223,6 +214,16 @@ namespace FindMyPet.MVC.Controllers
         #endregion
 
         #region --- Image helper ---
+
+        public string GetOwnerImageProfile(string profileImage)
+        {
+            if (string.IsNullOrEmpty(profileImage))
+                return GetDefaultImageProfile();
+            else
+            {
+                return FormatSiteImageUrl(profileImage);
+            }
+        }
 
         public string GetPetImageProfile(string petImage)
         {

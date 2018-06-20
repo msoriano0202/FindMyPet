@@ -250,13 +250,16 @@
     <Compile Include="Helpers\GeneralHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\JavaScriptConvert.cs" />
+    <Compile Include="Helpers\UrlFormatHelper.cs" />
     <Compile Include="IdentityExtentions\CustomizePasswordValidation.cs" />
     <Compile Include="Mappers\OwnerMapper.cs" />
     <Compile Include="Mappers\PetImageMapper.cs" />
     <Compile Include="Mappers\PetMapper.cs" />
+    <Compile Include="Mappers\PetSearchMapper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PetSearch\PetPublicProfileViewModel.cs" />
     <Compile Include="Models\PetSearch\PetSearchViewModel.cs" />
     <Compile Include="Models\Pet\PetAlertViewModel.cs" />
     <Compile Include="Models\Pet\PetImageViewModel.cs" />
@@ -487,12 +490,11 @@
     <Content Include="Views\Pet\PetAlert.cshtml" />
     <Content Include="Views\Pet\PetFound.cshtml" />
     <Content Include="Views\PetSearch\Index.cshtml" />
-    <Content Include="Views\Pet\PublicProfile.cshtml" />
+    <Content Include="Views\PetSearch\PublicProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
-    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

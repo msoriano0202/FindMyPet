@@ -14,6 +14,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
     public interface IPetSearchDataAccess
     {
         Task<List<PetLost>> GetPetLostByDateAsync(PetSearchByDateRequest request);
+        Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request);
     }
 
     public class PetSearchDataAccess : IPetSearchDataAccess
@@ -51,7 +52,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
             return result;
         }
 
-        public List<PetLost> FormatLostResults(List<Tuple<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>> lostResults)
+        private List<PetLost> FormatLostResults(List<Tuple<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>> lostResults)
         {
             var lostPets = new List<PetLost>();
 
@@ -78,6 +79,77 @@ namespace FindMyPet.MyServiceStack.DataAccess
             }
 
             return lostPets;
+        }
+
+        public async Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request)
+        {
+            var result = new PetLostDetails
+            {
+                PetInfo = new PetDetails(),
+                OwnersInfo = new List<OwnerDetails>()
+            };
+
+            PetTableModel pet = null;
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                if (request.PetId.HasValue)
+                    pet = await dbConnection.SingleByIdAsync<PetTableModel>(request.PetId.Value)
+                                            .ConfigureAwait(false);
+                else
+                    pet = await dbConnection.SingleAsync<PetTableModel>(p => p.Code == request.PetCode.Value)
+                                            .ConfigureAwait(false);
+
+                if (pet != null)
+                {
+                    var ownersQuery = dbConnection.From<OwnerPetTableModel>()
+                                                  .Join<OwnerTableModel>((op, o) => op.OwnerTableModelId == o.Id)
+                                                  .Join<OwnerSettingTableModel>((op, os) => op.OwnerTableModelId == os.OwnerTableModelId)
+                                                  .Where(op => op.PetTableModelId == pet.Id);
+
+                    var ownersResult = await dbConnection.SelectMultiAsync<OwnerPetTableModel, OwnerTableModel, OwnerSettingTableModel>(ownersQuery)
+                                                         .ConfigureAwait(false);
+
+                    var petQuery = dbConnection.From<PetTableModel>()
+                                               .Join<PetTableModel, PetAlertTableModel>((p, pa) => p.Id == pa.PetId && pa.AlertType == (int)AlertTypeEnum.Lost && pa.AlertStatus == (int)AlertStatusEnum.Active)
+                                               .Where(p => p.Id == pet.Id);
+
+                    var petResult = await dbConnection.SelectMultiAsync<PetTableModel, PetAlertTableModel>(petQuery)
+                                                      .ConfigureAwait(false);
+
+                    var petImages = await dbConnection.SelectAsync<PetImageTableModel>(pi => pi.PetTableModelId == pet.Id)
+                                                      .ConfigureAwait(false);
+
+                    foreach (var item in petResult)
+                    {
+                        result.PetInfo.Name = item.Item1.Name;
+                        result.PetInfo.ProfileImageUrl = petImages.Where(pi => pi.IsProfileImage).FirstOrDefault()?.ImageUrl;
+                        result.PetInfo.DateOfBirth = item.Item1.DateOfBirth;
+                        result.PetInfo.Description = item.Item1.Description;
+                        result.PetInfo.LostComment = item.Item2.Comment;
+                        result.PetInfo.LostDateTime = item.Item2.CreatedOn;
+                        result.PetInfo.Images = petImages.Select(pi => pi.ImageUrl).ToList();
+                    }
+
+                    OwnerDetails ownerDetails;
+                    foreach (var item in ownersResult)
+                    {
+                        ownerDetails = new OwnerDetails
+                        {
+                            FullName = $"{item.Item2.FirstName} {item.Item2.LastName}",
+                            ProfileImageUrl = item.Item2.ProfileImageUrl,
+                            Email = item.Item3.ShowEmailForAlerts ? item.Item2.Email : string.Empty,
+                            PhoneNumber1 = item.Item3.ShowPhoneNumberForAlerts ? item.Item2.PhoneNumber1 : string.Empty,
+                            PhoneNumber2 = item.Item3.ShowPhoneNumberForAlerts ? item.Item2.PhoneNumber2 : string.Empty,
+                            Address1 = item.Item3.ShowAddressForAlerts ? item.Item2.Address1 : string.Empty,
+                            Address2 = item.Item3.ShowAddressForAlerts ? item.Item2.Address2 : string.Empty
+                        };
+
+                        result.OwnersInfo.Add(ownerDetails);
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

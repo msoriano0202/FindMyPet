@@ -1,4 +1,5 @@
 ﻿using FindMyPet.MVC.DataLoaders;
+using FindMyPet.MVC.Mappers;
 using FindMyPet.MVC.Models.PetSearch;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,18 @@ namespace FindMyPet.MVC.Controllers
     public class PetSearchController : BaseController
     {
         private readonly IPetSearchDataLoader _petSearchDataLoader;
+        private readonly IPetSearchMapper _petSearchMapper;
 
-        public PetSearchController(IPetSearchDataLoader petSearchDataLoader)
+        public PetSearchController(IPetSearchDataLoader petSearchDataLoader, IPetSearchMapper petSearchMapper)
         {
             if (petSearchDataLoader == null)
                 throw new ArgumentNullException(nameof(petSearchDataLoader));
 
+            if (petSearchMapper == null)
+                throw new ArgumentNullException(nameof(petSearchMapper));
+
             _petSearchDataLoader = petSearchDataLoader;
+            _petSearchMapper = petSearchMapper;
         }
 
         public ActionResult Index()
@@ -45,6 +51,20 @@ namespace FindMyPet.MVC.Controllers
                     Longitude = x.Longitude
                 })
             };
+
+            return View(model);
+        }
+
+        public ActionResult PublicProfile(string id)
+        {
+            var data = _petSearchDataLoader.GetPetLostDetails(Guid.Parse(id));
+            var model = _petSearchMapper.GetPetPublicProfileViewModel(data);
+
+            model.PetInfo.ProfileImageUrl = this.GetPetImageProfile(model.PetInfo.ProfileImageUrl);
+            foreach (var owner in model.OwnersInfo)
+            {
+                owner.ProfileImageUrl = this.GetOwnerImageProfile(owner.ProfileImageUrl);
+            }
 
             return View(model);
         }

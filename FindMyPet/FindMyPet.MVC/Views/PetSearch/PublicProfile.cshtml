@@ -1,0 +1,128 @@
+﻿@using FindMyPet.MVC.Helpers;
+
+@model FindMyPet.MVC.Models.PetSearch.PetPublicProfileViewModel
+
+@{
+    ViewBag.Title = "Perfil Publico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="profile-section g-bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @*g-border-gray-300*@
+                <div class="profile-content g-border g-p-10">
+                    <div class="d-sm-flex align-items-center justify-content-between">
+                        <div class="d-sm-flex">
+                            <div class="user-img">
+                                <img src="@Url.Content(Model.PetInfo.ProfileImageUrl)" class="img-fluid rounded-circle" alt="Imagen de Mascota">
+                            </div>
+                            <div class="g-ml-10 g-mt-10">
+                                <div class="d-sm-flex justify-content-between">
+                                    <h4 class="g-mb-sm-10 font-weight-bold text-primary">@Model.PetInfo.Name</h4>
+                                </div>
+                                <p class="g-mb-5">
+                                    <strong>Perdido:</strong>&nbsp;&nbsp;
+                                    <span class="g-font-size-14">@Model.PetInfo.LostDateTime</span>
+                                </p>
+                                <p>
+                                    <strong>Detalles:</strong>&nbsp;&nbsp;
+                                    <span class="g-font-size-15">@Model.PetInfo.Description</span>
+                                </p>
+                                <p>
+                                    <span class="g-font-size-15">@Model.PetInfo.LostComment</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cn-nav-tabs-wrapper g-mt-20">
+                        <ul class="nav cn-nav-tabs nav-tabs primary-active" id="tab-02" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab-02" data-toggle="tab" href="#home-02" role="tab" aria-controls="home-02" aria-selected="true">
+                                    <span class="align-middle g-mr-sm-3"><i class="icon-user"></i></span>
+                                    <span class="align-middle tab-name">Contacto</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab-02" data-toggle="tab" href="#profile-02" role="tab" aria-controls="profile-02" aria-selected="false">
+                                    <span class="align-middle g-mr-sm-3"><i class="icon-picture"></i></span>
+                                    <span class="align-middle tab-name">Fotos</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="TabContent-02">
+                            <div class="tab-pane fade show active" id="home-02" role="tabpanel" aria-labelledby="home-tab">
+                                @foreach (var owner in Model.OwnersInfo)
+                                {
+                                    <div class="d-sm-flex g-mt-10 g-mb-30">
+                                        <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                            <img class="g-w50 rounded-circle" src="@owner.ProfileImageUrl" alt="Imagen Contacto">
+                                        </div>
+                                        <div>
+                                            <div class="d-sm-flex justify-content-between">
+                                                <h6 class="g-mb-sm-10 font-weight-bold text-primary">@owner.FullName</h6>
+                                            </div>
+                                            <p class="g-mb-5">
+                                                <strong>Correo: </strong>&nbsp;
+                                                <span class="g-font-size-15">@owner.Email</span>
+                                            </p>
+                                            @if (!string.IsNullOrEmpty(owner.PhoneNumber1))
+                                            {
+                                                <p class="g-mb-5">
+                                                    <strong>Teléfono 1: </strong>&nbsp;
+                                                    <span class="g-font-size-15">@owner.PhoneNumber1</span>
+                                                </p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(owner.PhoneNumber2))
+                                            {
+                                                <p class="g-mb-5">
+                                                    <strong>Teléfono 2: </strong>&nbsp;
+                                                    <span class="g-font-size-15">@owner.PhoneNumber2</span>
+                                                </p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(owner.Address1))
+                                            {
+                                                <p class="g-mb-5">
+                                                    <strong>Dirección 1: </strong>&nbsp;
+                                                    <span class="g-font-size-15">@owner.Address1</span>
+                                                </p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(owner.Address2))
+                                            {
+                                                <p class="g-mb-5">
+                                                    <strong>Dirección 2: </strong>&nbsp;
+                                                    <span class="g-font-size-15">@owner.Address2</span>
+                                                </p>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="tab-pane fade" id="profile-02" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="widget feeds-widget">
+                                    <div class="row justify-content-center">
+                                        @foreach (var item in Model.PetInfo.Images)
+                                        {
+                                            <div class="col-3 g-p-3">
+                                                <div class="member g-border g-border-gray-300 g-border-primary-h">
+                                                    <div class="caption">
+                                                        <div class="caption-default">
+                                                            <img src="@Url.Content(UrlFormatHelper.FormatImageUrl(item))" class="img-fluid" alt="@Model.PetInfo.Name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

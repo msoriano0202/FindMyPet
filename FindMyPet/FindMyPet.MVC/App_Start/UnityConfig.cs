@@ -32,6 +32,7 @@ namespace FindMyPet.MVC
             container.RegisterType<IPetImageMapper, PetImageMapper>();
             container.RegisterType<IPetMapper, PetMapper>();
             container.RegisterType<IOwnerMapper, OwnerMapper>();
+            container.RegisterType<IPetSearchMapper, PetSearchMapper>();
 
             container.RegisterType<IOwnerDataLoader, OwnerDataLoader>();
             container.RegisterType<IPetDataLoader, PetDataLoader>();

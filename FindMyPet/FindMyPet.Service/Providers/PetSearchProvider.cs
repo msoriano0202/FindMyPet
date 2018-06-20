@@ -12,6 +12,7 @@ namespace FindMyPet.MyServiceStack.Providers
     public interface IPetSearchProvider
     {
         Task<List<PetLost>> GetPetLostByDateAsync(PetSearchByDateRequest request);
+        Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request);
     }
 
     public class PetSearchProvider : IPetSearchProvider
@@ -37,6 +38,18 @@ namespace FindMyPet.MyServiceStack.Providers
                 throw new ArgumentNullException(nameof(request));
 
             return await _petSearchDataAccess.GetPetLostByDateAsync(request)
+                                             .ConfigureAwait(false);
+        }
+
+        public async Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (!request.PetId.HasValue && !request.PetCode.HasValue)
+                throw new ArgumentException("Id and Code are NULL");
+
+            return await _petSearchDataAccess.GetPetLostDetails(request)
                                              .ConfigureAwait(false);
         }
     }
