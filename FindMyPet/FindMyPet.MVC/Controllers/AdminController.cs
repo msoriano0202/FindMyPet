@@ -1,5 +1,6 @@
 ﻿using FindMyPet.MVC.DataLoaders;
 using FindMyPet.MVC.Mappers;
+using FindMyPet.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,11 +49,13 @@ namespace FindMyPet.MVC.Controllers
 
         public ActionResult ApproveComment(string id)
         {
+            var response = _adminDataLoader.ManageComent(id, (int)ApproveStatusEnum.Approved);
             return RedirectToAction("ManagePublicComments");
         }
 
         public ActionResult RejectComment(string id)
         {
+            var response = _adminDataLoader.ManageComent(id, (int)ApproveStatusEnum.Rejected);
             return RedirectToAction("ManagePublicComments");
         }
     }

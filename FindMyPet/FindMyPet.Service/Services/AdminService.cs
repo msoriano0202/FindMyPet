@@ -29,5 +29,14 @@ namespace FindMyPet.MyServiceStack.Services
             return await _adminProvider.GetAdminFoundAlertsAsync(request)
                                        .ConfigureAwait(false);
         }
+
+        public async Task<int> Post(AdminManageFoundAlertRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _adminProvider.ManageAdminFoundAlertsAsync(request)
+                                       .ConfigureAwait(false);
+        }
     }
 }

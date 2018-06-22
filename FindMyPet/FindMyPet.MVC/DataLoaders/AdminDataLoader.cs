@@ -10,6 +10,7 @@ namespace FindMyPet.MVC.DataLoaders
     public interface IAdminDataLoader
     {
         List<AdminFoundAlert> GetFoundAlertsToApprove();
+        int ManageComent(string code, int action);
     }
 
     public class AdminDataLoader : IAdminDataLoader
@@ -27,6 +28,13 @@ namespace FindMyPet.MVC.DataLoaders
         public List<AdminFoundAlert> GetFoundAlertsToApprove()
         {
             return _adminServiceClient.GetFoundAlertsToApprove();
+        }
+
+        public int ManageComent(string code, int action)
+        {
+            var request = new AdminManageFoundAlertRequest { Code = Guid.Parse(code), Action = action };
+
+            return _adminServiceClient.ManageComent(request);
         }
     }
 }

@@ -19,36 +19,44 @@
                         <h5 class="text-primary"><strong>Administrar Comentarios</strong></h5>
                     </div>
 
-                    @foreach (var item in Model)
+                    @if (Model.Any())
                     {
-                        <hr />
-                        <div class="list-group text-center text-sm-left g-mb-40">
-                            <div href="#" class="d-sm-flex">
-                                <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
-                                    <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatOwnerImageUrl(item.ownerProfileImageUrl))" alt="@item.OwnerName">
-                                </div>
-                                <div>
-                                    <div class="d-sm-flex justify-content-start">
-                                        <h6 class="g-mb-sm-10 font-weight-bold">@item.OwnerName - @item.PetName</h6>
-                                        <span class="g-ml-20 g-bg-primary font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">@item.FoundDateTime</span>
+                        foreach (var item in Model)
+                        {
+                            <hr />
+                            <div class="list-group text-center text-sm-left g-mb-40">
+                                <div href="#" class="d-sm-flex">
+                                    <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                        <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatOwnerImageUrl(item.ownerProfileImageUrl))" alt="@item.OwnerName">
                                     </div>
-                                    <div href="#" class="d-sm-flex">
-                                        <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
-                                            <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatPetImageUrl(item.PetProfileImageUrl))" alt="@item.PetName">
+                                    <div>
+                                        <div class="d-sm-flex justify-content-start">
+                                            <h6 class="g-mb-sm-10 font-weight-bold">@item.OwnerName - @item.PetName</h6>
+                                            <span class="g-ml-20 g-bg-primary font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">@item.FoundDateTime</span>
                                         </div>
-                                        <div>
-                                            <p class="g-mb-5">@item.FoundComment</p>
+                                        <div href="#" class="d-sm-flex">
+                                            <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                                <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatPetImageUrl(item.PetProfileImageUrl))" alt="@item.PetName">
+                                            </div>
+                                            <div>
+                                                <p class="g-mb-5">@item.FoundComment</p>
+                                            </div>
                                         </div>
+                                        <ul class="list-unstyled list-inline g-mt-15">
+                                            <li class="list-inline-item"><a href="/Admin/ApproveComment/@item.Code" class="g-text-dark g-text-primary-h g-mr-10 cn-icon-outline-blue cn-icon-blue-h"><i class="icon-like"></i>  Aprobar</a></li>
+                                            <li class="list-inline-item"><a href="/Admin/RejectComment/@item.Code" class="g-text-dark g-text-primary-h cn-icon-outline-danger cn-icon-danger"><i class="icon-dislike"></i> Rechazar</a></li>
+                                        </ul>
                                     </div>
-                                    <ul class="list-unstyled list-inline g-mt-15">
-                                        <li class="list-inline-item"><a href="/Admin/ApproveComment/@item.Code" class="g-text-dark g-text-primary-h g-mr-10 cn-icon-outline-blue cn-icon-blue-h"><i class="icon-like"></i>  Aprobar</a></li>
-                                        <li class="list-inline-item"><a href="/Admin/RejectComment/@item.Code" class="g-text-dark g-text-primary-h cn-icon-outline-danger cn-icon-danger"><i class="icon-dislike"></i> Rechazar</a></li>
-                                    </ul>
                                 </div>
                             </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="g-flex-center h-100 g-py-30 g-mb-40">
+                            <span>No hay comentarios por ahora.</span>
                         </div>
                     }
-
                 </div>
                 }
             </div>

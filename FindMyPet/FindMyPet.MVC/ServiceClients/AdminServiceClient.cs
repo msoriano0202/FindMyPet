@@ -9,6 +9,7 @@ namespace FindMyPet.MVC.ServiceClients
     public interface IAdminServiceClient
     {
         List<AdminFoundAlert> GetFoundAlertsToApprove();
+        int ManageComent(AdminManageFoundAlertRequest request);
     }
 
     public class AdminServiceClient : IAdminServiceClient
@@ -28,6 +29,11 @@ namespace FindMyPet.MVC.ServiceClients
             var request = new AdminFoundAlertSearchRequest();
 
             return _findMyPetClient.JsonClient().Get(request);
+        }
+
+        public int ManageComent(AdminManageFoundAlertRequest request)
+        {
+            return _findMyPetClient.JsonClient().Post(request);
         }
     }
 }

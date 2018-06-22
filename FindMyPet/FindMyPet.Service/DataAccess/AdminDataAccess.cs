@@ -14,6 +14,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
     public interface IAdminDataAccess
     {
         Task<List<AdminFoundAlert>> GetAdminFoundAlertsAsync();
+        Task<int> ManageAdminFoundAlertsAsync(AdminManageFoundAlertRequest request);
     }
 
     public class AdminDataAccess : IAdminDataAccess
@@ -30,7 +31,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
 
         public async Task<List<AdminFoundAlert>> GetAdminFoundAlertsAsync()
         {
-            List<AdminFoundAlert> results = null;
+            var results = new List<AdminFoundAlert>();
             using (var dbConnection = _dbConnectionFactory.Open())
             {
 
@@ -77,6 +78,33 @@ namespace FindMyPet.MyServiceStack.DataAccess
             }
 
             return foundAlerts;
+        }
+
+        public async Task<int> ManageAdminFoundAlertsAsync(AdminManageFoundAlertRequest request)
+        {
+            int records;
+            PetAlertTableModel petAlert = null;
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                using (var trans = dbConnection.OpenTransaction())
+                {
+                    if(request.Id.HasValue)
+                        petAlert = await dbConnection.SingleByIdAsync<PetAlertTableModel>(request.Id.Value)
+                                                     .ConfigureAwait(false);
+                    else if(request.Code.HasValue)
+                        petAlert = await dbConnection.SingleAsync<PetAlertTableModel>(p => p.Code == request.Code.Value)
+                                                     .ConfigureAwait(false);
+
+                    var action = request.Action;
+
+                    records = await dbConnection.UpdateOnlyAsync(new PetAlertTableModel { Approved = action }, x => x.Approved, x => x.Id == petAlert.Id)
+                                      .ConfigureAwait(false);
+
+                    trans.Commit();
+                }
+            }
+            
+            return records;
         }
     }
 }
