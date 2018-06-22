@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="profile-section g-py g-bg-white">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_AdminRightNavMenu")
+            <div class="col-md-9">
+                @using (Html.BeginForm())
+                {
+                    <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
+                        <h5 class="text-primary"><strong>Dashboard</strong></h5>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

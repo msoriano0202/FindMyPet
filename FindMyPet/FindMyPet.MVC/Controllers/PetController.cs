@@ -14,7 +14,7 @@ using System.Linq;
 
 namespace FindMyPet.MVC.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Owner,Admin")]
     public class PetController : BaseController
     {
         private readonly IPetDataLoader _petDataLoader;

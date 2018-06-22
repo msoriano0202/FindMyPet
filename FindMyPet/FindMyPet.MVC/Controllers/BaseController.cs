@@ -180,6 +180,14 @@ namespace FindMyPet.MVC.Controllers
         }
         #endregion
 
+        #region -- AdminNavBar --
+        public void SetAdminNavBarInfo(string navItemSelected)
+        {
+            ViewBag.AdminFullName = this.GetSessionOwnerName();
+            ViewBag.AdminSelectedItem = navItemSelected;
+        }
+        #endregion
+
         #region --- Private Helpers ---
 
         private string GetPetImageProfile(Pet pet)

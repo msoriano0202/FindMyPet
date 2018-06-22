@@ -14,5 +14,21 @@ namespace FindMyPet.MVC.Helpers
 
             return imageUrl;
         }
+
+        public static string FormatOwnerImageUrl(string imageUrl)
+        {
+            if (string.IsNullOrEmpty(imageUrl))
+                return ConfigurationManager.AppSettings["DefaultImageOwnerProfile"].ToString();
+            else
+                return FormatImageUrl(imageUrl);
+        }
+
+        public static string FormatPetImageUrl(string imageUrl)
+        {
+            if (string.IsNullOrEmpty(imageUrl))
+                return ConfigurationManager.AppSettings["DefaultImagePetProfile"].ToString();
+            else
+                return FormatImageUrl(imageUrl);
+        }
     }
 }

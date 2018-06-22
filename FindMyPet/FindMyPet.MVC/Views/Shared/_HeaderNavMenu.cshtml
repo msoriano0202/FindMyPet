@@ -38,14 +38,14 @@
                             </ul>
                         </li>
 
-                        @*@if (Request.IsAuthenticated)
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                         <li class="nav-item">
-                            <a id="registerLink" href="/Pet" class="nav-link">
-                                <i class="icon-social-github g-mr-5"></i><span>Mis Mascotas</span>
+                            <a id="adminLink" href="/Admin" class="nav-link">
+                                <i class="icon-grid g-mr-5"></i><span>Admin</span>
                             </a>
                         </li>
-                        }*@
+                        }
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>

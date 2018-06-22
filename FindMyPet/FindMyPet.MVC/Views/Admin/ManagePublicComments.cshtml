@@ -1,0 +1,57 @@
+﻿@model IEnumerable<FindMyPet.MVC.Models.Admin.CommentToApproveViewModel>
+
+@using FindMyPet.MVC.Helpers;
+
+@{
+    ViewBag.Title = "Administrar Comentarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="profile-section g-py g-bg-white">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_AdminRightNavMenu")
+            <div class="col-md-9">
+                @using (Html.BeginForm())
+                {
+                <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
+                    <div class="g-mb-30">
+                        <h5 class="text-primary"><strong>Administrar Comentarios</strong></h5>
+                    </div>
+
+                    @foreach (var item in Model)
+                    {
+                        <hr />
+                        <div class="list-group text-center text-sm-left g-mb-40">
+                            <div href="#" class="d-sm-flex">
+                                <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                    <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatOwnerImageUrl(item.ownerProfileImageUrl))" alt="@item.OwnerName">
+                                </div>
+                                <div>
+                                    <div class="d-sm-flex justify-content-start">
+                                        <h6 class="g-mb-sm-10 font-weight-bold">@item.OwnerName - @item.PetName</h6>
+                                        <span class="g-ml-20 g-bg-primary font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">@item.FoundDateTime</span>
+                                    </div>
+                                    <div href="#" class="d-sm-flex">
+                                        <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                            <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatPetImageUrl(item.PetProfileImageUrl))" alt="@item.PetName">
+                                        </div>
+                                        <div>
+                                            <p class="g-mb-5">@item.FoundComment</p>
+                                        </div>
+                                    </div>
+                                    <ul class="list-unstyled list-inline g-mt-15">
+                                        <li class="list-inline-item"><a href="/Admin/ApproveComment/@item.Code" class="g-text-dark g-text-primary-h g-mr-10 cn-icon-outline-blue cn-icon-blue-h"><i class="icon-like"></i>  Aprobar</a></li>
+                                        <li class="list-inline-item"><a href="/Admin/RejectComment/@item.Code" class="g-text-dark g-text-primary-h cn-icon-outline-danger cn-icon-danger"><i class="icon-dislike"></i> Rechazar</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

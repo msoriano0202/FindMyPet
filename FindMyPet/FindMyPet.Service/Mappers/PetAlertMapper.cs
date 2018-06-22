@@ -32,7 +32,7 @@ namespace FindMyPet.MyServiceStack.Mappers
                 AlertStatus = (int)AlertStatusEnum.Active,
                 CreatedOn = System.DateTime.Now,
                 MakeItPublic = false,
-                Approved = false
+                Approved = (int)ApproveStatusEnum.Pending
             };
         }
 

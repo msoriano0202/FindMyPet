@@ -14,7 +14,7 @@ using System.Configuration;
 
 namespace FindMyPet.MVC.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Owner,Admin")]
     public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;

@@ -1,0 +1,32 @@
+﻿@{
+    string IsActiveMenuItem(string itemName)
+    {
+        var str = string.Empty;
+        var vb = (string)ViewBag.AdminSelectedItem;
+
+        if (itemName == vb)
+            str = "active";
+
+        return str;
+    }
+}
+
+<div class="col-md-3">
+    <aside class="user-sidebar g-p-10 g-border g-border-gray-300 g-mb-15">
+        <div class="position-relative text-center g-mb-30 g-mt-20">
+            <h4 class="text-primary"><strong>Bienvenido</strong></h4>
+            <h4 class="font-weight-bold g-text-gray-700 g-mt-15">@ViewBag.AdminFullName</h4>
+        </div>
+
+        <div class="user-info">
+            <nav class="list-group">
+                <a href="/Admin" class="list-group-item list-group-item-action @IsActiveMenuItem("Index")">
+                    <i class="icon-chart g-mr-5"></i>Dashboard
+                </a>
+                <a href="/Admin/ManagePublicComments" class="list-group-item list-group-item-action @IsActiveMenuItem("ManagePublicComments")">
+                    <i class="icon-list g-mr-5"></i>Administrar Comentarios
+                </a>
+            </nav>
+        </div>
+    </aside>
+</div>
