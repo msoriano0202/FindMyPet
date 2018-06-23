@@ -60,8 +60,8 @@
     <Compile Include="Admin\AdminFoundAlert.cs" />
     <Compile Include="Admin\AdminFoundAlertSearchRequest.cs" />
     <Compile Include="Admin\AdminManageFoundAlertRequest.cs" />
-    <Compile Include="Owner\OwnerCreateRequest.cs" />
     <Compile Include="Owner\Owner.cs" />
+    <Compile Include="Owner\OwnerCreateRequest.cs" />
     <Compile Include="Owner\OwnerRequest.cs" />
     <Compile Include="Owner\OwnerSearchRequest.cs" />
     <Compile Include="Owner\OwnerSettings.cs" />
@@ -73,6 +73,8 @@
     <Compile Include="PetSearch\PetLostDetails.cs" />
     <Compile Include="PetSearch\PetLostDetailsRequest.cs" />
     <Compile Include="PetSearch\PetSearchByDateRequest.cs" />
+    <Compile Include="PetSearch\PetSuccessStory.cs" />
+    <Compile Include="PetSearch\PetSuccessStoryRequest.cs" />
     <Compile Include="Pet\PetCreateRequest.cs" />
     <Compile Include="Pet\Pet.cs" />
     <Compile Include="Pet\PetDeleteRequest.cs" />

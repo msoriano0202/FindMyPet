@@ -38,5 +38,14 @@ namespace FindMyPet.MyServiceStack.Services
             return await _petSearchProvider.GetPetLostDetails(request)
                                            .ConfigureAwait(false);
         }
+
+        public async Task<PagedResponse<PetSuccessStory>> Get(PetSuccessStoryRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _petSearchProvider.GetPetSuccessStoriesAsync(request)
+                                           .ConfigureAwait(false);
+        }
     }
 }

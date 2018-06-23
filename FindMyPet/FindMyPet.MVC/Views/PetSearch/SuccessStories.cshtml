@@ -1,0 +1,90 @@
+﻿@using FindMyPet.MVC.Helpers;
+
+@model FindMyPet.MVC.Models.PetSearch.PetSuccessStoryPagedListViewModel
+
+@{
+    ViewBag.Title = "Casos de Éxito";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="petSearch" class="g-border-gray-300">
+    <div class="container g-py-40 g-px-10">
+        <div class="section-title text-center g-mb-30">
+            <h4 class="title text-uppercase cn-heading-v2 font-weight-bold">Casos de Éxito</h4>
+        </div>
+        @if (!Model.Records.Any())
+        {
+            @Html.Partial("_NoSuccessStories")
+        }
+        else
+        {
+            int index = 0;
+
+            <div class="text-center">
+                <div class="timeline-wrapper g-mb-30">
+                    @foreach (var item in Model.Records)
+                    {
+                        index++;
+                        if ((index % 2) != 0)
+                        {
+                            <div class="timeline-item left-item text-md-center">
+                                <div class="timeline-date position-absolute">
+                                    <span class="g-bg-bluegray-600">@item.FoundDateTime</span>
+                                </div>
+                                <div class="cn-icon cn-icon-outline-primary pulse-primary-effect rounded-circle g-mb-10 g-mb-md-0">
+                                    <i class="fa fa-bell" aria-hidden="true"></i>
+                                </div>
+                                <div class="timeline-content g-pb-sm-20">
+                                    <div class="timeline-body g-p-30 g-bg-cyan g-rounded-10">
+                                        <div class="d-inline-flex g-mb-10">
+                                            <div class="g-mr-sm-40 g-mb-10 g-mb-sm-0">
+                                                <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatOwnerImageUrl(item.OwnerProfileImageUrl))" alt="Imagen Propietario">
+                                                <h5>@item.OwnerFullName</h5>
+                                            </div>
+                                            <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                                <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatPetImageUrl(item.PetProfileImageUrl))" alt="Imagen Mascota">
+                                                <h5>@item.PetName</h5>
+                                            </div>
+                                        </div>
+                                        <p>@item.FoundComment</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="timeline-item right-item text-md-center">
+                                <div class="timeline-date position-absolute">
+                                    <span class="g-bg-bluegray-600">@item.FoundDateTime</span>
+                                </div>
+                                <div class="cn-icon cn-icon-outline-primary pulse-primary-effect rounded-circle g-mb-10 g-mb-md-0">
+                                    <i class="fa fa-bell" aria-hidden="true"></i>
+                                </div>
+                                <div class="timeline-content g-pb-sm-20">
+                                    <div class="timeline-body g-p-30 g-bg-cyan g-rounded-10">
+                                        <div class="d-inline-flex g-mb-10">
+                                            <div class="g-mr-sm-40 g-mb-10 g-mb-sm-0">
+                                                <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatOwnerImageUrl(item.OwnerProfileImageUrl))" alt="Imagen Propietario">
+                                                <h5>@item.OwnerFullName</h5>
+                                            </div>
+                                            <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                                <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatPetImageUrl(item.PetProfileImageUrl))" alt="Imagen Mascota">
+                                                <h5>@item.PetName</h5>
+                                            </div>
+                                        </div>
+                                        <p>@item.FoundComment</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+                @if (Model.Pagination.EnablePagination)
+                {
+                    @Html.Partial("../Shared/_Pagination", Model.Pagination)
+                }
+            </div>
+        }
+    </div>
+</section>

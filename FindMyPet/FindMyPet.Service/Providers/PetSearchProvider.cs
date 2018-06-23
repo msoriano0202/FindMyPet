@@ -1,4 +1,5 @@
 ﻿using FindMyPet.DTO.PetSearch;
+using FindMyPet.DTO.Shared;
 using FindMyPet.MyServiceStack.DataAccess;
 using FindMyPet.MyServiceStack.Mappers;
 using System;
@@ -13,6 +14,7 @@ namespace FindMyPet.MyServiceStack.Providers
     {
         Task<List<PetLost>> GetPetLostByDateAsync(PetSearchByDateRequest request);
         Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request);
+        Task<PagedResponse<PetSuccessStory>> GetPetSuccessStoriesAsync(PetSuccessStoryRequest request);
     }
 
     public class PetSearchProvider : IPetSearchProvider
@@ -50,6 +52,15 @@ namespace FindMyPet.MyServiceStack.Providers
                 throw new ArgumentException("Id and Code are NULL");
 
             return await _petSearchDataAccess.GetPetLostDetails(request)
+                                             .ConfigureAwait(false);
+        }
+
+        public async Task<PagedResponse<PetSuccessStory>> GetPetSuccessStoriesAsync(PetSuccessStoryRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _petSearchDataAccess.GetPetSuccessStoriesAsync(request)
                                              .ConfigureAwait(false);
         }
     }

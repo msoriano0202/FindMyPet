@@ -10,6 +10,7 @@ namespace FindMyPet.MVC.Mappers
     public interface IPetSearchMapper
     {
         PetPublicProfileViewModel GetPetPublicProfileViewModel(PetLostDetails data);
+        PetSuccessStoryViewModel PetSuccessStoryToViewModel(PetSuccessStory data);
     }
 
     public class PetSearchMapper : IPetSearchMapper
@@ -48,6 +49,20 @@ namespace FindMyPet.MVC.Mappers
                 PhoneNumber2 = ownerDetails.PhoneNumber2,
                 Address1 = ownerDetails.Address1,
                 Address2 = ownerDetails.Address2
+            };
+        }
+
+        public PetSuccessStoryViewModel PetSuccessStoryToViewModel(PetSuccessStory data)
+        {
+            return new PetSuccessStoryViewModel
+            {
+                OwnerFullName =  data.OwnerFullName,
+                OwnerProfileImageUrl = data.OwnerProfileImageUrl,
+                PetName = data.PetName,
+                PetProfileImageUrl = data.PetProfileImageUrl,
+                FoundComment = data.FoundComment,
+                LostDateTime = data.LostDateTime.ToString("dd / MMM / yyyy hh:mm:ss tt"),
+                FoundDateTime = data.FoundDateTime.ToString("dd / MMM / yyyy hh:mm:ss tt")
             };
         }
     }

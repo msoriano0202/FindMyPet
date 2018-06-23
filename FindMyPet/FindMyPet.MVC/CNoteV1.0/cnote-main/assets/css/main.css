@@ -8867,7 +8867,7 @@ footer {
         border-style: solid;
         left: -5px;
         border-width: 5px 5px 5px 0px;
-        border-color: transparent #13c3c0 transparent transparent;
+        border-color: transparent #5B6469 transparent transparent;
         top: 50%;
         transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -8894,7 +8894,7 @@ footer {
         right: 25px;
         top: 0px;
         border-width: 0 0px 15px 15px;
-        border-color: transparent transparent #1e2428 transparent; } }
+        border-color: transparent transparent #13c3c0 transparent; } }
   @media (min-width: 768px) {
     .timeline-item.right-item .timeline-date {
       right: 50%;
@@ -8908,7 +8908,7 @@ footer {
         border-style: solid;
         right: -5px;
         border-width: 5px 0px 5px 5px;
-        border-color: transparent transparent transparent #13c3c0;
+        border-color: transparent transparent transparent #5B6469;
         top: 50%;
         transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -8936,7 +8936,7 @@ footer {
         left: 25px;
         top: 0px;
         border-width: 0px 15px 15px 0px;
-        border-color: transparent transparent #1e2428 transparent; } }
+        border-color: transparent transparent #13c3c0 transparent; } }
   .timeline-item .timeline-content {
     z-index: 1;
     position: relative;

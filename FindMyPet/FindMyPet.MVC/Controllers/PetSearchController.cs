@@ -3,6 +3,7 @@ using FindMyPet.MVC.Mappers;
 using FindMyPet.MVC.Models.PetSearch;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -67,6 +68,25 @@ namespace FindMyPet.MVC.Controllers
             }
 
             return View(model);
+        }
+
+        public ActionResult SuccessStories(int? page)
+        {
+            this.VerifySessionVariables();
+            var pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultPageSize"].ToString());
+            page = page ?? 1;
+
+            var result = _petSearchDataLoader.GetPetSuccessStories(pageSize, page.Value);
+            if (page < 0) page = 1;
+            else if (page > result.TotalPages) page = result.TotalPages;
+
+            var pagedModel = new PetSuccessStoryPagedListViewModel
+            {
+                Records = result.Result,
+                Pagination = this.SetPaginationViewModel("/PetSearch/SuccessStories?page=", result.TotalRecords, result.TotalPages, page.Value, pageSize)
+            };
+
+            return View(pagedModel);
         }
     }
 }

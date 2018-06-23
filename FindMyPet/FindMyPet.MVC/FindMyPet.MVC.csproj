@@ -265,6 +265,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PetSearch\PetPublicProfileViewModel.cs" />
     <Compile Include="Models\PetSearch\PetSearchViewModel.cs" />
+    <Compile Include="Models\PetSearch\PetSuccessStoryPagedListViewModel.cs" />
+    <Compile Include="Models\PetSearch\PetSuccessStoryViewModel.cs" />
     <Compile Include="Models\Pet\PetAlertViewModel.cs" />
     <Compile Include="Models\Pet\PetImageViewModel.cs" />
     <Compile Include="Models\Pet\PetPagedListViewModel.cs" />
@@ -499,6 +501,8 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\ManagePublicComments.cshtml" />
     <Content Include="Views\Admin\_AdminRightNavMenu.cshtml" />
+    <Content Include="Views\PetSearch\SuccessStories.cshtml" />
+    <Content Include="Views\PetSearch\_NoSuccessStories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

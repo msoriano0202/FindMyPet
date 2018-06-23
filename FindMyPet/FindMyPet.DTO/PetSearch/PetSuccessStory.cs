@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace FindMyPet.DTO.PetSearch
 {
-    public class PetLost
+    public class PetSuccessStory
     {
-        public int? PetId { get; set; }
-        public Guid? PetCode { get; set; }
+        public string OwnerFullName { get; set; }
+        public string OwnerProfileImageUrl { get; set; }
         public string PetName { get; set; }
         public string PetProfileImageUrl { get; set; }
-        public int Type { get; set; }
-        public float Latitude { get; set; }
-        public float Longitude { get; set; }
+        public string FoundComment { get; set; }
         public DateTimeOffset LostDateTime { get; set; }
+        public DateTimeOffset FoundDateTime { get; set; }
     }
 }

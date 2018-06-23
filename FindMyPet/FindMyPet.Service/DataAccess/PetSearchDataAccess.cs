@@ -1,4 +1,6 @@
-﻿using FindMyPet.DTO.PetSearch;
+﻿using FindMyPet.DTO.Pet;
+using FindMyPet.DTO.PetSearch;
+using FindMyPet.DTO.Shared;
 using FindMyPet.Shared;
 using FindMyPet.TableModel;
 using ServiceStack.Data;
@@ -15,6 +17,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
     {
         Task<List<PetLost>> GetPetLostByDateAsync(PetSearchByDateRequest request);
         Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request);
+        Task<PagedResponse<PetSuccessStory>> GetPetSuccessStoriesAsync(PetSuccessStoryRequest request);
     }
 
     public class PetSearchDataAccess : IPetSearchDataAccess
@@ -65,10 +68,6 @@ namespace FindMyPet.MyServiceStack.DataAccess
                     PetCode = item.Item2.Code,
                     PetName = item.Item2.Name,
                     PetProfileImageUrl = item.Item4.ImageUrl,
-                    //OwnerId = item.Item3.Id,
-                    //OwnerCode = item.Item3.Code,
-                    //OwnerName = $"{item.Item3.FirstName} {item.Item3.LastName}",
-                    //OwnerProfileImageUrl = item.Item3.ProfileImageUrl,
                     Type = item.Item1.AlertType,
                     Latitude = item.Item1.Latitude,
                     Longitude = item.Item1.Longitude,
@@ -147,6 +146,97 @@ namespace FindMyPet.MyServiceStack.DataAccess
                         result.OwnersInfo.Add(ownerDetails);
                     }
                 }
+            }
+
+            return result;
+        }
+
+        public async Task<PagedResponse<PetSuccessStory>> GetPetSuccessStoriesAsync(PetSuccessStoryRequest request)
+        {
+            var response = new PagedResponse<PetSuccessStory>();
+            List<PetAlertTableModel> petAlerts;
+            var records = new List<Tuple<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>>();
+            int totalRecords = 0;
+            int totalPages = 0;
+
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                var q = dbConnection.From<PetAlertTableModel>()
+                                    .Where(pa => pa.AlertType == (int)AlertTypeEnum.Lost &&
+                                                 pa.AlertStatus == (int)AlertStatusEnum.Deleted &&
+                                                 pa.MakeItPublic &&
+                                                 pa.Approved == (int)ApproveStatusEnum.Approved)
+                                    .OrderByDescending(pa => pa.SolvedOn);
+
+                totalRecords = await dbConnection.SqlScalarAsync<int>(q.ToCountStatement(), q.Params);
+                if (
+                    (request.PageSize.HasValue && request.PageNumber.HasValue) &&
+                    totalRecords > request.PageSize
+                   )
+                {
+                    totalPages = (int)((totalRecords + (request.PageSize - 1)) / request.PageSize);
+
+                    if (request.PageNumber <= 1)
+                    {
+                        request.PageNumber = 1;
+                        q = q.Take(request.PageSize);
+                    }
+                    else
+                    {
+                        if (request.PageNumber > totalPages)
+                            request.PageNumber = totalPages;
+
+                        q = q.Skip((request.PageNumber - 1) * request.PageSize).Take(request.PageSize);
+                    }
+
+                    petAlerts = await dbConnection.SelectAsync<PetAlertTableModel>(q).ConfigureAwait(false);
+                }
+                else
+                {
+                    totalPages = 1;
+                    petAlerts = await dbConnection.SelectAsync<PetAlertTableModel>(q).ConfigureAwait(false);
+                }
+
+
+                var petAlertsIds = petAlerts.Select(x => x.Id).ToList();
+
+                var query = dbConnection.From<PetAlertTableModel>()
+                                        .Join<PetAlertTableModel, PetTableModel>((pa, p) => pa.PetId == p.Id)
+                                        .Join<PetAlertTableModel, OwnerTableModel>((pa, o) => pa.OwnerTableModelId == o.Id)
+                                        .LeftJoin<PetAlertTableModel, PetImageTableModel>((pa, pi) => pa.PetId == pi.PetTableModelId && pi.IsProfileImage)
+                                        .Where(pa => Sql.In(pa.Id, petAlertsIds))
+                                        .OrderByDescending(pa => pa.SolvedOn);
+
+                records = await dbConnection.SelectMultiAsync<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>(query)
+                                            .ConfigureAwait(false);
+            }
+
+            response.TotalRecords = totalRecords;
+            response.TotalPages = totalPages;
+            response.Result = FormatPetSuccessStories(records);
+
+            return response;
+        }
+
+        private List<PetSuccessStory> FormatPetSuccessStories(List<Tuple<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>> records)
+        {
+            var result = new List<PetSuccessStory>();
+
+            PetSuccessStory petSuccessStory;
+            foreach (var item in records)
+            {
+                petSuccessStory = new PetSuccessStory
+                {
+                    OwnerFullName = $"{item.Item3.FirstName} {item.Item3.LastName}",
+                    OwnerProfileImageUrl = item.Item3.ProfileImageUrl,
+                    PetName = item.Item2.Name,
+                    PetProfileImageUrl = item.Item4.ImageUrl,
+                    FoundComment = item.Item1.CommentFound,
+                    LostDateTime = item.Item1.CreatedOn,
+                    FoundDateTime = item.Item1.SolvedOn.Value
+                };
+
+                result.Add(petSuccessStory);
             }
 
             return result;
