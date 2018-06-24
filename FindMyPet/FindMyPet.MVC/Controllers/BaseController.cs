@@ -281,5 +281,22 @@ namespace FindMyPet.MVC.Controllers
         }
 
         #endregion
+
+        #region -- AlertMessage ---
+
+        public void SetAlertMessageInTempData(AlertMessageTypeEnum type, string message)
+        {
+            TempData["AlertMessage"] = new AlertMessage { Type = type, Message = message };
+        }
+
+        public void SetAlertMessageInViewBag()
+        {
+            var altertMessage = (AlertMessage)(TempData["AlertMessage"]);
+
+            if(altertMessage != null)
+            ViewBag.AlertMessage = altertMessage;
+        }
+
+        #endregion
     }
 }

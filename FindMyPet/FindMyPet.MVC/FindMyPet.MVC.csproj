@@ -274,6 +274,7 @@
     <Compile Include="Models\Account\ProfileViewModel.cs" />
     <Compile Include="Models\Account\SettingsViewModel.cs" />
     <Compile Include="Models\Pet\PetShareViewModel.cs" />
+    <Compile Include="Models\Shared\AlertMessage.cs" />
     <Compile Include="Models\Shared\PagedResponseViewModel.cs" />
     <Compile Include="Models\Shared\PaginationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -503,6 +504,7 @@
     <Content Include="Views\Admin\_AdminRightNavMenu.cshtml" />
     <Content Include="Views\PetSearch\SuccessStories.cshtml" />
     <Content Include="Views\PetSearch\_NoSuccessStories.cshtml" />
+    <Content Include="Views\Shared\_AlertMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

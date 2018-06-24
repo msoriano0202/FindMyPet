@@ -11,6 +11,7 @@ using FindMyPet.MVC.Models.Account;
 using System.Collections.Generic;
 using System.IO;
 using System.Configuration;
+using FindMyPet.MVC.Models.Shared;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -63,6 +64,7 @@ namespace FindMyPet.MVC.Controllers
             var model = _ownerMapper.OwnerToProfileViewModel(owner);
             this.SetManageNavBarInfo(owner, "Index");
 
+            this.SetAlertMessageInViewBag();
             return View(model);
         }
 
@@ -75,6 +77,7 @@ namespace FindMyPet.MVC.Controllers
                 this.UpdateOwnerById(model);
                 this.SetSessionOwnerName(model.FirstName, model.LastName);
 
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Su Perfil ha sido Actualizado.");
                 return RedirectToAction("Index");
             }
             catch
@@ -132,6 +135,7 @@ namespace FindMyPet.MVC.Controllers
             var model = _ownerMapper.OwnerToSettingsViewModel(owner);
             this.SetManageNavBarInfo(owner, "Settings");
 
+            this.SetAlertMessageInViewBag();
             return View(model);
         }
 
@@ -143,6 +147,7 @@ namespace FindMyPet.MVC.Controllers
                 model.ShowEmailForAlerts = true; //Always Checked
                 this.UpdateSettingsOwnerByOwnerId(model);
 
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Su Configuración ha sido Actualizada.");
                 return RedirectToAction("Settings");
             }
             catch
@@ -326,6 +331,7 @@ namespace FindMyPet.MVC.Controllers
 
             this.SetManageNavBarInfo(owner, "ChangePassword");
 
+            this.SetAlertMessageInViewBag();
             return View();
         }
 
@@ -348,6 +354,7 @@ namespace FindMyPet.MVC.Controllers
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
                 //Micky: Redirect to ChangePassword with a message on url
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Su Contraseña ha sido Actualizada.");
                 return RedirectToAction("ChangePassword", "Manage");
             }
             AddErrors(result);

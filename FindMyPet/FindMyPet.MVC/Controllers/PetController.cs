@@ -273,7 +273,7 @@ namespace FindMyPet.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PetAlert(string id, PetAlertViewModel model)
+        public ActionResult PetAlert(PetAlertViewModel model)
         {
             this.VerifySessionVariables();
 
@@ -287,7 +287,7 @@ namespace FindMyPet.MVC.Controllers
             catch (Exception ex)
             { }
             
-            return RedirectToAction("PetProfile", new { id = id });
+            return RedirectToAction("PetProfile", new { id = model.PetCode });
         }
 
         [HttpPost]

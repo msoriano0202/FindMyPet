@@ -1,0 +1,40 @@
+﻿@using FindMyPet.MVC.Models.Shared;
+
+@{ 
+    var alertMessage = ViewBag.AlertMessage as AlertMessage;
+    var messageType = GetBorberMessage(alertMessage.Type);
+    var message = alertMessage.Message;
+
+    string GetBorberMessage(AlertMessageTypeEnum type)
+    {
+        var result = string.Empty;
+
+        switch (type)
+        {
+            case AlertMessageTypeEnum.Success:
+                result = "g-border-success text-success";
+                break;
+            case AlertMessageTypeEnum.Error:
+                result = "g-border-danger text-danger";
+                break;
+            case AlertMessageTypeEnum.Info:
+                result = "g-border-cyan g-text-cyan";
+                break;
+        }
+
+        return result;
+    }
+}
+
+    <div class="g-flex-center alert alert-dismissible fade show @messageType g-py-20" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="alert-body d-flex align-items-center">
+            <span class="g-mr-10"><i class="fa fa-check g-font-size-20" aria-hidden="true"></i></span>
+            <div class="message-alert">
+                <p class="g-font-size-14">@message</p>
+            </div>
+        </div>
+    </div>
+

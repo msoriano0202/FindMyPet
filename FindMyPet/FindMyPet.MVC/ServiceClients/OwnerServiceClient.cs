@@ -126,8 +126,8 @@ namespace FindMyPet.MVC.ServiceClients
             {
                 OwnerId = model.OwnerId,
                 PetCode =  Guid.Parse(model.PetCode),
-                Latitude = model.Latitude,
-                Longitude = model.Longitude,
+                Latitude = model.Latitude.Value,
+                Longitude = model.Longitude.Value,
                 Comment = model.Commets,
                 PositionImageUrl = null,
                 Type = model.Type,

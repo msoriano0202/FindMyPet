@@ -71,6 +71,11 @@
         <div id="main-content">
             <section class="about g-bg-white g-py-20">
                 <div class="container">
+                    @if (ViewBag.AlertMessage != null)
+                    {
+                        @Html.Partial("_AlertMessage")
+                    }
+
                     @RenderBody()
                 </div>
             </section>
