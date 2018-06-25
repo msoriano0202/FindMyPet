@@ -50,7 +50,7 @@ namespace FindMyPet.MVC.Models
     {
         [Required(ErrorMessage = "Correo es requerido.")]
         [Display(Name = "Correo")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Por favor, ingrese un correo valido.")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 

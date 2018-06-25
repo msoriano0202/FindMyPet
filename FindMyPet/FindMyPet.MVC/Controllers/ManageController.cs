@@ -55,7 +55,6 @@ namespace FindMyPet.MVC.Controllers
             }
         }
 
-        // GET: Index
         public ActionResult Index()
         {
             this.VerifySessionVariables();
@@ -77,13 +76,14 @@ namespace FindMyPet.MVC.Controllers
                 this.UpdateOwnerById(model);
                 this.SetSessionOwnerName(model.FirstName, model.LastName);
 
-                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Su Perfil ha sido Actualizado.");
-                return RedirectToAction("Index");
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Su Perfil ha sido actualizado.");
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
             }
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -140,6 +140,7 @@ namespace FindMyPet.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Settings(SettingsViewModel model)
         {
             try
@@ -147,17 +148,16 @@ namespace FindMyPet.MVC.Controllers
                 model.ShowEmailForAlerts = true; //Always Checked
                 this.UpdateSettingsOwnerByOwnerId(model);
 
-                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Su Configuración ha sido Actualizada.");
-                return RedirectToAction("Settings");
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Su Configuración ha sido actualizada.");
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
             }
+
+            return RedirectToAction("Settings");
         }
 
-        //
-        // GET: /Manage/Index
         public async Task<ActionResult> Index2(ManageMessageId? message)
         {
             this.VerifySessionVariables();
@@ -322,8 +322,6 @@ namespace FindMyPet.MVC.Controllers
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
 
-        //
-        // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
             this.VerifySessionVariables();
@@ -335,30 +333,34 @@ namespace FindMyPet.MVC.Controllers
             return View();
         }
 
-        //
-        // POST: /Manage/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
-            if (!ModelState.IsValid)
+            try
             {
+                if (!ModelState.IsValid)
+                    return View(model);
+
+                var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                    if (user != null)
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Su Contraseña ha sido actualizada.");
+                    return RedirectToAction("ChangePassword", "Manage");
+                }
+
+                AddErrors(result);
                 return View(model);
             }
-            var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
-            if (result.Succeeded)
+            catch (Exception ex)
             {
-                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                if (user != null)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                }
-                //Micky: Redirect to ChangePassword with a message on url
-                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Su Contraseña ha sido Actualizada.");
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
                 return RedirectToAction("ChangePassword", "Manage");
             }
-            AddErrors(result);
-            return View(model);
         }
 
         //

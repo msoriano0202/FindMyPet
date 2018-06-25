@@ -11,6 +11,7 @@ using System.Web;
 using Microsoft.AspNet.Identity.Owin;
 using FindMyPet.Shared;
 using System.Linq;
+using FindMyPet.MVC.Models.Shared;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -53,6 +54,7 @@ namespace FindMyPet.MVC.Controllers
                 Pagination = this.SetPaginationViewModel("/Pet/?page=", result.TotalRecords, result.TotalPages, page.Value, pageSize)
             };
 
+            this.SetAlertMessageInViewBag();
             return View(pagedModel);
         }
 
@@ -64,6 +66,7 @@ namespace FindMyPet.MVC.Controllers
                 DateOfBirth = now.Date
             };
 
+            this.SetAlertMessageInViewBag();
             return View(model);
         }
 
@@ -75,11 +78,13 @@ namespace FindMyPet.MVC.Controllers
             {
                 var pet = _petDataLoader.AddPet(User.Identity.GetUserId(), model);
 
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Su Mascota ha sido creada.");
                 return RedirectToAction("PetProfile", new { id = pet.Code});
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
+                return RedirectToAction("Create");
             }
         }
 
@@ -91,24 +96,25 @@ namespace FindMyPet.MVC.Controllers
             var model = _petMapper.PetToProfileViewModel(pet);
             SetPetProfileNavBarInfo(pet, "PetProfile");
 
+            this.SetAlertMessageInViewBag();
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PetProfile(string id, PetProfileViewModel model)
+        public ActionResult PetProfile(PetProfileViewModel model)
         {
             try
             {
-                model.Code = id;
                 _petDataLoader.UpdatePet(model);
-
-                return RedirectToAction("PetProfile", new { id = id});
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Su Mascota ha sido actualizada.");
             }
             catch (Exception ex)
             {
-                return View();
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
             }
+
+            return RedirectToAction("PetProfile", new { id = model.Code });
         }
 
         public ActionResult PetAlbum(string id)
@@ -119,6 +125,7 @@ namespace FindMyPet.MVC.Controllers
             var model = pet.Images.ConvertAll(x => _petImageMapper.PetImageToPetImageViewModel(x));
             SetPetProfileNavBarInfo(pet, "PetAlbum");
 
+            this.SetAlertMessageInViewBag();
             return View(model);
         }
 
@@ -196,18 +203,30 @@ namespace FindMyPet.MVC.Controllers
         {
             try
             {
-                if (!string.IsNullOrEmpty(id))
-                    _petDataLoader.DeletePet(id);
+                // Micky delete en cascada
+                _petDataLoader.DeletePet(id);
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Su Mascota ha sido borrada.");
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
+            }
 
             return RedirectToAction("Index");
         }
 
         public ActionResult DeleteImage(string code, string id)
         {
-            var result = _petDataLoader.DeletePetImage(id);
-          
+            try
+            {
+                var result = _petDataLoader.DeletePetImage(id);
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "La imagen ha sido borrada.");
+            }
+            catch (Exception ex)
+            {
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
+            }
+            
             return RedirectToAction("PetAlbum", new { id = code });
         }
 
@@ -226,19 +245,29 @@ namespace FindMyPet.MVC.Controllers
             var model = _petMapper.PetToPetShareViewModel(pet);
             SetPetProfileNavBarInfo(pet, "PetShare");
 
+            this.SetAlertMessageInViewBag();
             return View(model);
         }
 
         [HttpPost]
         public ActionResult PetShare(string id, string Email)
         {
-            var ownerId = this.GetSessionOwnerId();
-            var pet = _petDataLoader.GetPetByCode(id);
-            var token = _petDataLoader.CreateSharePetToken(ownerId, id, Email);
+            try
+            {
+                var ownerId = this.GetSessionOwnerId();
+                var pet = _petDataLoader.GetPetByCode(id);
+                var token = _petDataLoader.CreateSharePetToken(ownerId, id, Email);
 
-            var callbackUrl = Url.Action("ConfirmPetShare", "Pet", new { code = token }, protocol: Request.Url.Scheme);
-            var body = $"Por favor, haga click en este link para compartir ser propietario de la mascota: {callbackUrl}";
-            _emailHelper.SendEmailSharePet(Email, pet.Name, body);
+                var callbackUrl = Url.Action("ConfirmPetShare", "Pet", new { code = token }, protocol: Request.Url.Scheme);
+                var body = $"Por favor, haga click en este link para compartir ser propietario de la mascota: {callbackUrl}";
+                _emailHelper.SendEmailSharePet(Email, pet.Name, body);
+
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Se ha enviado un correo a la direccion ingresada .");
+            }
+            catch (Exception ex)
+            {
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
+            }
 
             return RedirectToAction("PetShare", new { id = id });
         }
@@ -248,9 +277,12 @@ namespace FindMyPet.MVC.Controllers
             try
             {
                 var result = _petDataLoader.ConfirmSharePet(code);
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "La Mascota ha sido compartida.");
             }
             catch (Exception ex)
-            { }
+            {
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
+            }
 
             return RedirectToAction("Index");
         }
@@ -265,6 +297,7 @@ namespace FindMyPet.MVC.Controllers
             SetPetProfileNavBarInfo(pet, "PetAlert");
             var model = new PetAlertViewModel() { PetCode = id };
 
+            this.SetAlertMessageInViewBag();
             if (activeAlert == null)   
                 return View(model);
             else
@@ -275,6 +308,12 @@ namespace FindMyPet.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PetAlert(PetAlertViewModel model)
         {
+            if (!model.Latitude.HasValue && !model.Longitude.HasValue)
+            {
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, "Su ubicacion no puede ser determinada.");
+                return RedirectToAction("PetAlert", new { id = model.PetCode });
+            }
+
             this.VerifySessionVariables();
 
             model.OwnerId = this.GetSessionOwnerId();
@@ -283,9 +322,12 @@ namespace FindMyPet.MVC.Controllers
             try
             {
                 var petAlert = _ownerDataLoader.AddPetAlert(model);
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "La alerta ha sido guardada.");
             }
             catch (Exception ex)
-            { }
+            {
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
+            }
             
             return RedirectToAction("PetProfile", new { id = model.PetCode });
         }

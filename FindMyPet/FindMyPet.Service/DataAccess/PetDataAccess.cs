@@ -217,21 +217,19 @@ namespace FindMyPet.MyServiceStack.DataAccess
                         var owner = await dbConnection.SingleAsync<OwnerTableModel>(x => x.Email == requestRecord.ToOwnerEmail)
                                                       .ConfigureAwait(false);
 
-                        var ownerPetTable = GetNewOwnerPetTableModel(owner.Id, pet.Id, false);
-                        //var ownerPetTable = new OwnerPetTableModel
-                        //{
-                        //    Code = Guid.NewGuid(),
-                        //    OwnerTableModelId = owner.Id,
-                        //    PetTableModelId = pet.Id,
-                        //    IsFirstOwner = false,
-                        //    CreatedOn = DateTime.Now
-                        //};
+                        var existSharedRecord = await dbConnection.SingleAsync<OwnerPetTableModel>(x => x.PetTableModelId == pet.Id && x.OwnerTableModelId == owner.Id)
+                                                                  .ConfigureAwait(false);
 
-                        records = await dbConnection.InsertAsync<OwnerPetTableModel>(ownerPetTable, selectIdentity: true)
-                                                    .ConfigureAwait(false);
+                        if (existSharedRecord == null)
+                        {
+                            var ownerPetTable = GetNewOwnerPetTableModel(owner.Id, pet.Id, false);
+
+                            records = await dbConnection.InsertAsync<OwnerPetTableModel>(ownerPetTable, selectIdentity: true)
+                                                        .ConfigureAwait(false);
+                        }
 
                         await dbConnection.UpdateOnlyAsync(new OwnerSharedPetTableModel { Used = true }, x => x.Used, x => x.Id == requestRecord.Id)
-                                          .ConfigureAwait(false);
+                                              .ConfigureAwait(false);
                         await dbConnection.UpdateOnlyAsync(new OwnerSharedPetTableModel { UsedOn = System.DateTime.Now }, x => x.UsedOn, x => x.Id == requestRecord.Id)
                                           .ConfigureAwait(false);
 
