@@ -77,24 +77,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="g-mb">
+                        <div class="g-mb-10">
                             @Html.ValidationSummary("", new { @class = "text-danger" })
-                            @*
-                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
-                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
-                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
-                            *@
                         </div>
-                        <div class="form-group g-px-8 g-py-15">
+                        @*<div class="form-group g-px-8 g-py-15">
                             <div class="custom-control cn-custom-checkbox d-flex align-items-center">
-                                <input class="custom-control-input" type="checkbox" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">
+                                <input class="custom-control-input" type="checkbox" id="TermsAndConditions" name="TermsAndConditions">
+                                <label class="custom-control-label" for="TermsAndConditions">
                                     <span>Acepto los <a href="#" class="g-ml-5">Términos y Condiciones</a></span>
                                 </label>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="form-group g-px-8 g-mb-40">
                             <input type="submit" class="btn cn-btn-primary" value="Crear Cuenta" />
                         </div>
