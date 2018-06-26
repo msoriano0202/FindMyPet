@@ -344,11 +344,14 @@ namespace FindMyPet.MVC.Controllers
             try
             {
                 var petAlert = _ownerDataLoader.FoundPet(model);
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Nos alegra que haya encontrado a su Mascota!!!");
             }
             catch (Exception ex)
-            { }
+            {
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
+            }
 
-            return RedirectToAction("PetProfile", new { id = id });
+            return RedirectToAction("Index");
         }
     }
 }

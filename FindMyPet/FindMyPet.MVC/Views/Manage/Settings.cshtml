@@ -23,11 +23,13 @@
 
                     <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
                         <div class="widget categories-widget">
-                            <label class="g-text-primary"><strong>Que información personal mostrar cuando se emitan alertas:</strong></label>
+                            <label><strong class="g-text-primary">Mostrar información personal:</strong></label>
+                            <p class="g-font-size-13 font-italic g-mb-5">( Configure qué información personal mostrar para que se contacten con usted si alguna de sus mascotas se pierde. )</p>
                             <hr />
                             <ul class="list-unstyled">
                                 <li class="g-flex-middle g-mb-10">
-                                    <span>Mostrar Correo Electrónico <i>(activo por defecto)</i></span>
+                                    <span>Mostrar Correo Electrónico</span>
+                                    <span class="g-font-size-13 font-italic g-ml-5">( activo por defecto )</span>
                                     <label class="toggle form-check-inline ml-auto">
                                         <input class="toggleCheckBox" type="checkbox" name="ShowEmailForAlerts" @isChecked(Model.ShowEmailForAlerts) value="@Model.ShowEmailForAlerts" disabled>
                                         <span class="toggle-handle round"></span>
@@ -51,7 +53,8 @@
                         </div>
                         <br />
                         <div class="widget categories-widget">
-                            <label class="g-text-primary"><strong>Que alertas recibir:</strong></label>
+                            <label class="g-text-primary"><strong>Recibir alertas:</strong></label>
+                            <p class="g-font-size-13 font-italic g-mb-5">( Configure qué alertas desea recibir. )</p>
                             <hr />
                             <ul class="list-unstyled">
                                 <li class="g-flex-middle g-mb-10">
@@ -76,7 +79,8 @@
                         </div>
                         <br />
                         <div class="widget categories-widget">
-                            <label class="g-text-primary"><strong>Alertas que se envian:</strong></label>
+                            <label class="g-text-primary"><strong>Enviar alertas:</strong></label>
+                            <p class="g-font-size-13 font-italic g-mb-5">( Configure las alertas que envia. )</p>
                             <hr />
                             <ul class="list-unstyled">
                                 <li class="g-flex-middle g-mb-10">

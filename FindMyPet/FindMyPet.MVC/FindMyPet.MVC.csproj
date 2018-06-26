@@ -506,6 +506,7 @@
     <Content Include="Views\PetSearch\SuccessStories.cshtml" />
     <Content Include="Views\PetSearch\_NoSuccessStories.cshtml" />
     <Content Include="Views\Shared\_AlertMessage.cshtml" />
+    <Content Include="Views\Pet\_NoAlbumImages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

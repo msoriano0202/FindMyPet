@@ -15,33 +15,41 @@
                     <a href="#" data-toggle="modal" data-target="#petImgUploadModal" class="btn btn-outline-primary g-ml-25">
                         <i class="fa icon-cloud-upload fa-fw"></i> Agregar Imagen
                     </a>
+                    <p class="font-italic g-font-size-13 g-mt-10">( Las imágenes del álbum de su mascota serán visibles para el público en caso que lo reporte como perdido. )</p>
                 </div>
                 <hr />
                 <div class="widget feeds-widget">
-                    <div class="row justify-content-center zoom">
-                        @foreach (var item in Model)
-                        {
-                            <div class="col-3 g-p-3">
-                                <div class="member g-border g-border-gray-300 g-border-primary-h">
-                                    <div class="caption">
-                                        <div class="caption-default">
-                                            <img src="@Url.Content(item.ImageUrl)" class="img-fluid" alt="@ViewBag.PetFullName">
-                                        </div>
-                                        <div class="caption-active g-bg-white-opacity-5">
-                                            <div class="h-100 g-flex-center g-px-20">
-                                                <div class="text-center g-text-white">
-                                                    <ul class="list-inline mx-auto text-center">
-                                                        <li class="list-inline-item"><a href="/Pet/SetImageProfile?code=@ViewBag.PetCode&id=@item.Code" class="cn-icon cn-icon-sm cn-icon-cyan rounded-circle" title="Definir como Imagen de Perfil"><i class="fa fa-picture-o"></i></a></li>
-                                                        <li class="list-inline-item g-ml-15"><a href="#" petCode="@ViewBag.PetCode" petImageCode="@item.Code" class="deletePetImageIcon cn-icon cn-icon-sm cn-icon-cyan rounded-circle" title="Borrar Imagen"><i class="fa fa-trash"></i></a></li>
-                                                    </ul>
+                    @if (Model.Any())
+                    {
+                        <div class="row justify-content-center zoom">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-3 g-p-3">
+                                    <div class="member g-border g-border-gray-300 g-border-primary-h">
+                                        <div class="caption">
+                                            <div class="caption-default">
+                                                <img src="@Url.Content(item.ImageUrl)" class="img-fluid" alt="@ViewBag.PetFullName">
+                                            </div>
+                                            <div class="caption-active g-bg-white-opacity-5">
+                                                <div class="h-100 g-flex-center g-px-20">
+                                                    <div class="text-center g-text-white">
+                                                        <ul class="list-inline mx-auto text-center">
+                                                            <li class="list-inline-item"><a href="/Pet/SetImageProfile?code=@ViewBag.PetCode&id=@item.Code" class="cn-icon cn-icon-sm cn-icon-cyan rounded-circle" title="Definir como Imagen de Perfil"><i class="fa fa-picture-o"></i></a></li>
+                                                            <li class="list-inline-item g-ml-15"><a href="#" petCode="@ViewBag.PetCode" petImageCode="@item.Code" class="deletePetImageIcon cn-icon cn-icon-sm cn-icon-cyan rounded-circle" title="Borrar Imagen"><i class="fa fa-trash"></i></a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        }
-                    </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.Partial("_NoAlbumImages")
+                    }
                 </div>
             </div>
 

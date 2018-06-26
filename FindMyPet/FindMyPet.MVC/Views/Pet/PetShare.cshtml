@@ -16,9 +16,13 @@
                         @Html.AntiForgeryToken()
                         <input type="hidden" name="id" value="@Model.PetCode" />
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="input1-1" class="g-text-primary"><strong>Correo</strong></label>
+                                    <p class="font-italic g-font-size-13 g-mb-5">
+                                        ( Ingrese el correo de la persona con la cual desdea compartir la mascota. 
+                                        Le llegara un correo con un link para poder ser co-propietario de su mascota. )
+                                    </p>
                                     <div class="input-group input-group-focus">
                                         @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @id = "input1-1", @class = "col-md-6 form-control", @placeholder = "Correo" } })
                                         <input type="submit" class="btn btn-outline-primary g-ml-20" value="Compartir Mascota" />

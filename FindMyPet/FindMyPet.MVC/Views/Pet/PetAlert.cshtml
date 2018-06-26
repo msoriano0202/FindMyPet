@@ -1,7 +1,7 @@
 ﻿@model FindMyPet.MVC.Models.Pet.PetAlertViewModel
 
 @{
-    ViewBag.Title = "Alerta Mascota";
+    ViewBag.Title = "Enviar Alerta";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,10 +15,7 @@
                     {
                         @Html.AntiForgeryToken()
 
-                        <div id="noGeolocation" class="g-flex-center col-12 text-center">
-                            <div id="message" class="g-mt-100 g-mb-100">La Geolocalizacion no es soportada en su browser</div>
-                        </div>
-                        <div id="yesGeolocation" class="col-12">
+                        <div class="col-12">
                             <input type="hidden" id="PetCode" name="PetCode" value="@Model.PetCode" />
                             <input type="hidden" id="Latitude" name="Latitude" value="@Model.Latitude" />
                             <input type="hidden" id="Longitude" name="Longitude" value="@Model.Longitude" />
@@ -26,7 +23,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="input1-1" class="g-text-primary"><strong>Ubicacion</strong></label>
+                                        <label for="input1-1" class="g-text-primary"><strong>Ubicación</strong></label>
+                                        <p class="font-italic g-font-size-13 g-mb-10">( El sistema calcula su ubicación actual. )</p>
                                         <div class="input-group input-group-focus">
                                             <div id="map" style="height: 300px; width: 100%;"></div>
                                         </div>
@@ -35,11 +33,12 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="input1-2" class="g-text-primary"><strong>Comentarios </strong>(Opcional)</label>
+                                        <p class="font-italic g-font-size-13 g-mb-10">( Información adicional que ayude a ubicar a su mascota. )</p>
                                         <div class="input-group input-group-focus">
                                             @Html.TextAreaFor(model => model.Commets, rows: 10, columns: 1, htmlAttributes: new { @class = "form-control" })
                                         </div>
                                         <div class="row">
-                                            <input type="submit" class="btn btn-xlg btn-block btn-outline-danger g-mt-5" value="Alertar !!!" />
+                                            <input type="submit" class="btn btn-xlg btn-block btn-outline-danger g-mt-10" value="Alertar !!!" />
                                         </div>
                                     </div>
                                 </div>
@@ -58,23 +57,7 @@
 
 @section Scripts {
 
-    @Scripts.Render("~/bundles/jqueryval")
-
-    <script>
-        $(document).ready(function () {
-            $('#noGeolocation').hide();
-            $('#message').hide();
-            $('#yesGeolocation').hide();
-
-            if (navigator.geolocation) {
-                $('#yesGeolocation').show();
-            }
-            else {
-                $('#noGeolocation').show();
-                $('#message').show();
-            }
-        });
-
+    <script>       
         function initMap() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
@@ -105,6 +88,7 @@
             });
         };
     </script>
+
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhCfBbsNOvMGMnHNpG9_9OQDg36MPrVio&callback=initMap">
     </script>
 }

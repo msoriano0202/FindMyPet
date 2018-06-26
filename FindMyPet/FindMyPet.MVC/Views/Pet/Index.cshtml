@@ -65,14 +65,23 @@ else
                                 <p class="font-italic @GetStatusClass(item.StatusId) font-weight-semibold g-font-size-14 g-mt-5 g-mb-15">@item.Status</p>
                                 <ul class="list-inline mx-auto text-center">
                                     <li class="list-inline-item g-mx-2">
-                                        <a href="#" petCode="@item.Code" petName="@item.Name" class="deletePetIcon cn-icon cn-icon-sm cn-icon-gray-300 rounded-circle" title="Borrar Mascota">
+                                        <a href="#" petCode="@item.Code" petName="@item.Name" class="deletePetIcon cn-icon cn-icon-sm cn-icon-gray-300 rounded-circle" title="Borrar">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item g-mx-2 g-ml-20">
-                                        <a href="/Pet/PetAlert/@item.Code" class="pulse-primary-effect cn-icon cn-icon-sm cn-icon-gray-300 rounded-circle" title="Alertar Mascota">
-                                            <i class="fa fa-bell"></i>
-                                        </a>
+                                        @if (item.StatusId == PetStatusEnum.Lost)
+                                        {
+                                            <a href="/Pet/PetAlert/@item.Code" class="pulse-primary-effect cn-icon cn-icon-sm cn-icon-gray-300 rounded-circle" title="Lo encontre!!!">
+                                                <i class="fa fa-smile-o"></i>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/Pet/PetAlert/@item.Code" class="pulse-primary-effect cn-icon cn-icon-sm cn-icon-gray-300 rounded-circle" title="Alertar!!!">
+                                                <i class="fa fa-bell"></i>
+                                            </a>
+                                        }
                                     </li>
                                 </ul>
                             </div>

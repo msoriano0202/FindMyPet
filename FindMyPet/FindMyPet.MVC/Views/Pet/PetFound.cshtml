@@ -24,30 +24,34 @@
                         @Html.AntiForgeryToken()
                         <div class="col-12">
                             <div class="row">
+                                <div class="form-group">
+                                    <label for="input1-2" class="g-text-primary"><strong>Comentarios </strong>(Opcional)</label>
+                                    <p class="font-italic g-font-size-13 g-mb-10">
+                                        ( Nos alegra que hayas encontrado a tu mascota!!! Cuéntanos un poco sobre este proceso y si deseas puedes elegir compartir este comentario al público. )
+                                    </p>
+                                    <div class="input-group input-group-focus">
+                                        @Html.TextAreaFor(model => model.Commets, rows: 7, columns: 1, htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="input1-2" class="g-text-primary"><strong>Comentarios </strong>(Opcional)</label>
-                                        <div class="input-group input-group-focus">
-                                            @Html.TextAreaFor(model => model.Commets, rows: 7, columns: 1, htmlAttributes: new { @class = "form-control" })
-                                        </div>
-                                        <div class="widget categories-widget">
                                             <ul class="list-unstyled">
-                                                <li class="g-flex-middle g-mb-10">
-                                                    <span class="g-text-primary">Desea compartir su caso al publico ?</span>
-                                                    <label class="toggle form-check-inline ml-auto">
+                                                <li class="d-inline-flex g-mb-10">
+                                                    <span class="g-text-primary g-mr-10">Hacer este comentario público ?</span>
+                                                    <label class="toggle form-check-inline ml-auto g-mt-3">
                                                         <input class="toggleCheckBox" type="checkbox" name="MakeItPublic" @isChecked(Model.MakeItPublic) value="@Model.MakeItPublic">
                                                         <span class="toggle-handle round"></span>
                                                     </label>
                                                 </li>
                                             </ul>
-                                        </div>
-                                        <div class="row">
-                                            <input type="submit" class="btn btn-xlg btn-block btn-outline-success g-mt-5" value="Encontrado !!!" />
-                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 g-mt-50">
-                                    <img src="~/Content/Images/PerroGato005.png" class="img-fluid"/>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-xlg btn-block btn-outline-success g-mt-5" value="Encontrado !!!" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
