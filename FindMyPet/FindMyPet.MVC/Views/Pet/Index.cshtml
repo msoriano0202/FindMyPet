@@ -1,9 +1,29 @@
-﻿@model FindMyPet.MVC.Models.Pet.PetPagedListViewModel
+﻿@using FindMyPet.Shared;
+
+@model FindMyPet.MVC.Models.Pet.PetPagedListViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Mascotas";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string GetStatusClass(PetStatusEnum type)
+    {
+        var result = "g-text-blue";
+
+        switch (type)
+        {
+            case PetStatusEnum.Lost:
+                result = "g-text-danger";
+                break;
+            case PetStatusEnum.Found:
+                result = "g-text-success";
+                break;
+        }
+
+        return result;
+    }
 }
+
 <div class="g-mb-5">
     <span class="h3">Mis Mascotas</span>
     <a href="/Pet/Create" class="btn cn-btn-primary g-ml-20 g-mb-10">Agregar Mascota</a>
@@ -15,66 +35,51 @@
 }
 else
 {
-    int index = (Model.Pagination.CurrentPage - 1) * Model.Pagination.PageSize;
+    @*
+    <form action="/Pet">
+        <div class="input-group input-group-focus-v2">
+            <input type="text" class="form-control g-bg-gray-100" name="name" id="input3-1" placeholder="Buscar">
+            <button class="input-group-append g-w50 justify-content-center g-p-0 g-bg-white g-bg-primary-h cursor-pointer">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </form>
+    *@
 
-    @*<form action="/Pet">
-            <div class="input-group input-group-focus-v2">
-                <input type="text" class="form-control g-bg-gray-100" name="name" id="input3-1" placeholder="Buscar">
-                <button class="input-group-append g-w50 justify-content-center g-p-0 g-bg-white g-bg-primary-h cursor-pointer">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-        </form>*@
-
-    <div class="text-center g-mt-5">
-        <div class="g-mb-20 g-bg-white g-border g-border-gray-300 g-p-20 g-shadow-v1">
-            <div class="table-responsive">
-                <table class="table g-mb-0">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Estado</th>
-                            <th scope="col">Fecha Nacimiento</th>
-                            <th scope="auto">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Records)
-                        {
-                            index++;
-                            <tr>
-                                <th scope="row">
-                                    @index
-                                </th>
-                                <td>
-                                    <a href="/Pet/PetProfile/@item.Code">
-                                        <div class="d-sm-flex justify-content-start align-items-center">
-                                            <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
-                                                <img class="g-w50 rounded-circle" src="@Url.Content(item.ProfileImageUrl)" alt="Pet Image">
-                                            </div>
-                                            <div>
-                                                <h6 class="d-sm-inline-block">@item.Name</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </td>
-                                <td>@item.Status</td>
-                                <td>@item.DateOfBirth.ToString("dd / MMM / yyyy")</td>
-                                <td>
-                                    <a href="#" petCode="@item.Code" petName="@item.Name" class="deletePetIcon cn-icon cn-icon-outline-primary cn-icon-primary-h cn-icon-xs rounded g-mr-5 g-mb-5" title="Borrar">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-
-                                    <a href="/Pet/PetAlert/@item.Code" class="cn-icon cn-icon-outline-danger cn-icon-danger-h cn-icon-xs rounded g-mr-5" title="Alertar">
-                                        <i class="fa fa-bell"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+    <div class="text-center g-mt-10">
+        <div class="row justify-content-center">
+            @foreach (var item in Model.Records)
+            {
+                <div class="col-sm-8 col-lg-4 g-mb-20">
+                    <div class="member g-border g-border-gray-300 g-border-primary-h g-bg-white">
+                        <div class="user-img text-center g-mt-20">
+                            <a href="/Pet/PetProfile/@item.Code">
+                                <img src="@Url.Content(item.ProfileImageUrl)" class="img-fluid rounded-circle" alt="Imagen de @item.Name">
+                            </a>
+                        </div>
+                        <div class="g-mb-20">
+                            <div class="member-description text-center">
+                                <a href="/Pet/PetProfile/@item.Code">
+                                    <p class="text-capitalize font-weight-bold g-font-size-20">@item.Name</p>
+                                </a>
+                                <p class="font-italic @GetStatusClass(item.StatusId) font-weight-semibold g-font-size-14 g-mt-5 g-mb-15">@item.Status</p>
+                                <ul class="list-inline mx-auto text-center">
+                                    <li class="list-inline-item g-mx-2">
+                                        <a href="#" petCode="@item.Code" petName="@item.Name" class="deletePetIcon cn-icon cn-icon-sm cn-icon-gray-300 rounded-circle" title="Borrar Mascota">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item g-mx-2 g-ml-20">
+                                        <a href="/Pet/PetAlert/@item.Code" class="pulse-primary-effect cn-icon cn-icon-sm cn-icon-gray-300 rounded-circle" title="Alertar Mascota">
+                                            <i class="fa fa-bell"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
         @if (Model.Pagination.EnablePagination)
         {
@@ -114,5 +119,5 @@ else
         });
 
     </script>
-    
+
 }

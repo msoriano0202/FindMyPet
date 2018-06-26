@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FindMyPet.Shared;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace FindMyPet.MVC.Models.Pet
@@ -20,6 +21,7 @@ namespace FindMyPet.MVC.Models.Pet
         public string Description { get; set; }
 
         public string Status { get; set; }
+        public PetStatusEnum StatusId { get; set; }
 
         public string ProfileImageUrl { get; set; }
 

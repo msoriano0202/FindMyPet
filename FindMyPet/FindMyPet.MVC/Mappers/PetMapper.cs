@@ -2,6 +2,7 @@
 using FindMyPet.DTO.Pet;
 using FindMyPet.MVC.Helpers;
 using FindMyPet.MVC.Models.Pet;
+using FindMyPet.Shared;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -43,7 +44,8 @@ namespace FindMyPet.MVC.Mappers
                 ProfileImageUrl = !string.IsNullOrEmpty(pet.ProfileImageUrl) 
                                         ? _generalHelper.FormatSiteImageUrl(pet.ProfileImageUrl) 
                                         : defaultPetImage,
-                Status = _generalHelper.GetPetStatus(pet.Status)
+                Status = _generalHelper.GetPetStatus(pet.Status),
+                StatusId = (PetStatusEnum)pet.Status
             };
         }
 
