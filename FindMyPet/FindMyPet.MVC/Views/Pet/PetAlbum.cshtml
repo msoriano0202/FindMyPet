@@ -21,25 +21,25 @@
                     <div class="row justify-content-center zoom">
                         @foreach (var item in Model)
                         {
-                        <div class="col-3 g-p-3">
-                            <div class="member g-border g-border-gray-300 g-border-primary-h">
-                                <div class="caption">
-                                    <div class="caption-default">
-                                        <img src="@Url.Content(item.ImageUrl)" class="img-fluid" alt="@ViewBag.PetFullName">
-                                    </div>
-                                    <div class="caption-active g-bg-white-opacity-5">
-                                        <div class="h-100 g-flex-center g-px-20">
-                                            <div class="text-center g-text-white">
-                                                <ul class="list-inline mx-auto text-center">
-                                                    <li class="list-inline-item"><a href="/Pet/SetImageProfile?code=@ViewBag.PetCode&id=@item.Code" class="cn-icon cn-icon-sm cn-icon-cyan rounded-circle" title="Definir como Imagen de Perfil"><i class="fa fa-picture-o"></i></a></li>
-                                                    <li class="list-inline-item g-ml-15"><a href="/Pet/DeleteImage?code=@ViewBag.PetCode&id=@item.Code" class="cn-icon cn-icon-sm cn-icon-cyan rounded-circle" title="Borrar Imagen"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
+                            <div class="col-3 g-p-3">
+                                <div class="member g-border g-border-gray-300 g-border-primary-h">
+                                    <div class="caption">
+                                        <div class="caption-default">
+                                            <img src="@Url.Content(item.ImageUrl)" class="img-fluid" alt="@ViewBag.PetFullName">
+                                        </div>
+                                        <div class="caption-active g-bg-white-opacity-5">
+                                            <div class="h-100 g-flex-center g-px-20">
+                                                <div class="text-center g-text-white">
+                                                    <ul class="list-inline mx-auto text-center">
+                                                        <li class="list-inline-item"><a href="/Pet/SetImageProfile?code=@ViewBag.PetCode&id=@item.Code" class="cn-icon cn-icon-sm cn-icon-cyan rounded-circle" title="Definir como Imagen de Perfil"><i class="fa fa-picture-o"></i></a></li>
+                                                        <li class="list-inline-item g-ml-15"><a href="#" petCode="@ViewBag.PetCode" petImageCode="@item.Code" class="deletePetImageIcon cn-icon cn-icon-sm cn-icon-cyan rounded-circle" title="Borrar Imagen"><i class="fa fa-trash"></i></a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         }
                     </div>
                 </div>
@@ -77,5 +77,31 @@
 </section>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('.deletePetImageIcon').click(function () {
+                var petCode = $(this).attr("petCode");
+                var petImageCode = $(this).attr("petImageCode");
+
+                bootbox.confirm({
+                    message: "Esta seguro que desea borrar la imagen ?",
+                    buttons: {
+                        confirm: {
+                            label: 'Borrar',
+                            className: 'btn btn-outline-danger'
+                        },
+                        cancel: {
+                            label: 'Cancelar'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            var url = '/Pet/DeleteImage?code=' + petCode + '&id=' + petImageCode;
+                            window.location.replace(url);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 }
