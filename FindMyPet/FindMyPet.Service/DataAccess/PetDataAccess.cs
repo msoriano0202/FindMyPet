@@ -17,8 +17,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
         Task<int> AddPetAsync(int ownerId, PetTableModel petTable);
         Task<int> AddPetAsync(string ownerMembershipId, PetTableModel petTable);
         Task<int> UpdatePetAsync(PetTableModel petTable);
-        Task<int> DeletePetAsync(int id);
-        Task<int> DeletePetAsync(Guid code);
+        Task<int> DeletePetAsync(PetDeleteRequest request);
         Task<string> CreateSharePetAsync(PetShareCreateRequest request);
         Task<int> ConfirmSharePetAsync(PetShareConfirmRequest request);
         Task<PetTableModel> GetPetByIdAsync(int petId);
@@ -72,15 +71,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                               .ConfigureAwait(false);
 
                     var ownerPetTable = GetNewOwnerPetTableModel(ownerId, (int)petId, true);
-                    //var ownerPetTable = new OwnerPetTableModel
-                    //{
-                    //    Code = Guid.NewGuid(),
-                    //    OwnerTableModelId = ownerId,
-                    //    PetTableModelId = (int)petId,
-                    //    IsFirstOwner = true,
-                    //    CreatedOn = DateTime.Now
-                    //};
-
+                    
                     await dbConnection.InsertAsync<OwnerPetTableModel>(ownerPetTable, selectIdentity: true)
                                       .ConfigureAwait(false);
 
@@ -108,14 +99,6 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                               .ConfigureAwait(false);
 
                     var ownerPetTable = GetNewOwnerPetTableModel(owner.Id, (int)petId, true);
-                    //var ownerPetTable = new OwnerPetTableModel
-                    //{
-                    //    Code = Guid.NewGuid(),
-                    //    OwnerTableModelId = owner.Id,
-                    //    PetTableModelId = (int)petId,
-                    //    IsFirstOwner = true,
-                    //    CreatedOn = DateTime.Now
-                    //};
 
                     await dbConnection.InsertAsync<OwnerPetTableModel>(ownerPetTable, selectIdentity: true)
                                       .ConfigureAwait(false);
@@ -133,26 +116,39 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                            .ConfigureAwait(false);
         }
 
-        public async Task<int> DeletePetAsync(int id)
-        {
-            return await _petBaseDataAccess.DeleteByIdAsync(id)
-                                           .ConfigureAwait(false);
-        }
-
-        public async Task<int> DeletePetAsync(Guid code)
+        public async Task<int> DeletePetAsync(PetDeleteRequest request)
         {
             var records = 0;
             using (var dbConnection = _dbConnectionFactory.Open())
             {
                 using (var trans = dbConnection.OpenTransaction(IsolationLevel.ReadCommitted))
                 {
-                    var pet = await dbConnection.SingleAsync<PetTableModel>(x => x.Code == code)
+                    PetTableModel pet;
+                    if(request.Id.HasValue)
+                        pet = await dbConnection.SingleByIdAsync<PetTableModel>(request.Id.Value)
+                                                .ConfigureAwait(false);
+                    else
+                        pet = await dbConnection.SingleAsync<PetTableModel>(p => p.Code == request.Code.Value)
                                                 .ConfigureAwait(false);
 
+                    // Delete Alerts
+                    await dbConnection.DeleteAsync<PetAlertTableModel>(x => x.PetId == pet.Id)
+                                      .ConfigureAwait(false);
+
+                    // Delete Images
+                    await dbConnection.DeleteAsync<PetImageTableModel>(x => x.PetTableModelId == pet.Id)
+                                      .ConfigureAwait(false);
+
+                    // Delete asociated owners records
                     await dbConnection.DeleteAsync<OwnerPetTableModel>(x => x.PetTableModelId == pet.Id)
                                       .ConfigureAwait(false);
 
-                    records = await dbConnection.DeleteAsync<PetTableModel>(p => p.Code == code)
+                    // Delete shared owners requests
+                    await dbConnection.DeleteAsync<OwnerSharedPetTableModel>(x => x.PetTableModelId == pet.Id)
+                                      .ConfigureAwait(false);
+
+                    // Delete Pet
+                    records = await dbConnection.DeleteByIdAsync<PetTableModel>(pet.Id)
                                     .ConfigureAwait(false);
 
                     trans.Commit();

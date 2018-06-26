@@ -132,14 +132,8 @@ namespace FindMyPet.MyServiceStack.Providers
             if (!request.Id.HasValue && !request.Code.HasValue)
                 throw new ArgumentException("Id and Code are NULL");
 
-            int records = 0;
-            if (request.Id.HasValue)
-                records = await _petDataAccess.DeletePetAsync(request.Id.Value)
+            int records = await _petDataAccess.DeletePetAsync(request)
                                               .ConfigureAwait(false);
-            else if (request.Code.HasValue)
-                records = await _petDataAccess.DeletePetAsync(request.Code.Value)
-                                              .ConfigureAwait(false);
-
             return records;
         }
 
