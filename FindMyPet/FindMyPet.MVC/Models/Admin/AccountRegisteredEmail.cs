@@ -1,4 +1,4 @@
-﻿namespace FindMyPet.MVC.Models.EmailSender
+﻿namespace FindMyPet.MVC.Models.Admin
 {
     public class AccountRegisteredEmail : BaseEmail
     {

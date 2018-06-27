@@ -241,7 +241,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\EmailSenderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PetController.cs" />
@@ -269,10 +268,10 @@
     <Compile Include="Mappers\PetSearchMapper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin\CommentToApproveViewModel.cs" />
-    <Compile Include="Models\EmailSender\BaseEmail.cs" />
-    <Compile Include="Models\EmailSender\EmailSenderViewModel.cs" />
-    <Compile Include="Models\EmailSender\AccountRegisteredEmail.cs" />
-    <Compile Include="Models\EmailSender\ResendConfirmationEmail.cs" />
+    <Compile Include="Models\Admin\BaseEmail.cs" />
+    <Compile Include="Models\Admin\EmailSenderViewModel.cs" />
+    <Compile Include="Models\Admin\AccountRegisteredEmail.cs" />
+    <Compile Include="Models\Admin\ResendConfirmationEmail.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PetSearch\PetPublicProfileViewModel.cs" />
@@ -522,8 +521,8 @@
     <Content Include="Views\Emails\AccountRegistered.cshtml" />
     <Content Include="Views\Emails\_ViewStart.cshtml" />
     <Content Include="Views\Emails\Web.config" />
-    <Content Include="Views\EmailSender\Index.cshtml" />
     <Content Include="Views\Emails\ResendConfirmation.cshtml" />
+    <Content Include="Views\Admin\EmailSender.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

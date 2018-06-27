@@ -1,10 +1,6 @@
-﻿using FindMyPet.MVC.Models.EmailSender;
-using System;
-using System.Collections.Generic;
+﻿using FindMyPet.MVC.Models.Admin;
 using System.Configuration;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace FindMyPet.MVC.Helpers
 {

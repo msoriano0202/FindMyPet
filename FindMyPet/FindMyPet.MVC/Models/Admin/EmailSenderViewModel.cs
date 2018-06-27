@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
-namespace FindMyPet.MVC.Models.EmailSender
+namespace FindMyPet.MVC.Models.Admin
 {
     public class EmailSenderViewModel
     {

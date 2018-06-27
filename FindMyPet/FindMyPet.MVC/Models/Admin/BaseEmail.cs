@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace FindMyPet.MVC.Models.EmailSender
+﻿namespace FindMyPet.MVC.Models.Admin
 {
     public class BaseEmail : Postal.Email
     {

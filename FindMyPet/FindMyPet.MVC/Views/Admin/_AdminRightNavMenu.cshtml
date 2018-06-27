@@ -1,4 +1,4 @@
-﻿@{
+﻿    @{
     string IsActiveMenuItem(string itemName)
     {
         var str = string.Empty;
@@ -22,6 +22,9 @@
             <nav class="list-group">
                 <a href="/Admin" class="list-group-item list-group-item-action @IsActiveMenuItem("Index")">
                     <i class="icon-chart g-mr-5"></i>Dashboard
+                </a>
+                <a href="/Admin/EmailSender" class="list-group-item list-group-item-action @IsActiveMenuItem("EmailSender")">
+                    <i class="icon-envelope g-mr-5"></i>Prueba de Correos
                 </a>
                 <a href="/Admin/ManagePublicComments" class="list-group-item list-group-item-action @IsActiveMenuItem("ManagePublicComments")">
                     <i class="icon-list g-mr-5"></i>Administrar Comentarios

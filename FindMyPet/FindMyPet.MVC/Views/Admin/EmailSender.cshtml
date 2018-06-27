@@ -1,0 +1,77 @@
+﻿@model FindMyPet.MVC.Models.EmailSender.EmailSenderViewModel
+
+@{
+    ViewBag.Title = "Prueba de Correos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="profile-section g-py g-bg-white">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_AdminRightNavMenu")
+            <div class="col-md-9">
+                @using (Html.BeginForm())
+                {
+                    <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
+                        <div class="g-mb-30">
+                            <h5 class="text-primary"><strong>Prueba de Correos</strong></h5>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="input1-1" class="g-text-primary"><strong>Tipo de Correo</strong></label>
+                                    <div class="input-group input-group-focus">
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(m => m.SelectedEmailTypeId, Model.EmailTypes, new { @id = "input1-1", @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="input1-2" class="g-text-primary"><strong>Tipo de Visualizacion</strong></label>
+                                    <div class="input-group input-group-focus">
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(m => m.SelectedViewTypeId, Model.ViewTypes, new { @id = "input1-2", @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="input1-3" class="g-text-primary"><strong>Correo</strong></label>
+                                    <div class="input-group input-group-focus">
+                                        <div class="col-sm-10">
+                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @id = "input1-3", @class = "form-control", @placeholder = "Correo ..." } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="g-mb">
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group g-mt-20 g-ml-10">
+                            <button type="submit" class="btn btn-outline-primary g-mr-10">
+                                <i class="fa fa-paper-plane g-font-size-12 g-mr-5"></i> Enviar
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
