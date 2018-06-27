@@ -1,0 +1,30 @@
+﻿@model FindMyPet.MVC.Models.EmailSender.AccountRegisteredEmail
+
+To: @Model.To
+From: @Model.From
+Subject: @Model.Subject
+
+<div style="text-align:center">
+    <h2>¡Bienvenido a Alerta Mascota!</h2>
+</div>
+<div>
+    <p>
+        Hola <strong>@Model.FullName</strong>, gracias por registrarte en Alerta Mascota.
+    </p>
+    <br />
+    <p>
+        Antes que empieces a hacer uso de la aplicación, necesitamos que confirmes tu cuenta haciendo click en el siguiente link:
+        <a href="@Model.ConfirmationLink">@Model.ConfirmationLink</a>
+    </p>
+    <br />
+    <p>Aquí te dejamos tus datos de Inicio de sesión:</p>
+    <p>
+        <b>Correo:</b> @Model.LoginUser
+    </p>
+    <p>
+        <b>Contraseña:</b> @Model.LoginPassword
+    </p>
+    <br />
+    <p>Atte.</p>
+    <p>Alerta Mascota</p>
+</div>

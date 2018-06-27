@@ -58,6 +58,8 @@ namespace FindMyPet.MVC.Controllers
 
         public ActionResult PublicProfile(string id)
         {
+            this.VerifySessionVariables();
+
             var data = _petSearchDataLoader.GetPetLostDetails(Guid.Parse(id));
             var model = _petSearchMapper.GetPetPublicProfileViewModel(data);
 
@@ -72,6 +74,8 @@ namespace FindMyPet.MVC.Controllers
 
         public ActionResult SuccessStories(int? page)
         {
+            this.VerifySessionVariables();
+
             this.VerifySessionVariables();
             var pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultPageSize"].ToString());
             page = page ?? 1;

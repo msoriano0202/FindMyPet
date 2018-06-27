@@ -21,7 +21,7 @@ namespace FindMyPet.MVC.Controllers
         private IImageHelper _imageHelper;
         protected IOwnerMapper _ownerMapper;
         private IGeneralHelper _generalHelper;
-        protected IEmailHelper _emailHelper;
+        protected IEmailHelper _emailHelper; //micky: remove, use PostalHelper
 
         private List<string> validImageExtensions = new List<string> { "jpg", "png" };
         protected int defaultImageWidthSize = 750;

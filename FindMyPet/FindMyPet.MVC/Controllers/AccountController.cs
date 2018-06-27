@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using FindMyPet.MVC.Models;
 using FindMyPet.MVC.ServiceClients;
 using FindMyPet.MVC.DataLoaders;
+using FindMyPet.MVC.Helpers;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -19,15 +20,17 @@ namespace FindMyPet.MVC.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private PostalEmailHelper _postalHelper;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, PostalEmailHelper postalHelper)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            PostalHelper = postalHelper;
         }
 
         public ApplicationSignInManager SignInManager
@@ -51,6 +54,18 @@ namespace FindMyPet.MVC.Controllers
             private set
             {
                 _userManager = value;
+            }
+        }
+
+        public PostalEmailHelper PostalHelper
+        {
+            get
+            {
+                return _postalHelper ?? new PostalEmailHelper();
+            }
+            private set
+            {
+                _postalHelper = value;
             }
         }
 
@@ -136,9 +151,17 @@ namespace FindMyPet.MVC.Controllers
             if (user == null)
                 return View("Index", "Home");
 
-            await SendConfirmationEmailAsync(user.Id);
+            await ReSendConfirmationEmail(user.Id, email);
+            //await SendConfirmationEmailAsync(user.Id);
 
             return RedirectToAction("AccountRegistered");
+        }
+
+        private async Task ReSendConfirmationEmail(string userId, string email)
+        {
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
+            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userId, code = code }, protocol: Request.Url.Scheme);
+            await PostalHelper.ResendConfirmationEmailAsync(email, callbackUrl);
         }
 
         //
@@ -184,14 +207,14 @@ namespace FindMyPet.MVC.Controllers
             }
         }
 
-        private async Task SendConfirmationEmailAsync(string userId)
-        {
-            // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-            // Send an email with this link
-            string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
-            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userId, code = code }, protocol: Request.Url.Scheme);
-            await UserManager.SendEmailAsync(userId, "Alerta Mascota: Confirmar Cuenta", $"Por favor, haga click en este link para confirmar su cuenta: {callbackUrl}");
-        }
+        //private async Task SendConfirmationEmailAsync(string userId)
+        //{
+        //    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+        //    // Send an email with this link
+        //    string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
+        //    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userId, code = code }, protocol: Request.Url.Scheme);
+        //    await UserManager.SendEmailAsync(userId, "Alerta Mascota: Confirmar Cuenta", $"Por favor, haga click en este link para confirmar su cuenta: {callbackUrl}");
+        //}
 
         //
         // GET: /Account/Register
@@ -218,7 +241,8 @@ namespace FindMyPet.MVC.Controllers
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     this.RegisterOwner(user.Id, model.FirstName, model.LastName, model.Email);
 
-                    await SendConfirmationEmailAsync(user.Id);
+                    //await SendConfirmationEmailAsync(user.Id);
+                    await SendConfirmationEmailAsync(user.Id, model.FirstName, model.LastName, model.Email, model.Password);
 
                     return RedirectToAction("AccountRegistered");
                 }
@@ -227,6 +251,14 @@ namespace FindMyPet.MVC.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private async Task SendConfirmationEmailAsync(string userId, string firstName, string lastName, string userEmail, string userPassword)
+        {
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
+            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userId, code = code }, protocol: Request.Url.Scheme);
+
+            await PostalHelper.SendConfirmationEmailAsync(userEmail, $"{firstName} {lastName}", userPassword, callbackUrl);
         }
 
         [AllowAnonymous]

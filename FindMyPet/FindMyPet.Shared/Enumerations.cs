@@ -50,4 +50,20 @@ namespace FindMyPet.Shared
         Approved = 1,
         Rejected = 2
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum EmailTypeEnum
+    {
+        Welcome = 0,
+        ReSendConfirmation = 1,
+        PetShare = 2
+    }
+
+    public enum EmailViewerTypeEnum
+    {
+        Browser = 0,
+        Email = 1
+    }
 }

@@ -45,6 +45,7 @@ namespace FindMyPet.MVC
             container.RegisterType<IGeneralHelper, GeneralHelper>();
             container.RegisterType<IEmailHelper, EmailHelper>();
             container.RegisterType<IGlobalHelper, GlobalHelper>();
+            container.RegisterType<IPostalEmailHelper, PostalEmailHelper>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

@@ -50,6 +50,12 @@
       <HintPath>..\packages\Unity.5.2.0\lib\net45\CommonServiceLocator.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Postal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=45719375b8b4d528, processorArchitecture=MSIL">
+      <HintPath>..\packages\Postal.Mvc5.1.2.0\lib\net45\Postal.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.4.1.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.4.1\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Client, Version=4.5.12.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ServiceStack.Client.4.5.12\lib\net45\ServiceStack.Client.dll</HintPath>
     </Reference>
@@ -235,6 +241,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EmailSenderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PetController.cs" />
@@ -252,6 +259,7 @@
     <Compile Include="Helpers\GeneralHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\JavaScriptConvert.cs" />
+    <Compile Include="Helpers\PostalEmailHelper.cs" />
     <Compile Include="Helpers\UrlFormatHelper.cs" />
     <Compile Include="IdentityExtentions\CustomizePasswordValidation.cs" />
     <Compile Include="Mappers\AdminMapper.cs" />
@@ -261,6 +269,10 @@
     <Compile Include="Mappers\PetSearchMapper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin\CommentToApproveViewModel.cs" />
+    <Compile Include="Models\EmailSender\BaseEmail.cs" />
+    <Compile Include="Models\EmailSender\EmailSenderViewModel.cs" />
+    <Compile Include="Models\EmailSender\AccountRegisteredEmail.cs" />
+    <Compile Include="Models\EmailSender\ResendConfirmationEmail.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PetSearch\PetPublicProfileViewModel.cs" />
@@ -507,6 +519,11 @@
     <Content Include="Views\PetSearch\_NoSuccessStories.cshtml" />
     <Content Include="Views\Shared\_AlertMessage.cshtml" />
     <Content Include="Views\Pet\_NoAlbumImages.cshtml" />
+    <Content Include="Views\Emails\AccountRegistered.cshtml" />
+    <Content Include="Views\Emails\_ViewStart.cshtml" />
+    <Content Include="Views\Emails\Web.config" />
+    <Content Include="Views\EmailSender\Index.cshtml" />
+    <Content Include="Views\Emails\ResendConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
