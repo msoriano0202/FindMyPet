@@ -73,7 +73,7 @@ namespace FindMyPet.MVC.Controllers
                     break;
                 case (int)EmailTypeEnum.ReSendConfirmation:
                     callbackUrl = "http://localhost:8081/Account/ConfirmEmail?userId=0000000000&code=0000000000";
-                    email = await _postalEmailHelper.ResendConfirmationEmailAsync(model.Email, callbackUrl);
+                    email = await _postalEmailHelper.ResendConfirmationEmailAsync(model.Email, callbackUrl, false);
                     break;
                 case (int)EmailTypeEnum.PetShare:
                     break;
