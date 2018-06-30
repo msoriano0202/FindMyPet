@@ -94,7 +94,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                     .Where(pa => pa.AlertType == (int)AlertTypeEnum.Lost &&
                                                  pa.AlertStatus == (int)AlertStatusEnum.Active &&
                                                  (pa.CreatedOn >= request.From && pa.CreatedOn <= request.To))
-                                    .OrderByDescending(pa => pa.SolvedOn);
+                                    .OrderByDescending(pa => pa.CreatedOn);
 
                 totalRecords = await dbConnection.SqlScalarAsync<int>(q.ToCountStatement(), q.Params);
                 if (
@@ -133,7 +133,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                         .Join<PetAlertTableModel, OwnerTableModel>((pa, o) => pa.OwnerTableModelId == o.Id)
                                         .LeftJoin<PetAlertTableModel, PetImageTableModel>((pa, pi) => pa.PetId == pi.PetTableModelId && pi.IsProfileImage)
                                         .Where(pa => Sql.In(pa.Id, petAlertsIds))
-                                        .OrderByDescending(pa => pa.SolvedOn);
+                                        .OrderByDescending(pa => pa.CreatedOn);
 
                 records = await dbConnection.SelectMultiAsync<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>(query)
                                             .ConfigureAwait(false);

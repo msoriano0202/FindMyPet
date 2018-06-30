@@ -328,8 +328,9 @@ namespace FindMyPet.MVC.Controllers
             {
                 this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
             }
-            
-            return RedirectToAction("PetProfile", new { id = model.PetCode });
+
+            //return RedirectToAction("PetProfile", new { id = model.PetCode });
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
