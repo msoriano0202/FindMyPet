@@ -12,6 +12,7 @@ using System.Web.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using FindMyPet.Shared;
+using FindMyPet.MVC.Models.PetSearch;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -93,14 +94,6 @@ namespace FindMyPet.MVC.Controllers
             Session["OwnerId"] = ownerId;
             Session["OwnerName"] = ownerName;
             Session["OwnerMembershipId"] = membershipId;
-        }
-
-        public void CleanSessionVariables()
-        {
-            Session.Abandon();
-            Session["OwnerName"] = null;
-            Session["OwnerId"] = null;
-            Session["OwnerMembershipId"] = null;
         }
 
         #endregion
@@ -188,7 +181,17 @@ namespace FindMyPet.MVC.Controllers
         }
         #endregion
 
-        #region --- Private Helpers ---
+        #region --- Image Helpers ---
+
+        public string GetOwnerImageProfile(string profileImage)
+        {
+            if (string.IsNullOrEmpty(profileImage))
+                return GetDefaultImageProfile();
+            else
+            {
+                return FormatSiteImageUrl(profileImage);
+            }
+        }
 
         private string GetPetImageProfile(Pet pet)
         {
@@ -204,6 +207,14 @@ namespace FindMyPet.MVC.Controllers
             return imageUrl;
         }
         
+        public string GetPetImageProfile(string petImage)
+        {
+            if (string.IsNullOrEmpty(petImage))
+                return GetDefaultPetImageProfile();
+            else
+                return FormatSiteImageUrl(petImage);
+        }
+
         private string GetDefaultImageProfile()
         {
             return ConfigurationManager.AppSettings["DefaultImageOwnerProfile"].ToString();
@@ -217,28 +228,6 @@ namespace FindMyPet.MVC.Controllers
         private string FormatSiteImageUrl(string imageUrl)
         {
             return _generalHelper.FormatSiteImageUrl(imageUrl);
-        }
-
-        #endregion
-
-        #region --- Image helper ---
-
-        public string GetOwnerImageProfile(string profileImage)
-        {
-            if (string.IsNullOrEmpty(profileImage))
-                return GetDefaultImageProfile();
-            else
-            {
-                return FormatSiteImageUrl(profileImage);
-            }
-        }
-
-        public string GetPetImageProfile(string petImage)
-        {
-            if (string.IsNullOrEmpty(petImage))
-                return GetDefaultPetImageProfile();
-            else
-                return FormatSiteImageUrl(petImage);
         }
 
         public bool ValidImageExtension(string fileName)
@@ -295,6 +284,53 @@ namespace FindMyPet.MVC.Controllers
 
             if(altertMessage != null)
             ViewBag.AlertMessage = altertMessage;
+        }
+
+        #endregion
+
+        #region --- DateTime Helpers ---
+
+        public void SetFromToBaseOnLastAlertsOption(int option, out DateTime from, out DateTime to)
+        {
+            var now = System.DateTime.Now;
+            from = new DateTime();
+            to = new DateTime();
+
+            switch ((LastAlertOptionEnum)option)
+            {
+                case LastAlertOptionEnum.LastWeek:
+                    from = GetFirtDayOfWeek(now);
+                    to = from.AddDays(6).AddHours(23).AddMinutes(59).AddSeconds(59);
+                    break;
+                case LastAlertOptionEnum.LastMonth:
+                    from = GetFirstDayOfMonth(now);
+                    to = from.AddMonths(1).AddDays(-1).AddHours(23).AddMinutes(59).AddSeconds(59);
+                    break;
+                case LastAlertOptionEnum.Custom:
+                    if (TempData["FromDate"] != null && TempData["ToDate"] != null)
+                    {
+                        from = (DateTime)TempData["FromDate"];
+                        to = ((DateTime)TempData["ToDate"]).AddHours(23).AddMinutes(59).AddSeconds(59);
+                    }
+                    else
+                    {
+                        from = GetFirstDayOfMonth(now);
+                        to = from.AddMonths(1).AddDays(-1).AddHours(23).AddMinutes(59).AddSeconds(59);
+                    }
+                    
+                    break;
+            }
+        }
+
+        private DateTime GetFirtDayOfWeek(DateTime now)
+        {
+            var temp = now.AddDays(-1 * (int)(DateTime.Today.DayOfWeek)).AddDays(1);
+            return new DateTime(temp.Year, temp.Month, temp.Day, 0, 0, 0);
+        }
+
+        private DateTime GetFirstDayOfMonth(DateTime now)
+        {
+            return new DateTime(now.Year, now.Month, 1);
         }
 
         #endregion

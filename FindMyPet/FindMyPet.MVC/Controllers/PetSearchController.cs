@@ -92,5 +92,87 @@ namespace FindMyPet.MVC.Controllers
 
             return View(pagedModel);
         }
+
+        private List<RadioButtonModel> GetRabioButtonList()
+        {
+            return new List<RadioButtonModel>
+            {
+                new RadioButtonModel { Value = (int)LastAlertOptionEnum.LastWeek , ElementId ="LastAlertsOpt1", DisplayText = "Última Semana", Selected = false },
+                new RadioButtonModel { Value = (int)LastAlertOptionEnum.LastMonth , ElementId ="LastAlertsOpt2", DisplayText = "Última Mes", Selected = false },
+                new RadioButtonModel { Value = (int)LastAlertOptionEnum.Custom , ElementId ="LastAlertsOpt3", DisplayText = "Buscar por Fechas", Selected = false }
+            };
+        }
+
+        private void SetSelectedItem(int option, List<RadioButtonModel> list)
+        {
+            var itemFound = list.SingleOrDefault(e => e.Value == option);
+            if (itemFound != null)
+                itemFound.Selected = true;
+            else
+                list[0].Selected = true;
+        }
+
+        public ActionResult LastAlerts(int? op, int? page)
+        {
+            this.VerifySessionVariables();
+            op = op ?? 0;
+            if (op < 0 || op > 2)
+                op = 0;
+
+            var pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultPageSize"].ToString());
+            page = page ?? 1;
+
+            DateTime from; DateTime to;
+            var list = GetRabioButtonList();
+            SetSelectedItem(op.Value, list);
+            this.SetFromToBaseOnLastAlertsOption(op.Value, out from, out to);
+
+            var model = new PetLastAlertsPagedListViewModel
+            {
+                Options = list,
+                From = from,
+                To = to,
+                Records = new List<PetLastAlertDetailViewModel>()
+            };
+
+            if (from > to)
+                this.SetAlertMessageInTempData(Models.Shared.AlertMessageTypeEnum.Error, "Seleccione un rango valido de fechas.");
+            else
+            {
+                var result = _petSearchDataLoader.GetPetLastAlerts(from, to, pageSize, page.Value);
+                if (page < 0) page = 1;
+                else if (page > result.TotalPages) page = result.TotalPages;
+
+                model.Records = result.Result;
+                model.Pagination = this.SetPaginationViewModel($"/PetSearch/LastAlerts?op={op}&page=", result.TotalRecords, result.TotalPages, page.Value, pageSize);
+            }
+
+            this.SetAlertMessageInViewBag();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult LastAlerts(PetLastAlertsPagedListViewModel model)
+        {
+            this.VerifySessionVariables();
+
+            DateTime fromTemp;
+            DateTime toTemp;
+            if (
+                DateTime.TryParse(model.From.Value.ToString(), out fromTemp) &&
+                DateTime.TryParse(model.To.Value.ToString(), out toTemp)
+                )
+            {
+                TempData["FromDate"] = fromTemp;
+                TempData["ToDate"] = toTemp;
+            }
+            else
+            {
+                this.SetAlertMessageInTempData(Models.Shared.AlertMessageTypeEnum.Error, "El rango de fechas no es válido.");
+            }
+
+            return RedirectToAction("LastAlerts", new { op = model.OptionSelected });
+        }
+
     }
 }

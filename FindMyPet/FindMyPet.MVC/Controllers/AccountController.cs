@@ -74,6 +74,9 @@ namespace FindMyPet.MVC.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            Session.Clear();
+            Session.Abandon();
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -486,7 +489,8 @@ namespace FindMyPet.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            this.CleanSessionVariables();
+            Session.Clear();
+            Session.Abandon();
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }

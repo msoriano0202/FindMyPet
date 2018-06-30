@@ -1,0 +1,145 @@
+﻿@using FindMyPet.MVC.Helpers;
+
+@model FindMyPet.MVC.Models.PetSearch.PetLastAlertsPagedListViewModel
+
+@{
+    ViewBag.Title = "Ultimas Alertas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    string IsChecked(bool selected)
+    {
+        var response = "";
+
+        if (selected)
+            response = "checked";
+
+        return response;
+    }
+}
+
+<section id="petSearch" class="g-border-gray-300">
+    <div class="container g-py-40 g-px-10">
+        <div class="section-title text-center g-mb-30">
+            <h4 class="title text-uppercase cn-heading-v2 font-weight-bold">Ultimas Alertas</h4>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <aside class="user-sidebar g-p-10 g-border g-border-gray-300 g-mb-15">
+
+                        <div class="row">
+                            <div class="form-group">
+                                @foreach (var rb in Model.Options)
+                                {
+                                    <div class="custom-control cn-custom-radio-v3 g-mt-10">
+                                        <input id="@rb.ElementId" name="OptionSelected" type="radio" value="@rb.Value" class="lastAlertsOption custom-control-input" @IsChecked(rb.Selected)>
+                                        <label class="custom-control-label" for="@rb.ElementId">@rb.DisplayText</label>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="row">
+                            <did class="form-group row">
+                                <label style="width:50px;" class="col-form-label text-primary g-ml-25 g-mr-5" for="fromDate">Desde</label>
+                                <div class="">
+                                    @Html.TextBoxFor(Model => Model.From, "{0:yyyy-MM-dd}", new { @id = "fromDate", @class = "form-control", @type = "date", @readonly = "readonly" })
+                                </div>
+                            </did>
+                        </div>
+                        <div class="row">
+                            <did class="form-group row">
+                                <label style="width:50px;" class="col-form-label text-primary g-ml-25 g-mr-5" for="toDate">Hasta</label>
+                                <div class="">
+                                    @Html.TextBoxFor(Model => Model.To, "{0:yyyy-MM-dd}", new { @id = "toDate", @class = "form-control", @type = "date", @readonly = "readonly" })
+                                </div>
+                            </did>
+                        </div>
+
+                        <div class="g-mb">
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group g-mt-15">
+                            <input type="submit" class="btn btn-outline-primary g-mr-10" value="Buscar Alertas" />
+                        </div>
+
+                        <div class="row">
+                            <did class="form-group row">
+                                <label class="col-form-label text-primary g-ml-2 g-mr-5" for="toDate">Total Registros: </label>
+                                <label class="col-form-label" for="toDate">@Model.Pagination.TotalRecords</label>
+                            </did>
+                        </div>
+                    </aside>
+                </div>
+
+                <div class="col-md-8">
+                    @if (Model.Records != null && Model.Records.Any())
+                    {
+                        <div class="text-center">
+                            <ul class="list-group text-center text-sm-left g-mb-10">
+                                @foreach (var item in Model.Records)
+                                {
+                                    <li class="list-group-item d-sm-flex justify-content-start align-items-center g-mb-5">
+                                        <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                            <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatPetImageUrl(item.PetProfileImageUrl))" alt="Image Mascota">
+                                        </div>
+                                        <div>
+                                            <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">@item.PetName</h6>
+                                            <span class="g-mb-10 g-mb-sm-0 g-bg-danger font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">
+                                                @item.LostDateTime
+                                            </span>
+                                            <p>@item.Description</p>
+                                            <p>@item.LostComment</p>
+                                            <p><a target="_blank" href="/PetSearch/PublicProfile/@item.PetCode">Ver más ...</a></p>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+
+                            @if (Model.Pagination.EnablePagination)
+                            {
+                                @Html.Partial("../Shared/_Pagination", Model.Pagination)
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.Partial("_NoLastAlerts")
+                    }
+                </div>
+            </div>
+        }
+
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            if ($('#LastAlertsOpt3').prop('checked')) {
+                $('#fromDate').removeAttr('readonly');
+                $('#toDate').removeAttr('readonly');
+            }
+
+            $('.lastAlertsOption').click(function () {
+                if ($(this).prop('id') == 'LastAlertsOpt3') {
+                    var isChecked = $(this).prop('checked');
+                    if (isChecked) {
+                        $('#fromDate').removeAttr('readonly');
+                        $('#toDate').removeAttr('readonly');
+                    }
+                }
+                else {
+                    $('#fromDate').attr("readonly", "readonly");
+                    $('#toDate').attr("readonly", "readonly");
+                }
+            });
+        });
+    </script>
+}

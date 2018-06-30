@@ -52,7 +52,7 @@ namespace FindMyPet.Shared
     }
 
     /// <summary>
-    /// 
+    ///  Welcome = 0 / ReSendConfirmation = 1 / PetShare = 2
     /// </summary>
     public enum EmailTypeEnum
     {

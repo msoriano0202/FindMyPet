@@ -13,6 +13,7 @@ namespace FindMyPet.MyServiceStack.Providers
     public interface IPetSearchProvider
     {
         Task<List<PetLost>> GetPetLostByDateAsync(PetSearchByDateRequest request);
+        Task<PagedResponse<PetLostAlert>> GetPetLostAlertsAsync(PetLastAlertsRequest request);
         Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request);
         Task<PagedResponse<PetSuccessStory>> GetPetSuccessStoriesAsync(PetSuccessStoryRequest request);
     }
@@ -40,6 +41,15 @@ namespace FindMyPet.MyServiceStack.Providers
                 throw new ArgumentNullException(nameof(request));
 
             return await _petSearchDataAccess.GetPetLostByDateAsync(request)
+                                             .ConfigureAwait(false);
+        }
+
+        public async Task<PagedResponse<PetLostAlert>> GetPetLostAlertsAsync(PetLastAlertsRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _petSearchDataAccess.GetPetLostAlertsAsync(request)
                                              .ConfigureAwait(false);
         }
 

@@ -16,6 +16,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
     public interface IPetSearchDataAccess
     {
         Task<List<PetLost>> GetPetLostByDateAsync(PetSearchByDateRequest request);
+        Task<PagedResponse<PetLostAlert>> GetPetLostAlertsAsync(PetLastAlertsRequest request);
         Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request);
         Task<PagedResponse<PetSuccessStory>> GetPetSuccessStoriesAsync(PetSuccessStoryRequest request);
     }
@@ -38,7 +39,6 @@ namespace FindMyPet.MyServiceStack.DataAccess
 
             using (var dbConnection = _dbConnectionFactory.Open())
             {
-                // pet lost query
                 var lostQuery = dbConnection.From<PetAlertTableModel>()
                                             .Join<PetAlertTableModel, PetTableModel>((pa, p) => pa.PetId.HasValue && pa.PetId.Value == p.Id)
                                             .Join<PetAlertTableModel, OwnerTableModel>((pa, o) => pa.OwnerTableModelId == o.Id)
@@ -78,6 +78,99 @@ namespace FindMyPet.MyServiceStack.DataAccess
             }
 
             return lostPets;
+        }
+
+        public async Task<PagedResponse<PetLostAlert>> GetPetLostAlertsAsync(PetLastAlertsRequest request)
+        {
+            var response = new PagedResponse<PetLostAlert>();
+            List<PetAlertTableModel> petAlerts;
+            var records = new List<Tuple<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>>();
+            int totalRecords = 0;
+            int totalPages = 0;
+
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                var q = dbConnection.From<PetAlertTableModel>()
+                                    .Where(pa => pa.AlertType == (int)AlertTypeEnum.Lost &&
+                                                 pa.AlertStatus == (int)AlertStatusEnum.Active &&
+                                                 (pa.CreatedOn >= request.From && pa.CreatedOn <= request.To))
+                                    .OrderByDescending(pa => pa.SolvedOn);
+
+                totalRecords = await dbConnection.SqlScalarAsync<int>(q.ToCountStatement(), q.Params);
+                if (
+                    (request.PageSize.HasValue && request.PageNumber.HasValue) &&
+                    totalRecords > request.PageSize
+                   )
+                {
+                    totalPages = (int)((totalRecords + (request.PageSize - 1)) / request.PageSize);
+
+                    if (request.PageNumber <= 1)
+                    {
+                        request.PageNumber = 1;
+                        q = q.Take(request.PageSize);
+                    }
+                    else
+                    {
+                        if (request.PageNumber > totalPages)
+                            request.PageNumber = totalPages;
+
+                        q = q.Skip((request.PageNumber - 1) * request.PageSize).Take(request.PageSize);
+                    }
+
+                    petAlerts = await dbConnection.SelectAsync<PetAlertTableModel>(q).ConfigureAwait(false);
+                }
+                else
+                {
+                    totalPages = 1;
+                    petAlerts = await dbConnection.SelectAsync<PetAlertTableModel>(q).ConfigureAwait(false);
+                }
+
+
+                var petAlertsIds = petAlerts.Select(x => x.Id).ToList();
+
+                var query = dbConnection.From<PetAlertTableModel>()
+                                        .Join<PetAlertTableModel, PetTableModel>((pa, p) => pa.PetId == p.Id)
+                                        .Join<PetAlertTableModel, OwnerTableModel>((pa, o) => pa.OwnerTableModelId == o.Id)
+                                        .LeftJoin<PetAlertTableModel, PetImageTableModel>((pa, pi) => pa.PetId == pi.PetTableModelId && pi.IsProfileImage)
+                                        .Where(pa => Sql.In(pa.Id, petAlertsIds))
+                                        .OrderByDescending(pa => pa.SolvedOn);
+
+                records = await dbConnection.SelectMultiAsync<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>(query)
+                                            .ConfigureAwait(false);
+            }
+
+            response.TotalRecords = totalRecords;
+            response.TotalPages = totalPages;
+            response.Result = FormatAlertResults(records);
+
+            return response;
+        }
+
+        private List<PetLostAlert> FormatAlertResults(List<Tuple<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>> lostResults)
+        {
+            var alerts = new List<PetLostAlert>();
+
+            PetLostAlert alert;
+            foreach (var item in lostResults)
+            {
+                alert = new PetLostAlert
+                {
+                    PetId = item.Item2.Id,
+                    PetCode = item.Item2.Code,
+                    PetName = item.Item2.Name,
+                    PetProfileImageUrl = item.Item4.ImageUrl,
+                    Type = item.Item1.AlertType,
+                    Latitude = item.Item1.Latitude,
+                    Longitude = item.Item1.Longitude,
+                    LostDateTime = item.Item1.CreatedOn,
+                    Description = item.Item2.Description,
+                    LostComment = item.Item1.Comment
+                };
+
+                alerts.Add(alert);
+            }
+
+            return alerts;
         }
 
         public async Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request)

@@ -11,6 +11,7 @@ namespace FindMyPet.MVC.Mappers
     {
         PetPublicProfileViewModel GetPetPublicProfileViewModel(PetLostDetails data);
         PetSuccessStoryViewModel PetSuccessStoryToViewModel(PetSuccessStory data);
+        PetLastAlertDetailViewModel PetLastAlertToViewModel(PetLostAlert data);
     }
 
     public class PetSearchMapper : IPetSearchMapper
@@ -63,6 +64,22 @@ namespace FindMyPet.MVC.Mappers
                 FoundComment = data.FoundComment,
                 LostDateTime = data.LostDateTime.ToString("dd / MMM / yyyy hh:mm:ss tt"),
                 FoundDateTime = data.FoundDateTime.ToString("dd / MMM / yyyy hh:mm:ss tt")
+            };
+        }
+
+        public PetLastAlertDetailViewModel PetLastAlertToViewModel(PetLostAlert data)
+        {
+            return new PetLastAlertDetailViewModel
+            {
+                PetId = data.PetId.Value,
+                PetCode = data.PetCode.Value.ToString(),
+                PetName = data.PetName,
+                PetProfileImageUrl = data.PetProfileImageUrl,
+                Latitude = data.Latitude,
+                Longitude = data.Longitude,
+                LostDateTime = data.LostDateTime.ToString("dd / MMM / yyyy hh:mm:ss tt"),
+                Description = data.Description,
+                LostComment = data.LostComment
             };
         }
     }

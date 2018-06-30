@@ -15,6 +15,7 @@ namespace FindMyPet.MVC.DataLoaders
         List<PetLost> SearchLostPets(DateTime from, DateTime to);
         PetLostDetails GetPetLostDetails(Guid petCode);
         PagedResponseViewModel<PetSuccessStoryViewModel> GetPetSuccessStories(int pageSize, int pageNumber);
+        PagedResponseViewModel<PetLastAlertDetailViewModel> GetPetLastAlerts(DateTime from, DateTime to, int pageSize, int pageNumber);
     }
 
     public class PetSearchDataLoader : IPetSearchDataLoader
@@ -59,6 +60,26 @@ namespace FindMyPet.MVC.DataLoaders
             return new PagedResponseViewModel<PetSuccessStoryViewModel>
             {
                 Result = response.Result.ConvertAll(x => _petSearchMapper.PetSuccessStoryToViewModel(x)),
+                TotalPages = response.TotalPages,
+                TotalRecords = response.TotalRecords
+            };
+        }
+
+        public PagedResponseViewModel<PetLastAlertDetailViewModel> GetPetLastAlerts(DateTime from, DateTime to, int pageSize, int pageNumber)
+        {
+            var request = new PetLastAlertsRequest
+            {
+                From = from, 
+                To = to,
+                PageSize = pageSize,
+                PageNumber = pageNumber
+            };
+
+            var response = _petSearchServiceClient.GetPetLastAlerts(request);
+
+            return new PagedResponseViewModel<PetLastAlertDetailViewModel>
+            {
+                Result = response.Result.ConvertAll(x => _petSearchMapper.PetLastAlertToViewModel(x)),
                 TotalPages = response.TotalPages,
                 TotalRecords = response.TotalRecords
             };

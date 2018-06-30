@@ -26,13 +26,16 @@
                                     <strong>Perdido:</strong>&nbsp;&nbsp;
                                     <span class="g-font-size-14">@Model.PetInfo.LostDateTime</span>
                                 </p>
-                                <p>
-                                    <strong>Detalles:</strong>&nbsp;&nbsp;
-                                    <span class="g-font-size-15">@Model.PetInfo.Description</span>
-                                </p>
-                                <p>
-                                    <span class="g-font-size-15">@Model.PetInfo.LostComment</span>
-                                </p>
+                                @if (!string.IsNullOrEmpty(Model.PetInfo.Description) && !string.IsNullOrEmpty(Model.PetInfo.LostComment))
+                                {
+                                    <p>
+                                        <strong>Detalles:</strong>&nbsp;&nbsp;
+                                        <span class="g-font-size-15">@Model.PetInfo.Description</span>
+                                    </p>
+                                    <p>
+                                        <span class="g-font-size-15">@Model.PetInfo.LostComment</span>
+                                    </p>
+                                }
                             </div>
                         </div>
                     </div>
@@ -103,14 +106,30 @@
                             <div class="tab-pane fade" id="profile-02" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="widget feeds-widget">
                                     <div class="row justify-content-center">
-                                        @foreach (var item in Model.PetInfo.Images)
+                                        @if (Model.PetInfo.Images != null && Model.PetInfo.Images.Any())
                                         {
-                                            <div class="col-3 g-p-3">
-                                                <div class="member g-border g-border-gray-300 g-border-primary-h">
-                                                    <div class="caption">
-                                                        <div class="caption-default">
-                                                            <img src="@Url.Content(UrlFormatHelper.FormatImageUrl(item))" class="img-fluid" alt="@Model.PetInfo.Name">
+                                            foreach (var item in Model.PetInfo.Images)
+                                            {
+                                                <div class="col-3 g-p-3">
+                                                    <div class="member g-border g-border-gray-300 g-border-primary-h">
+                                                        <div class="caption">
+                                                            <div class="caption-default">
+                                                                <img src="@Url.Content(UrlFormatHelper.FormatImageUrl(item))" class="img-fluid" alt="@Model.PetInfo.Name">
+                                                            </div>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="h-100">
+                                                <div style="">
+                                                    <div style="height:200px;" class="text-center">
+                                                        <img src="@Url.Content("/Content/Images/DefaultPetImage.png")" class="g-w100 rounded-circle g-mt-25" alt="Profile Picture">
+                                                        <ul class="list-unstyled g-text-gray-600 g-my-15 g-my-md-10">
+                                                            <li class="g-mb-4 g-mb-md-10">No hay imagenes para mostrar.</li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
