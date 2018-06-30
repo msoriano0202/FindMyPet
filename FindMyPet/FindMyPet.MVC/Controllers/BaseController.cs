@@ -290,6 +290,42 @@ namespace FindMyPet.MVC.Controllers
 
         #region --- DateTime Helpers ---
 
+        public void SetFromToBaseOnMapOption(int option, out DateTime? from, out DateTime? to)
+        {
+            var now = System.DateTime.Now;
+            from = new DateTime();
+            to = new DateTime();
+
+            switch ((SearchOnMapOptionEnum)option)
+            {
+                case SearchOnMapOptionEnum.All:
+                    from = null;
+                    to = null;
+                    break;
+                case SearchOnMapOptionEnum.LastWeek:
+                    from = GetFirtDayOfWeek(now);
+                    to = from.Value.AddDays(6).AddHours(23).AddMinutes(59).AddSeconds(59);
+                    break;
+                case SearchOnMapOptionEnum.LastMonth:
+                    from = GetFirstDayOfMonth(now);
+                    to = from.Value.AddMonths(1).AddDays(-1).AddHours(23).AddMinutes(59).AddSeconds(59);
+                    break;
+                case SearchOnMapOptionEnum.Custom:
+                    if (TempData["FromDate"] != null && TempData["ToDate"] != null)
+                    {
+                        from = (DateTime)TempData["FromDate"];
+                        to = ((DateTime)TempData["ToDate"]).AddHours(23).AddMinutes(59).AddSeconds(59);
+                    }
+                    else
+                    {
+                        from = null;
+                        to = null;
+                    }
+
+                    break;
+            }
+        }
+
         public void SetFromToBaseOnLastAlertsOption(int option, out DateTime from, out DateTime to)
         {
             var now = System.DateTime.Now;

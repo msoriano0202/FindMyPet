@@ -45,6 +45,9 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                             .Join<PetAlertTableModel, PetImageTableModel>((pa, pi) => pa.PetId == pi.PetTableModelId && pi.IsProfileImage)
                                             .Where(pa => pa.AlertType == (int)AlertTypeEnum.Lost && pa.AlertStatus == (int)AlertStatusEnum.Active);
 
+                if (request.From.HasValue && request.To.HasValue)
+                    lostQuery = lostQuery.And(pa => pa.CreatedOn >= request.From.Value && pa.CreatedOn <= request.To.Value);
+
                 var lostResults = await dbConnection.SelectMultiAsync<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>(lostQuery)
                                                     .ConfigureAwait(false);
 

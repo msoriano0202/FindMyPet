@@ -27,21 +27,43 @@ namespace FindMyPet.MVC.Controllers
             _petSearchMapper = petSearchMapper;
         }
 
-        public ActionResult Index()
+        private List<RadioButtonModel> GetMapRabioButtonList()
+        {
+            return new List<RadioButtonModel>
+            {
+                new RadioButtonModel { Value = (int)SearchOnMapOptionEnum.All , ElementId ="LastAlertsOpt0", DisplayText = "Todas", Selected = false },
+                new RadioButtonModel { Value = (int)SearchOnMapOptionEnum.LastWeek , ElementId ="LastAlertsOpt1", DisplayText = "Última Semana", Selected = false },
+                new RadioButtonModel { Value = (int)SearchOnMapOptionEnum.LastMonth , ElementId ="LastAlertsOpt2", DisplayText = "Última Mes", Selected = false },
+                new RadioButtonModel { Value = (int)SearchOnMapOptionEnum.Custom , ElementId ="LastAlertsOpt3", DisplayText = "Buscar por Fechas", Selected = false }
+            };
+        }
+
+        public ActionResult Index(int? op)
         {
             this.VerifySessionVariables();
+            op = op ?? 0;
+            if (op < 0 || op > 3)
+                op = 0;
 
-            var today = DateTime.Now;
-            var fromDT = today.AddDays(-7).Date;
-            var from = new DateTime(fromDT.Year, fromDT.Month, fromDT.Day, 0, 0, 0);
-            var to = new DateTime(today.Year, today.Month, today.Day, 23, 59, 59);
+            DateTime? from; DateTime? to;
+            var list = GetMapRabioButtonList();
+            SetSelectedItem(op.Value, list);
+            this.SetFromToBaseOnMapOption(op.Value, out from, out to);
 
-            var result = _petSearchDataLoader.SearchLostPets(from, to);
             var model = new PetSearchViewModel
             {
-                FromDate = from, 
-                ToDate = to,
-                Points = result.ConvertAll(x => new PointAlertViewModel
+                Options = list,
+                From = from,
+                To = to,
+                Points = new List<PointAlertViewModel>()
+            };
+
+            if ((from.HasValue && to.HasValue) && (from.Value > to.Value))
+                this.SetAlertMessageInTempData(Models.Shared.AlertMessageTypeEnum.Error, "Seleccione un rango valido de fechas.");
+            else
+            {
+                var result = _petSearchDataLoader.SearchLostPets(from, to);
+                model.Points = result.ConvertAll(x => new PointAlertViewModel
                 {
                     PetId = x.PetId.Value,
                     PetCode = x.PetCode.ToString(),
@@ -50,10 +72,45 @@ namespace FindMyPet.MVC.Controllers
                     LostDateTime = x.LostDateTime.ToString("dd / MMM / yyyy hh:mm:ss tt"),
                     Latitude = x.Latitude,
                     Longitude = x.Longitude
-                })
-            };
+                });
+            }
 
+            this.SetAlertMessageInViewBag();
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Index(PetSearchViewModel model)
+        {
+            DateTime fromTemp;
+            DateTime toTemp;
+
+            try
+            {
+                if (
+                DateTime.TryParse(model.From.Value.ToString(), out fromTemp) &&
+                DateTime.TryParse(model.To.Value.ToString(), out toTemp)
+                )
+                {
+                    TempData["FromDate"] = fromTemp;
+                    TempData["ToDate"] = toTemp;
+                }
+                else
+                {
+                    this.SetAlertMessageInTempData(Models.Shared.AlertMessageTypeEnum.Error, "El rango de fechas no es válido.");
+                }
+            }
+            catch (Exception ex)
+            {
+                if (model.OptionSelected == 3)
+                {
+                    TempData["FromDate"] = null;
+                    TempData["ToDate"] = null;
+                    this.SetAlertMessageInTempData(Models.Shared.AlertMessageTypeEnum.Error, "Seleccione algun rango de fechas.");
+                }
+            }
+
+            return RedirectToAction("Index", new { op = model.OptionSelected });
         }
 
         public ActionResult PublicProfile(string id)
@@ -154,8 +211,6 @@ namespace FindMyPet.MVC.Controllers
         [HttpPost]
         public ActionResult LastAlerts(PetLastAlertsPagedListViewModel model)
         {
-            this.VerifySessionVariables();
-
             DateTime fromTemp;
             DateTime toTemp;
             if (

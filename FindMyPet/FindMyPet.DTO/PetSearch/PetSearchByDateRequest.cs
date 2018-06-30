@@ -7,7 +7,7 @@ namespace FindMyPet.DTO.PetSearch
     [Route("/petsearchbydate", "POST")]
     public class PetSearchByDateRequest : IReturn<List<PetLost>>
     {
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
+        public DateTime? From { get; set; }
+        public DateTime? To { get; set; }
     }
 }

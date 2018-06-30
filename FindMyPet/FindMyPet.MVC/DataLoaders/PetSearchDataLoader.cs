@@ -12,7 +12,7 @@ namespace FindMyPet.MVC.DataLoaders
 {
     public interface IPetSearchDataLoader
     {
-        List<PetLost> SearchLostPets(DateTime from, DateTime to);
+        List<PetLost> SearchLostPets(DateTime? from, DateTime? to);
         PetLostDetails GetPetLostDetails(Guid petCode);
         PagedResponseViewModel<PetSuccessStoryViewModel> GetPetSuccessStories(int pageSize, int pageNumber);
         PagedResponseViewModel<PetLastAlertDetailViewModel> GetPetLastAlerts(DateTime from, DateTime to, int pageSize, int pageNumber);
@@ -35,7 +35,7 @@ namespace FindMyPet.MVC.DataLoaders
             _petSearchMapper = petSearchMapper;
         }
 
-        public List<PetLost> SearchLostPets(DateTime from, DateTime to)
+        public List<PetLost> SearchLostPets(DateTime? from, DateTime? to)
         {
             var request = new PetSearchByDateRequest
             {
