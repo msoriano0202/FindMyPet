@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AdminDashboardDetails.cs" />
+    <Compile Include="Admin\AdminDashboardRequest.cs" />
     <Compile Include="Admin\AdminFoundAlert.cs" />
     <Compile Include="Admin\AdminFoundAlertSearchRequest.cs" />
     <Compile Include="Admin\AdminManageFoundAlertRequest.cs" />

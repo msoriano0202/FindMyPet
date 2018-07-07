@@ -12,6 +12,7 @@ namespace FindMyPet.MyServiceStack.Providers
     {
         Task<List<AdminFoundAlert>> GetAdminFoundAlertsAsync(AdminFoundAlertSearchRequest request);
         Task<int> ManageAdminFoundAlertsAsync(AdminManageFoundAlertRequest request);
+        Task<AdminDashboardDetails> GetAdminDashboardAsync(AdminDashboardRequest request);
     }
 
     public class AdminProvider : IAdminProvider
@@ -45,6 +46,12 @@ namespace FindMyPet.MyServiceStack.Providers
                 throw new ArgumentException("Id and Code are NULL");
 
             return await _adminDataAccess.ManageAdminFoundAlertsAsync(request)
+                                         .ConfigureAwait(false);
+        }
+
+        public async Task<AdminDashboardDetails> GetAdminDashboardAsync(AdminDashboardRequest request)
+        {
+            return await _adminDataAccess.GetAdminDashboardAsync()
                                          .ConfigureAwait(false);
         }
     }

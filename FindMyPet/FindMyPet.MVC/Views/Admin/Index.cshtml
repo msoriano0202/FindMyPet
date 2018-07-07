@@ -1,4 +1,5 @@
-﻿
+﻿@model FindMyPet.MVC.Models.Admin.DashboardDetailsViewModel
+
 @{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,9 +12,51 @@
             <div class="col-md-9">
                 @using (Html.BeginForm())
                 {
-                    <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
-                        <h5 class="text-primary"><strong>Dashboard</strong></h5>
+                <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
+                    <h5 class="text-primary g-mb-20"><strong>Dashboard</strong></h5>
+
+                    <div class="row">
+                        <did class="form-group row">
+                            <label class="col-form-label text-primary g-ml-2 g-mr-5">Cuentas Registradas: </label>
+                            <label class="col-form-label">@Model.RegisteredAccounts</label>
+                        </did>
                     </div>
+
+                    <div class="row">
+                        <did class="form-group row">
+                            <label class="col-form-label text-primary g-ml-2 g-mr-5">Mascotas Registradas: </label>
+                            <label class="col-form-label">@Model.RegisteredPets</label>
+                        </did>
+                    </div>
+
+                    <div class="row">
+                        <did class="form-group row">
+                            <label class="col-form-label text-primary g-ml-2 g-mr-5">Mascotas Perdidas: </label>
+                            <label class="col-form-label">@Model.LostPets</label>
+                        </did>
+                    </div>
+
+                    <div class="row">
+                        <did class="form-group row">
+                            <label class="col-form-label text-primary g-ml-2 g-mr-5">Mascotas Encontradas: </label>
+                            <label class="col-form-label">@Model.FoundPets</label>
+                        </did>
+                    </div>
+
+                    <div class="row">
+                        <did class="form-group row">
+                            <label class="col-form-label text-primary g-ml-2 g-mr-5">Comentarios para aprovar: </label>
+                            <label class="col-form-label">@Model.CommentsToApprove</label>
+                        </did>
+                    </div>
+
+                    <div class="row">
+                        <did class="form-group row">
+                            <label class="col-form-label text-primary g-ml-2 g-mr-5">Casos de Exito: </label>
+                            <label class="col-form-label">@Model.SuccessStories</label>
+                        </did>
+                    </div>
+                </div>
                 }
             </div>
         </div>

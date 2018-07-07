@@ -9,6 +9,7 @@ namespace FindMyPet.MVC.DataLoaders
 {
     public interface IAdminDataLoader
     {
+        AdminDashboardDetails GetDashboardDetails();
         List<AdminFoundAlert> GetFoundAlertsToApprove();
         int ManageComent(string code, int action);
     }
@@ -23,6 +24,11 @@ namespace FindMyPet.MVC.DataLoaders
                 throw new ArgumentNullException(nameof(adminServiceClient));
 
             _adminServiceClient = adminServiceClient;
+        }
+
+        public AdminDashboardDetails GetDashboardDetails()
+        {
+            return _adminServiceClient.GetDashboardDetails();
         }
 
         public List<AdminFoundAlert> GetFoundAlertsToApprove()

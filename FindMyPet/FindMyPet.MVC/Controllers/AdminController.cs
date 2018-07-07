@@ -39,8 +39,19 @@ namespace FindMyPet.MVC.Controllers
         {
             this.VerifySessionVariables();
 
+            var details = _adminDataLoader.GetDashboardDetails();
+            var model = new DashboardDetailsViewModel
+            {
+                RegisteredAccounts = details.RegisteredAccounts,
+                RegisteredPets = details.RegisteredPets,
+                LostPets = details.LostPets,
+                FoundPets = details.FoundPets,
+                CommentsToApprove = details.CommentsToApprove,
+                SuccessStories = details.SuccessStories,
+            };
+
             SetAdminNavBarInfo("Index");
-            return View();
+            return View(model);
         }
 
         public ActionResult ManagePublicComments()

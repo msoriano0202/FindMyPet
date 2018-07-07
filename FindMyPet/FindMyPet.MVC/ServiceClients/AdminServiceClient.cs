@@ -8,6 +8,7 @@ namespace FindMyPet.MVC.ServiceClients
 {
     public interface IAdminServiceClient
     {
+        AdminDashboardDetails GetDashboardDetails();
         List<AdminFoundAlert> GetFoundAlertsToApprove();
         int ManageComent(AdminManageFoundAlertRequest request);
     }
@@ -22,6 +23,13 @@ namespace FindMyPet.MVC.ServiceClients
                 throw new ArgumentNullException(nameof(findMyPetClient));
 
             _findMyPetClient = findMyPetClient;
+        }
+
+        public AdminDashboardDetails GetDashboardDetails()
+        {
+            var request = new AdminDashboardRequest();
+
+            return _findMyPetClient.JsonClient().Get(request);
         }
 
         public List<AdminFoundAlert> GetFoundAlertsToApprove()
