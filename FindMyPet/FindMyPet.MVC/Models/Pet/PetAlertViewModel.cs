@@ -17,5 +17,6 @@ namespace FindMyPet.MVC.Models.Pet
         public string Commets { get; set; }
         public int Type { get; set; }
         public bool MakeItPublic { get; set; }
+        public string StaticMapUrl { get; set; }
     }
 }

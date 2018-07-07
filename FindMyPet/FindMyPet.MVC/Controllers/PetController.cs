@@ -318,6 +318,7 @@ namespace FindMyPet.MVC.Controllers
 
             model.OwnerId = this.GetSessionOwnerId();
             model.Type = (int)AlertTypeEnum.Lost;
+            model.StaticMapUrl = SaveStaticGoogleMap(model.StaticMapUrl);
 
             try
             {
@@ -329,7 +330,6 @@ namespace FindMyPet.MVC.Controllers
                 this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
             }
 
-            //return RedirectToAction("PetProfile", new { id = model.PetCode });
             return RedirectToAction("Index");
         }
 

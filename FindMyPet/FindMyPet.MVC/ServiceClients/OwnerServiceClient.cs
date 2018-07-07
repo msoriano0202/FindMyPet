@@ -129,9 +129,9 @@ namespace FindMyPet.MVC.ServiceClients
                 Latitude = model.Latitude.Value,
                 Longitude = model.Longitude.Value,
                 Comment = model.Commets,
-                PositionImageUrl = null,
+                PositionImageUrl = model.StaticMapUrl,
                 Type = model.Type,
-                ImageUrl = null
+                ImageUrl = null //micky
             };
 
             var response = _findMyPetClient.JsonClient().Post(request);

@@ -19,6 +19,7 @@ namespace FindMyPet.MVC.Models.PetSearch
         public string Description { get; set; }
         public string LostComment { get; set; }
         public string LostDateTime { get; set; }
+        public string PositionImageUrl { get; set; }
         public List<string> Images { get; set; }
     }
 

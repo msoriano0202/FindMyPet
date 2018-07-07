@@ -21,6 +21,7 @@ namespace FindMyPet.DTO.PetSearch
         public string LostComment { get; set; }
         public DateTimeOffset LostDateTime { get; set; }
         public List<string> Images { get; set; }
+        public String PositionImageUrl { get; set; }
     }
 
     public class OwnerDetails

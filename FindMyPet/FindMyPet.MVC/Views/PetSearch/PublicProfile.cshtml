@@ -11,10 +11,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                @*g-border-gray-300*@
                 <div class="profile-content g-border g-p-10">
                     <div class="d-sm-flex align-items-center justify-content-between">
                         <div class="d-sm-flex">
+                            @if (!string.IsNullOrEmpty(Model.PetInfo.PositionImageUrl))
+                            {
+                                <div class="g-mr-10 g-border g-border-cyan g-border-1x">
+                                    <img style="width:250px; height:200px;" src="@Url.Content(UrlFormatHelper.FormatImageUrl(Model.PetInfo.PositionImageUrl))" />
+                                </div>
+                            }
                             <div class="user-img">
                                 <img src="@Url.Content(Model.PetInfo.ProfileImageUrl)" class="img-fluid rounded-circle" alt="Imagen de Mascota">
                             </div>

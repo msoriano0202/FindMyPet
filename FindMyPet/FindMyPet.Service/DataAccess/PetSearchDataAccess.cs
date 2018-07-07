@@ -222,6 +222,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                         result.PetInfo.Description = item.Item1.Description;
                         result.PetInfo.LostComment = item.Item2.Comment;
                         result.PetInfo.LostDateTime = item.Item2.CreatedOn;
+                        result.PetInfo.PositionImageUrl = item.Item2.PositionImageUrl;
                         result.PetInfo.Images = petImages.Select(pi => pi.ImageUrl).ToList();
                     }
 

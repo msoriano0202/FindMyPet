@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Linq;
 using FindMyPet.Shared;
 using FindMyPet.MVC.Models.PetSearch;
+using System.Net;
+using System.IO;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -250,6 +252,20 @@ namespace FindMyPet.MVC.Controllers
         public void PerformImageResizeAndPutOnCanvas(string pFilePath, string pFileName, int pWidth, int pHeight, string pOutputFileName)
         {
             _imageHelper.PerformImageResizeAndPutOnCanvas(pFilePath, pFileName, pWidth, pHeight, pOutputFileName);
+        }
+
+        public string SaveStaticGoogleMap(string url)
+        {
+            WebClient webClient = new WebClient();
+            var data = webClient.DownloadData(url);
+
+            var uploadsFolder = Server.MapPath(ConfigurationManager.AppSettings["UploadsFolder"].ToString());
+            var imgFileName = string.Format("{0}.jpg", Guid.NewGuid().ToString());
+
+            var imageFilePath = Path.Combine(uploadsFolder, imgFileName);
+
+            System.IO.File.WriteAllBytes(imageFilePath, data);
+            return imageFilePath;
         }
 
         #endregion

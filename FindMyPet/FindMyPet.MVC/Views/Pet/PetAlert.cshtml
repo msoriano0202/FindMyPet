@@ -19,7 +19,8 @@
                             <input type="hidden" id="PetCode" name="PetCode" value="@Model.PetCode" />
                             <input type="hidden" id="Latitude" name="Latitude" value="@Model.Latitude" />
                             <input type="hidden" id="Longitude" name="Longitude" value="@Model.Longitude" />
-
+                            <input type="hidden" id="StaticMapUrl" name="StaticMapUrl" value="@Model.StaticMapUrl" />
+                            
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -86,6 +87,16 @@
                 map: map,
                 clickable: false
             });
+
+            //URL of Google Static Maps.
+            var staticMapUrl = "https://maps.googleapis.com/maps/api/staticmap";
+            staticMapUrl += "?key=AIzaSyDhCfBbsNOvMGMnHNpG9_9OQDg36MPrVio&center=" + latitude + "," + longitude;
+            staticMapUrl += "&size=380x300";
+            staticMapUrl += "&zoom=16";
+            //staticMapUrl += "&maptype=" + map.mapTypeId;
+            staticMapUrl += "&markers=color:red|" + latitude + "," + longitude;
+
+            $('#StaticMapUrl').val(staticMapUrl);
         };
     </script>
 

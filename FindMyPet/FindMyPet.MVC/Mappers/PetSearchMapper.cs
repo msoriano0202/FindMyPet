@@ -35,6 +35,7 @@ namespace FindMyPet.MVC.Mappers
                 Description = petDetails.Description,
                 LostComment = petDetails.LostComment,
                 LostDateTime = petDetails.LostDateTime.ToString("dd / MMM / yyyy  hh:mm:ss tt"),
+                PositionImageUrl = petDetails.PositionImageUrl,
                 Images = petDetails.Images
             };
         }
