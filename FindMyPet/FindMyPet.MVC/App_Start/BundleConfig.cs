@@ -25,6 +25,44 @@ namespace FindMyPet.MVC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            // Bundles for CNoteTheme
+            bundles.Add(new StyleBundle("~/bundles/theme-vendor-css").Include(
+                       "~/CNoteV1.0/assets/vendor/css/font-awesome.css",
+                       "~/CNoteV1.0/assets/vendor/css/simple-line-icons.css",
+                       "~/CNoteV1.0/assets/vendor/css/owl.carousel.css",
+                       "~/CNoteV1.0/assets/vendor/css/magnific-popup.css",
+                       "~/CNoteV1.0/assets/vendor/css/jquery-ui-slider.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/theme-assets-css").Include(
+                      "~/CNoteV1.0/cnote-main/assets/css/main.css",
+                      "~/CNoteV1.0/cnote-main/assets/css/custom.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/theme-vendor-js").Include(
+                     "~/CNoteV1.0/assets/vendor/js/jquery.js",
+                     "~/CNoteV1.0/assets/vendor/js/popper.js",
+                     "~/CNoteV1.0/assets/vendor/js/bootstrap.js",
+                     "~/CNoteV1.0/assets/vendor/js/owl.carousel.js",
+                     "~/CNoteV1.0/assets/vendor/js/owl.carousel2.thumbs.js",
+                     "~/CNoteV1.0/assets/vendor/js/jquery.appear.js",
+                     "~/CNoteV1.0/assets/vendor/js/jquery.countdown.js",
+                     "~/CNoteV1.0/assets/vendor/js/countUp.js",
+                     "~/CNoteV1.0/assets/vendor/js/masonry.pkgd.js",
+                     "~/CNoteV1.0/assets/vendor/js/imagesloaded.pkgd.js",
+                     "~/CNoteV1.0/assets/vendor/js/jquery.magnific-popup.js",
+                     "~/CNoteV1.0/assets/vendor/js/circle-progress.js",
+                     "~/CNoteV1.0/assets/vendor/js/typed.js",
+                     "~/CNoteV1.0/assets/vendor/js/scrollreveal.js",
+                     "~/CNoteV1.0/assets/vendor/js/widget.js",
+                     "~/CNoteV1.0/assets/vendor/js/mouse.js",
+                     "~/CNoteV1.0/assets/vendor/js/slider.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/theme-assets-js").Include(
+                    "~/CNoteV1.0/cnote-main/assets/js/cnote.js"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/bootbox-js").Include(
+                               "~/Scripts/bootbox.min.js"));
         }
     }
 }

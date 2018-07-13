@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <meta name="description" content="Hazle saber a todos que tu mascota esta perdida">
-    @*<meta name="keywords" content="Theme, Template, Ecommerce, Bootstrap, SASS, Multipage, Onepage, Ecommerce, Multipurpose, jQuery">*@
+    <meta name="description" content="Hazle saber a todos que tu mascota esta perdida o de alguna mascota que encuentres por la calle.">
+    <meta name="keywords" content="Mascotas, Colitas, Patas, Alerta, Ayuda, Perros, Gatos, SOS">
     <meta name="distribution" content="global">
 
-    <title>Alerta Mascota</title>
+    <title>Mascota Alerta</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800" rel="stylesheet">
@@ -20,23 +20,12 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700" rel="stylesheet">
 
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="~/CNoteV1.0/assets/vendor/css/font-awesome.css">
-    <link rel="stylesheet" href="~/CNoteV1.0/assets/vendor/css/simple-line-icons.css">
-    <!-- Plugins -->
-    <link rel="stylesheet" href="~/CNoteV1.0/assets/vendor/css/owl.carousel.css">
-    <link rel="stylesheet" href="~/CNoteV1.0/assets/vendor/css/magnific-popup.css">
-    <link rel="stylesheet" href="~/CNoteV1.0/assets/vendor/css/jquery-ui-slider.css">
-
-    <!-- Main [ Bootstrap, Components, Generals ] -->
-    <link rel="stylesheet" href="~/CNoteV1.0/cnote-main/assets/css/main.css">
-
-    <!-- Your custom code -->
-    <link rel="stylesheet" href="~/CNoteV1.0/cnote-main/assets/css/custom.css">
+    @Styles.Render("~/bundles/theme-vendor-css")
+    @Styles.Render("~/bundles/theme-assets-css")
 
     <!-- Favicon Image-->
-    <link rel="icon" type="image/x-icon" href="~/CNoteV1.0/assets/images/favicon.ico">
-    <link rel="icon" type="image/png" href="~/CNoteV1.0/assets/images/favicon.png">
+    @*<link rel="icon" type="image/x-icon" href="~/CNoteV1.0/assets/images/favicon.ico">
+    <link rel="icon" type="image/png" href="~/CNoteV1.0/assets/images/favicon.png">*@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!--
@@ -49,10 +38,6 @@
         gtag('config', 'UA-116496437-1');
     </script>
     -->
-    @*
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    *@
 </head>
 <body data-spy="scroll" data-target=".navbar-scrollspy" data-offset="50">
 
@@ -83,37 +68,10 @@
         <!-- End Main Content -->
     </div>
 
-    <!-- JS Main Files -->
-    <script src="~/CNoteV1.0/assets/vendor/js/jquery.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/popper.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/bootstrap.js"></script>
+    @Scripts.Render("~/bundles/theme-vendor-js")
+    @Scripts.Render("~/bundles/theme-assets-js")
+    @Scripts.Render("~/bundles/bootbox-js")
 
-    <!-- JS Plugins -->
-    <script src="~/CNoteV1.0/assets/vendor/js/owl.carousel.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/owl.carousel2.thumbs.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/jquery.appear.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/jquery.countdown.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/countUp.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/masonry.pkgd.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/imagesloaded.pkgd.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/jquery.magnific-popup.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/circle-progress.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/typed.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/scrollreveal.js"></script>
-
-    <!-- jQuery UI Widgets -->
-    <script src="~/CNoteV1.0/assets/vendor/js/widget.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/mouse.js"></script>
-    <script src="~/CNoteV1.0/assets/vendor/js/slider.js"></script>
-
-    <script src="~/CNoteV1.0/cnote-main/assets/js/cnote.js"></script>
-
-    <!-- Thrid Party Plugings -->
-    <script src="~/Scripts/bootbox.min.js" ></script>
-    @*
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-    *@
     @RenderSection("scripts", required: false)
 </body>
 </html>
