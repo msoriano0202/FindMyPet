@@ -17,12 +17,12 @@ namespace FindMyPet.TableModel
         public Guid Code { get; set; }
 
         [References(typeof(OwnerTableModel))]
-        public int OwnerTableModelId { get; set; }
+        public int? OwnerTableModelId { get; set; }
 
         public int? PetId { get; set; }
 
         /// <summary>
-        /// Types: Lost / Abandom 
+        /// Types: Lost / Abandom / Injured / Found / Adoption
         /// </summary>
         [Required]
         public int AlertType { get; set; }
@@ -37,7 +37,6 @@ namespace FindMyPet.TableModel
         [Required]
         public float Longitude { get; set; }
 
-        public string ImageUrl { get; set; }
         public string PositionImageUrl { get; set; }
 
         /// <summary>
@@ -53,5 +52,8 @@ namespace FindMyPet.TableModel
         public bool MakeItPublic { get; set; }
 
         public int Approved { get; set; }
+
+        [Reference]
+        public List<PetAlertImageTableModel> Images { get; set; }
     }
 }

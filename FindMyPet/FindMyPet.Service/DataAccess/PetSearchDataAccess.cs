@@ -18,6 +18,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
         Task<List<PetLost>> GetPetLostByDateAsync(PetSearchByDateRequest request);
         Task<PagedResponse<PetLostAlert>> GetPetLostAlertsAsync(PetLastAlertsRequest request);
         Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request);
+        Task<PetAlertDetails> GetPetAlertDetailsAsync(PetAlertDetailsRequest request);
         Task<PagedResponse<PetSuccessStory>> GetPetSuccessStoriesAsync(PetSuccessStoryRequest request);
     }
 
@@ -40,10 +41,10 @@ namespace FindMyPet.MyServiceStack.DataAccess
             using (var dbConnection = _dbConnectionFactory.Open())
             {
                 var lostQuery = dbConnection.From<PetAlertTableModel>()
-                                            .Join<PetAlertTableModel, PetTableModel>((pa, p) => pa.PetId.HasValue && pa.PetId.Value == p.Id)
-                                            .Join<PetAlertTableModel, OwnerTableModel>((pa, o) => pa.OwnerTableModelId == o.Id)
-                                            .Join<PetAlertTableModel, PetImageTableModel>((pa, pi) => pa.PetId == pi.PetTableModelId && pi.IsProfileImage)
-                                            .Where(pa => pa.AlertType == (int)AlertTypeEnum.Lost && pa.AlertStatus == (int)AlertStatusEnum.Active);
+                                            .LeftJoin<PetAlertTableModel, PetTableModel>((pa, p) => pa.PetId.HasValue && pa.PetId.Value == p.Id)
+                                            .LeftJoin<PetAlertTableModel, OwnerTableModel>((pa, o) => pa.OwnerTableModelId == o.Id)
+                                            .LeftJoin<PetAlertTableModel, PetImageTableModel>((pa, pi) => pa.PetId == pi.PetTableModelId && pi.IsProfileImage)
+                                            .Where(pa => pa.AlertStatus == (int)AlertStatusEnum.Active);
 
                 if (request.From.HasValue && request.To.HasValue)
                     lostQuery = lostQuery.And(pa => pa.CreatedOn >= request.From.Value && pa.CreatedOn <= request.To.Value);
@@ -51,8 +52,31 @@ namespace FindMyPet.MyServiceStack.DataAccess
                 var lostResults = await dbConnection.SelectMultiAsync<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>(lostQuery)
                                                     .ConfigureAwait(false);
 
+                // --- PetAlertImages ---
+                var imagesQuery = dbConnection.From<PetAlertTableModel>()
+                                              .Join<PetAlertTableModel, PetAlertImageTableModel>((pa, pai) => pa.Id == pai.PetAlertTableModelId)
+                                              .Where(pa => pa.AlertStatus == (int)AlertStatusEnum.Active);
+
+                if (request.From.HasValue && request.To.HasValue)
+                    imagesQuery = imagesQuery.And(pa => pa.CreatedOn >= request.From.Value && pa.CreatedOn <= request.To.Value);
+
+                var imagesResults = await dbConnection.SelectMultiAsync<PetAlertTableModel, PetAlertImageTableModel>(imagesQuery)
+                                                      .ConfigureAwait(false);
+
                 if (lostResults.Any())
                     result = FormatLostResults(lostResults);
+
+                if (imagesResults.Count > 0)
+                {
+                    var groupedImages = imagesResults.GroupBy(x => x.Item1.Code).ToList();
+
+                    foreach (var groupedImage in groupedImages)
+                    {
+                        var foundAlertImage = result.Where(a => a.AlertCode == groupedImage.Key);
+                        if (foundAlertImage != null)
+                            result.Find(r => r.AlertCode == groupedImage.Key).PetProfileImageUrl = groupedImage.FirstOrDefault(x => x.Item2.Id > 0).Item2.ImageUrl;
+                    }
+                }
             }
 
             return result;
@@ -67,15 +91,22 @@ namespace FindMyPet.MyServiceStack.DataAccess
             {
                 petLost = new PetLost
                 {
-                    PetId = item.Item2.Id,
-                    PetCode = item.Item2.Code,
-                    PetName = item.Item2.Name,
-                    PetProfileImageUrl = item.Item4.ImageUrl,
+                    AlertCode = item.Item1.Code,
                     Type = item.Item1.AlertType,
                     Latitude = item.Item1.Latitude,
                     Longitude = item.Item1.Longitude,
                     LostDateTime = item.Item1.CreatedOn
                 };
+
+                if (item.Item2.Id != 0)
+                {
+                    petLost.PetId = item.Item2.Id;
+                    petLost.PetCode = item.Item2.Code;
+                    petLost.PetName = item.Item2.Name;
+                    petLost.PetProfileImageUrl = item.Item4.ImageUrl;
+                }
+                else
+                    petLost.PetName = GetAnonymousTitle(item.Item1.AlertType);
 
                 lostPets.Add(petLost);
             }
@@ -88,14 +119,14 @@ namespace FindMyPet.MyServiceStack.DataAccess
             var response = new PagedResponse<PetLostAlert>();
             List<PetAlertTableModel> petAlerts;
             var records = new List<Tuple<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>>();
+            var imagesResults = new List<Tuple<PetAlertTableModel, PetAlertImageTableModel>>();
             int totalRecords = 0;
             int totalPages = 0;
 
             using (var dbConnection = _dbConnectionFactory.Open())
             {
                 var q = dbConnection.From<PetAlertTableModel>()
-                                    .Where(pa => pa.AlertType == (int)AlertTypeEnum.Lost &&
-                                                 pa.AlertStatus == (int)AlertStatusEnum.Active &&
+                                    .Where(pa => pa.AlertStatus == (int)AlertStatusEnum.Active &&
                                                  (pa.CreatedOn >= request.From && pa.CreatedOn <= request.To))
                                     .OrderByDescending(pa => pa.CreatedOn);
 
@@ -132,19 +163,39 @@ namespace FindMyPet.MyServiceStack.DataAccess
                 var petAlertsIds = petAlerts.Select(x => x.Id).ToList();
 
                 var query = dbConnection.From<PetAlertTableModel>()
-                                        .Join<PetAlertTableModel, PetTableModel>((pa, p) => pa.PetId == p.Id)
-                                        .Join<PetAlertTableModel, OwnerTableModel>((pa, o) => pa.OwnerTableModelId == o.Id)
+                                        .LeftJoin<PetAlertTableModel, PetTableModel>((pa, p) => pa.PetId == p.Id)
+                                        .LeftJoin<PetAlertTableModel, OwnerTableModel>((pa, o) => pa.OwnerTableModelId == o.Id)
                                         .LeftJoin<PetAlertTableModel, PetImageTableModel>((pa, pi) => pa.PetId == pi.PetTableModelId && pi.IsProfileImage)
                                         .Where(pa => Sql.In(pa.Id, petAlertsIds))
                                         .OrderByDescending(pa => pa.CreatedOn);
 
                 records = await dbConnection.SelectMultiAsync<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>(query)
                                             .ConfigureAwait(false);
+
+                // --- PetAlertImages ---
+                var imagesQuery = dbConnection.From<PetAlertTableModel>()
+                                              .Join<PetAlertTableModel, PetAlertImageTableModel>((pa, pai) => pa.Id == pai.PetAlertTableModelId)
+                                              .Where(pa => Sql.In(pa.Id, petAlertsIds));
+
+                imagesResults = await dbConnection.SelectMultiAsync<PetAlertTableModel, PetAlertImageTableModel>(imagesQuery)
+                                                  .ConfigureAwait(false);
             }
 
             response.TotalRecords = totalRecords;
             response.TotalPages = totalPages;
             response.Result = FormatAlertResults(records);
+
+            if (imagesResults.Count > 0)
+            {
+                var groupedImages = imagesResults.GroupBy(x => x.Item1.Code).ToList();
+
+                foreach (var groupedImage in groupedImages)
+                {
+                    var foundAlertImage = response.Result.Where(a => a.AlertCode == groupedImage.Key);
+                    if (foundAlertImage != null)
+                        response.Result.Find(r => r.AlertCode == groupedImage.Key).PetProfileImageUrl = groupedImage.FirstOrDefault(x => x.Item2.Id > 0).Item2.ImageUrl;
+                }
+            }
 
             return response;
         }
@@ -158,22 +209,55 @@ namespace FindMyPet.MyServiceStack.DataAccess
             {
                 alert = new PetLostAlert
                 {
-                    PetId = item.Item2.Id,
-                    PetCode = item.Item2.Code,
-                    PetName = item.Item2.Name,
-                    PetProfileImageUrl = item.Item4.ImageUrl,
+                    AlertCode = item.Item1.Code,
                     Type = item.Item1.AlertType,
                     Latitude = item.Item1.Latitude,
                     Longitude = item.Item1.Longitude,
                     LostDateTime = item.Item1.CreatedOn,
-                    Description = item.Item2.Description,
                     LostComment = item.Item1.Comment
                 };
+
+                if (item.Item2.Id != 0)
+                {
+                    alert.PetId = item.Item2.Id;
+                    alert.PetCode = item.Item2.Code;
+                    alert.PetName = item.Item2.Name;
+                    alert.Description = item.Item2.Description;
+                    alert.PetProfileImageUrl = item.Item4.ImageUrl;
+                }
+                else
+                    alert.PetName = GetAnonymousTitle(item.Item1.AlertType);
 
                 alerts.Add(alert);
             }
 
             return alerts;
+        }
+
+        private string GetAnonymousTitle(int alertType)
+        {
+            var title = "Mascota ";
+
+            switch (alertType)
+            {
+                case 1:
+                    title += "Perdida";
+                    break;
+                case 2:
+                    title += "Abandonada";
+                    break;
+                case 3:
+                    title += "Herida";
+                    break;
+                case 4:
+                    title += "Encontrada";
+                    break;
+                case 5:
+                    title += "En Adopcion";
+                    break;
+            }
+
+            return title;
         }
 
         public async Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request)
@@ -246,6 +330,121 @@ namespace FindMyPet.MyServiceStack.DataAccess
             }
 
             return result;
+        }
+
+        public async Task<PetAlertDetails> GetPetAlertDetailsAsync(PetAlertDetailsRequest request)
+        {
+            PetAlertDetails petAlertDetails = null;
+            PetAlertTableModel petAlertTable = null;
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                petAlertTable = await dbConnection.SingleAsync<PetAlertTableModel>(pa => pa.Code == request.AlertCode && 
+                                                                                         pa.AlertStatus == (int)AlertStatusEnum.Active)
+                                                  .ConfigureAwait(false);
+
+                if (petAlertTable != null)
+                {
+                    petAlertDetails = new PetAlertDetails();
+                    petAlertDetails.PetInfo = new PetDetails();
+                    petAlertDetails.OwnersInfo = new List<OwnerDetails>();
+                    OwnerDetails ownerDetails;
+
+                    // --- Pet Details ---
+                    if (petAlertTable.PetId.HasValue && petAlertTable.PetId > 0)
+                    {
+                        var petQuery = dbConnection.From<PetTableModel>()
+                                                   .Join<PetTableModel, PetAlertTableModel>((p, pa) => p.Id == pa.PetId &&
+                                                                                                       pa.Code == petAlertTable.Code);
+
+                        var petResult = await dbConnection.SelectMultiAsync<PetTableModel, PetAlertTableModel>(petQuery)
+                                                          .ConfigureAwait(false);
+
+                        var petImages = await dbConnection.SelectAsync<PetImageTableModel>(pi => pi.PetTableModelId == petAlertTable.PetId.Value)
+                                                          .ConfigureAwait(false);
+
+                        foreach (var item in petResult)
+                        {
+                            petAlertDetails.PetInfo.Name = item.Item1.Name;
+                            petAlertDetails.PetInfo.ProfileImageUrl = petImages.Where(pi => pi.IsProfileImage).FirstOrDefault()?.ImageUrl;
+                            petAlertDetails.PetInfo.DateOfBirth = item.Item1.DateOfBirth;
+                            petAlertDetails.PetInfo.Description = item.Item1.Description;
+                            petAlertDetails.PetInfo.LostComment = item.Item2.Comment;
+                            petAlertDetails.PetInfo.LostDateTime = item.Item2.CreatedOn;
+                            petAlertDetails.PetInfo.PositionImageUrl = item.Item2.PositionImageUrl;
+                            petAlertDetails.PetInfo.Images = petImages.Select(pi => pi.ImageUrl).ToList();
+                        }
+                    }
+                    else
+                    {
+                        var petImages = await dbConnection.SelectAsync<PetAlertImageTableModel>(pi => pi.PetAlertTableModelId == petAlertTable.Id)
+                                                          .ConfigureAwait(false);
+
+                        petAlertDetails.PetInfo.LostComment = petAlertTable.Comment;
+                        petAlertDetails.PetInfo.LostDateTime = petAlertTable.CreatedOn;
+                        petAlertDetails.PetInfo.PositionImageUrl = petAlertTable.PositionImageUrl;
+                        petAlertDetails.PetInfo.Images = petImages.Select(x => x.ImageUrl).ToList();
+                    }
+
+                    // --- Owner Details ---
+                    if (petAlertTable.OwnerTableModelId.HasValue && petAlertTable.OwnerTableModelId > 0)
+                    {
+                        // --- Owner's Pet --
+                        if (petAlertTable.PetId.HasValue && petAlertTable.PetId.Value > 0)
+                        {
+                            var ownersQuery = dbConnection.From<OwnerPetTableModel>()
+                                                          .Join<OwnerPetTableModel, OwnerTableModel>((op, o) => op.OwnerTableModelId == o.Id)
+                                                          .Join<OwnerPetTableModel, OwnerSettingTableModel>((op, os) => op.OwnerTableModelId == os.OwnerTableModelId)
+                                                          .Where(op => op.PetTableModelId == petAlertTable.PetId.Value);
+
+                            var ownersResult = await dbConnection.SelectMultiAsync<OwnerPetTableModel, OwnerTableModel, OwnerSettingTableModel>(ownersQuery)
+                                                                 .ConfigureAwait(false);
+
+                            foreach (var item in ownersResult)
+                            {
+                                ownerDetails = new OwnerDetails
+                                {
+                                    FullName = $"{item.Item2.FirstName} {item.Item2.LastName}",
+                                    ProfileImageUrl = item.Item2.ProfileImageUrl,
+                                    Email = item.Item3.ShowEmailForAlerts ? item.Item2.Email : string.Empty,
+                                    PhoneNumber1 = item.Item3.ShowPhoneNumberForAlerts ? item.Item2.PhoneNumber1 : string.Empty,
+                                    PhoneNumber2 = item.Item3.ShowPhoneNumberForAlerts ? item.Item2.PhoneNumber2 : string.Empty,
+                                    Address1 = item.Item3.ShowAddressForAlerts ? item.Item2.Address1 : string.Empty,
+                                    Address2 = item.Item3.ShowAddressForAlerts ? item.Item2.Address2 : string.Empty
+                                };
+
+                                petAlertDetails.OwnersInfo.Add(ownerDetails);
+                            }
+                        }
+                        else // --- Other Pet ---
+                        {
+                            var ownersQuery = dbConnection.From<OwnerTableModel>()
+                                                          .Join<OwnerTableModel, OwnerSettingTableModel>((o, os) => o.Id == os.OwnerTableModelId)
+                                                          .Where(o => o.Id == petAlertTable.OwnerTableModelId);
+
+                            var ownersResult = await dbConnection.SelectMultiAsync<OwnerTableModel, OwnerSettingTableModel>(ownersQuery)
+                                                                 .ConfigureAwait(false);
+
+                            foreach (var item in ownersResult)
+                            {
+                                ownerDetails = new OwnerDetails
+                                {
+                                    FullName = $"{item.Item1.FirstName} {item.Item1.LastName}",
+                                    ProfileImageUrl = item.Item1.ProfileImageUrl,
+                                    Email = item.Item2.ShowEmailForAlerts ? item.Item1.Email : string.Empty,
+                                    PhoneNumber1 = item.Item2.ShowPhoneNumberForAlerts ? item.Item1.PhoneNumber1 : string.Empty,
+                                    PhoneNumber2 = item.Item2.ShowPhoneNumberForAlerts ? item.Item1.PhoneNumber2 : string.Empty,
+                                    Address1 = item.Item2.ShowAddressForAlerts ? item.Item1.Address1 : string.Empty,
+                                    Address2 = item.Item2.ShowAddressForAlerts ? item.Item1.Address2 : string.Empty
+                                };
+
+                                petAlertDetails.OwnersInfo.Add(ownerDetails);
+                            }
+                        }
+                    }                   
+                }
+            }
+
+            return petAlertDetails;
         }
 
         public async Task<PagedResponse<PetSuccessStory>> GetPetSuccessStoriesAsync(PetSuccessStoryRequest request)

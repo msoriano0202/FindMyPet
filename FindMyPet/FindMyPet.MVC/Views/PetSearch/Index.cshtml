@@ -124,13 +124,13 @@
             });
 
             for (var i = 0; i < points.length; i++) {
-                var petCode = points[i].petCode;
+                var alertCode = points[i].alertCode;
                 var petName = points[i].petName;
                 var petImageUrl = points[i].petProfileImageUrl;
                 var lostDate = points[i].lostDateTime;
                 var latlong = { lat: points[i].latitude, lng: points[i].longitude }
 
-                //console.log(points[i]);
+                console.log(points[i]);
                 var marker = new google.maps.Marker({
                     position: latlong,
                     map: map,
@@ -143,7 +143,7 @@
                             "<img class='g-w50 rounded-circle' src='" + petImageUrl + "' alt='Image Description'>" +
                             "</div>" +
                             "<div>" +
-                            "<h6 class='g-mr-sm-10 font-weight-bold d-sm-inline-block'>" + petName + "</h6><a target='_blank' href='/PetSearch/PublicProfile/" + petCode + "' class='g-font-size-14'>[ Ver más ]</a>" +
+                        "<h6 class='g-mr-sm-10 font-weight-bold d-sm-inline-block'>" + petName + "</h6><a target='_blank' href='/PetSearch/PublicProfile/" + alertCode + "' class='g-font-size-14'>[ Ver más ]</a>" +
                             "<p><span class='g-mt-5 g-bg-primary font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10'>" + lostDate + "</span></p>" +
                             "</div>" +
                             "</div>"

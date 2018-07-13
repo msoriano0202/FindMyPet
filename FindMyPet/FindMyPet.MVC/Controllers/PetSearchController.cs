@@ -65,8 +65,9 @@ namespace FindMyPet.MVC.Controllers
                 var result = _petSearchDataLoader.SearchLostPets(from, to);
                 model.Points = result.ConvertAll(x => new PointAlertViewModel
                 {
-                    PetId = x.PetId.Value,
-                    PetCode = x.PetCode.ToString(),
+                    AlertCode = x.AlertCode.ToString(),
+                    PetId = x.PetId,
+                    PetCode = x.PetCode?.ToString(),
                     PetName = x.PetName,
                     PetProfileImageUrl = this.GetPetImageProfile(x.PetProfileImageUrl),
                     LostDateTime = x.LostDateTime.ToString("dd / MMM / yyyy hh:mm:ss tt"),
@@ -117,7 +118,7 @@ namespace FindMyPet.MVC.Controllers
         {
             this.VerifySessionVariables();
 
-            var data = _petSearchDataLoader.GetPetLostDetails(Guid.Parse(id));
+            var data = _petSearchDataLoader.GetPetAlertDetails(Guid.Parse(id));
             var model = _petSearchMapper.GetPetPublicProfileViewModel(data);
 
             model.PetInfo.ProfileImageUrl = this.GetPetImageProfile(model.PetInfo.ProfileImageUrl);

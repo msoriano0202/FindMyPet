@@ -10,6 +10,7 @@ namespace FindMyPet.MVC.Mappers
     public interface IPetSearchMapper
     {
         PetPublicProfileViewModel GetPetPublicProfileViewModel(PetLostDetails data);
+        PetPublicProfileViewModel GetPetPublicProfileViewModel(PetAlertDetails data);
         PetSuccessStoryViewModel PetSuccessStoryToViewModel(PetSuccessStory data);
         PetLastAlertDetailViewModel PetLastAlertToViewModel(PetLostAlert data);
     }
@@ -21,6 +22,18 @@ namespace FindMyPet.MVC.Mappers
             var model = new PetPublicProfileViewModel();
             model.PetInfo = GetPetInfoViewModel(data.PetInfo);
             model.OwnersInfo = data.OwnersInfo.ConvertAll(x => GetOwnerDetails(x));
+
+            return model;
+        }
+
+        public PetPublicProfileViewModel GetPetPublicProfileViewModel(PetAlertDetails data)
+        {
+            var model = new PetPublicProfileViewModel();
+            model.PetInfo = GetPetInfoViewModel(data.PetInfo);
+            model.OwnersInfo = data.OwnersInfo.ConvertAll(x => GetOwnerDetails(x));
+
+            if (string.IsNullOrEmpty(model.PetInfo.ProfileImageUrl) && model.PetInfo.Images.Count > 0)
+                model.PetInfo.ProfileImageUrl = model.PetInfo.Images[0];
 
             return model;
         }
@@ -72,8 +85,9 @@ namespace FindMyPet.MVC.Mappers
         {
             return new PetLastAlertDetailViewModel
             {
-                PetId = data.PetId.Value,
-                PetCode = data.PetCode.Value.ToString(),
+                AlertCode = data.AlertCode.ToString(),
+                PetId = data.PetId,
+                PetCode = data.PetCode?.ToString(),
                 PetName = data.PetName,
                 PetProfileImageUrl = data.PetProfileImageUrl,
                 Latitude = data.Latitude,

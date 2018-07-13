@@ -8,6 +8,7 @@ namespace FindMyPet.DTO.PetSearch
 {
     public class PetLost
     {
+        public Guid AlertCode { get; set; }
         public int? PetId { get; set; }
         public Guid? PetCode { get; set; }
         public string PetName { get; set; }

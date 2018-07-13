@@ -58,6 +58,7 @@
     <Compile Include="OwnerPetTableModel.cs" />
     <Compile Include="OwnerSettingTableModel.cs" />
     <Compile Include="OwnerSharedPetTableModel.cs" />
+    <Compile Include="PetAlertImageTableModel.cs" />
     <Compile Include="PetAlertTableModel.cs" />
     <Compile Include="PetImageTableModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

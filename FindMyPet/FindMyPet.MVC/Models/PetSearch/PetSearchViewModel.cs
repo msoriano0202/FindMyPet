@@ -17,9 +17,7 @@ namespace FindMyPet.MVC.Models.PetSearch
     public class PetSearchViewModel
     {
         public List<RadioButtonModel> Options { get; set; }
-        //[Required(ErrorMessage = "Fecha Desde es requerida.")]
         public DateTime? From { get; set; }
-        //[Required(ErrorMessage = "Fecha Hasta es requerida.")]
         public DateTime? To { get; set; }
         public int OptionSelected { get; set; }
         public List<PointAlertViewModel> Points { get; set; }
@@ -27,7 +25,8 @@ namespace FindMyPet.MVC.Models.PetSearch
 
     public class PointAlertViewModel
     {
-        public int PetId { get; set; }
+        public string AlertCode { get; set; }
+        public int? PetId { get; set; }
         public string PetCode { get; set; }
         public string PetName { get; set; }
         public string PetProfileImageUrl { get; set; }

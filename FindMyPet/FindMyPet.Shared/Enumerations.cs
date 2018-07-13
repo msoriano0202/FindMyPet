@@ -29,7 +29,10 @@ namespace FindMyPet.Shared
     public enum AlertTypeEnum
     {
         Lost = 1,
-        Abandom = 2
+        Abandom = 2,
+        Injured = 3,
+        Found = 4,
+        Adoption = 5
     }
 
     /// <summary>

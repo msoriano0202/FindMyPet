@@ -65,9 +65,10 @@ namespace FindMyPet.MyServiceStack.Providers
             }
             else
             {
-                //else if (request.PetCode.HasValue)
-                //    newId = await _petAlertDataAccess.AddPetAlertAsync(request.PetCode.Value, table)
-                //  
+                var alertImages = request.UrlImages.ConvertAll(x => _petAlertMapper.MapImagesToTable(x));
+
+                newId = await _petAlertDataAccess.AddPetPublicAlertAsync(table, alertImages)
+                                                 .ConfigureAwait(false);
             }
 
             var newTable = await _petAlertDataAccess.GetPetAlertByIdAsync(newId)

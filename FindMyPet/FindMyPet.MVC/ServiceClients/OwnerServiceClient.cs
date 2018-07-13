@@ -1,6 +1,7 @@
 ﻿using FindMyPet.DTO.Owner;
 using FindMyPet.DTO.PetAlert;
 using FindMyPet.MVC.Models.Account;
+using FindMyPet.MVC.Models.Home;
 using FindMyPet.MVC.Models.Pet;
 using ServiceStack;
 using System;
@@ -20,6 +21,7 @@ namespace FindMyPet.MVC.ServiceClients
         Owner UpdateOwner(SettingsViewModel model);
         Owner UpdateOwnerImageProfile(int ownerId, string imagePath);
         PetAlert AddPetAlert(PetAlertViewModel model);
+        PetAlert AddPetPublicAlert(PetPublicAlertViewModel model, List<string> urlImages);
         PetAlert FoundPet(PetAlertViewModel model);
     }
 
@@ -130,8 +132,24 @@ namespace FindMyPet.MVC.ServiceClients
                 Longitude = model.Longitude.Value,
                 Comment = model.Commets,
                 PositionImageUrl = model.StaticMapUrl,
-                Type = model.Type,
-                ImageUrl = null //micky
+                Type = model.Type
+            };
+
+            var response = _findMyPetClient.JsonClient().Post(request);
+            return response;
+        }
+
+        public PetAlert AddPetPublicAlert(PetPublicAlertViewModel model, List<string> urlImages)
+        {
+            var request = new PetAlertCreateRequest
+            {
+                OwnerId = model.OwnerId,
+                Latitude = model.Latitude.Value,
+                Longitude = model.Longitude.Value,
+                Comment = model.Commets,
+                PositionImageUrl = model.StaticMapUrl,
+                Type = model.SelectedAlertTypeId,
+                UrlImages = urlImages
             };
 
             var response = _findMyPetClient.JsonClient().Post(request);

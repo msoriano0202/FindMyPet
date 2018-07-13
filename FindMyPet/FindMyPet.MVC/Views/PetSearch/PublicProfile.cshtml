@@ -7,6 +7,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{ 
+
+    string IsActiveTab(int ownersCount)
+    {
+        if (ownersCount == 0)
+            return "active";
+        else
+            return "";
+    }
+
+    string IsActiveTabContent(int ownersCount)
+    {
+        if (ownersCount == 0)
+            return "show active";
+        else
+            return "";
+    }
+}
+
 <section class="profile-section g-bg-white">
     <div class="container">
         <div class="row">
@@ -28,18 +47,26 @@
                                     <h4 class="g-mb-sm-10 font-weight-bold text-primary">@Model.PetInfo.Name</h4>
                                 </div>
                                 <p class="g-mb-5">
-                                    <strong>Perdido:</strong>&nbsp;&nbsp;
+                                    <strong>Fecha:</strong>&nbsp;&nbsp;
                                     <span class="g-font-size-14">@Model.PetInfo.LostDateTime</span>
                                 </p>
-                                @if (!string.IsNullOrEmpty(Model.PetInfo.Description) && !string.IsNullOrEmpty(Model.PetInfo.LostComment))
+                                @if (!string.IsNullOrEmpty(Model.PetInfo.Description) || !string.IsNullOrEmpty(Model.PetInfo.LostComment))
                                 {
                                     <p>
                                         <strong>Detalles:</strong>&nbsp;&nbsp;
-                                        <span class="g-font-size-15">@Model.PetInfo.Description</span>
                                     </p>
-                                    <p>
-                                        <span class="g-font-size-15">@Model.PetInfo.LostComment</span>
-                                    </p>
+                                    if (!string.IsNullOrEmpty(Model.PetInfo.Description))
+                                    {
+                                        <p>
+                                            <span class="g-font-size-15">@Model.PetInfo.Description</span>
+                                        </p>
+                                    }
+                                    if (!string.IsNullOrEmpty(Model.PetInfo.LostComment))
+                                    {
+                                        <p>
+                                            <span class="g-font-size-15">@Model.PetInfo.LostComment</span>
+                                        </p>
+                                    }
                                 }
                             </div>
                         </div>
@@ -47,20 +74,25 @@
 
                     <div class="cn-nav-tabs-wrapper g-mt-20">
                         <ul class="nav cn-nav-tabs nav-tabs primary-active" id="tab-02" role="tablist">
+                            @if (Model.OwnersInfo.Count > 0)
+                            {
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab-02" data-toggle="tab" href="#home-02" role="tab" aria-controls="home-02" aria-selected="true">
                                     <span class="align-middle g-mr-sm-3"><i class="icon-user"></i></span>
                                     <span class="align-middle tab-name">Contacto</span>
                                 </a>
                             </li>
+                            }
                             <li class="nav-item">
-                                <a class="nav-link" id="profile-tab-02" data-toggle="tab" href="#profile-02" role="tab" aria-controls="profile-02" aria-selected="false">
+                                <a class="nav-link @IsActiveTab(Model.OwnersInfo.Count)" id="profile-tab-02" data-toggle="tab" href="#profile-02" role="tab" aria-controls="profile-02" aria-selected="false">
                                     <span class="align-middle g-mr-sm-3"><i class="icon-picture"></i></span>
                                     <span class="align-middle tab-name">Fotos</span>
                                 </a>
                             </li>
                         </ul>
                         <div class="tab-content" id="TabContent-02">
+                            @if (Model.OwnersInfo.Count > 0)
+                            {
                             <div class="tab-pane fade show active" id="home-02" role="tabpanel" aria-labelledby="home-tab">
                                 @foreach (var owner in Model.OwnersInfo)
                                 {
@@ -108,7 +140,8 @@
                                     </div>
                                 }
                             </div>
-                            <div class="tab-pane fade" id="profile-02" role="tabpanel" aria-labelledby="profile-tab">
+                            }
+                            <div class="tab-pane fade @IsActiveTabContent(Model.OwnersInfo.Count)" id="profile-02" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="widget feeds-widget">
                                     <div class="row justify-content-center">
                                         @if (Model.PetInfo.Images != null && Model.PetInfo.Images.Any())

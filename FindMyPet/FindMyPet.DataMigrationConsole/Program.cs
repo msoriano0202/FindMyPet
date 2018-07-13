@@ -84,6 +84,7 @@ namespace FindMyPet.DataMigrationConsole
                 "OwnerSettingTableModel",
                 "PetImageTableModel",
                 "PetAlertTableModel",
+                "PetAlertImageTableModel",
                 "OwnerSharedPetTableModel",
                 "ParameterGroupTableModel",
                 "ParameterValueTableModel"

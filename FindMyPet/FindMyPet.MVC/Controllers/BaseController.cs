@@ -15,6 +15,7 @@ using FindMyPet.Shared;
 using FindMyPet.MVC.Models.PetSearch;
 using System.Net;
 using System.IO;
+using System.Web;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -252,6 +253,23 @@ namespace FindMyPet.MVC.Controllers
         public void PerformImageResizeAndPutOnCanvas(string pFilePath, string pFileName, int pWidth, int pHeight, string pOutputFileName)
         {
             _imageHelper.PerformImageResizeAndPutOnCanvas(pFilePath, pFileName, pWidth, pHeight, pOutputFileName);
+        }
+
+        public string ResizeAndSaveImage(HttpPostedFileBase file)
+        {
+            var uploadsFolder = Server.MapPath(ConfigurationManager.AppSettings["UploadsFolder"].ToString());
+            var tempFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), GetFileExtension(file.FileName));
+            var newFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), this.defaultImageExtension);
+
+            var tempImageFilePath = Path.Combine(uploadsFolder, tempFileName);
+            var newImageFilePath = Path.Combine(uploadsFolder, newFileName);
+
+            file.SaveAs(tempImageFilePath);
+            this.PerformImageResizeAndPutOnCanvas(uploadsFolder, tempFileName, this.defaultImageWidthSize, this.defaultImageHeightSize, newFileName);
+
+            System.IO.File.Delete(tempImageFilePath);
+
+            return newImageFilePath;
         }
 
         public string SaveStaticGoogleMap(string url)

@@ -15,6 +15,7 @@ namespace FindMyPet.MyServiceStack.Providers
         Task<List<PetLost>> GetPetLostByDateAsync(PetSearchByDateRequest request);
         Task<PagedResponse<PetLostAlert>> GetPetLostAlertsAsync(PetLastAlertsRequest request);
         Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request);
+        Task<PetAlertDetails> GetPetAlertDetails(PetAlertDetailsRequest request);
         Task<PagedResponse<PetSuccessStory>> GetPetSuccessStoriesAsync(PetSuccessStoryRequest request);
     }
 
@@ -62,6 +63,16 @@ namespace FindMyPet.MyServiceStack.Providers
                 throw new ArgumentException("Id and Code are NULL");
 
             return await _petSearchDataAccess.GetPetLostDetails(request)
+                                             .ConfigureAwait(false);
+        }
+
+        public async Task<PetAlertDetails> GetPetAlertDetails(PetAlertDetailsRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+
+            return await _petSearchDataAccess.GetPetAlertDetailsAsync(request)
                                              .ConfigureAwait(false);
         }
 

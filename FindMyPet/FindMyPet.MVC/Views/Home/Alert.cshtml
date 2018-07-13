@@ -1,0 +1,119 @@
+﻿@model FindMyPet.MVC.Models.Home.PetPublicAlertViewModel
+
+@{
+    ViewBag.Title = "Enviar Alerta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="profile-section g-py g-bg-white">
+    <div class="container">
+        <div class="row">
+            <div id="sendPublicAlert" class="col-md-12">
+                <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
+
+                    <form action="/Home/Alert" method="post" enctype="multipart/form-data" role="form">
+                        @Html.AntiForgeryToken()
+
+                        <div class="col-12">
+                            <input type="hidden" id="Latitude" name="Latitude" value="@Model.Latitude" />
+                            <input type="hidden" id="Longitude" name="Longitude" value="@Model.Longitude" />
+                            <input type="hidden" id="StaticMapUrl" name="StaticMapUrl" value="@Model.StaticMapUrl" />
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="input1-1" class="g-text-primary"><strong>Tipo de Alerta</strong></label>
+                                        @Html.DropDownListFor(m => m.SelectedAlertTypeId, Model.AlertTypes, new { @id = "input1-1", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <input type="file" id="Images" name="Images" multiple data-val="true" data-val-required="Seleccione al menos una Imagen." class="cn-custom-file-input cn-custom-file-input-v2">
+                                        <label for="Images" class="g-mt-30"><i class="fa fa-cloud-upload"></i> <span> Elegir Imagenes</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="input1-1" class="g-text-primary"><strong>Ubicación</strong></label>
+                                        <p class="font-italic g-font-size-13 g-mb-10">( El sistema calcula su ubicación actual. )</p>
+                                        <div class="input-group input-group-focus">
+                                            <div id="map" style="height: 300px; width: 100%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="input1-2" class="g-text-primary"><strong>Comentarios </strong>(Opcional)</label>
+                                        <p class="font-italic g-font-size-13 g-mb-10">( Información adicional que ayude a describir la mascota y a comunicarse con usted, si aun no es miembro. )</p>
+                                        <div class="input-group input-group-focus">
+                                            @Html.TextAreaFor(model => model.Commets, rows: 10, columns: 1, htmlAttributes: new { @class = "form-control" })
+                                        </div>
+                                        <div class="row">
+                                            <input type="submit" class="btn btn-xlg btn-block btn-outline-danger g-mt-10" value="Alertar !!!" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="g-mb">
+                                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function initMap() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+        };
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            $('#Latitude').val(latitude);
+            $('#Longitude').val(longitude);
+
+            var uluru = { lat: latitude, lng: longitude };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: uluru,
+                clickableIcons: false,
+                disableDefaultUI: true,
+                disableDoubleClickZoom: true,
+                draggable: false,
+                fullscreenControl: false
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                clickable: false
+            });
+
+            //URL of Google Static Maps.
+            var staticMapUrl = "https://maps.googleapis.com/maps/api/staticmap";
+            staticMapUrl += "?key=AIzaSyDhCfBbsNOvMGMnHNpG9_9OQDg36MPrVio&center=" + latitude + "," + longitude;
+            staticMapUrl += "&size=380x300";
+            staticMapUrl += "&zoom=16";
+            //staticMapUrl += "&maptype=" + map.mapTypeId;
+            staticMapUrl += "&markers=color:red|" + latitude + "," + longitude;
+
+            $('#StaticMapUrl').val(staticMapUrl);
+        };
+    </script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhCfBbsNOvMGMnHNpG9_9OQDg36MPrVio&callback=initMap">
+    </script>
+}

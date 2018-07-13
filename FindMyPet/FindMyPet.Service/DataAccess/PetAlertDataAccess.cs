@@ -14,6 +14,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
     public interface IPetAlertDataAccess
     {
         Task<int> AddPetAlertAsync(PetAlertTableModel petAlertTable);
+        Task<int> AddPetPublicAlertAsync(PetAlertTableModel petAlertTable, List<PetAlertImageTableModel> petAlertImagesTable);
         Task<int> FoundPet(int petId, string foundComment, bool makeItPublic);
         Task<PetAlertTableModel> GetPetAlertByIdAsync(int petAlertId);
         Task<PetAlertTableModel> GetPetAlertByCodeAsync(Guid petAlertCode);
@@ -52,6 +53,30 @@ namespace FindMyPet.MyServiceStack.DataAccess
 
                     await dbConnection.UpdateOnlyAsync(new PetTableModel { Status = (int)PetStatusEnum.Lost }, x => x.Status, x => x.Id == pet.Id)
                                       .ConfigureAwait(false);
+
+                    trans.Commit();
+                }
+            }
+
+            return (int)newId;
+        }
+
+        public async Task<int> AddPetPublicAlertAsync(PetAlertTableModel petAlertTable, List<PetAlertImageTableModel> petAlertImagesTable)
+        {
+            long newId;
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                using (var trans = dbConnection.OpenTransaction())
+                {
+                    newId = await dbConnection.InsertAsync<PetAlertTableModel>(petAlertTable, selectIdentity: true)
+                                              .ConfigureAwait(false);
+
+                    foreach (var image in petAlertImagesTable)
+                    {
+                        image.PetAlertTableModelId = (int)newId;
+                        await dbConnection.InsertAsync<PetAlertImageTableModel>(image)
+                                          .ConfigureAwait(false);
+                    }
 
                     trans.Commit();
                 }

@@ -143,18 +143,8 @@ namespace FindMyPet.MVC.Controllers
                     message = "FileNoValid";
                 else
                 {
-                    var uploadsFolder = Server.MapPath(ConfigurationManager.AppSettings["UploadsFolder"].ToString());
-                    var tempFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), GetFileExtension(file.FileName));
-                    var newFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), this.defaultImageExtension);
-
-                    var tempImageFilePath = Path.Combine(uploadsFolder, tempFileName);
-                    var newImageFilePath = Path.Combine(uploadsFolder, newFileName);
-
-                    file.SaveAs(tempImageFilePath);
-                    this.PerformImageResizeAndPutOnCanvas(uploadsFolder, tempFileName, this.defaultImageWidthSize, this.defaultImageHeightSize, newFileName);
+                    var newImageFilePath = this.ResizeAndSaveImage(file);
                     _petDataLoader.AddPetImage(id, newImageFilePath, true);
-
-                    System.IO.File.Delete(tempImageFilePath);
                 }
             }
 
@@ -178,18 +168,8 @@ namespace FindMyPet.MVC.Controllers
                     message = "FileNoValid";
                 else
                 {
-                    var uploadsFolder = Server.MapPath(ConfigurationManager.AppSettings["UploadsFolder"].ToString());
-                    var tempFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), GetFileExtension(file.FileName));
-                    var newFileName = string.Format("{0}.{1}", Guid.NewGuid().ToString(), this.defaultImageExtension);
-
-                    var tempImageFilePath = Path.Combine(uploadsFolder, tempFileName);
-                    var newImageFilePath = Path.Combine(uploadsFolder, newFileName);
-
-                    file.SaveAs(tempImageFilePath);
-                    this.PerformImageResizeAndPutOnCanvas(uploadsFolder, tempFileName, this.defaultImageWidthSize, this.defaultImageHeightSize, newFileName);
+                    var newImageFilePath = this.ResizeAndSaveImage(file);
                     _petDataLoader.AddPetImage(id, newImageFilePath, false);
-
-                    System.IO.File.Delete(tempImageFilePath);
                 }
             }
 

@@ -7,7 +7,8 @@ namespace FindMyPet.MVC.Models.PetSearch
 {
     public class PetLastAlertDetailViewModel
     {
-        public int PetId { get; set; }
+        public string AlertCode { get; set; }
+        public int? PetId { get; set; }
         public string PetCode { get; set; }
         public string PetName { get; set; }
         public string PetProfileImageUrl { get; set; }

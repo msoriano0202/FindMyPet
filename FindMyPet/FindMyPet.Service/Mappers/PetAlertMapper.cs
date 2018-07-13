@@ -12,6 +12,7 @@ namespace FindMyPet.MyServiceStack.Mappers
     {
         PetAlertTableModel MapCreateRequestToTable(PetAlertCreateRequest request);
         PetAlert MapPetAlertTableToPetAlert(PetAlertTableModel petAlertTable);
+        PetAlertImageTableModel MapImagesToTable(string urlImage);
     }
 
     public class PetAlertMapper : IPetAlertMapper
@@ -27,7 +28,7 @@ namespace FindMyPet.MyServiceStack.Mappers
                 Comment = request.Comment,
                 Latitude = request.Latitude,
                 Longitude = request.Longitude,
-                ImageUrl = request.ImageUrl,
+                //ImageUrl = request.ImageUrl,
                 PositionImageUrl = request.PositionImageUrl,
                 AlertStatus = (int)AlertStatusEnum.Active,
                 CreatedOn = System.DateTime.Now,
@@ -45,11 +46,20 @@ namespace FindMyPet.MyServiceStack.Mappers
                 PetId = petAlertTable.PetId,
                 Latitude = petAlertTable.Latitude,
                 Longitude = petAlertTable.Longitude,
-                ImageUrl = petAlertTable.ImageUrl,
                 Type = petAlertTable.AlertType,
                 Status = petAlertTable.AlertStatus,
                 CreatedOn = petAlertTable.CreatedOn,
                 SolvedOn = petAlertTable.SolvedOn
+            };
+        }
+
+        public PetAlertImageTableModel MapImagesToTable(string urlImage)
+        {
+            return new PetAlertImageTableModel
+            {
+                Code = Guid.NewGuid(),
+                ImageUrl = urlImage,
+                CreatedOn = System.DateTime.Now
             };
         }
     }
