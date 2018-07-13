@@ -13,6 +13,18 @@
 
                     <form action="/Home/Alert" method="post" enctype="multipart/form-data" role="form">
                         @Html.AntiForgeryToken()
+                        <div class="col-12">
+                            <div class="row g-mb-15">
+                                <div class="col-md-12">
+                                    <p class="g-font-size-15 g-mb-10">
+                                        Esta sección es para crear alertas que no estén relacionadas con <strong>sus</strong> mascotas registradas. 
+                                        Para crear una alerta acerca de <strong>sus</strong> mascotas vaya a la sección <strong><a class="font-italic" href="/Pet">Mis Mascotas</a></strong> 
+                                        dentro de su <strong><a class="font-italic" href="/Manage">Perfil</a></strong>,
+                                        y seleccione alguna de ellas.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="col-12">
                             <input type="hidden" id="Latitude" name="Latitude" value="@Model.Latitude" />
@@ -39,14 +51,14 @@
                                         <label for="input1-1" class="g-text-primary"><strong>Ubicación</strong></label>
                                         <p class="font-italic g-font-size-13 g-mb-10">( El sistema calcula su ubicación actual. )</p>
                                         <div class="input-group input-group-focus">
-                                            <div id="map" style="height: 300px; width: 100%;"></div>
+                                            <div id="map" class="g-border g-border-cyan g-border-1x" style="height: 300px; width: 100%;"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <label for="input1-2" class="g-text-primary"><strong>Comentarios </strong>(Opcional)</label>
-                                        <p class="font-italic g-font-size-13 g-mb-10">( Información adicional que ayude a describir la mascota y a comunicarse con usted, si aun no es miembro. )</p>
+                                        <label for="input1-2" class="g-text-primary"><strong>Comentarios </strong></label>
+                                        <p class="font-italic g-font-size-13 g-mb-10">( Información que ayude a describir la mascota y a comunicarse con usted, si aun no es miembro. )</p>
                                         <div class="input-group input-group-focus">
                                             @Html.TextAreaFor(model => model.Commets, rows: 10, columns: 1, htmlAttributes: new { @class = "form-control" })
                                         </div>

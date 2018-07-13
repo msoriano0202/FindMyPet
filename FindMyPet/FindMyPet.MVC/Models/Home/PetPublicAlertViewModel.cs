@@ -13,7 +13,7 @@ namespace FindMyPet.MVC.Models.Home
         public int? OwnerId { get; set; }
 
         [Required(ErrorMessage = "Seleccione un tipo de Alerta.")]
-        [RegularExpression(@"[0-9]*$", ErrorMessage = "Seleccione un tipo de Alerta.")]
+        [RegularExpression(@"[0-9]*$", ErrorMessage = "Seleccione un Tipo de Alerta.")]
         public int SelectedAlertTypeId { get; set; }
 
         public IEnumerable<SelectListItem> AlertTypes { get; set; }
@@ -27,6 +27,7 @@ namespace FindMyPet.MVC.Models.Home
         [Required]
         public float? Longitude { get; set; }
 
+        [Required(ErrorMessage = "Comentarios es requerido.")]
         public string Commets { get; set; }
         public string StaticMapUrl { get; set; }
     }

@@ -379,6 +379,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                         var petImages = await dbConnection.SelectAsync<PetAlertImageTableModel>(pi => pi.PetAlertTableModelId == petAlertTable.Id)
                                                           .ConfigureAwait(false);
 
+                        petAlertDetails.PetInfo.Name = GetAnonymousTitle(petAlertTable.AlertType);
                         petAlertDetails.PetInfo.LostComment = petAlertTable.Comment;
                         petAlertDetails.PetInfo.LostDateTime = petAlertTable.CreatedOn;
                         petAlertDetails.PetInfo.PositionImageUrl = petAlertTable.PositionImageUrl;
