@@ -32,7 +32,7 @@ namespace FindMyPet.MVC.ServiceClients
         public JsonServiceClient JsonClient()
         {
             var serviceAddress = _globalHelper.GetAppSettingByEnvironment("ServiceAddress");
-            var client = new JsonServiceClient(serviceAddress);
+            var client = new JsonServiceClient(serviceAddress) { UserName = "malerta", Password = "_!p@$$w0rd!_" };
 
             return client;
         }

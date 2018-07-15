@@ -10,6 +10,7 @@ using System.Web;
 
 namespace FindMyPet.MyServiceStack.Services
 {
+    [Authenticate]
     public class PetImageService : Service
     {
         private readonly IPetImageProvider _petImageProvider;

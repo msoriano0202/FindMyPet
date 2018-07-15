@@ -9,6 +9,7 @@ using System.Web;
 
 namespace FindMyPet.MyServiceStack.Services
 {
+    [Authenticate]
     public class AdminService : Service
     {
         private readonly IAdminProvider _adminProvider;

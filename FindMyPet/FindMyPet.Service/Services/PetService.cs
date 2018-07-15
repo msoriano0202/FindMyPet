@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace FindMyPet.MyServiceStack.Services
 {
+    [Authenticate]
     public class PetService : Service
     {
         private readonly IPetProvider _petProvider;

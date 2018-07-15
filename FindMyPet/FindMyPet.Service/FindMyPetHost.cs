@@ -5,6 +5,8 @@ using FindMyPet.Shared;
 using FindMyPet.TableModel;
 using ServiceStack;
 using ServiceStack.Api.Swagger;
+using ServiceStack.Auth;
+using ServiceStack.Caching;
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
 using ServiceStack.OrmLite.SqlServer;
@@ -45,11 +47,26 @@ namespace FindMyPet.MyServiceStack
         /// <param name=“container”></param>
         public override void Configure(Funq.Container container)
         {
+
+            //Plugins.Add(new SwaggerFeature());
+
+            Plugins.Add(new AuthFeature(
+                () => new AuthUserSession(), 
+                new IAuthProvider[] { new BasicAuthProvider(),  }));
+
+            container.Register<ICacheClient>(new MemoryCacheClient());
+            var userRepository = new InMemoryAuthRepository();
+            container.Register<IUserAuthRepository>(userRepository);
+
+            string hash;
+            string salt;
+
+            new SaltedHash().GetHashAndSaltString("_!p@$$w0rd!_", out hash, out salt);
+            userRepository.CreateUserAuth(new UserAuth { Id = 1, UserName = "malerta" }, "_!p@$$w0rd!_");
+
             // Add our IDbConnectionFactory to the container, 
             // this will allow all of our services to share a single connection factory
             container.Register<IDbConnectionFactory>(new OrmLiteConnectionFactory(ConnectionString, SqlServerOrmLiteDialectProvider.Instance));
-
-            Plugins.Add(new SwaggerFeature());
 
             //// Below we refer to the connection factory that we just registered
             //// with the container and use it to create our table(s).
