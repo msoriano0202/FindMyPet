@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{ 
+@{
 
     string IsActiveTab(int ownersCount)
     {
@@ -45,6 +45,9 @@
                             <div class="g-ml-10 g-mt-10">
                                 <div class="d-sm-flex justify-content-between">
                                     <h4 class="g-mb-sm-10 font-weight-bold text-primary">@Model.PetInfo.Name</h4>
+                                    <ul class="list-unstyled list-inline">
+                                        <li class="list-inline-item"><a id="reportAlert" alertCode="@Model.AlertCode" href="#" class="btn cn-btn-outline-red"><i class="icon-ban"></i>&nbsp; Reportar Alerta</a></li>
+                                    </ul>
                                 </div>
                                 <p class="g-mb-5">
                                     <strong>Fecha:</strong>&nbsp;&nbsp;
@@ -76,12 +79,12 @@
                         <ul class="nav cn-nav-tabs nav-tabs primary-active" id="tab-02" role="tablist">
                             @if (Model.OwnersInfo.Count > 0)
                             {
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab-02" data-toggle="tab" href="#home-02" role="tab" aria-controls="home-02" aria-selected="true">
-                                    <span class="align-middle g-mr-sm-3"><i class="icon-user"></i></span>
-                                    <span class="align-middle tab-name">Contacto</span>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab-02" data-toggle="tab" href="#home-02" role="tab" aria-controls="home-02" aria-selected="true">
+                                        <span class="align-middle g-mr-sm-3"><i class="icon-user"></i></span>
+                                        <span class="align-middle tab-name">Contacto</span>
+                                    </a>
+                                </li>
                             }
                             <li class="nav-item">
                                 <a class="nav-link @IsActiveTab(Model.OwnersInfo.Count)" id="profile-tab-02" data-toggle="tab" href="#profile-02" role="tab" aria-controls="profile-02" aria-selected="false">
@@ -93,53 +96,53 @@
                         <div class="tab-content" id="TabContent-02">
                             @if (Model.OwnersInfo.Count > 0)
                             {
-                            <div class="tab-pane fade show active" id="home-02" role="tabpanel" aria-labelledby="home-tab">
-                                @foreach (var owner in Model.OwnersInfo)
-                                {
-                                    <div class="d-sm-flex g-mt-10 g-mb-30">
-                                        <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
-                                            <img class="g-w50 rounded-circle" src="@owner.ProfileImageUrl" alt="Imagen Contacto">
-                                        </div>
-                                        <div>
-                                            <div class="d-sm-flex justify-content-between">
-                                                <h6 class="g-mb-sm-10 font-weight-bold text-primary">@owner.FullName</h6>
+                                <div class="tab-pane fade show active" id="home-02" role="tabpanel" aria-labelledby="home-tab">
+                                    @foreach (var owner in Model.OwnersInfo)
+                                    {
+                                        <div class="d-sm-flex g-mt-10 g-mb-30">
+                                            <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                                <img class="g-w50 rounded-circle" src="@owner.ProfileImageUrl" alt="Imagen Contacto">
                                             </div>
-                                            <p class="g-mb-5">
-                                                <strong>Correo: </strong>&nbsp;
-                                                <span class="g-font-size-15">@owner.Email</span>
-                                            </p>
-                                            @if (!string.IsNullOrEmpty(owner.PhoneNumber1))
-                                            {
+                                            <div>
+                                                <div class="d-sm-flex justify-content-between">
+                                                    <h6 class="g-mb-sm-10 font-weight-bold text-primary">@owner.FullName</h6>
+                                                </div>
                                                 <p class="g-mb-5">
-                                                    <strong>Teléfono 1: </strong>&nbsp;
-                                                    <span class="g-font-size-15">@owner.PhoneNumber1</span>
+                                                    <strong>Correo: </strong>&nbsp;
+                                                    <span class="g-font-size-15">@owner.Email</span>
                                                 </p>
-                                            }
-                                            @if (!string.IsNullOrEmpty(owner.PhoneNumber2))
-                                            {
-                                                <p class="g-mb-5">
-                                                    <strong>Teléfono 2: </strong>&nbsp;
-                                                    <span class="g-font-size-15">@owner.PhoneNumber2</span>
-                                                </p>
-                                            }
-                                            @if (!string.IsNullOrEmpty(owner.Address1))
-                                            {
-                                                <p class="g-mb-5">
-                                                    <strong>Dirección 1: </strong>&nbsp;
-                                                    <span class="g-font-size-15">@owner.Address1</span>
-                                                </p>
-                                            }
-                                            @if (!string.IsNullOrEmpty(owner.Address2))
-                                            {
-                                                <p class="g-mb-5">
-                                                    <strong>Dirección 2: </strong>&nbsp;
-                                                    <span class="g-font-size-15">@owner.Address2</span>
-                                                </p>
-                                            }
+                                                @if (!string.IsNullOrEmpty(owner.PhoneNumber1))
+                                                {
+                                                    <p class="g-mb-5">
+                                                        <strong>Teléfono 1: </strong>&nbsp;
+                                                        <span class="g-font-size-15">@owner.PhoneNumber1</span>
+                                                    </p>
+                                                }
+                                                @if (!string.IsNullOrEmpty(owner.PhoneNumber2))
+                                                {
+                                                    <p class="g-mb-5">
+                                                        <strong>Teléfono 2: </strong>&nbsp;
+                                                        <span class="g-font-size-15">@owner.PhoneNumber2</span>
+                                                    </p>
+                                                }
+                                                @if (!string.IsNullOrEmpty(owner.Address1))
+                                                {
+                                                    <p class="g-mb-5">
+                                                        <strong>Dirección 1: </strong>&nbsp;
+                                                        <span class="g-font-size-15">@owner.Address1</span>
+                                                    </p>
+                                                }
+                                                @if (!string.IsNullOrEmpty(owner.Address2))
+                                                {
+                                                    <p class="g-mb-5">
+                                                        <strong>Dirección 2: </strong>&nbsp;
+                                                        <span class="g-font-size-15">@owner.Address2</span>
+                                                    </p>
+                                                }
+                                            </div>
                                         </div>
-                                    </div>
-                                }
-                            </div>
+                                    }
+                                </div>
                             }
                             <div class="tab-pane fade @IsActiveTabContent(Model.OwnersInfo.Count)" id="profile-02" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="widget feeds-widget">
@@ -183,3 +186,32 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#reportAlert').click(function () {
+                var alertCode = $(this).attr("alertCode");
+
+                bootbox.confirm({
+                    message: "Esta seguro que desea repotar la Alarma ?",
+                    buttons: {
+                        confirm: {
+                            label: 'Reportar',
+                            className: 'btn btn-outline-danger'
+                        },
+                        cancel: {
+                            label: 'Cancelar'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            var url = '/PetSearch/ReportAlert?code=' + alertCode;
+                            window.location.replace(url);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

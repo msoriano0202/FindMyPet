@@ -16,6 +16,7 @@ namespace FindMyPet.MyServiceStack.Providers
         Task<PagedResponse<PetLostAlert>> GetPetLostAlertsAsync(PetLastAlertsRequest request);
         Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request);
         Task<PetAlertDetails> GetPetAlertDetails(PetAlertDetailsRequest request);
+        Task<int> ManageReportedPetAlertAsync(PetAlertReportManageRequest request);
         Task<PagedResponse<PetSuccessStory>> GetPetSuccessStoriesAsync(PetSuccessStoryRequest request);
     }
 
@@ -73,6 +74,16 @@ namespace FindMyPet.MyServiceStack.Providers
 
 
             return await _petSearchDataAccess.GetPetAlertDetailsAsync(request)
+                                             .ConfigureAwait(false);
+        }
+
+        public async Task<int> ManageReportedPetAlertAsync(PetAlertReportManageRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+
+            return await _petSearchDataAccess.ManageReportedPetAlertAsync(request)
                                              .ConfigureAwait(false);
         }
 

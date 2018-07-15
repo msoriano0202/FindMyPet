@@ -21,6 +21,8 @@ namespace FindMyPet.MVC.Controllers
         public ActionResult Index()
         {
             this.VerifySessionVariables();
+
+            this.SetAlertMessageInViewBag();
             return View();
         }
 

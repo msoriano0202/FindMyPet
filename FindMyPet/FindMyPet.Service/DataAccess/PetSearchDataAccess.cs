@@ -19,6 +19,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
         Task<PagedResponse<PetLostAlert>> GetPetLostAlertsAsync(PetLastAlertsRequest request);
         Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request);
         Task<PetAlertDetails> GetPetAlertDetailsAsync(PetAlertDetailsRequest request);
+        Task<int> ManageReportedPetAlertAsync(PetAlertReportManageRequest request);
         Task<PagedResponse<PetSuccessStory>> GetPetSuccessStoriesAsync(PetSuccessStoryRequest request);
     }
 
@@ -448,6 +449,29 @@ namespace FindMyPet.MyServiceStack.DataAccess
             return petAlertDetails;
         }
 
+        public async Task<int> ManageReportedPetAlertAsync(PetAlertReportManageRequest request)
+        {
+            int records;
+            
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                using (var trans = dbConnection.OpenTransaction())
+                {
+                    var petAlert = await dbConnection.SingleAsync<PetAlertTableModel>(p => p.Code == request.Code)
+                                                 .ConfigureAwait(false);
+
+                    var action = request.Action;
+
+                    records = await dbConnection.UpdateOnlyAsync(new PetAlertTableModel { AlertStatus = action }, x => x.AlertStatus, x => x.Id == petAlert.Id)
+                                      .ConfigureAwait(false);
+
+                    trans.Commit();
+                }
+            }
+
+            return records;
+        }
+
         public async Task<PagedResponse<PetSuccessStory>> GetPetSuccessStoriesAsync(PetSuccessStoryRequest request)
         {
             var response = new PagedResponse<PetSuccessStory>();
@@ -460,7 +484,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
             {
                 var q = dbConnection.From<PetAlertTableModel>()
                                     .Where(pa => pa.AlertType == (int)AlertTypeEnum.Lost &&
-                                                 pa.AlertStatus == (int)AlertStatusEnum.Deleted &&
+                                                 pa.AlertStatus == (int)AlertStatusEnum.Closed &&
                                                  pa.MakeItPublic &&
                                                  pa.Approved == (int)ApproveStatusEnum.Approved)
                                     .OrderByDescending(pa => pa.SolvedOn);

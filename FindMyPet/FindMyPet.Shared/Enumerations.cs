@@ -41,7 +41,9 @@ namespace FindMyPet.Shared
     public enum AlertStatusEnum
     {
         Active = 1,
-        Deleted = 2
+        Closed = 2,
+        Reported = 3,
+        Deleted = 4
     }
 
     /// <summary>

@@ -7,6 +7,7 @@ namespace FindMyPet.MVC.Models.PetSearch
 {
     public class PetPublicProfileViewModel
     {
+        public string AlertCode { get; set; }
         public PetInfoViewModel PetInfo { get; set; }
         public List<OwnerInfoViewModel> OwnersInfo { get; set; }
     }

@@ -102,7 +102,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                                      .ConfigureAwait(false);
 
                     petAlert.CommentFound = foundComment;
-                    petAlert.AlertStatus = (int)AlertStatusEnum.Deleted;
+                    petAlert.AlertStatus = (int)AlertStatusEnum.Closed;
                     petAlert.MakeItPublic = makeItPublic;
                     petAlert.SolvedOn = System.DateTime.Now;
                     await dbConnection.UpdateAsync(petAlert).ConfigureAwait(false);

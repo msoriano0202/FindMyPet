@@ -41,7 +41,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                         .Join<PetAlertTableModel, OwnerTableModel>((pa, o) => pa.OwnerTableModelId == o.Id)
                                         .LeftJoin<PetAlertTableModel, PetImageTableModel>((pa, pi) => pa.PetId == pi.PetTableModelId && pi.IsProfileImage)
                                         .Where(pa => pa.AlertType == (int)AlertTypeEnum.Lost && 
-                                                     pa.AlertStatus == (int)AlertStatusEnum.Deleted && 
+                                                     pa.AlertStatus == (int)AlertStatusEnum.Closed && 
                                                      pa.MakeItPublic && 
                                                      pa.Approved == (int)ApproveStatusEnum.Pending)
                                          .OrderBy(pa => pa.SolvedOn);
@@ -131,14 +131,14 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                                .Where(a => a.PetId.HasValue &&
                                                            a.PetId > 0 &&
                                                            a.AlertType == (int)AlertTypeEnum.Lost &&
-                                                           a.AlertStatus == (int)AlertStatusEnum.Deleted);
+                                                           a.AlertStatus == (int)AlertStatusEnum.Closed);
                 var foundPetsCounter = await dbConnection.SqlScalarAsync<int>(foundPetsQuery.ToCountStatement(), foundPetsQuery.Params);
 
                 var commentsToApproveQuery = dbConnection.From<PetAlertTableModel>()
                                                          .Where(a => a.PetId.HasValue && //micky ??
                                                                      a.PetId > 0 && // micky ??
                                                                      a.AlertType == (int)AlertTypeEnum.Lost &&
-                                                                     a.AlertStatus == (int)AlertStatusEnum.Deleted &&
+                                                                     a.AlertStatus == (int)AlertStatusEnum.Closed &&
                                                                      a.MakeItPublic == true &&
                                                                      a.Approved == (int)ApproveStatusEnum.Pending);
                 var commentsToApproveCounter = await dbConnection.SqlScalarAsync<int>(commentsToApproveQuery.ToCountStatement(), commentsToApproveQuery.Params);
@@ -147,7 +147,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                                       .Where(a => a.PetId.HasValue && //micky ??
                                                                   a.PetId > 0 && // micky ??
                                                                   a.AlertType == (int)AlertTypeEnum.Lost &&
-                                                                  a.AlertStatus == (int)AlertStatusEnum.Deleted &&
+                                                                  a.AlertStatus == (int)AlertStatusEnum.Closed &&
                                                                   a.MakeItPublic == true &&
                                                                   a.Approved == (int)ApproveStatusEnum.Approved);
                 var successStoriesCounter = await dbConnection.SqlScalarAsync<int>(successStoriesQuery.ToCountStatement(), successStoriesQuery.Params);

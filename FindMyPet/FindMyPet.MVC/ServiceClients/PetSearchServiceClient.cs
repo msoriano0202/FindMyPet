@@ -12,6 +12,7 @@ namespace FindMyPet.MVC.ServiceClients
         List<PetLost> SearchLostPets(PetSearchByDateRequest request);
         PetLostDetails GetPetLostDetails(PetLostDetailsRequest request);
         PetAlertDetails GetPetAlertDetails(PetAlertDetailsRequest request);
+        int ManageReportedPetAlert(PetAlertReportManageRequest request);
         PagedResponseViewModel<PetSuccessStory> GetPetSuccessStories(int pageSize, int pageNumber);
         PagedResponseViewModel<PetLostAlert> GetPetLastAlerts(PetLastAlertsRequest request);
     }
@@ -47,6 +48,11 @@ namespace FindMyPet.MVC.ServiceClients
             var response = _findMyPetClient.JsonClient().Post(request);
 
             return response;
+        }
+
+        public int ManageReportedPetAlert(PetAlertReportManageRequest request)
+        {
+            return _findMyPetClient.JsonClient().Post(request);
         }
 
         public PagedResponseViewModel<PetSuccessStory> GetPetSuccessStories(int pageSize, int pageNumber)

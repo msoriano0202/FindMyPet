@@ -1,6 +1,7 @@
 ﻿using FindMyPet.MVC.DataLoaders;
 using FindMyPet.MVC.Mappers;
 using FindMyPet.MVC.Models.PetSearch;
+using FindMyPet.Shared;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -120,6 +121,7 @@ namespace FindMyPet.MVC.Controllers
 
             var data = _petSearchDataLoader.GetPetAlertDetails(Guid.Parse(id));
             var model = _petSearchMapper.GetPetPublicProfileViewModel(data);
+            model.AlertCode = id;
 
             model.PetInfo.ProfileImageUrl = this.GetPetImageProfile(model.PetInfo.ProfileImageUrl);
             foreach (var owner in model.OwnersInfo)
@@ -128,6 +130,14 @@ namespace FindMyPet.MVC.Controllers
             }
 
             return View(model);
+        }
+
+        public ActionResult ReportAlert(string code)
+        {
+            var response = _petSearchDataLoader.ManageReportedPetAlert(code, (int)AlertStatusEnum.Reported);
+
+            this.SetAlertMessageInTempData(Models.Shared.AlertMessageTypeEnum.Success, "La Alerta ha sido Reportada.");
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult SuccessStories(int? page)

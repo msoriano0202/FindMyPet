@@ -58,6 +58,15 @@ namespace FindMyPet.MyServiceStack.Services
                                            .ConfigureAwait(false);
         }
 
+        public async Task<int> Post(PetAlertReportManageRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _petSearchProvider.ManageReportedPetAlertAsync(request)
+                                           .ConfigureAwait(false);
+        }
+
         public async Task<PagedResponse<PetSuccessStory>> Get(PetSuccessStoryRequest request)
         {
             if (request == null)
