@@ -127,6 +127,16 @@ namespace FindMyPet.MVC.Controllers
             return RedirectToAction(an);
         }
 
+        public ActionResult MyAlerts()
+        {
+            this.VerifySessionVariables();
+            var owner = this.GetUserByMembershipId(User.Identity.GetUserId());
+            var model = new object();
+            this.SetManageNavBarInfo(owner, "MyAlerts");
+
+            return View(model);
+        }
+
         public ActionResult Settings()
         {
             this.VerifySessionVariables();

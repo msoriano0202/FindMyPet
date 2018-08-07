@@ -535,6 +535,7 @@
     <Content Include="Views\Shared\_LayoutCopy.cshtml" />
     <Content Include="Views\Admin\ManageReportedAlerts.cshtml" />
     <Content Include="Views\PetSearch\AlertNotExist.cshtml" />
+    <Content Include="Views\Manage\MyAlerts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
