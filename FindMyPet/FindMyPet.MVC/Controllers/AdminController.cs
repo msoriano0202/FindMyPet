@@ -46,6 +46,7 @@ namespace FindMyPet.MVC.Controllers
                 RegisteredPets = details.RegisteredPets,
                 LostPets = details.LostPets,
                 FoundPets = details.FoundPets,
+                AlertsToReview = details.AlertsToReview,
                 CommentsToApprove = details.CommentsToApprove,
                 SuccessStories = details.SuccessStories,
             };

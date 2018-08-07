@@ -145,6 +145,12 @@ namespace FindMyPet.MyServiceStack.DataAccess
                                                                      a.Approved == (int)ApproveStatusEnum.Pending);
                 var commentsToApproveCounter = await dbConnection.SqlScalarAsync<int>(commentsToApproveQuery.ToCountStatement(), commentsToApproveQuery.Params);
 
+
+                var alertsToReviewQuery = dbConnection.From<PetAlertTableModel>()
+                                                      .Where(a => a.AlertStatus == (int)AlertStatusEnum.Reported);
+                var alertsToReviewCounter = await dbConnection.SqlScalarAsync<int>(alertsToReviewQuery.ToCountStatement(), alertsToReviewQuery.Params);
+
+
                 var successStoriesQuery = dbConnection.From<PetAlertTableModel>()
                                                       .Where(a => a.PetId.HasValue && //micky ??
                                                                   a.PetId > 0 && // micky ??
@@ -158,6 +164,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                 result.RegisteredPets = registeredPetsCounter;
                 result.LostPets = lostPetsCounter;
                 result.FoundPets = foundPetsCounter;
+                result.AlertsToReview = alertsToReviewCounter;
                 result.CommentsToApprove = commentsToApproveCounter;
                 result.SuccessStories = successStoriesCounter;
             }

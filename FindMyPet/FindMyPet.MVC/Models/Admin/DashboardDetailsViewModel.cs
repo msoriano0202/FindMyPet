@@ -11,6 +11,7 @@ namespace FindMyPet.MVC.Models.Admin
         public int RegisteredPets { get; set; }
         public int LostPets { get; set; }
         public int FoundPets { get; set; }
+        public int AlertsToReview { get; set; }
         public int CommentsToApprove { get; set; }
         public int SuccessStories { get; set; }
     }
