@@ -120,6 +120,9 @@ namespace FindMyPet.MVC.Controllers
             this.VerifySessionVariables();
 
             var data = _petSearchDataLoader.GetPetAlertDetails(Guid.Parse(id));
+            if (data == null)
+                return View("AlertNotExist");
+
             var model = _petSearchMapper.GetPetPublicProfileViewModel(data);
             model.AlertCode = id;
 
