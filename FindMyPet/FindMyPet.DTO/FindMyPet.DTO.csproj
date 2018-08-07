@@ -62,6 +62,9 @@
     <Compile Include="Admin\AdminFoundAlert.cs" />
     <Compile Include="Admin\AdminFoundAlertSearchRequest.cs" />
     <Compile Include="Admin\AdminManageFoundAlertRequest.cs" />
+    <Compile Include="Admin\AdminManageReportedAlertRequest.cs" />
+    <Compile Include="Admin\AdminReportedAlert.cs" />
+    <Compile Include="Admin\AdminReportedAlertSearchRequest.cs" />
     <Compile Include="Owner\Owner.cs" />
     <Compile Include="Owner\OwnerCreateRequest.cs" />
     <Compile Include="Owner\OwnerRequest.cs" />

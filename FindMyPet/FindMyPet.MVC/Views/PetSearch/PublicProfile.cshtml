@@ -45,9 +45,6 @@
                             <div class="g-ml-10 g-mt-10">
                                 <div class="d-sm-flex justify-content-between">
                                     <h4 class="g-mb-sm-10 font-weight-bold text-primary">@Model.PetInfo.Name</h4>
-                                    <ul class="list-unstyled list-inline">
-                                        <li class="list-inline-item"><a id="reportAlert" alertCode="@Model.AlertCode" href="#" class="btn cn-btn-outline-red"><i class="icon-ban"></i>&nbsp; Reportar Alerta</a></li>
-                                    </ul>
                                 </div>
                                 <p class="g-mb-5">
                                     <strong>Fecha:</strong>&nbsp;&nbsp;
@@ -73,6 +70,14 @@
                                 }
                             </div>
                         </div>
+                    </div>
+
+                    <div class="g-mt-10">
+                        <ul class="list-unstyled list-inline">
+                            <li class="list-inline-item">
+                                <a id="reportAlert" alertCode="@Model.AlertCode" href="#" style="width:250px;" class="btn cn-btn-outline-red"><i class="icon-ban"></i>&nbsp; Reportar Alerta</a>
+                            </li>
+                        </ul>
                     </div>
 
                     <div class="cn-nav-tabs-wrapper g-mt-20">

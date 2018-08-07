@@ -268,6 +268,7 @@
     <Compile Include="Mappers\PetMapper.cs" />
     <Compile Include="Mappers\PetSearchMapper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Admin\AlertToApproveViewModel.cs" />
     <Compile Include="Models\Admin\CommentToApproveViewModel.cs" />
     <Compile Include="Models\Admin\BaseEmail.cs" />
     <Compile Include="Models\Admin\DashboardDetailsViewModel.cs" />
@@ -532,6 +533,7 @@
     <Content Include="Views\PetSearch\_NoLastAlerts.cshtml" />
     <Content Include="Views\Home\Alert.cshtml" />
     <Content Include="Views\Shared\_LayoutCopy.cshtml" />
+    <Content Include="Views\Admin\ManageReportedAlerts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

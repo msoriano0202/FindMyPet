@@ -16,6 +16,8 @@ namespace FindMyPet.MyServiceStack.DataAccess
         Task<List<AdminFoundAlert>> GetAdminFoundAlertsAsync();
         Task<int> ManageAdminFoundAlertsAsync(AdminManageFoundAlertRequest request);
         Task<AdminDashboardDetails> GetAdminDashboardAsync();
+        Task<List<AdminReportedAlert>> GetAdminReportedAlertsAsync();
+        Task<int> ManageReportedAlertsAsync(AdminManageReportedAlertRequest request);
     }
 
     public class AdminDataAccess : IAdminDataAccess
@@ -161,6 +163,142 @@ namespace FindMyPet.MyServiceStack.DataAccess
             }
 
             return result;
+        }
+
+        public async Task<List<AdminReportedAlert>> GetAdminReportedAlertsAsync()
+        {
+            var results = new List<AdminReportedAlert>();
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+
+                var query = dbConnection.From<PetAlertTableModel>()
+                                        .LeftJoin<PetAlertTableModel, PetTableModel>((pa, p) => pa.PetId == p.Id)
+                                        .LeftJoin<PetAlertTableModel, OwnerTableModel>((pa, o) => pa.OwnerTableModelId == o.Id)
+                                        .LeftJoin<PetAlertTableModel, PetImageTableModel>((pa, pi) => pa.PetId == pi.PetTableModelId && pi.IsProfileImage)
+                                        .Where(pa => pa.AlertStatus == (int)AlertStatusEnum.Reported)
+                                        .OrderBy(pa => pa.CreatedOn);
+
+                var queryResults = await dbConnection.SelectMultiAsync<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>(query)
+                                                     .ConfigureAwait(false);
+
+                if (queryResults.Any())
+                    results = FormatReportedQueryResults(queryResults);
+
+
+                // --- PetAlertImages ---
+                var imagesQuery = dbConnection.From<PetAlertTableModel>()
+                                              .Join<PetAlertTableModel, PetAlertImageTableModel>((pa, pai) => pa.Id == pai.PetAlertTableModelId)
+                                              .Where(pa => pa.AlertStatus == (int)AlertStatusEnum.Reported);
+
+                var imagesResults = await dbConnection.SelectMultiAsync<PetAlertTableModel, PetAlertImageTableModel>(imagesQuery)
+                                                      .ConfigureAwait(false);
+
+                if (imagesResults.Count > 0)
+                {
+                    var groupedImages = imagesResults.GroupBy(x => x.Item1.Code).ToList();
+
+                    foreach (var groupedImage in groupedImages)
+                    {
+                        var foundAlertImage = results.Where(a => a.Code == groupedImage.Key);
+                        if (foundAlertImage != null)
+                            results.Find(r => r.Code == groupedImage.Key).PetProfileImageUrl = groupedImage.FirstOrDefault(x => x.Item2.Id > 0).Item2.ImageUrl;
+                    }
+                }
+            }
+
+            foreach (var item in results)
+            {
+                item.Images = await GetReportedAlertImages(item.Id).ConfigureAwait(false);
+            }
+
+            return results;
+        }
+
+        private async Task<List<string>> GetReportedAlertImages(int petAlertId)
+        {
+            var images = new List<string>();
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                var query = dbConnection.From<PetAlertTableModel>()
+                                        .LeftJoin<PetAlertTableModel, PetImageTableModel>((pa, pi) => pa.PetId.HasValue && pa.PetId == pi.PetTableModelId && !pi.IsProfileImage)
+                                        .LeftJoin<PetAlertTableModel, PetAlertImageTableModel>((pa, pai) => pa.Id == pai.PetAlertTableModelId)
+                                        .Where(pa => pa.Id == petAlertId);
+
+                var queryResults = await dbConnection.SelectMultiAsync<PetAlertTableModel, PetImageTableModel, PetAlertImageTableModel>(query)
+                                                     .ConfigureAwait(false);
+
+                foreach (var item in queryResults)
+                {
+                    if (item.Item2.Id > 0)
+                        images.Add(item.Item2.ImageUrl);
+
+                    if (item.Item3.Id > 0)
+                        images.Add(item.Item3.ImageUrl);
+                }
+            }
+
+            return images;
+        }
+
+        private List<AdminReportedAlert> FormatReportedQueryResults(List<Tuple<PetAlertTableModel, PetTableModel, OwnerTableModel, PetImageTableModel>> queryResults)
+        {
+            var reportedAlerts = new List<AdminReportedAlert>();
+
+            AdminReportedAlert reportedAlert;
+            foreach (var item in queryResults)
+            {
+                reportedAlert = new AdminReportedAlert
+                {
+                    Id = item.Item1.Id,
+                    Code = item.Item1.Code,
+                    Comment = item.Item1.Comment,
+                    CreateOn = item.Item1.CreatedOn
+                };
+
+                if (item.Item2.Id != 0)
+                {
+                    reportedAlert.OwnerFullName = $"{item.Item3.FirstName} {item.Item3.LastName}";
+                    reportedAlert.OwnerProfileImageUrl = item.Item3.ProfileImageUrl;
+                    reportedAlert.PetName = item.Item2.Name;
+                    reportedAlert.PetProfileImageUrl = item.Item4.ImageUrl;
+                }
+                else
+                {
+                    reportedAlert.OwnerFullName = "Anónimo";
+                    reportedAlert.PetName = "Anónimo";
+                }
+
+                reportedAlerts.Add(reportedAlert);
+            }
+
+            return reportedAlerts;
+        }
+
+        public async Task<int> ManageReportedAlertsAsync(AdminManageReportedAlertRequest request)
+        {
+            int records;
+            PetAlertTableModel petAlert = null;
+            using (var dbConnection = _dbConnectionFactory.Open())
+            {
+                using (var trans = dbConnection.OpenTransaction())
+                {
+                    if (request.Id.HasValue)
+                        petAlert = await dbConnection.SingleByIdAsync<PetAlertTableModel>(request.Id.Value)
+                                                     .ConfigureAwait(false);
+                    else if (request.Code.HasValue)
+                        petAlert = await dbConnection.SingleAsync<PetAlertTableModel>(p => p.Code == request.Code.Value)
+                                                     .ConfigureAwait(false);
+
+                    var action = request.Action;
+
+                    records = await dbConnection.UpdateOnlyAsync(new PetAlertTableModel { AlertStatus = action }, x => x.AlertStatus, x => x.Id == petAlert.Id)
+                                                .ConfigureAwait(false);
+
+                    trans.Commit();
+                }
+            }
+
+            return records;
         }
     }
 }

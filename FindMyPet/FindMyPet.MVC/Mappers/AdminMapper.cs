@@ -10,6 +10,7 @@ namespace FindMyPet.MVC.Mappers
     public interface IAdminMapper
     {
         CommentToApproveViewModel AdminFoundAlertToViewModel(AdminFoundAlert adminFoundAlert);
+        AlertToApproveViewModel AdminReportedAlertToViewModel(AdminReportedAlert adminReportedAlert);
     }
 
     public class AdminMapper : IAdminMapper
@@ -26,6 +27,22 @@ namespace FindMyPet.MVC.Mappers
                 PetProfileImageUrl = adminFoundAlert.PetProfileImageUrl,
                 FoundComment = adminFoundAlert.FoundComment,
                 FoundDateTime = adminFoundAlert.FoundDateTime.ToString("dd/MMM/yyyy hh:mm:ss tt")
+            };
+        }
+
+        public AlertToApproveViewModel AdminReportedAlertToViewModel(AdminReportedAlert adminReportedAlert)
+        {
+            return new AlertToApproveViewModel
+            {
+                Id = adminReportedAlert.Id,
+                Code = adminReportedAlert.Code.ToString(),
+                OwnerName = adminReportedAlert.OwnerFullName,
+                ownerProfileImageUrl = adminReportedAlert.OwnerProfileImageUrl,
+                PetName = adminReportedAlert.PetName,
+                PetProfileImageUrl = adminReportedAlert.PetProfileImageUrl,
+                Comment = adminReportedAlert.Comment,
+                CreateOn = adminReportedAlert.CreateOn.ToString("dd/MMM/yyyy hh:mm:ss tt"),
+                Images = adminReportedAlert.Images
             };
         }
     }

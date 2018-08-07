@@ -77,6 +77,29 @@ namespace FindMyPet.MVC.Controllers
             return RedirectToAction("ManagePublicComments");
         }
 
+        public ActionResult ManageReportedAlerts()
+        {
+            this.VerifySessionVariables();
+
+            var reportedAlerts = _adminDataLoader.GetReportedAlertsToApprove();
+            var model = reportedAlerts.ConvertAll(x => _adminMapper.AdminReportedAlertToViewModel(x));
+
+            SetAdminNavBarInfo("ManageReportedAlerts");
+            return View(model);
+        }
+
+        public ActionResult ApproveAlert(string id)
+        {
+            var response = _adminDataLoader.ManageReportedAlerts(id, (int)AlertStatusEnum.Active);
+            return RedirectToAction("ManageReportedAlerts");
+        }
+
+        public ActionResult RejectAlert(string id)
+        {
+            var response = _adminDataLoader.ManageReportedAlerts(id, (int)AlertStatusEnum.Deleted);
+            return RedirectToAction("ManageReportedAlerts");
+        }
+
         private List<SelectListItem> GetEmailTypes()
         {
             return new List<SelectListItem>

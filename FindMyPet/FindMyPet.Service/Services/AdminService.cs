@@ -48,5 +48,23 @@ namespace FindMyPet.MyServiceStack.Services
             return await _adminProvider.GetAdminDashboardAsync(request)
                                        .ConfigureAwait(false);
         }
+
+        public async Task<List<AdminReportedAlert>> Get(AdminReportedAlertSearchRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _adminProvider.GetAdminReportedAlertsAsync(request)
+                                       .ConfigureAwait(false);
+        }
+
+        public async Task<int> Post(AdminManageReportedAlertRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _adminProvider.ManageReportedAlertsAsync(request)
+                                       .ConfigureAwait(false);
+        }
     }
 }

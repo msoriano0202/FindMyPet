@@ -1,0 +1,96 @@
+﻿@model IEnumerable<FindMyPet.MVC.Models.Admin.AlertToApproveViewModel>
+
+@using FindMyPet.MVC.Helpers;
+
+@{
+    ViewBag.Title = "Administrar Alertas Reportadas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="profile-section g-py g-bg-white">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_AdminRightNavMenu")
+            <div class="col-md-9">
+                @using (Html.BeginForm())
+                {
+                    <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
+                        <div class="g-mb-30">
+                            <h5 class="text-primary"><strong>Alertas Reportadas</strong></h5>
+                        </div>
+
+                        @if (Model.Any())
+                        {
+                            foreach (var item in Model)
+                            {
+                                <hr />
+                                <div class="list-group text-center text-sm-left g-mb-40">
+                                    <div href="#" class="d-sm-flex">
+                                        <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                            <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatOwnerImageUrl(item.ownerProfileImageUrl))" alt="@item.OwnerName">
+                                        </div>
+                                        <div>
+                                            <div class="d-sm-flex justify-content-start">
+                                                <h6 class="g-mb-sm-10 font-weight-bold">@item.OwnerName - @item.PetName</h6>
+                                                <span class="g-ml-20 g-bg-primary font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">@item.CreateOn</span>
+                                            </div>
+                                            <div href="#" class="d-sm-flex">
+                                                <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                                    <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatPetImageUrl(item.PetProfileImageUrl))" alt="@item.PetName">
+                                                </div>
+                                                <div>
+                                                    <p class="g-mb-5">@item.Comment</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="widget feeds-widget">
+                                                @if (item.Images != null && item.Images.Any())
+                                                {
+                                                <div class="row justify-content-center zoom">
+                                                    @foreach (var image in item.Images)
+                                                    {
+                                                        <div class="col-3 g-p-3">
+                                                            <div class="member g-border g-border-gray-300 g-border-primary-h">
+                                                                <div class="caption">
+                                                                    <div class="caption-default">
+                                                                        <img src="@Url.Content(UrlFormatHelper.FormatImageUrl(image))" class="img-fluid">
+                                                                    </div>
+                                                                    <div class="caption-active g-bg-white-opacity-5">
+                                                                        <div class="h-100 g-flex-center g-px-20">
+                                                                            <div class="text-center g-text-white">
+                                                                                <ul class="list-inline mx-auto text-center">
+                                                                                    <li class="list-inline-item"><a href="/Pet/SetImageProfile?code=@ViewBag.PetCode&id=@item.Code" class="cn-icon cn-icon-sm cn-icon-cyan rounded-circle" title="Definir como Imagen de Perfil"><i class="fa fa-picture-o"></i></a></li>
+                                                                                    <li class="list-inline-item g-ml-15"><a href="#" petCode="@ViewBag.PetCode" petImageCode="@item.Code" class="deletePetImageIcon cn-icon cn-icon-sm cn-icon-cyan rounded-circle" title="Borrar Imagen"><i class="fa fa-trash"></i></a></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                                }
+                                            </div>
+                                            
+                                            <ul class="list-unstyled list-inline g-mt-15">
+                                                <li class="list-inline-item"><a href="/Admin/RejectAlert/@item.Code" class="g-text-dark g-text-primary-h cn-icon-outline-danger cn-icon-danger"><i class="icon-dislike"></i> Eliminar</a></li>
+                                                <li class="list-inline-item"><a href="/Admin/ApproveAlert/@item.Code" class="g-text-dark g-text-primary-h g-mr-10 cn-icon-outline-blue cn-icon-blue-h"><i class="icon-like"></i>  Ignorar</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="g-flex-center h-100 g-py-30 g-mb-40">
+                                <span>No hay alertas reportadas por ahora.</span>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

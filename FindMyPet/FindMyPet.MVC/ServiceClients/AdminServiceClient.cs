@@ -11,6 +11,8 @@ namespace FindMyPet.MVC.ServiceClients
         AdminDashboardDetails GetDashboardDetails();
         List<AdminFoundAlert> GetFoundAlertsToApprove();
         int ManageComent(AdminManageFoundAlertRequest request);
+        List<AdminReportedAlert> GetReportedAlertsToApprove();
+        int ManageReportedAlerts(AdminManageReportedAlertRequest request);
     }
 
     public class AdminServiceClient : IAdminServiceClient
@@ -40,6 +42,18 @@ namespace FindMyPet.MVC.ServiceClients
         }
 
         public int ManageComent(AdminManageFoundAlertRequest request)
+        {
+            return _findMyPetClient.JsonClient().Post(request);
+        }
+
+        public List<AdminReportedAlert> GetReportedAlertsToApprove()
+        {
+            var request = new AdminReportedAlertSearchRequest();
+
+            return _findMyPetClient.JsonClient().Get(request);
+        }
+
+        public int ManageReportedAlerts(AdminManageReportedAlertRequest request)
         {
             return _findMyPetClient.JsonClient().Post(request);
         }

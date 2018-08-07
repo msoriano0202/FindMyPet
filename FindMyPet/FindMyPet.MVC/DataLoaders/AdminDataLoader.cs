@@ -12,6 +12,8 @@ namespace FindMyPet.MVC.DataLoaders
         AdminDashboardDetails GetDashboardDetails();
         List<AdminFoundAlert> GetFoundAlertsToApprove();
         int ManageComent(string code, int action);
+        List<AdminReportedAlert> GetReportedAlertsToApprove();
+        int ManageReportedAlerts(string code, int action);
     }
 
     public class AdminDataLoader : IAdminDataLoader
@@ -41,6 +43,17 @@ namespace FindMyPet.MVC.DataLoaders
             var request = new AdminManageFoundAlertRequest { Code = Guid.Parse(code), Action = action };
 
             return _adminServiceClient.ManageComent(request);
+        }
+
+        public List<AdminReportedAlert> GetReportedAlertsToApprove()
+        {
+            return _adminServiceClient.GetReportedAlertsToApprove();
+        }
+
+        public int ManageReportedAlerts(string code, int action)
+        {
+            var request = new AdminManageReportedAlertRequest { Code = Guid.Parse(code), Action = action };
+            return _adminServiceClient.ManageReportedAlerts(request);
         }
     }
 }

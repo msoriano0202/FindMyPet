@@ -13,6 +13,8 @@ namespace FindMyPet.MyServiceStack.Providers
         Task<List<AdminFoundAlert>> GetAdminFoundAlertsAsync(AdminFoundAlertSearchRequest request);
         Task<int> ManageAdminFoundAlertsAsync(AdminManageFoundAlertRequest request);
         Task<AdminDashboardDetails> GetAdminDashboardAsync(AdminDashboardRequest request);
+        Task<List<AdminReportedAlert>> GetAdminReportedAlertsAsync(AdminReportedAlertSearchRequest request);
+        Task<int> ManageReportedAlertsAsync(AdminManageReportedAlertRequest request);
     }
 
     public class AdminProvider : IAdminProvider
@@ -52,6 +54,27 @@ namespace FindMyPet.MyServiceStack.Providers
         public async Task<AdminDashboardDetails> GetAdminDashboardAsync(AdminDashboardRequest request)
         {
             return await _adminDataAccess.GetAdminDashboardAsync()
+                                         .ConfigureAwait(false);
+        }
+
+        public async Task<List<AdminReportedAlert>> GetAdminReportedAlertsAsync(AdminReportedAlertSearchRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _adminDataAccess.GetAdminReportedAlertsAsync()
+                                         .ConfigureAwait(false);
+        }
+
+        public async Task<int> ManageReportedAlertsAsync(AdminManageReportedAlertRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (request.Id.HasValue && !request.Code.HasValue)
+                throw new ArgumentException("Id and Code are NULL");
+
+            return await _adminDataAccess.ManageReportedAlertsAsync(request)
                                          .ConfigureAwait(false);
         }
     }
