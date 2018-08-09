@@ -19,6 +19,9 @@ namespace FindMyPet.TableModel
         public string Name { get; set; }
 
         [Required]
+        public int SexType { get; set; }
+
+        [Required]
         public DateTime DateOfBirth { get; set; }
 
         /// <summary>

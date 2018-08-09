@@ -58,11 +58,22 @@ namespace FindMyPet.MVC.Controllers
             return View(pagedModel);
         }
 
+        private List<SelectListItem> GetSexTypes()
+        {
+            return new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Seleccionar ->", Value = null },
+                new SelectListItem { Text = "Macho", Value = ((int)PetSexTypeEnum.Male).ToString() },
+                new SelectListItem { Text = "Hembra", Value = ((int)PetSexTypeEnum.Female).ToString() }
+            };
+        }
+
         public ActionResult Create()
         {
             var now = System.DateTime.Now;
             var model = new PetProfileViewModel()
             {
+                SexTypes = GetSexTypes(),
                 DateOfBirth = now.Date
             };
 
@@ -73,7 +84,7 @@ namespace FindMyPet.MVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(PetProfileViewModel model)
-        {
+        {   
             try
             {
                 var pet = _petDataLoader.AddPet(User.Identity.GetUserId(), model);
@@ -94,6 +105,7 @@ namespace FindMyPet.MVC.Controllers
 
             var pet = _petDataLoader.GetPetByCode(id);
             var model = _petMapper.PetToProfileViewModel(pet);
+            model.SexTypes = GetSexTypes();
             SetPetProfileNavBarInfo(pet, "PetProfile");
 
             this.SetAlertMessageInViewBag();

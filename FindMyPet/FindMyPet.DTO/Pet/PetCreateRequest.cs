@@ -9,6 +9,7 @@ namespace FindMyPet.DTO.Pet
         public int? OwnerId { get; set; }
         public string OwnerMembershipId { get; set; }
         public string Name { get; set; }
+        public int SexType { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Description { get; set; }
     }

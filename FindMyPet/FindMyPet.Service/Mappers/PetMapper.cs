@@ -32,6 +32,7 @@ namespace FindMyPet.MyServiceStack.Mappers
             return new PetTableModel
             {
                 Name = request.Name,
+                SexType = request.SexType,
                 DateOfBirth = request.DateOfBirth,
                 Status = (int)PetStatusEnum.Active,
                 Description = request.Description
@@ -46,6 +47,7 @@ namespace FindMyPet.MyServiceStack.Mappers
                 Code = petTable.Code,
                 Name = petTable.Name,
                 Status = petTable.Status,
+                SexType = petTable.SexType,
                 Description = petTable.Description,
                 DateOfBirth = petTable.DateOfBirth,
                 CreatedOn = petTable.CreatedOn,
@@ -83,6 +85,9 @@ namespace FindMyPet.MyServiceStack.Mappers
         {
             if (request.Name != null && !request.Name.Equals(petTable.Name))
                 petTable.Name = request.Name;
+
+            if (!request.SexType.Equals(petTable.SexType))
+                petTable.SexType = request.SexType;
 
             if (request.DateOfBirth != null && !request.DateOfBirth.Equals(petTable.DateOfBirth))
                 petTable.DateOfBirth = request.DateOfBirth;

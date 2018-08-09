@@ -39,6 +39,7 @@ namespace FindMyPet.MVC.Mappers
             {
                 Code = pet.Code.ToString(),
                 Name = pet.Name,
+                SelectedSexTypeId = pet.SexType,
                 DateOfBirth = pet.DateOfBirth.Date,
                 Description = pet.Description,
                 ProfileImageUrl = !string.IsNullOrEmpty(pet.ProfileImageUrl) 
@@ -71,6 +72,7 @@ namespace FindMyPet.MVC.Mappers
             return new PetCreateRequest
             {
                 Name = model.Name,
+                SexType = model.SelectedSexTypeId,
                 DateOfBirth = model.DateOfBirth,
                 Description = model.Description
             };
@@ -82,6 +84,7 @@ namespace FindMyPet.MVC.Mappers
             {
                 Code = Guid.Parse(model.Code),
                 Name = model.Name,
+                SexType = model.SelectedSexTypeId,
                 DateOfBirth = model.DateOfBirth,
                 Description = model.Description
             };

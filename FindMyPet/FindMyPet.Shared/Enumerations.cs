@@ -14,6 +14,15 @@ namespace FindMyPet.Shared
     }
 
     /// <summary>
+    /// Male = 1 / Female = 2
+    /// </summary>
+    public enum PetSexTypeEnum
+    {
+        Male = 1,
+        Female = 2
+    }
+
+    /// <summary>
     ///  Active = 1 / Lost = 2 / Found = 3
     /// </summary>
     public enum PetStatusEnum

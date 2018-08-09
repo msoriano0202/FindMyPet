@@ -25,6 +25,19 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
+                               
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="input1-4" class="g-text-primary"><strong>Sexo</strong></label>
+                                    <div class="input-group input-group-focus">
+                                        @Html.DropDownListFor(m => m.SelectedSexTypeId, Model.SexTypes, new { @id = "input1-4", @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="input1-2" class="g-text-primary"><strong>Fecha Nacimiento</strong></label>
                                     <div class="input-group input-group-focus">
