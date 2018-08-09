@@ -19,13 +19,13 @@ namespace FindMyPet.MVC.Mappers
         {
             return new ProfileViewModel()
             {
-                FirstName = owner.FirstName,
-                LastName = owner.LastName,
+                FirstName = HttpUtility.HtmlDecode(owner.FirstName),
+                LastName = HttpUtility.HtmlDecode(owner.LastName),
                 Email = owner.Email,
-                PhoneNumber1 = owner.PhoneNumber1,
-                PhoneNumber2 = owner.PhoneNumber2,
-                Address1 = owner.Address1,
-                Address2 = owner.Address2
+                PhoneNumber1 = HttpUtility.HtmlDecode(owner.PhoneNumber1),
+                PhoneNumber2 = HttpUtility.HtmlDecode(owner.PhoneNumber2),
+                Address1 = HttpUtility.HtmlDecode(owner.Address1),
+                Address2 = HttpUtility.HtmlDecode(owner.Address2)
             };
         }
 

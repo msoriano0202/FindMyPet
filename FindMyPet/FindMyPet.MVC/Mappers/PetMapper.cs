@@ -38,10 +38,10 @@ namespace FindMyPet.MVC.Mappers
             return new PetProfileViewModel
             {
                 Code = pet.Code.ToString(),
-                Name = pet.Name,
+                Name = HttpUtility.HtmlDecode(pet.Name),
                 SelectedSexTypeId = pet.SexType,
                 DateOfBirth = pet.DateOfBirth.Date,
-                Description = pet.Description,
+                Description = HttpUtility.HtmlDecode(pet.Description),
                 ProfileImageUrl = !string.IsNullOrEmpty(pet.ProfileImageUrl) 
                                         ? _generalHelper.FormatSiteImageUrl(pet.ProfileImageUrl) 
                                         : defaultPetImage,
@@ -71,10 +71,10 @@ namespace FindMyPet.MVC.Mappers
         {
             return new PetCreateRequest
             {
-                Name = model.Name,
+                Name = HttpUtility.HtmlEncode(model.Name),
                 SexType = model.SelectedSexTypeId,
                 DateOfBirth = model.DateOfBirth,
-                Description = model.Description
+                Description = HttpUtility.HtmlEncode(model.Description)
             };
         }
 
@@ -83,10 +83,10 @@ namespace FindMyPet.MVC.Mappers
             return new PetUpdateRequest
             {
                 Code = Guid.Parse(model.Code),
-                Name = model.Name,
+                Name = HttpUtility.HtmlEncode(model.Name),
                 SexType = model.SelectedSexTypeId,
                 DateOfBirth = model.DateOfBirth,
-                Description = model.Description
+                Description = HttpUtility.HtmlEncode(model.Description)
             };
         }
     }

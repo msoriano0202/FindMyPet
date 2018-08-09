@@ -15,15 +15,15 @@ namespace FindMyPet.TableModel
         public Guid Code { get; set; }
 
         [Required]
-        [StringLength(128)]
+        [StringLength(50)]
         public string MembershipId { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(20)]
         public string FirstName { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(20)]
         public string LastName { get; set; }
 
         [Required]
@@ -42,6 +42,7 @@ namespace FindMyPet.TableModel
         [StringLength(100)]
         public string Address2 { get; set; }
 
+        [StringLength(200)]
         public string ProfileImageUrl { get; set; }
 
         [Required]

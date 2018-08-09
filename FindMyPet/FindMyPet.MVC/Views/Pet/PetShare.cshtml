@@ -24,7 +24,7 @@
                                         Le llegara un correo con un link para poder ser co-propietario de su mascota. )
                                     </p>
                                     <div class="input-group input-group-focus">
-                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @id = "input1-1", @class = "col-md-6 form-control", @placeholder = "Correo" } })
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @id = "input1-1", @class = "col-md-6 form-control", @placeholder = "Correo", MaxLength = 30 } })
                                         <input type="submit" class="btn btn-outline-primary g-ml-20" value="Compartir Mascota" />
                                     </div>
                                 </div>

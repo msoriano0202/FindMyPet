@@ -18,7 +18,7 @@
                 <div class="form-group">
                     <label for="input1-1" class="g-text-primary"><strong>Nombre</strong></label>
                     <div class="input-group input-group-focus">
-                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @id = "input1-1", @class = "form-control", @placeholder = "Nombre" } })
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @id = "input1-1", @class = "form-control", @placeholder = "Nombre", MaxLength = 30 } })
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label for="input1-3" class="g-text-primary"><strong>Descripción</strong></label>
                     <div class="input-group input-group-focus">
-                        <textarea class="form-control" name="Description" rows="5" id="input1-3" placeholder="Descripción ...">@Model.Description</textarea>
+                        <textarea class="form-control" name="Description" rows="5" id="input1-3" placeholder="Descripción ..." maxlength="500">@Model.Description</textarea>
                     </div>
                 </div>
             </div>

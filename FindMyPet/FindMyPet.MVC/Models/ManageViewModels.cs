@@ -40,17 +40,20 @@ namespace FindMyPet.MVC.Models
 
     public class ChangePasswordViewModel
     {
+        [MaxLength(20)]
         [Required(ErrorMessage = "La {0} es requerida.")]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña Actual")]
         public string OldPassword { get; set; }
 
+        [MaxLength(20)]
         [Required(ErrorMessage = "La {0} es requerida.")]
         [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Nueva Contraseña")]
         public string NewPassword { get; set; }
 
+        [MaxLength(20)]
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar nueva Contraseña")]
         [Compare("NewPassword", ErrorMessage = "La nueva contraseña no coincide con confirmar nueva contraseña.")]

@@ -77,12 +77,12 @@ namespace FindMyPet.MVC.ServiceClients
             var request = new OwnerUpdateRequest
             {
                 Id = model.Id,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                PhoneNumber1 = model.PhoneNumber1,
-                PhoneNumber2 = model.PhoneNumber2,
-                Address1 = model.Address1,
-                Address2 = model.Address2
+                FirstName = HttpUtility.HtmlEncode(model.FirstName),
+                LastName = HttpUtility.HtmlEncode(model.LastName),
+                PhoneNumber1 = HttpUtility.HtmlEncode(model.PhoneNumber1),
+                PhoneNumber2 = HttpUtility.HtmlEncode(model.PhoneNumber2),
+                Address1 = HttpUtility.HtmlEncode(model.Address1),
+                Address2 = HttpUtility.HtmlEncode(model.Address2)
             };
             var response = _findMyPetClient.JsonClient().Put(request);
 
@@ -130,7 +130,7 @@ namespace FindMyPet.MVC.ServiceClients
                 PetCode =  Guid.Parse(model.PetCode),
                 Latitude = model.Latitude.Value,
                 Longitude = model.Longitude.Value,
-                Comment = model.Commets,
+                Comment = HttpUtility.HtmlEncode(model.Commets),
                 PositionImageUrl = model.StaticMapUrl,
                 Type = model.Type
             };
@@ -146,7 +146,7 @@ namespace FindMyPet.MVC.ServiceClients
                 OwnerId = model.OwnerId,
                 Latitude = model.Latitude.Value,
                 Longitude = model.Longitude.Value,
-                Comment = model.Commets,
+                Comment = HttpUtility.HtmlEncode(model.Commets),
                 PositionImageUrl = model.StaticMapUrl,
                 Type = model.SelectedAlertTypeId,
                 UrlImages = urlImages
@@ -162,7 +162,7 @@ namespace FindMyPet.MVC.ServiceClients
             {
                 OwnerId = model.OwnerId,
                 PetCode = Guid.Parse(model.PetCode),
-                Comment = model.Commets,
+                Comment = HttpUtility.HtmlEncode(model.Commets),
                 MakeItPublic = model.MakeItPublic
             };
 

@@ -24,7 +24,7 @@
                                         <span class="input-group-prepend g-w50">
                                             <i class="fa fa-user"></i>
                                         </span>
-                                        @Html.TextBoxFor(m => m.FirstName, new { @id = "register-firstname", @name = "firstname", @class = "form-control form-control-lg", @placeholder = "Nombre" })
+                                        @Html.TextBoxFor(m => m.FirstName, new { @id = "register-firstname", @name = "firstname", @class = "form-control form-control-lg", @placeholder = "Nombre", MaxLength = 20 })
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                                         <span class="input-group-prepend g-w50">
                                             <i class="fa fa-user"></i>
                                         </span>
-                                        @Html.TextBoxFor(m => m.LastName, new { @id = "register-lastname", @name = "lastname", @class = "form-control form-control-lg", @placeholder = "Apellido" })
+                                        @Html.TextBoxFor(m => m.LastName, new { @id = "register-lastname", @name = "lastname", @class = "form-control form-control-lg", @placeholder = "Apellido", MaxLength = 20 })
                                     </div>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                                         <span class="input-group-prepend g-w50">
                                             <i class="fa fa-envelope"></i>
                                         </span>
-                                        @Html.TextBoxFor(m => m.Email, new { @id = "register-email", @name = "email", @class = "form-control form-control-lg", @placeholder = "Correo" })
+                                        @Html.TextBoxFor(m => m.Email, new { @id = "register-email", @name = "email", @class = "form-control form-control-lg", @placeholder = "Correo", MaxLength = 30 })
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                                         <span class="input-group-prepend g-w50">
                                             <i class="fa fa-lock"></i>
                                         </span>
-                                        @Html.PasswordFor(m => m.Password, new { @id = "register-password", @name = "password", @class = "form-control form-control-lg", @placeholder = "Contraseña" })
+                                        @Html.PasswordFor(m => m.Password, new { @id = "register-password", @name = "password", @class = "form-control form-control-lg", @placeholder = "Contraseña", MaxLength = 20 })
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                                         <span class="input-group-prepend g-w50">
                                             <i class="fa fa-lock"></i>
                                         </span>
-                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @id = "register-repassword", @name = "repassword", @class = "form-control form-control-lg", @placeholder = "Confirmar Contraseña" })
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @id = "register-repassword", @name = "repassword", @class = "form-control form-control-lg", @placeholder = "Confirmar Contraseña", MaxLength = 20 })
                                     </div>
                                 </div>
                             </div>

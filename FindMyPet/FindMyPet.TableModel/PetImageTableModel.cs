@@ -21,6 +21,7 @@ namespace FindMyPet.TableModel
         public int PetTableModelId { get; set; }
 
         [Required]
+        [StringLength(200)]
         public string ImageUrl { get; set; }
 
         [Required]

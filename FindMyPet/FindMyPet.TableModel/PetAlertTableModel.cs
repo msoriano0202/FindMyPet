@@ -27,8 +27,10 @@ namespace FindMyPet.TableModel
         [Required]
         public int AlertType { get; set; }
 
+        [StringLength(500)]
         public string Comment { get; set; }
 
+        [StringLength(500)]
         public string CommentFound { get; set; }
 
         [Required]
@@ -37,6 +39,7 @@ namespace FindMyPet.TableModel
         [Required]
         public float Longitude { get; set; }
 
+        [StringLength(200)]
         public string PositionImageUrl { get; set; }
 
         /// <summary>

@@ -10,9 +10,11 @@ namespace FindMyPet.MVC.Models.Account
     {
         public int Id { get; set; }
 
+        [MaxLength(20)]
         [Required(ErrorMessage = "Nombre es requerido.")]
         public string FirstName { get; set; }
 
+        [MaxLength(20)]
         [Required(ErrorMessage = "Apellido es requerido.")]
         public string LastName { get; set; }
         

@@ -18,6 +18,7 @@ namespace FindMyPet.TableModel
 
         public Guid TokenCode { get; set; }
 
+        [StringLength(50)]
         public string ToOwnerEmail { get; set; }
 
         [Required]

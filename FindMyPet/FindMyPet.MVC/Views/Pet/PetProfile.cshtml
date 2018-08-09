@@ -20,7 +20,7 @@
                                 <div class="form-group">
                                     <label for="input1-1" class="g-text-primary"><strong>Nombre</strong></label>
                                     <div class="input-group input-group-focus">
-                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @id = "input1-1", @class = "form-control", @placeholder = "Nombre" } })
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @id = "input1-1", @class = "form-control", @placeholder = "Nombre", MaxLength = 30 } })
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                         <span class="g-font-size-13 font-italic g-mb-5">( Una breve descripción de su mascota que ayudara a ubicarla en caso se pierda. )</span> 
                                     </label>
                                     <div class="input-group input-group-focus">
-                                        <textarea class="form-control" name="Description" rows="5" id="input1-3" placeholder="Descripción ...">@Model.Description</textarea>
+                                        <textarea class="form-control" name="Description" rows="5" id="input1-3" placeholder="Descripción ..." maxlength="500">@Model.Description</textarea>
                                     </div>
                                 </div>
                             </div>

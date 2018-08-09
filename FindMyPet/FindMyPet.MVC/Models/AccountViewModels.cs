@@ -48,12 +48,14 @@ namespace FindMyPet.MVC.Models
 
     public class LoginViewModel
     {
+        [MaxLength(30)]
         [Required(ErrorMessage = "Correo es requerido.")]
         [Display(Name = "Correo")]
         [EmailAddress(ErrorMessage = "Por favor, ingrese un correo valido.")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [MaxLength(20)]
         [Required(ErrorMessage = "Contraseña es requerida.")]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
@@ -65,26 +67,31 @@ namespace FindMyPet.MVC.Models
 
     public class RegisterViewModel
     {
+        [MaxLength(20)]
         [Required(ErrorMessage="Nombre es requerido.")]
         [Display(Name = "Nombre")]
         public string FirstName { get; set; }
 
+        [MaxLength(20)]
         [Required(ErrorMessage = "Apellido es requerido.")]
         [Display(Name = "Apellido")]
         public string LastName { get; set; }
 
+        [MaxLength(30)]
         [Required(ErrorMessage = "Correo es requerido.")]
         [EmailAddress(ErrorMessage = "Correo no valido.")]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Correo")]
         public string Email { get; set; }
 
+        [MaxLength(20)]
         [Required(ErrorMessage = "Contraseña es requerida.")]
         [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
+        [MaxLength(20)]
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar Contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña no coincide con confirmar contraseña.")]

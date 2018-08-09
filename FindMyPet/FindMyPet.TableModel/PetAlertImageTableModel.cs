@@ -20,6 +20,7 @@ namespace FindMyPet.TableModel
         [References(typeof(PetAlertTableModel))]
         public int PetAlertTableModelId { get; set; }
 
+        [StringLength(200)]
         public string ImageUrl { get; set; }
 
         [Required]

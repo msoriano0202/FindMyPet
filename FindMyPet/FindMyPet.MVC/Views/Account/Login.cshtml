@@ -22,14 +22,14 @@
                                 <span class="input-group-prepend g-w50">
                                     <i class="fa fa-envelope"></i>
                                 </span>
-                                @Html.TextBoxFor(m => m.Email, new { @id = "email", @name = "email", @class = "form-control form-control-lg", @placeholder = "Correo" })
+                                @Html.TextBoxFor(m => m.Email, new { @id = "email", @name = "email", @class = "form-control form-control-lg", @placeholder = "Correo", MaxLength = 30 })
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="password">Contraseña</label>
                             <div class="input-group input-group-focus">
-                                @Html.PasswordFor(m => m.Password, new { @id = "password", @name = "password", @class = "form-control form-control-lg", @placeholder = "Contraseña" })
+                                @Html.PasswordFor(m => m.Password, new { @id = "password", @name = "password", @class = "form-control form-control-lg", @placeholder = "Contraseña", MaxLength = 20 })
                                 <span class="input-group-append g-w50">
                                     <i class="fa fa-lock"></i>
                                 </span>

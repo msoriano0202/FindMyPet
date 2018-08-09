@@ -30,7 +30,7 @@
                                         ( Nos alegra que hayas encontrado a tu mascota!!! Cuéntanos un poco sobre este proceso y si deseas puedes elegir compartir este comentario al público. )
                                     </p>
                                     <div class="input-group input-group-focus">
-                                        @Html.TextAreaFor(model => model.Commets, rows: 7, columns: 1, htmlAttributes: new { @class = "form-control" })
+                                        @Html.TextAreaFor(model => model.Commets, rows: 7, columns: 1, htmlAttributes: new { @class = "form-control", MaxLength = 500 })
                                     </div>
                                 </div>
                             </div>
