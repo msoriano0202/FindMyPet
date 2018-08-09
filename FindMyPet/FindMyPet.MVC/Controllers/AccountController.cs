@@ -234,6 +234,10 @@ namespace FindMyPet.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            CaptchaResponse response = CaptchaHelper.ValidateCaptcha(Request["g-recaptcha-response"]);
+            if (!response.Success)
+                return RedirectToAction("CaptchaInvalid", "Home");
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };

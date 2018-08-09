@@ -61,10 +61,13 @@ namespace FindMyPet.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Alert(PetPublicAlertViewModel model)
         {
-            CaptchaResponse response = CaptchaHelper.ValidateCaptcha(Request["g-recaptcha-response"]);
-            if (!response.Success)
-                //return Content("Error From Google ReCaptcha : " + response.ErrorMessage[0].ToString());
-                return RedirectToAction("CaptchaInvalid");
+            //return Content("Error From Google ReCaptcha : " + response.ErrorMessage[0].ToString());
+            if (!Request.IsAuthenticated)
+            {
+                CaptchaResponse response = CaptchaHelper.ValidateCaptcha(Request["g-recaptcha-response"]);
+                if (!response.Success)
+                    return RedirectToAction("CaptchaInvalid");
+            }
 
             if (!ModelState.IsValid)
                 return View(model);
