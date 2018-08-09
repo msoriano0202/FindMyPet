@@ -284,16 +284,19 @@ namespace FindMyPet.MVC.Controllers
             this.VerifySessionVariables();
 
             var pet = _petDataLoader.GetPetByCode(id);
-            var activeAlert = pet.Alerts.SingleOrDefault(a => a.Status == (int)AlertStatusEnum.Active);
+            var lastAlert = pet.Alerts.OrderByDescending(a => a.CreatedOn).FirstOrDefault();
 
             SetPetProfileNavBarInfo(pet, "PetAlert");
             var model = new PetAlertViewModel() { PetCode = id };
 
             this.SetAlertMessageInViewBag();
-            if (activeAlert == null)   
-                return View(model);
-            else
+
+            if(lastAlert.Status == (int)AlertStatusEnum.Active)
                 return View("PetFound", model);
+            else if (lastAlert.Status == (int)AlertStatusEnum.Reported)
+                return View("PetAlertReported");
+
+            return View(model);
         }
 
         [HttpPost]
