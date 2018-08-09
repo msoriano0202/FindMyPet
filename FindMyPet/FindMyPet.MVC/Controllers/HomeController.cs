@@ -4,6 +4,8 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FindMyPet.MVC.Helpers;
+using FindMyPet.MVC.Models;
 using FindMyPet.MVC.Models.Home;
 using FindMyPet.MVC.Models.Shared;
 using FindMyPet.MVC.ServiceClients;
@@ -59,6 +61,11 @@ namespace FindMyPet.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Alert(PetPublicAlertViewModel model)
         {
+            CaptchaResponse response = CaptchaHelper.ValidateCaptcha(Request["g-recaptcha-response"]);
+            if (!response.Success)
+                //return Content("Error From Google ReCaptcha : " + response.ErrorMessage[0].ToString());
+                return RedirectToAction("CaptchaInvalid");
+
             if (!ModelState.IsValid)
                 return View(model);
 
@@ -121,6 +128,11 @@ namespace FindMyPet.MVC.Controllers
             }
 
             return result;
+        }
+
+        public ActionResult CaptchaInvalid()
+        {
+            return View();
         }
 
         public ActionResult About()

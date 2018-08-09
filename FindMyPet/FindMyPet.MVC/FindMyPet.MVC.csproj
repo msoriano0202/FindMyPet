@@ -261,6 +261,7 @@
     <Compile Include="Helpers\JavaScriptConvert.cs" />
     <Compile Include="Helpers\PostalEmailHelper.cs" />
     <Compile Include="Helpers\UrlFormatHelper.cs" />
+    <Compile Include="Helpers\CaptchaHelper.cs" />
     <Compile Include="IdentityExtentions\CustomizePasswordValidation.cs" />
     <Compile Include="Mappers\AdminMapper.cs" />
     <Compile Include="Mappers\OwnerMapper.cs" />
@@ -275,6 +276,7 @@
     <Compile Include="Models\Admin\EmailSenderViewModel.cs" />
     <Compile Include="Models\Admin\AccountRegisteredEmail.cs" />
     <Compile Include="Models\Admin\ResendConfirmationEmail.cs" />
+    <Compile Include="Models\CaptchaResponse.cs" />
     <Compile Include="Models\Home\PetPublicAlertViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -537,6 +539,7 @@
     <Content Include="Views\PetSearch\AlertNotExist.cshtml" />
     <Content Include="Views\Manage\MyAlerts.cshtml" />
     <Content Include="Views\Pet\PetAlertReported.cshtml" />
+    <Content Include="Views\Home\CaptchaInvalid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

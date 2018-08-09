@@ -60,10 +60,15 @@
                                         <label for="input1-2" class="g-text-primary"><strong>Comentarios </strong></label>
                                         <p class="font-italic g-font-size-13 g-mb-10">( Información que ayude a describir la mascota y a comunicarse con usted, si aun no es miembro. )</p>
                                         <div class="input-group input-group-focus">
-                                            @Html.TextAreaFor(model => model.Commets, rows: 10, columns: 1, htmlAttributes: new { @class = "form-control", MaxLength = 500 })
+                                            @Html.TextAreaFor(model => model.Commets, rows: 9, columns: 1, htmlAttributes: new { @class = "form-control", MaxLength = 500 })
                                         </div>
-                                        <div class="row">
-                                            <input type="submit" class="btn btn-xlg btn-block btn-outline-danger g-mt-10" value="Alertar !!!" />
+                                        <div class="row g-mt-10">
+                                            <div class="col-md-6">
+                                                <div class="g-recaptcha" data-sitekey="6Lf5FGkUAAAAAFD5oQEjLq-4ryyADBo66OIBme3k"></div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="submit" class="btn btn-xlg btn-block btn-outline-danger g-mt-10" value="Alertar !!!" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

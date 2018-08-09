@@ -232,8 +232,13 @@ namespace FindMyPet.MVC.Controllers
                 DateTime.TryParse(model.To.Value.ToString(), out toTemp)
                 )
             {
-                TempData["FromDate"] = fromTemp;
-                TempData["ToDate"] = toTemp;
+                if (fromTemp > toTemp)
+                    this.SetAlertMessageInTempData(Models.Shared.AlertMessageTypeEnum.Error, "El rango de fechas no es válido.");
+                else
+                {
+                    TempData["FromDate"] = fromTemp;
+                    TempData["ToDate"] = toTemp;
+                }
             }
             else
             {
