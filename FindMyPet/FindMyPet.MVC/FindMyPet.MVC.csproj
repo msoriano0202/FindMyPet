@@ -276,6 +276,8 @@
     <Compile Include="Models\Admin\EmailSenderViewModel.cs" />
     <Compile Include="Models\Admin\AccountRegisteredEmail.cs" />
     <Compile Include="Models\Admin\ResendConfirmationEmail.cs" />
+    <Compile Include="Models\Admin\ResetPasswordEmail.cs" />
+    <Compile Include="Models\Admin\SharePetEmail.cs" />
     <Compile Include="Models\CaptchaResponse.cs" />
     <Compile Include="Models\Home\PetPublicAlertViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -540,6 +542,8 @@
     <Content Include="Views\Manage\MyAlerts.cshtml" />
     <Content Include="Views\Pet\PetAlertReported.cshtml" />
     <Content Include="Views\Home\CaptchaInvalid.cshtml" />
+    <Content Include="Views\Emails\ResetPassword.cshtml" />
+    <Content Include="Views\Emails\SharePet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

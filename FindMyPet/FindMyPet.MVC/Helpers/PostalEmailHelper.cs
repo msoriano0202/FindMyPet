@@ -8,6 +8,8 @@ namespace FindMyPet.MVC.Helpers
     {
         Task<AccountRegisteredEmail> SendConfirmationEmailAsync(string toEmail, string fullName, string password, string callbackUrl, bool sendEmail = true);
         Task<ResendConfirmationEmail> ResendConfirmationEmailAsync(string toEmail, string callbackUrl, bool sendEmail = true);
+        Task<ResetPasswordEmail> SendResetPasswordEmailAsync(string toEmail, string fullName, string callbackUrl, bool sendEmail = true);
+        Task<SharePetEmail> SendShareEmailEmailAsync(string toEmail, string PetName, string callbackUrl, bool sendEmail = true);
     }
 
     public class PostalEmailHelper : IPostalEmailHelper
@@ -42,6 +44,40 @@ namespace FindMyPet.MVC.Helpers
             };
 
             if(sendEmail)
+                await email.SendAsync();
+
+            return email;
+        }
+
+        public async Task<ResetPasswordEmail> SendResetPasswordEmailAsync(string toEmail, string fullName, string callbackUrl, bool sendEmail = true)
+        {
+            var email = new ResetPasswordEmail
+            {
+                To = toEmail,
+                FullName = fullName,
+                From = ConfigurationManager.AppSettings["FromEmail"].ToString(),
+                Subject = ConfigurationManager.AppSettings["ResetPasswordEmailSubject"].ToString(),
+                ResetPasswordLink = callbackUrl
+            };
+
+            if (sendEmail)
+                await email.SendAsync();
+
+            return email;
+        }
+
+        public async Task<SharePetEmail> SendShareEmailEmailAsync(string toEmail, string PetName, string callbackUrl, bool sendEmail = true)
+        {
+            var email = new SharePetEmail
+            {
+                To = toEmail,
+                PetName = PetName,
+                From = ConfigurationManager.AppSettings["FromEmail"].ToString(),
+                Subject = ConfigurationManager.AppSettings["SharePetEmailSubject"].ToString(),
+                SharePetLink = callbackUrl
+            };
+
+            if (sendEmail)
                 await email.SendAsync();
 
             return email;

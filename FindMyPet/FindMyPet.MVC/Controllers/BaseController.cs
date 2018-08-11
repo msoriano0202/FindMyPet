@@ -25,18 +25,18 @@ namespace FindMyPet.MVC.Controllers
         private IImageHelper _imageHelper;
         protected IOwnerMapper _ownerMapper;
         private IGeneralHelper _generalHelper;
-        protected IEmailHelper _emailHelper; //micky: remove, use PostalHelper
+        protected IPostalEmailHelper _postalEmailHelper;
 
         private List<string> validImageExtensions = new List<string> { "jpg", "png" };
         protected int defaultImageWidthSize = 750;
         protected int defaultImageHeightSize = 750;
         protected string defaultImageExtension = "jpg";
 
-        public BaseController() : this(new OwnerDataLoader(), new ImageHelper(), new OwnerMapper(), new GeneralHelper(), new EmailHelper())
+        public BaseController() : this(new OwnerDataLoader(), new ImageHelper(), new OwnerMapper(), new GeneralHelper(), new PostalEmailHelper())
         { }
 
         public BaseController(IOwnerDataLoader ownerDataLoader, IImageHelper imageHelper, IOwnerMapper ownerMapper, 
-                              IGeneralHelper generalHelper, IEmailHelper emailHelper)
+                              IGeneralHelper generalHelper, IPostalEmailHelper postalEmailHelper)
         {
             if (ownerDataLoader == null)
                 throw new ArgumentNullException(nameof(ownerDataLoader));
@@ -50,14 +50,14 @@ namespace FindMyPet.MVC.Controllers
             if (generalHelper == null)
                 throw new ArgumentNullException(nameof(generalHelper));
 
-            if (emailHelper == null)
-                throw new ArgumentNullException(nameof(emailHelper));
+            if (postalEmailHelper == null)
+                throw new ArgumentNullException(nameof(postalEmailHelper));
 
             _ownerDataLoader = ownerDataLoader;
             _imageHelper = imageHelper;
             _ownerMapper = ownerMapper;
             _generalHelper = generalHelper;
-            _emailHelper = emailHelper;
+            _postalEmailHelper = postalEmailHelper;
         }
 
         #region --- VerifySessionVariables ---

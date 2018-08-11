@@ -1,0 +1,25 @@
+﻿@model FindMyPet.MVC.Models.Admin.SharePetEmail
+
+To: @Model.To
+From: @Model.From
+Subject: @Model.Subject
+
+<div style="text-align:center">
+    <h2>¡Alerta Mascota!</h2>
+</div>
+<div>
+    <p>
+        Hola <strong><i>Alerta Amigo</i></strong>,
+    </p>
+    <br />
+    <p>
+        Alguien de nuestra comunidad desea compartir contigo su mascota: @Model.PetName
+    </p>
+    <p>
+        Dale click al siguiente link para que confirmes que deseas tambien ser dueño de la mascota:
+        <a href="@Model.SharePetLink">@Model.SharePetLink</a>
+    </p>
+    <br />
+    <p>Atte.</p>
+    <p>Alerta Mascota</p>
+</div>

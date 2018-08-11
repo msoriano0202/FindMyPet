@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity.Owin;
 using FindMyPet.Shared;
 using System.Linq;
 using FindMyPet.MVC.Models.Shared;
+using System.Threading.Tasks;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -242,7 +243,7 @@ namespace FindMyPet.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult PetShare(string id, string Email)
+        public async Task<ActionResult> PetShare(string id, string Email)
         {
             try
             {
@@ -251,8 +252,7 @@ namespace FindMyPet.MVC.Controllers
                 var token = _petDataLoader.CreateSharePetToken(ownerId, id, Email);
 
                 var callbackUrl = Url.Action("ConfirmPetShare", "Pet", new { code = token }, protocol: Request.Url.Scheme);
-                var body = $"Por favor, haga click en este link para compartir ser propietario de la mascota: {callbackUrl}";
-                _emailHelper.SendEmailSharePet(Email, pet.Name, body);
+                await _postalEmailHelper.SendShareEmailEmailAsync(Email, pet.Name, callbackUrl);
 
                 this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "Se ha enviado un correo a la direccion ingresada .");
             }

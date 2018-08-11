@@ -16,9 +16,8 @@ namespace FindMyPet.MVC.Controllers
     {
         private readonly IAdminDataLoader _adminDataLoader;
         private readonly IAdminMapper _adminMapper;
-        private readonly IPostalEmailHelper _postalEmailHelper;
 
-        public AdminController(IAdminDataLoader adminDataLoader, IAdminMapper adminMapper, IPostalEmailHelper postalEmailHelper)
+        public AdminController(IAdminDataLoader adminDataLoader, IAdminMapper adminMapper)
         {
             if (adminDataLoader == null)
                 throw new ArgumentNullException(nameof(adminDataLoader));
@@ -26,12 +25,8 @@ namespace FindMyPet.MVC.Controllers
             if (adminMapper == null)
                 throw new ArgumentNullException(nameof(adminMapper));
 
-            if (postalEmailHelper == null)
-                throw new ArgumentNullException(nameof(postalEmailHelper));
-
             _adminDataLoader = adminDataLoader;
             _adminMapper = adminMapper;
-            _postalEmailHelper = postalEmailHelper;
         }
 
         // GET: Admin
@@ -107,6 +102,7 @@ namespace FindMyPet.MVC.Controllers
             {
                 new SelectListItem { Text = "Register Welcome", Value = ((int)EmailTypeEnum.Welcome).ToString() },
                 new SelectListItem { Text = "ReSend Confirmation", Value = ((int)EmailTypeEnum.ReSendConfirmation).ToString() },
+                new SelectListItem { Text = "Reset Password", Value = ((int)EmailTypeEnum.ResetPassword).ToString() },
                 new SelectListItem { Text = "Share Pet", Value = ((int)EmailTypeEnum.PetShare).ToString() }
             };
         }
@@ -152,7 +148,13 @@ namespace FindMyPet.MVC.Controllers
                     callbackUrl = "http://localhost:8081/Account/ConfirmEmail?userId=0000000000&code=0000000000";
                     email = await _postalEmailHelper.ResendConfirmationEmailAsync(model.Email, callbackUrl, false);
                     break;
+                case (int)EmailTypeEnum.ResetPassword:
+                    callbackUrl = "http://localhost:8081/Account/ConfirmEmail?userId=0000000000&code=0000000000";
+                    email = await _postalEmailHelper.SendResetPasswordEmailAsync(model.Email, "Miguel Soriano", callbackUrl, false);
+                    break;
                 case (int)EmailTypeEnum.PetShare:
+                    callbackUrl = "http://localhost:8081/Account/ConfirmEmail?userId=0000000000&code=0000000000";
+                    email = await _postalEmailHelper.SendShareEmailEmailAsync(model.Email, "Marti", callbackUrl, false);
                     break;
             }
 

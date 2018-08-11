@@ -66,13 +66,14 @@ namespace FindMyPet.Shared
     }
 
     /// <summary>
-    ///  Welcome = 0 / ReSendConfirmation = 1 / PetShare = 2
+    ///  Welcome = 0 / ReSendConfirmation = 1 / ResetPassword = 2 / PetShare = 3
     /// </summary>
     public enum EmailTypeEnum
     {
         Welcome = 0,
         ReSendConfirmation = 1,
-        PetShare = 2
+        ResetPassword = 2,
+        PetShare = 3
     }
 
     public enum EmailViewerTypeEnum

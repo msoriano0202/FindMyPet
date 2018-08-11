@@ -100,20 +100,23 @@ namespace FindMyPet.MVC.Models
 
     public class ResetPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
+        [MaxLength(30)]
+        [Required(ErrorMessage = "Correo es requerido.")]
+        [EmailAddress(ErrorMessage = "Correo invalido.")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [MaxLength(20)]
+        [Required(ErrorMessage = "Contraseña es requerida.")]
+        [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
+        [MaxLength(20)]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmar Contraseña")]
+        [Compare("Password", ErrorMessage = "La contraseña no coincide con confirmar contraseña.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
@@ -121,8 +124,9 @@ namespace FindMyPet.MVC.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
+        [MaxLength(30)]
+        [Required(ErrorMessage = "Correo es requerido.")]
+        [EmailAddress(ErrorMessage = "Correo invalido.")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
