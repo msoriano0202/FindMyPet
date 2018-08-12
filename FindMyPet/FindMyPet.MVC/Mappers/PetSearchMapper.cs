@@ -42,11 +42,11 @@ namespace FindMyPet.MVC.Mappers
         {
             return new PetInfoViewModel
             {
-                Name = petDetails.Name,
+                Name = HttpUtility.HtmlDecode(petDetails.Name),
                 ProfileImageUrl = petDetails.ProfileImageUrl,
                 DateOfBirth = petDetails.DateOfBirth.Date,
-                Description = petDetails.Description,
-                LostComment = petDetails.LostComment,
+                Description = HttpUtility.HtmlDecode(petDetails.Description),
+                LostComment = HttpUtility.HtmlDecode(petDetails.LostComment),
                 LostDateTime = petDetails.LostDateTime.ToString("dd / MMM / yyyy  hh:mm:ss tt"),
                 PositionImageUrl = petDetails.PositionImageUrl,
                 Images = petDetails.Images
@@ -57,13 +57,13 @@ namespace FindMyPet.MVC.Mappers
         {
             return new OwnerInfoViewModel
             {
-                FullName = ownerDetails.FullName,
+                FullName = HttpUtility.HtmlDecode(ownerDetails.FullName),
                 ProfileImageUrl = ownerDetails.ProfileImageUrl,
                 Email = ownerDetails.Email,
-                PhoneNumber1 = ownerDetails.PhoneNumber1,
-                PhoneNumber2 = ownerDetails.PhoneNumber2,
-                Address1 = ownerDetails.Address1,
-                Address2 = ownerDetails.Address2
+                PhoneNumber1 = HttpUtility.HtmlDecode(ownerDetails.PhoneNumber1),
+                PhoneNumber2 = HttpUtility.HtmlDecode(ownerDetails.PhoneNumber2),
+                Address1 = HttpUtility.HtmlDecode(ownerDetails.Address1),
+                Address2 = HttpUtility.HtmlDecode(ownerDetails.Address2)
             };
         }
 
@@ -71,11 +71,11 @@ namespace FindMyPet.MVC.Mappers
         {
             return new PetSuccessStoryViewModel
             {
-                OwnerFullName =  data.OwnerFullName,
+                OwnerFullName = HttpUtility.HtmlDecode(data.OwnerFullName),
                 OwnerProfileImageUrl = data.OwnerProfileImageUrl,
-                PetName = data.PetName,
+                PetName = HttpUtility.HtmlDecode(data.PetName),
                 PetProfileImageUrl = data.PetProfileImageUrl,
-                FoundComment = data.FoundComment,
+                FoundComment = HttpUtility.HtmlDecode(data.FoundComment),
                 LostDateTime = data.LostDateTime.ToString("dd / MMM / yyyy hh:mm:ss tt"),
                 FoundDateTime = data.FoundDateTime.ToString("dd / MMM / yyyy hh:mm:ss tt")
             };
@@ -88,13 +88,13 @@ namespace FindMyPet.MVC.Mappers
                 AlertCode = data.AlertCode.ToString(),
                 PetId = data.PetId,
                 PetCode = data.PetCode?.ToString(),
-                PetName = data.PetName,
+                PetName = HttpUtility.HtmlDecode(data.PetName),
                 PetProfileImageUrl = data.PetProfileImageUrl,
                 Latitude = data.Latitude,
                 Longitude = data.Longitude,
                 LostDateTime = data.LostDateTime.ToString("dd / MMM / yyyy hh:mm:ss tt"),
-                Description = data.Description,
-                LostComment = data.LostComment
+                Description = HttpUtility.HtmlDecode(data.Description),
+                LostComment = HttpUtility.HtmlDecode(data.LostComment)
             };
         }
     }

@@ -18,6 +18,7 @@ namespace FindMyPet.MVC.Models.Pet
 
         [Required(ErrorMessage = "Nombre es requerido.")]
         [Display(Name = "Nombre")]
+        [AllowHtml]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Fecha Nacimiento es requerida.")]
@@ -26,6 +27,7 @@ namespace FindMyPet.MVC.Models.Pet
         public DateTime DateOfBirth { get; set; }
 
         [Display(Name = "Descripción")]
+        [AllowHtml]
         public string Description { get; set; }
 
         public string Status { get; set; }

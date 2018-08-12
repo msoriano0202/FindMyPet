@@ -21,11 +21,11 @@ namespace FindMyPet.MVC.Mappers
             {
                 Id = adminFoundAlert.Id,
                 Code = adminFoundAlert.Code.ToString(),
-                OwnerName = adminFoundAlert.OwnerFullName,
+                OwnerName = HttpUtility.HtmlDecode(adminFoundAlert.OwnerFullName),
                 ownerProfileImageUrl = adminFoundAlert.OwnerProfileImageUrl,
-                PetName = adminFoundAlert.PetName,
+                PetName = HttpUtility.HtmlDecode(adminFoundAlert.PetName),
                 PetProfileImageUrl = adminFoundAlert.PetProfileImageUrl,
-                FoundComment = adminFoundAlert.FoundComment,
+                FoundComment = HttpUtility.HtmlDecode(adminFoundAlert.FoundComment),
                 FoundDateTime = adminFoundAlert.FoundDateTime.ToString("dd/MMM/yyyy hh:mm:ss tt")
             };
         }

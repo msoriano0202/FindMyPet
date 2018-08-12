@@ -24,6 +24,7 @@ namespace FindMyPet.MVC.Models.Home
         [Required]
         public float? Longitude { get; set; }
 
+        [AllowHtml]
         [Required(ErrorMessage = "Comentarios es requerido.")]
         public string Commets { get; set; }
         public string StaticMapUrl { get; set; }
