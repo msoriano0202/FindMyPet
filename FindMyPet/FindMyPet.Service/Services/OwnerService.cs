@@ -57,5 +57,14 @@ namespace FindMyPet.MyServiceStack.Services
             return await _ownerProvider.SearchOwnersAsync(request)
                                        .ConfigureAwait(false);
         }
+
+        public async Task<List<OwnerAlert>> Get(OwnerAlertSearchRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return await _ownerProvider.SearchOwnerAlertsAsync(request)
+                                       .ConfigureAwait(false);
+        }
     }
 }

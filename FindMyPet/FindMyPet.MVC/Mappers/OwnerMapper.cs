@@ -11,6 +11,7 @@ namespace FindMyPet.MVC.Mappers
     {
         ProfileViewModel OwnerToProfileViewModel(Owner owner);
         SettingsViewModel OwnerToSettingsViewModel(Owner owner);
+        OwnerAlertViewModel OwnerAlertTioViewModel(OwnerAlert ownerAlert);
     }
 
     public class OwnerMapper : IOwnerMapper
@@ -40,6 +41,22 @@ namespace FindMyPet.MVC.Mappers
                 ReceiveAlertsInRadio = owner.Settings.ReceiveAlertsInRadio,
                 ReceiveDistanceRadio = owner.Settings.ReceiveDistanceRadio,
                 SendDistanceRadio = owner.Settings.SendDistanceRadio
+            };
+        }
+
+        public OwnerAlertViewModel OwnerAlertTioViewModel(OwnerAlert ownerAlert)
+        {
+            return new OwnerAlertViewModel
+            {
+                AlertCode = ownerAlert.AlertCode.ToString(),
+                PetId = ownerAlert.PetId,
+                PetCode = ownerAlert.PetCode.ToString(),
+                PetName = ownerAlert.PetName,
+                PetProfileImageUrl = ownerAlert.PetProfileImageUrl,
+                LostDateTime = ownerAlert.LostDateTime.ToString("dd / MMM / yyyy  hh:mm:ss tt"),
+                Latitude = ownerAlert.Latitude,
+                Longitude = ownerAlert.Longitude,
+                LostComment = ownerAlert.LostComment
             };
         }
     }

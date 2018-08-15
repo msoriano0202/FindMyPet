@@ -16,6 +16,7 @@ namespace FindMyPet.MyServiceStack.Providers
         Task<Owner> CreateOwnerAsync(OwnerCreateRequest request);
         Task<Owner> UpdateOwnerAsync(OwnerUpdateRequest request);
         Task<List<Owner>> SearchOwnersAsync(OwnerSearchRequest request);
+        Task<List<OwnerAlert>> SearchOwnerAlertsAsync(OwnerAlertSearchRequest request);
     }
 
     public class OwnerProvider : IOwnerProvider
@@ -109,6 +110,18 @@ namespace FindMyPet.MyServiceStack.Providers
             var response = await _ownerDataAccess.SearchOwnersAsync(exp);
 
             return response.ConvertAll(owner => _ownerMapper.MapOwnerTableToOwner(owner));
+        }
+
+        public async Task<List<OwnerAlert>> SearchOwnerAlertsAsync(OwnerAlertSearchRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (!request.Id.HasValue && string.IsNullOrEmpty(request.MembershipId))
+                throw new ArgumentException("Id and MembershipId are NULL");
+
+            return await _ownerDataAccess.SearchOwnerAlertsAsync(request)
+                                         .ConfigureAwait(false);
         }
     }
 }

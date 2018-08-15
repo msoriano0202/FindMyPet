@@ -131,7 +131,10 @@ namespace FindMyPet.MVC.Controllers
         {
             this.VerifySessionVariables();
             var owner = this.GetUserByMembershipId(User.Identity.GetUserId());
-            var model = new object();
+
+            var alerts = _ownerDataLoader.GetOwnerAlerts(owner.Id, null);
+            var model = alerts.ConvertAll(x => _ownerMapper.OwnerAlertTioViewModel(x));
+
             this.SetManageNavBarInfo(owner, "MyAlerts");
 
             return View(model);

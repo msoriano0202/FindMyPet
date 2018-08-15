@@ -23,6 +23,7 @@ namespace FindMyPet.MVC.DataLoaders
         PetAlert AddPetAlert(PetAlertViewModel model);
         PetAlert AddPetPublicAlert(PetPublicAlertViewModel model, List<string> urlImages);
         PetAlert FoundPet(PetAlertViewModel model);
+        List<OwnerAlert> GetOwnerAlerts(int? ownerId, string membershipId);
     }
 
     public class OwnerDataLoader : IOwnerDataLoader
@@ -84,6 +85,11 @@ namespace FindMyPet.MVC.DataLoaders
         public PetAlert FoundPet(PetAlertViewModel model)
         {
             return _ownerServiceClient.FoundPet(model);
+        }
+
+        public List<OwnerAlert> GetOwnerAlerts(int? ownerId, string membershipId)
+        {
+            return _ownerServiceClient.GetOwnerAlerts(ownerId, membershipId);
         }
     }
 }

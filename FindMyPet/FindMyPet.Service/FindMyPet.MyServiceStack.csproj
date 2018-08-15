@@ -92,6 +92,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -133,6 +134,7 @@
     <Compile Include="Services\PetService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\OwnerService.cs" />
+    <Compile Include="Shared\GeneralHelper.cs" />
     <Compile Include="Shared\PagingHelper.cs" />
   </ItemGroup>
   <ItemGroup>

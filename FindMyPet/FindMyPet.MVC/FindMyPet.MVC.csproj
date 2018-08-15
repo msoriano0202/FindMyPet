@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44342</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -269,6 +269,7 @@
     <Compile Include="Mappers\PetMapper.cs" />
     <Compile Include="Mappers\PetSearchMapper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Account\OwnerAlertViewModel.cs" />
     <Compile Include="Models\Admin\AlertToApproveViewModel.cs" />
     <Compile Include="Models\Admin\CommentToApproveViewModel.cs" />
     <Compile Include="Models\Admin\BaseEmail.cs" />
@@ -288,6 +289,7 @@
     <Compile Include="Models\PetSearch\PetSearchViewModel.cs" />
     <Compile Include="Models\PetSearch\PetSuccessStoryPagedListViewModel.cs" />
     <Compile Include="Models\PetSearch\PetSuccessStoryViewModel.cs" />
+    <Compile Include="Models\Pet\PetAlbumViewModel.cs" />
     <Compile Include="Models\Pet\PetAlertViewModel.cs" />
     <Compile Include="Models\Pet\PetImageViewModel.cs" />
     <Compile Include="Models\Pet\PetPagedListViewModel.cs" />
@@ -454,6 +456,7 @@
     <Content Include="CNoteV1.0\assets\fonts\Simple-Line-Icons.woff" />
     <Content Include="CNoteV1.0\assets\fonts\Simple-Line-Icons.woff2" />
     <Content Include="CNoteV1.0\cnote-main\pages\404-dark.html~HEAD" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

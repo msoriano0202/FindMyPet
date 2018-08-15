@@ -83,35 +83,42 @@ namespace FindMyPet.MVC.Controllers
             if (User.Identity.IsAuthenticated)
                 model.OwnerId = this.GetSessionOwnerId();
 
-            var files = model.Images.ToList();
-            if (files.Count > 0)
+            try
             {
-                if (!ValidFileExtensions(files))
+                var files = model.Images.ToList();
+                if (files.Count > 0)
                 {
-                    this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, "Solo estan permitidos archivos .jpg y .png");
-                    return RedirectToAction("Alert");
-                }
-                else
-                {
-                    var urlImages = new List<string>();
-                    model.StaticMapUrl = SaveStaticGoogleMap(model.StaticMapUrl);
-
-                    foreach (var file in files)
+                    if (!ValidFileExtensions(files))
                     {
-                        var newImageFilePath = this.ResizeAndSaveImage(file);
-                        urlImages.Add(newImageFilePath);
+                        this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, "Solo estan permitidos archivos .jpg y .png");
+                        return RedirectToAction("Alert");
                     }
-
-                    try
+                    else
                     {
+                        var urlImages = new List<string>();
+                        model.StaticMapUrl = SaveStaticGoogleMap(model.StaticMapUrl);
+
+                        foreach (var file in files)
+                        {
+                            var newImageFilePath = this.ResizeAndSaveImage(file);
+                            urlImages.Add(newImageFilePath);
+                        }
+
+                        //try
+                        //{
                         var petAlert = _ownerDataLoader.AddPetPublicAlert(model, urlImages);
                         this.SetAlertMessageInTempData(AlertMessageTypeEnum.Success, "La alerta ha sido guardada.");
-                    }
-                    catch (Exception ex)
-                    {
-                        this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, ex.Message);
+                        //}
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, "Hubo un error en el proceso.");
             }
 
             return RedirectToAction("Alert");

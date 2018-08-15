@@ -13,6 +13,7 @@ using FindMyPet.Shared;
 using System.Linq;
 using FindMyPet.MVC.Models.Shared;
 using System.Threading.Tasks;
+using FindMyPet.DTO.Pet;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -22,6 +23,8 @@ namespace FindMyPet.MVC.Controllers
         private readonly IPetDataLoader _petDataLoader;
         private readonly IPetMapper _petMapper;
         private readonly IPetImageMapper _petImageMapper;
+
+        private const int MAX_NUM_IMAGES = 6;
 
         public PetController(IPetDataLoader petDataLoader, IPetMapper petMapper, IPetImageMapper petImageMapper)
         {
@@ -104,7 +107,23 @@ namespace FindMyPet.MVC.Controllers
         {
             this.VerifySessionVariables();
 
-            var pet = _petDataLoader.GetPetByCode(id);
+            Pet pet = null;
+            try
+            {
+                pet = _petDataLoader.GetPetByCode(id);
+            }
+            catch (Exception ex)
+            {
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, "Hubo un error en el proceso.");
+                return RedirectToAction("Index");
+            }
+
+            if (pet == null)
+            {
+                this.SetAlertMessageInTempData(AlertMessageTypeEnum.Error, "La Mascota no existe.");
+                return RedirectToAction("Index");
+            }
+
             var model = _petMapper.PetToProfileViewModel(pet);
             model.SexTypes = GetSexTypes();
             SetPetProfileNavBarInfo(pet, "PetProfile");
@@ -135,7 +154,14 @@ namespace FindMyPet.MVC.Controllers
             this.VerifySessionVariables();
 
             var pet = _petDataLoader.GetPetByCode(id);
-            var model = pet.Images.ConvertAll(x => _petImageMapper.PetImageToPetImageViewModel(x));
+
+            var model = new PetAlbumViewModel
+            {
+                HasMaxImages = (pet.Images.Count >= MAX_NUM_IMAGES),
+                AlbumImages = pet.Images.ConvertAll(x => _petImageMapper.PetImageToPetImageViewModel(x))
+            };
+
+            //var model = 
             SetPetProfileNavBarInfo(pet, "PetAlbum");
 
             this.SetAlertMessageInViewBag();
@@ -291,10 +317,13 @@ namespace FindMyPet.MVC.Controllers
 
             this.SetAlertMessageInViewBag();
 
-            if(lastAlert.Status == (int)AlertStatusEnum.Active)
-                return View("PetFound", model);
-            else if (lastAlert.Status == (int)AlertStatusEnum.Reported)
-                return View("PetAlertReported");
+            if (lastAlert != null)
+            {
+                if (lastAlert.Status == (int)AlertStatusEnum.Active)
+                    return View("PetFound", model);
+                else if (lastAlert.Status == (int)AlertStatusEnum.Reported)
+                    return View("PetAlertReported");
+            }
 
             return View(model);
         }

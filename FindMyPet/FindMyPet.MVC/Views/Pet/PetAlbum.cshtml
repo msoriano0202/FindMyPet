@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FindMyPet.MVC.Models.Pet.PetImageViewModel>
+﻿@model FindMyPet.MVC.Models.Pet.PetAlbumViewModel
 
 @{
     ViewBag.Title = "Album";
@@ -12,17 +12,20 @@
             <div class="col-md-9">
                 <div class="form-group form-inline">
                     <h4 class="g-text-primary">Album de Fotos</h4>
-                    <a href="#" data-toggle="modal" data-target="#petImgUploadModal" class="btn btn-outline-primary g-ml-25">
-                        <i class="fa icon-cloud-upload fa-fw"></i> Agregar Imagen
-                    </a>
-                    <p class="font-italic g-font-size-13 g-mt-10">( Las imágenes del álbum de su mascota serán visibles para el público en caso que lo reporte como perdido. )</p>
+                    @if (!Model.HasMaxImages)
+                    {
+                        <a href="#" data-toggle="modal" data-target="#petImgUploadModal" class="btn btn-outline-primary g-ml-25">
+                            <i class="fa icon-cloud-upload fa-fw"></i> Agregar Imagen
+                        </a>
+                    }
+                    <p class="font-italic g-font-size-13 g-mt-10">( Las imágenes del álbum de su mascota serán visibles para el público en caso que lo reporte como perdido. Maximo 6 imagenes.)</p>
                 </div>
                 <hr />
                 <div class="widget feeds-widget">
-                    @if (Model.Any())
+                    @if (Model.AlbumImages.Any())
                     {
                         <div class="row justify-content-center zoom">
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.AlbumImages)
                             {
                                 <div class="col-3 g-p-3">
                                     <div class="member g-border g-border-gray-300 g-border-primary-h">

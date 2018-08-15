@@ -1,6 +1,7 @@
 ﻿using FindMyPet.DTO.Pet;
 using FindMyPet.DTO.PetSearch;
 using FindMyPet.DTO.Shared;
+using FindMyPet.MyServiceStack.Shared;
 using FindMyPet.Shared;
 using FindMyPet.TableModel;
 using ServiceStack.Data;
@@ -107,7 +108,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                     petLost.PetProfileImageUrl = item.Item4.ImageUrl;
                 }
                 else
-                    petLost.PetName = GetAnonymousTitle(item.Item1.AlertType);
+                    petLost.PetName = GeneralHelper.GetAnonymousTitle(item.Item1.AlertType);
 
                 lostPets.Add(petLost);
             }
@@ -227,38 +228,12 @@ namespace FindMyPet.MyServiceStack.DataAccess
                     alert.PetProfileImageUrl = item.Item4.ImageUrl;
                 }
                 else
-                    alert.PetName = GetAnonymousTitle(item.Item1.AlertType);
+                    alert.PetName = GeneralHelper.GetAnonymousTitle(item.Item1.AlertType);
 
                 alerts.Add(alert);
             }
 
             return alerts;
-        }
-
-        private string GetAnonymousTitle(int alertType)
-        {
-            var title = "Mascota ";
-
-            switch (alertType)
-            {
-                case 1:
-                    title += "Perdida";
-                    break;
-                case 2:
-                    title += "Abandonada";
-                    break;
-                case 3:
-                    title += "Herida";
-                    break;
-                case 4:
-                    title += "Encontrada";
-                    break;
-                case 5:
-                    title += "En Adopcion";
-                    break;
-            }
-
-            return title;
         }
 
         public async Task<PetLostDetails> GetPetLostDetails(PetLostDetailsRequest request)
@@ -380,7 +355,7 @@ namespace FindMyPet.MyServiceStack.DataAccess
                         var petImages = await dbConnection.SelectAsync<PetAlertImageTableModel>(pi => pi.PetAlertTableModelId == petAlertTable.Id)
                                                           .ConfigureAwait(false);
 
-                        petAlertDetails.PetInfo.Name = GetAnonymousTitle(petAlertTable.AlertType);
+                        petAlertDetails.PetInfo.Name = GeneralHelper.GetAnonymousTitle(petAlertTable.AlertType);
                         petAlertDetails.PetInfo.LostComment = petAlertTable.Comment;
                         petAlertDetails.PetInfo.LostDateTime = petAlertTable.CreatedOn;
                         petAlertDetails.PetInfo.PositionImageUrl = petAlertTable.PositionImageUrl;

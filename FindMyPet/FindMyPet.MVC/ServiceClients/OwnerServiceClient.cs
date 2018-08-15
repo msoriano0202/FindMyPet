@@ -23,6 +23,7 @@ namespace FindMyPet.MVC.ServiceClients
         PetAlert AddPetAlert(PetAlertViewModel model);
         PetAlert AddPetPublicAlert(PetPublicAlertViewModel model, List<string> urlImages);
         PetAlert FoundPet(PetAlertViewModel model);
+        List<OwnerAlert> GetOwnerAlerts(int? ownerId, string membershipId);
     }
 
     public class OwnerServiceClient : IOwnerServiceClient
@@ -167,6 +168,18 @@ namespace FindMyPet.MVC.ServiceClients
             };
 
             var response = _findMyPetClient.JsonClient().Put(request);
+            return response;
+        }
+
+        public List<OwnerAlert> GetOwnerAlerts(int? ownerId, string membershipId)
+        {
+            var request = new OwnerAlertSearchRequest
+            {
+                Id = ownerId,
+                MembershipId = membershipId
+            };
+
+            var response = _findMyPetClient.JsonClient().Get(request);
             return response;
         }
     }

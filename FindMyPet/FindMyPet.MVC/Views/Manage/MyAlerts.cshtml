@@ -1,4 +1,7 @@
-﻿
+﻿@model IEnumerable<FindMyPet.MVC.Models.Account.OwnerAlertViewModel>
+
+@using FindMyPet.MVC.Helpers;
+
 @{
     ViewBag.Title = "Mis Alertas";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,8 +15,47 @@
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
-                    <div class="g-border g-border-gray-300 g-shadow-v2 g-p-15">
+                    <div class="g-bg-white g-border g-border-gray-300 g-mb-10 g-p-20 g-shadow-v1">
+                        <div class="g-mb-10">
+                            <h5 class="text-primary"><strong>Mis Alertas</strong></h5>
+                        </div>
+                        <hr />
+                        @if (Model != null && Model.Any())
+                        {
+                            <div class="text-center g-mt-20">
+                                <ul class="list-group text-center text-sm-left g-mb-10">
+                                    @foreach (var item in Model)
+                                    {
+                                        <li class="list-group-item d-sm-flex justify-content-start align-items-center g-mb-5">
+                                            <div class="g-mr-sm-15 g-mb-10 g-mb-sm-0">
+                                                <img class="g-w50 rounded-circle" src="@Url.Content(UrlFormatHelper.FormatPetImageUrl(item.PetProfileImageUrl))" alt="Image Mascota">
+                                            </div>
+                                            <div>
+                                                <h6 class="g-mr-sm-10 font-weight-bold d-sm-inline-block">@item.PetName</h6>
+                                                <span class="g-mb-10 g-mb-sm-0 g-bg-danger font-weight-bold d-inline-block g-rounded-20 g-font-size-12 g-px-10">
+                                                    @item.LostDateTime
+                                                </span>
+                                                <p>@item.LostComment</p>
 
+                                                <ul class="list-unstyled list-inline g-mt-15">
+                                                    <li class="list-inline-item"><a href="/PetSearch/PublicProfile/@item.AlertCode" target="_blank" class="g-text-dark g-text-primary-h g-mr-10 cn-icon-outline-blue cn-icon-blue-h"><i class="icon-eye"></i>  Ver Alerta</a></li>
+                                                    @if (item.PetId.HasValue)
+                                                    {
+                                                        <li class="list-inline-item"><a href="/Pet/PetProfile/@item.PetCode" target="_blank" class="g-text-dark g-text-primary-h g-mr-10 cn-icon-outline-blue cn-icon-blue-h"><i class="icon-social-github"></i>  Ver Mascota</a></li>
+                                                    }
+                                                    @*<li class="list-inline-item"><a href="/Admin/RejectAlert/@item.AlertCode" class="g-text-dark g-text-primary-h cn-icon-outline-danger cn-icon-danger"><i class="icon-close"></i> Eliminar Alerta</a></li>*@
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+
+                                @*@if (Model.Pagination.EnablePagination)
+                                {
+                                    @Html.Partial("../Shared/_Pagination", Model.Pagination)
+                                }*@
+                            </div>
+                        }
                     </div>
                 }
             </div>
