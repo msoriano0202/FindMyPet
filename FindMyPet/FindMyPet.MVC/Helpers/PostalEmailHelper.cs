@@ -10,6 +10,7 @@ namespace FindMyPet.MVC.Helpers
         Task<ResendConfirmationEmail> ResendConfirmationEmailAsync(string toEmail, string callbackUrl, bool sendEmail = true);
         Task<ResetPasswordEmail> SendResetPasswordEmailAsync(string toEmail, string fullName, string callbackUrl, bool sendEmail = true);
         Task<SharePetEmail> SendShareEmailEmailAsync(string toEmail, string PetName, string callbackUrl, bool sendEmail = true);
+        Task<ConfirmedUserEmail> SendUserConfirmedAdminEmailAsync(string toEmail, string fullName, bool sendEmail = true);
     }
 
     public class PostalEmailHelper : IPostalEmailHelper
@@ -75,6 +76,22 @@ namespace FindMyPet.MVC.Helpers
                 From = ConfigurationManager.AppSettings["FromEmail"].ToString(),
                 Subject = ConfigurationManager.AppSettings["SharePetEmailSubject"].ToString(),
                 SharePetLink = callbackUrl
+            };
+
+            if (sendEmail)
+                await email.SendAsync();
+
+            return email;
+        }
+
+        public async Task<ConfirmedUserEmail> SendUserConfirmedAdminEmailAsync(string toEmail, string fullName, bool sendEmail = true)
+        {
+            var email = new ConfirmedUserEmail
+            {
+                To = toEmail,
+                FullName = fullName,
+                From = ConfigurationManager.AppSettings["FromEmail"].ToString(),
+                Subject = "New User Confirmed Register"
             };
 
             if (sendEmail)

@@ -12,6 +12,7 @@ using FindMyPet.MVC.Models;
 using FindMyPet.MVC.ServiceClients;
 using FindMyPet.MVC.DataLoaders;
 using FindMyPet.MVC.Helpers;
+using System.Configuration;
 
 namespace FindMyPet.MVC.Controllers
 {
@@ -284,6 +285,13 @@ namespace FindMyPet.MVC.Controllers
                 return View("Error");
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
+
+            if (result.Succeeded)
+            {
+                var user = this.GetUserByMembershipId(userId);
+                await this._postalEmailHelper.SendUserConfirmedAdminEmailAsync(ConfigurationManager.AppSettings["AdminEmail"], $"{user.FirstName} {user.LastName}");
+            }
+
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 

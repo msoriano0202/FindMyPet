@@ -273,6 +273,7 @@
     <Compile Include="Models\Admin\AlertToApproveViewModel.cs" />
     <Compile Include="Models\Admin\CommentToApproveViewModel.cs" />
     <Compile Include="Models\Admin\BaseEmail.cs" />
+    <Compile Include="Models\Admin\ConfirmedUserEmail.cs" />
     <Compile Include="Models\Admin\DashboardDetailsViewModel.cs" />
     <Compile Include="Models\Admin\EmailSenderViewModel.cs" />
     <Compile Include="Models\Admin\AccountRegisteredEmail.cs" />
@@ -547,6 +548,7 @@
     <Content Include="Views\Home\CaptchaInvalid.cshtml" />
     <Content Include="Views\Emails\ResetPassword.cshtml" />
     <Content Include="Views\Emails\SharePet.cshtml" />
+    <Content Include="Views\Emails\ConfirmedUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
